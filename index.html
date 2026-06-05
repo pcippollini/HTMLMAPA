@@ -9,32 +9,40 @@
 
   <style>
     :root {
-      --verde-escuro: #0f3f31;
-      --verde-medio: #17865d;
-      --verde-claro: #2ecc71;
+      --preto: #111111;
+      --grafite: #252525;
+      --cinza-escuro: #3a3a3a;
+      --cinza-medio: #777777;
+      --cinza-claro: #eef1f3;
       --card: #ffffff;
-      --texto: #0b4d3d;
-      --cinza: #eef2f4;
+      --texto: #222222;
+
+      --finalizado: #d71920;
+      --carteira: #1d2f8f;
+      --t2: #00a9e0;
+      --t3: #2d4aa5;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--cinza);
+      background: var(--cinza-claro);
       color: var(--texto);
       overflow: hidden;
     }
 
     header {
       height: 54px;
-      background: linear-gradient(90deg, #0f3f31, #2ecc71);
+      background: linear-gradient(90deg, #000000, #2f2f2f);
       color: white;
       display: flex;
       align-items: center;
       padding: 0 22px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
       z-index: 1000;
       position: relative;
     }
@@ -42,8 +50,8 @@
     header h1 {
       margin: 0;
       font-size: 25px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
     }
 
     main {
@@ -73,22 +81,24 @@
     }
 
     .busca input:focus {
-      border-color: var(--verde-medio);
-      box-shadow: 0 0 0 2px rgba(23, 134, 93, 0.15);
+      border-color: var(--grafite);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
     }
 
     .busca button {
       height: 36px;
       border: 0;
       border-radius: 10px;
-      background: var(--verde-escuro);
+      background: var(--preto);
       color: white;
       font-size: 14px;
       font-weight: 800;
       cursor: pointer;
     }
 
-    .busca button:hover { background: #126349; }
+    .busca button:hover {
+      background: var(--grafite);
+    }
 
     .mensagem {
       display: none;
@@ -117,24 +127,36 @@
       padding: 8px 10px;
       text-align: center;
       box-shadow: 0 5px 12px rgba(0, 0, 0, 0.10);
-      border-top: 4px solid var(--verde-claro);
+      border-top: 4px solid var(--cinza-escuro);
     }
 
-    .card:nth-child(2) { border-top-color: #3498db; }
-    .card:nth-child(3) { border-top-color: #e67e22; }
-    .card:nth-child(4) { border-top-color: #9b59b6; }
+    .card:nth-child(1) {
+      border-top-color: var(--finalizado);
+    }
+
+    .card:nth-child(2) {
+      border-top-color: var(--carteira);
+    }
+
+    .card:nth-child(3) {
+      border-top-color: var(--t2);
+    }
+
+    .card:nth-child(4) {
+      border-top-color: var(--t3);
+    }
 
     .card-value {
       font-size: 23px;
       font-weight: 900;
-      color: #167a58;
+      color: #222222;
       line-height: 1.1;
     }
 
     .card-label {
       margin-top: 4px;
       font-size: 12.5px;
-      color: #777;
+      color: #666666;
       font-weight: 700;
     }
 
@@ -147,20 +169,46 @@
     .popup-titulo {
       font-size: 16px;
       font-weight: 900;
-      color: #0f3f31;
+      color: #111111;
       margin-bottom: 8px;
+    }
+
+    .popup-subtitulo {
+      font-size: 13px;
+      color: #555555;
+      margin-bottom: 8px;
+      line-height: 1.35;
     }
 
     .popup-linha {
       display: flex;
       justify-content: space-between;
       gap: 18px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #eeeeee;
       padding: 5px 0;
       font-size: 14px;
     }
 
-    .popup-linha strong { color: #0f3f31; }
+    .popup-linha strong {
+      color: #111111;
+    }
+
+    .popup-linha span {
+      color: #333333;
+      font-weight: 700;
+    }
+
+    .popup-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 7px 9px;
+      background: #111111;
+      color: white !important;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+    }
 
     .aviso {
       position: absolute;
@@ -172,9 +220,59 @@
       border-radius: 10px;
       padding: 10px 12px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-      max-width: 420px;
+      max-width: 460px;
       font-size: 14px;
       display: none;
+    }
+
+    .icone-finalizado {
+      color: var(--finalizado);
+      font-size: 30px;
+      line-height: 30px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .icone-carteira {
+      color: var(--carteira);
+      font-size: 30px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .icone-t2 {
+      width: 25px;
+      height: 25px;
+      background: var(--t2);
+      color: white;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 25px;
+      text-align: center;
+      border: 2px solid white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    }
+
+    .icone-t3 {
+      width: 27px;
+      height: 27px;
+      background: var(--t3);
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 23px;
+      text-align: center;
+      border: 2px solid white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    }
+
+    .icone-padrao {
+      color: #444444;
+      font-size: 24px;
+      line-height: 24px;
+      text-align: center;
     }
 
     @media (max-width: 700px) {
@@ -183,9 +281,13 @@
         padding: 0 14px;
       }
 
-      header h1 { font-size: 21px; }
+      header h1 {
+        font-size: 21px;
+      }
 
-      main { height: calc(100vh - 50px); }
+      main {
+        height: calc(100vh - 50px);
+      }
 
       .busca {
         grid-template-columns: 1fr;
@@ -203,8 +305,13 @@
         padding: 7px 8px;
       }
 
-      .card-value { font-size: 20px; }
-      .card-label { font-size: 12px; }
+      .card-value {
+        font-size: 20px;
+      }
+
+      .card-label {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -253,7 +360,16 @@
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
 
   <script>
+    // =====================================================
+    // CAMINHOS DOS ARQUIVOS
+    // =====================================================
+
     const caminhoGeojson = "DADOS/mapa_leaft.geojson";
+    const pastaPontos = "DADOS/";
+
+    // =====================================================
+    // MAPA
+    // =====================================================
 
     const map = L.map("map", { zoomControl: true }).setView([-22.5, -48.5], 7);
 
@@ -266,13 +382,22 @@
 
     let camadaGeojson = null;
     let camadaSelecionada = null;
+    let camadaPontos = null;
     let marcadorBusca = null;
     let dadosGeojson = null;
+
+    // =====================================================
+    // FUNÇÕES GERAIS
+    // =====================================================
 
     function mostrarAviso(msg) {
       const aviso = document.getElementById("aviso");
       aviso.textContent = msg;
       aviso.style.display = "block";
+
+      setTimeout(() => {
+        aviso.style.display = "none";
+      }, 6500);
     }
 
     function mensagem(msg) {
@@ -283,6 +408,17 @@
 
     function numero(valor) {
       if (valor === null || valor === undefined || valor === "") return 0;
+
+      if (typeof valor === "string") {
+        const limpo = valor
+          .replace(/\./g, "")
+          .replace(",", ".")
+          .trim();
+
+        const n = Number(limpo);
+        return Number.isFinite(n) ? n : 0;
+      }
+
       const n = Number(valor);
       return Number.isFinite(n) ? n : 0;
     }
@@ -291,42 +427,260 @@
       return numero(valor).toLocaleString("pt-BR");
     }
 
-    function atualizarCards(props) {
-      document.getElementById("card-finalizado").textContent = formatar(props["FINALIZADO"]);
-      document.getElementById("card-carteira").textContent = formatar(props["CARTEIRA"]);
-      document.getElementById("card-t2").textContent = formatar(props["APLICAR T2"]);
-      document.getElementById("card-t3").textContent = formatar(props["APLICAR T3"]);
+    function textoOuTraco(valor) {
+      if (valor === null || valor === undefined) return "-";
+
+      const txt = String(valor).trim();
+
+      if (!txt) return "-";
+      if (txt.toLowerCase() === "null") return "-";
+      if (txt.toLowerCase() === "undefined") return "-";
+
+      return txt;
     }
+
+    function normalizarTexto(valor) {
+      return String(valor || "")
+        .trim()
+        .toUpperCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function normalizarStatus(valor) {
+      const status = normalizarTexto(valor);
+
+      if (status.includes("FINAL")) return "FINALIZADO";
+      if (status.includes("CARTEIRA")) return "CARTEIRA";
+      if (status.includes("T2")) return "APLICAR T2";
+      if (status.includes("T3")) return "APLICAR T3";
+
+      return status;
+    }
+
+    function obterNomeRegiao(props) {
+      return (
+        props["ID_REGIAO"] ||
+        props["NM_MUN"] ||
+        props["NOME_REGIAO"] ||
+        props["REGIAO"] ||
+        "Polígono"
+      );
+    }
+
+    function obterNomeArquivoPontos(props) {
+      const arquivoInformado =
+        props["ARQUIVO_PONTOS"] ||
+        props["ARQUIVO"] ||
+        props["GEOJSON_PONTOS"];
+
+      if (arquivoInformado && String(arquivoInformado).trim()) {
+        return String(arquivoInformado).trim();
+      }
+
+      const idRegiao = obterNomeRegiao(props);
+
+      return String(idRegiao).trim() + ".geojson";
+    }
+
+    // =====================================================
+    // CARDS
+    // =====================================================
+
+    function atualizarCardsPorValores(finalizado, carteira, t2, t3) {
+      document.getElementById("card-finalizado").textContent = formatar(finalizado);
+      document.getElementById("card-carteira").textContent = formatar(carteira);
+      document.getElementById("card-t2").textContent = formatar(t2);
+      document.getElementById("card-t3").textContent = formatar(t3);
+    }
+
+    function atualizarCards(props) {
+      atualizarCardsPorValores(
+        props["FINALIZADO"],
+        props["CARTEIRA"],
+        props["APLICAR T2"],
+        props["APLICAR T3"]
+      );
+    }
+
+    function somarCardsDosPoligonos(data) {
+      let finalizado = 0;
+      let carteira = 0;
+      let t2 = 0;
+      let t3 = 0;
+
+      const features = data.features || [];
+
+      features.forEach(feature => {
+        const p = feature.properties || {};
+
+        finalizado += numero(p["FINALIZADO"]);
+        carteira += numero(p["CARTEIRA"]);
+        t2 += numero(p["APLICAR T2"]);
+        t3 += numero(p["APLICAR T3"]);
+      });
+
+      atualizarCardsPorValores(finalizado, carteira, t2, t3);
+    }
+
+    function contarStatusDosPontos(features) {
+      let finalizado = 0;
+      let carteira = 0;
+      let t2 = 0;
+      let t3 = 0;
+
+      features.forEach(feature => {
+        const p = feature.properties || {};
+        const status = normalizarStatus(p["O_QUE_FAZER"]);
+
+        if (status === "FINALIZADO") finalizado++;
+        else if (status === "CARTEIRA") carteira++;
+        else if (status === "APLICAR T2") t2++;
+        else if (status === "APLICAR T3") t3++;
+      });
+
+      atualizarCardsPorValores(finalizado, carteira, t2, t3);
+
+      return {
+        finalizado,
+        carteira,
+        t2,
+        t3,
+        total: features.length
+      };
+    }
+
+    // =====================================================
+    // ESTILOS DOS POLÍGONOS
+    // =====================================================
 
     function estiloPadrao() {
       return {
-        color: "#0f6b4d",
+        color: "#222222",
         weight: 1.4,
         opacity: 0.95,
-        fillColor: "#2ecc71",
-        fillOpacity: 0.32
+        fillColor: "#777777",
+        fillOpacity: 0.26
       };
     }
 
     function estiloSelecionado(layer) {
       layer.setStyle({
-        color: "#073b2d",
-        weight: 3,
+        color: "#000000",
+        weight: 3.2,
         fillColor: "#f39c12",
         fillOpacity: 0.55
       });
       layer.bringToFront();
     }
 
-    function criarPopup(props) {
+    // =====================================================
+    // ÍCONES DOS PONTOS
+    // =====================================================
+
+    function iconePorStatus(statusOriginal) {
+      const status = normalizarStatus(statusOriginal);
+
+      if (status === "FINALIZADO") {
+        return L.divIcon({
+          html: "×",
+          className: "icone-finalizado",
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+          popupAnchor: [0, -15]
+        });
+      }
+
+      if (status === "CARTEIRA") {
+        return L.divIcon({
+          html: "📍",
+          className: "icone-carteira",
+          iconSize: [30, 30],
+          iconAnchor: [15, 30],
+          popupAnchor: [0, -28]
+        });
+      }
+
+      if (status === "APLICAR T2") {
+        return L.divIcon({
+          html: "T2",
+          className: "icone-t2",
+          iconSize: [25, 25],
+          iconAnchor: [12, 12],
+          popupAnchor: [0, -12]
+        });
+      }
+
+      if (status === "APLICAR T3") {
+        return L.divIcon({
+          html: "T3",
+          className: "icone-t3",
+          iconSize: [27, 27],
+          iconAnchor: [13, 13],
+          popupAnchor: [0, -13]
+        });
+      }
+
+      return L.divIcon({
+        html: "•",
+        className: "icone-padrao",
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+        popupAnchor: [0, -12]
+      });
+    }
+
+    // =====================================================
+    // POPUPS
+    // =====================================================
+
+    function criarPopupPoligono(props) {
+      const nomeRegiao = obterNomeRegiao(props);
+      const arquivoPontos = obterNomeArquivoPontos(props);
+      const agente = textoOuTraco(props["AGENTE"]);
+
       return `
-        <div class="popup-titulo">${props["ID_REGIAO"] || props["NM_MUN"] || "Polígono"}</div>
+        <div class="popup-titulo">${nomeRegiao}</div>
+        <div class="popup-subtitulo">
+          <strong>Agente:</strong> ${agente}<br>
+          <strong>Arquivo de pontos:</strong> ${arquivoPontos}
+        </div>
         <div class="popup-linha"><strong>Finalizados</strong><span>${formatar(props["FINALIZADO"])}</span></div>
         <div class="popup-linha"><strong>Carteira</strong><span>${formatar(props["CARTEIRA"])}</span></div>
         <div class="popup-linha"><strong>Aplicar T2</strong><span>${formatar(props["APLICAR T2"])}</span></div>
         <div class="popup-linha"><strong>Aplicar T3</strong><span>${formatar(props["APLICAR T3"])}</span></div>
       `;
     }
+
+    function criarPopupPonto(props) {
+      const status = textoOuTraco(props["O_QUE_FAZER"]);
+      const cnpj = textoOuTraco(props["CNPJ"]);
+      const razao = textoOuTraco(props["RAZAOSOCIAL"] || props["RAZAO_SOCIAL"]);
+      const fantasia = textoOuTraco(props["NOMEFANTASIA"] || props["NOME_FANTASIA"]);
+      const endereco = textoOuTraco(props["ENDEE"] || props["ENDERECO"]);
+      const agente = textoOuTraco(props["AGENTE"]);
+      const regiao = textoOuTraco(props["ID_REGIAO"]);
+      const maps = textoOuTraco(props["LMAPS"]);
+
+      const linkMaps = maps !== "-"
+        ? `<a class="popup-link" href="${maps}" target="_blank">Abrir no Google Maps</a>`
+        : "";
+
+      return `
+        <div class="popup-titulo">${status}</div>
+        <div class="popup-linha"><strong>CNPJ</strong><span>${cnpj}</span></div>
+        <div class="popup-linha"><strong>Razão Social</strong><span>${razao}</span></div>
+        <div class="popup-linha"><strong>Fantasia</strong><span>${fantasia}</span></div>
+        <div class="popup-linha"><strong>Endereço</strong><span>${endereco}</span></div>
+        <div class="popup-linha"><strong>Agente</strong><span>${agente}</span></div>
+        <div class="popup-linha"><strong>Região</strong><span>${regiao}</span></div>
+        ${linkMaps}
+      `;
+    }
+
+    // =====================================================
+    // SELEÇÃO DO POLÍGONO
+    // =====================================================
 
     function selecionarLayer(layer) {
       const props = layer.feature.properties || {};
@@ -339,6 +693,10 @@
       estiloSelecionado(layer);
       atualizarCards(props);
       layer.openPopup();
+
+      if (layer.getBounds && layer.getBounds().isValid()) {
+        map.fitBounds(layer.getBounds(), { padding: [24, 24] });
+      }
 
       return props;
     }
@@ -354,6 +712,75 @@
 
       return layerAchado;
     }
+
+    // =====================================================
+    // CARREGAR PONTOS INDIVIDUAIS
+    // =====================================================
+
+    function limparCamadaPontos() {
+      if (camadaPontos) {
+        map.removeLayer(camadaPontos);
+        camadaPontos = null;
+      }
+    }
+
+    async function carregarPontosDaRegiao(props) {
+      limparCamadaPontos();
+
+      const nomeRegiao = obterNomeRegiao(props);
+      const arquivoPontos = obterNomeArquivoPontos(props);
+      const caminhoPontos = pastaPontos + arquivoPontos;
+
+      mensagem("Carregando pontos da região: " + nomeRegiao + "...");
+
+      try {
+        const response = await fetch(caminhoPontos);
+
+        if (!response.ok) {
+          mensagem(
+            "Polígono selecionado: " + nomeRegiao +
+            ". Arquivo individual de pontos ainda não encontrado: " + arquivoPontos
+          );
+          return;
+        }
+
+        const data = await response.json();
+        const features = data.features || [];
+
+        camadaPontos = L.geoJSON(data, {
+          pointToLayer: function(feature, latlng) {
+            const p = feature.properties || {};
+            return L.marker(latlng, {
+              icon: iconePorStatus(p["O_QUE_FAZER"])
+            });
+          },
+
+          onEachFeature: function(feature, layer) {
+            const p = feature.properties || {};
+            layer.bindPopup(criarPopupPonto(p));
+          }
+        }).addTo(map);
+
+        const contagem = contarStatusDosPontos(features);
+
+        mensagem(
+          "Polígono selecionado: " + nomeRegiao +
+          " | Pontos carregados: " + contagem.total.toLocaleString("pt-BR") +
+          " | Arquivo: " + arquivoPontos
+        );
+
+      } catch (error) {
+        console.error(error);
+        mensagem(
+          "Erro ao carregar os pontos da região: " + nomeRegiao +
+          ". Confira o arquivo: " + caminhoPontos
+        );
+      }
+    }
+
+    // =====================================================
+    // BUSCA DE ENDEREÇO
+    // =====================================================
 
     function encontrarPoligonoPorPonto(lat, lng) {
       const ponto = turf.point([lng, lat]);
@@ -386,7 +813,9 @@
         ? termoOriginal
         : termoOriginal + ", Brasil";
 
-      const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q=" + encodeURIComponent(termo);
+      const url =
+        "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q=" +
+        encodeURIComponent(termo);
 
       try {
         const resp = await fetch(url, {
@@ -435,11 +864,15 @@
           return;
         }
 
-        selecionarLayer(layer);
+        const props = selecionarLayer(layer);
+        await carregarPontosDaRegiao(props);
+
         marcadorBusca.openPopup();
 
-        const p = feature.properties || {};
-        mensagem("Endereço localizado no polígono: " + (p["ID_REGIAO"] || p["NM_MUN"] || "sem nome"));
+        mensagem(
+          "Endereço localizado no polígono: " +
+          (obterNomeRegiao(feature.properties || {}))
+        );
 
       } catch (error) {
         mensagem("Erro ao buscar endereço. Teste novamente ou verifique a conexão.");
@@ -453,15 +886,23 @@
       if (e.key === "Enter") buscarEndereco();
     });
 
+    // =====================================================
+    // CARREGAR POLÍGONOS
+    // =====================================================
+
     fetch(caminhoGeojson)
       .then(response => {
         if (!response.ok) {
-          throw new Error("GeoJSON não encontrado. Verifique se existe a pasta DADOS e o arquivo mapa_leaft.geojson no mesmo projeto do index.html.");
+          throw new Error(
+            "GeoJSON não encontrado. Verifique se existe a pasta DADOS e o arquivo mapa_leaft.geojson no mesmo projeto do index.html."
+          );
         }
         return response.json();
       })
       .then(data => {
         dadosGeojson = data;
+
+        somarCardsDosPoligonos(data);
 
         camadaGeojson = L.geoJSON(data, {
           style: estiloPadrao,
@@ -469,11 +910,29 @@
           onEachFeature: function(feature, layer) {
             const p = feature.properties || {};
 
-            layer.bindPopup(criarPopup(p));
+            layer.bindPopup(criarPopupPoligono(p));
 
-            layer.on("click", function() {
+            layer.on("click", async function() {
               mensagem("");
-              selecionarLayer(layer);
+              const props = selecionarLayer(layer);
+              await carregarPontosDaRegiao(props);
+            });
+
+            layer.on("mouseover", function() {
+              if (layer !== camadaSelecionada) {
+                layer.setStyle({
+                  color: "#000000",
+                  weight: 2.3,
+                  fillColor: "#999999",
+                  fillOpacity: 0.38
+                });
+              }
+            });
+
+            layer.on("mouseout", function() {
+              if (layer !== camadaSelecionada) {
+                layer.setStyle(estiloPadrao());
+              }
             });
           }
         }).addTo(map);
@@ -485,7 +944,10 @@
         }
       })
       .catch(error => {
-        mostrarAviso(error.message + " Se você abriu o index.html dando duplo clique, teste pelo GitHub Pages ou por servidor local.");
+        mostrarAviso(
+          error.message +
+          " Se você abriu o index.html dando duplo clique, teste pelo GitHub Pages ou por servidor local."
+        );
         console.error(error);
       });
   </script>
