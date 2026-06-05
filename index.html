@@ -166,6 +166,40 @@
       min-height: 300px;
     }
 
+    .popup-status {
+      display: block;
+      width: 100%;
+      margin: -4px 0 10px 0;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      text-align: left;
+    }
+
+    .status-finalizado {
+      background: var(--finalizado);
+    }
+
+    .status-carteira {
+      background: var(--carteira);
+    }
+
+    .status-t2 {
+      background: var(--t2);
+    }
+
+    .status-t3 {
+      background: var(--t3);
+    }
+
+    .status-padrao {
+      background: #444444;
+    }
+
     .popup-titulo {
       font-size: 16px;
       font-weight: 900;
@@ -181,33 +215,50 @@
     }
 
     .popup-linha {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
+      display: grid;
+      grid-template-columns: 105px minmax(0, 1fr);
+      gap: 10px;
       border-bottom: 1px solid #eeeeee;
-      padding: 5px 0;
+      padding: 7px 0;
       font-size: 14px;
+      align-items: start;
     }
 
     .popup-linha strong {
       color: #111111;
+      line-height: 1.3;
+      font-weight: 900;
     }
 
     .popup-linha span {
       color: #333333;
       font-weight: 700;
+      line-height: 1.35;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      text-align: right;
     }
 
     .popup-link {
       display: inline-block;
-      margin-top: 8px;
-      padding: 7px 9px;
+      margin-top: 10px;
+      padding: 8px 10px;
       background: #111111;
       color: white !important;
       text-decoration: none;
       border-radius: 8px;
       font-size: 13px;
       font-weight: 800;
+    }
+
+    .leaflet-popup-content {
+      min-width: 330px;
+      max-width: 480px;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: 14px;
     }
 
     .aviso {
@@ -312,6 +363,16 @@
       .card-label {
         font-size: 12px;
       }
+
+      .leaflet-popup-content {
+        min-width: 260px;
+        max-width: 320px;
+      }
+
+      .popup-linha {
+        grid-template-columns: 90px minmax(0, 1fr);
+        font-size: 13px;
+      }
     }
   </style>
 </head>
@@ -360,16 +421,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
 
   <script>
-    // =====================================================
-    // CAMINHOS DOS ARQUIVOS
-    // =====================================================
-
     const caminhoGeojson = "DADOS/mapa_leaft.geojson";
     const pastaPontos = "DADOS/";
-
-    // =====================================================
-    // MAPA
-    // =====================================================
 
     const map = L.map("map", { zoomControl: true }).setView([-22.5, -48.5], 7);
 
@@ -385,10 +438,6 @@
     let camadaPontos = null;
     let marcadorBusca = null;
     let dadosGeojson = null;
-
-    // =====================================================
-    // FUNÇÕES GERAIS
-    // =====================================================
 
     function mostrarAviso(msg) {
       const aviso = document.getElementById("aviso");
@@ -458,6 +507,17 @@
       return status;
     }
 
+    function classeStatusPopup(statusOriginal) {
+      const status = normalizarStatus(statusOriginal);
+
+      if (status === "FINALIZADO") return "status-finalizado";
+      if (status === "CARTEIRA") return "status-carteira";
+      if (status === "APLICAR T2") return "status-t2";
+      if (status === "APLICAR T3") return "status-t3";
+
+      return "status-padrao";
+    }
+
     function obterNomeRegiao(props) {
       return (
         props["ID_REGIAO"] ||
@@ -482,10 +542,6 @@
 
       return String(idRegiao).trim() + ".geojson";
     }
-
-    // =====================================================
-    // CARDS
-    // =====================================================
 
     function atualizarCardsPorValores(finalizado, carteira, t2, t3) {
       document.getElementById("card-finalizado").textContent = formatar(finalizado);
@@ -550,10 +606,6 @@
       };
     }
 
-    // =====================================================
-    // ESTILOS DOS POLÍGONOS
-    // =====================================================
-
     function estiloPadrao() {
       return {
         color: "#222222",
@@ -573,10 +625,6 @@
       });
       layer.bringToFront();
     }
-
-    // =====================================================
-    // ÍCONES DOS PONTOS
-    // =====================================================
 
     function iconePorStatus(statusOriginal) {
       const status = normalizarStatus(statusOriginal);
@@ -630,10 +678,6 @@
       });
     }
 
-    // =====================================================
-    // POPUPS
-    // =====================================================
-
     function criarPopupPoligono(props) {
       const nomeRegiao = obterNomeRegiao(props);
       const arquivoPontos = obterNomeArquivoPontos(props);
@@ -654,6 +698,8 @@
 
     function criarPopupPonto(props) {
       const status = textoOuTraco(props["O_QUE_FAZER"]);
+      const statusClasse = classeStatusPopup(status);
+
       const cnpj = textoOuTraco(props["CNPJ"]);
       const razao = textoOuTraco(props["RAZAOSOCIAL"] || props["RAZAO_SOCIAL"]);
       const fantasia = textoOuTraco(props["NOMEFANTASIA"] || props["NOME_FANTASIA"]);
@@ -667,20 +713,41 @@
         : "";
 
       return `
-        <div class="popup-titulo">${status}</div>
-        <div class="popup-linha"><strong>CNPJ</strong><span>${cnpj}</span></div>
-        <div class="popup-linha"><strong>Razão Social</strong><span>${razao}</span></div>
-        <div class="popup-linha"><strong>Fantasia</strong><span>${fantasia}</span></div>
-        <div class="popup-linha"><strong>Endereço</strong><span>${endereco}</span></div>
-        <div class="popup-linha"><strong>Agente</strong><span>${agente}</span></div>
-        <div class="popup-linha"><strong>Região</strong><span>${regiao}</span></div>
+        <div class="popup-status ${statusClasse}">${status}</div>
+
+        <div class="popup-linha">
+          <strong>CNPJ</strong>
+          <span>${cnpj}</span>
+        </div>
+
+        <div class="popup-linha">
+          <strong>Razão Social</strong>
+          <span>${razao}</span>
+        </div>
+
+        <div class="popup-linha">
+          <strong>Fantasia</strong>
+          <span>${fantasia}</span>
+        </div>
+
+        <div class="popup-linha">
+          <strong>Endereço</strong>
+          <span>${endereco}</span>
+        </div>
+
+        <div class="popup-linha">
+          <strong>Agente</strong>
+          <span>${agente}</span>
+        </div>
+
+        <div class="popup-linha">
+          <strong>Região</strong>
+          <span>${regiao}</span>
+        </div>
+
         ${linkMaps}
       `;
     }
-
-    // =====================================================
-    // SELEÇÃO DO POLÍGONO
-    // =====================================================
 
     function selecionarLayer(layer) {
       const props = layer.feature.properties || {};
@@ -712,10 +779,6 @@
 
       return layerAchado;
     }
-
-    // =====================================================
-    // CARREGAR PONTOS INDIVIDUAIS
-    // =====================================================
 
     function limparCamadaPontos() {
       if (camadaPontos) {
@@ -777,10 +840,6 @@
         );
       }
     }
-
-    // =====================================================
-    // BUSCA DE ENDEREÇO
-    // =====================================================
 
     function encontrarPoligonoPorPonto(lat, lng) {
       const ponto = turf.point([lng, lat]);
@@ -871,7 +930,7 @@
 
         mensagem(
           "Endereço localizado no polígono: " +
-          (obterNomeRegiao(feature.properties || {}))
+          obterNomeRegiao(feature.properties || {})
         );
 
       } catch (error) {
@@ -885,10 +944,6 @@
     document.getElementById("campo-busca").addEventListener("keydown", function(e) {
       if (e.key === "Enter") buscarEndereco();
     });
-
-    // =====================================================
-    // CARREGAR POLÍGONOS
-    // =====================================================
 
     fetch(caminhoGeojson)
       .then(response => {
