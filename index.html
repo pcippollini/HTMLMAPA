@@ -17,9 +17,7 @@
       --cinza: #eef2f4;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -30,7 +28,7 @@
     }
 
     header {
-      height: 56px;
+      height: 54px;
       background: linear-gradient(90deg, #0f3f31, #2ecc71);
       color: white;
       display: flex;
@@ -49,10 +47,57 @@
     }
 
     main {
-      height: calc(100vh - 56px);
+      height: calc(100vh - 54px);
       display: flex;
       flex-direction: column;
       min-width: 0;
+    }
+
+    .busca {
+      display: grid;
+      grid-template-columns: 1fr 110px;
+      gap: 8px;
+      padding: 10px 12px 0 12px;
+      background: #edf1f4;
+      z-index: 850;
+    }
+
+    .busca input {
+      width: 100%;
+      height: 36px;
+      border: 1px solid #cfd8dc;
+      border-radius: 10px;
+      padding: 0 12px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .busca input:focus {
+      border-color: var(--verde-medio);
+      box-shadow: 0 0 0 2px rgba(23, 134, 93, 0.15);
+    }
+
+    .busca button {
+      height: 36px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--verde-escuro);
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .busca button:hover { background: #126349; }
+
+    .mensagem {
+      display: none;
+      padding: 6px 12px 0 12px;
+      background: #edf1f4;
+      color: #8a5a00;
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 850;
     }
 
     .cards {
@@ -68,8 +113,8 @@
     .card {
       background: var(--card);
       border-radius: 12px;
-      min-height: 68px;
-      padding: 9px 10px;
+      min-height: 62px;
+      padding: 8px 10px;
       text-align: center;
       box-shadow: 0 5px 12px rgba(0, 0, 0, 0.10);
       border-top: 4px solid var(--verde-claro);
@@ -80,15 +125,15 @@
     .card:nth-child(4) { border-top-color: #9b59b6; }
 
     .card-value {
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 900;
       color: #167a58;
       line-height: 1.1;
     }
 
     .card-label {
-      margin-top: 5px;
-      font-size: 13px;
+      margin-top: 4px;
+      font-size: 12.5px;
       color: #777;
       font-weight: 700;
     }
@@ -115,9 +160,7 @@
       font-size: 14px;
     }
 
-    .popup-linha strong {
-      color: #0f3f31;
-    }
+    .popup-linha strong { color: #0f3f31; }
 
     .aviso {
       position: absolute;
@@ -140,12 +183,13 @@
         padding: 0 14px;
       }
 
-      header h1 {
-        font-size: 21px;
-      }
+      header h1 { font-size: 21px; }
 
-      main {
-        height: calc(100vh - 50px);
+      main { height: calc(100vh - 50px); }
+
+      .busca {
+        grid-template-columns: 1fr;
+        padding: 8px 8px 0 8px;
       }
 
       .cards {
@@ -155,17 +199,12 @@
       }
 
       .card {
-        min-height: 58px;
+        min-height: 56px;
         padding: 7px 8px;
       }
 
-      .card-value {
-        font-size: 20px;
-      }
-
-      .card-label {
-        font-size: 12px;
-      }
+      .card-value { font-size: 20px; }
+      .card-label { font-size: 12px; }
     }
   </style>
 </head>
@@ -176,6 +215,13 @@
   </header>
 
   <main>
+    <section class="busca">
+      <input id="campo-busca" type="text" placeholder="Digite rua, número, cidade. Ex: Rua Augusta, 1500, São Paulo" />
+      <button id="btn-buscar">Buscar</button>
+    </section>
+
+    <div id="mensagem" class="mensagem"></div>
+
     <section class="cards">
       <div class="card">
         <div id="card-finalizado" class="card-value">--</div>
@@ -204,27 +250,35 @@
   <div id="aviso" class="aviso"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
 
   <script>
     const caminhoGeojson = "DADOS/mapa_leaft.geojson";
 
-    const map = L.map("map", {
-      zoomControl: true
-    }).setView([-22.5, -48.5], 7);
+    const map = L.map("map", { zoomControl: true }).setView([-22.5, -48.5], 7);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: "&copy; OpenStreetMap"
     }).addTo(map);
 
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 300);
+    setTimeout(() => map.invalidateSize(), 300);
+
+    let camadaGeojson = null;
+    let camadaSelecionada = null;
+    let marcadorBusca = null;
+    let dadosGeojson = null;
 
     function mostrarAviso(msg) {
       const aviso = document.getElementById("aviso");
       aviso.textContent = msg;
       aviso.style.display = "block";
+    }
+
+    function mensagem(msg) {
+      const el = document.getElementById("mensagem");
+      el.textContent = msg;
+      el.style.display = msg ? "block" : "none";
     }
 
     function numero(valor) {
@@ -264,7 +318,140 @@
       layer.bringToFront();
     }
 
-    let camadaSelecionada = null;
+    function criarPopup(props) {
+      return `
+        <div class="popup-titulo">${props["ID_REGIAO"] || props["NM_MUN"] || "Polígono"}</div>
+        <div class="popup-linha"><strong>Finalizados</strong><span>${formatar(props["FINALIZADO"])}</span></div>
+        <div class="popup-linha"><strong>Carteira</strong><span>${formatar(props["CARTEIRA"])}</span></div>
+        <div class="popup-linha"><strong>Aplicar T2</strong><span>${formatar(props["APLICAR T2"])}</span></div>
+        <div class="popup-linha"><strong>Aplicar T3</strong><span>${formatar(props["APLICAR T3"])}</span></div>
+      `;
+    }
+
+    function selecionarLayer(layer) {
+      const props = layer.feature.properties || {};
+
+      if (camadaSelecionada) {
+        camadaSelecionada.setStyle(estiloPadrao());
+      }
+
+      camadaSelecionada = layer;
+      estiloSelecionado(layer);
+      atualizarCards(props);
+      layer.openPopup();
+
+      return props;
+    }
+
+    function encontrarLayerPorFeature(featureEncontrada) {
+      let layerAchado = null;
+
+      camadaGeojson.eachLayer(layer => {
+        if (layer.feature === featureEncontrada) {
+          layerAchado = layer;
+        }
+      });
+
+      return layerAchado;
+    }
+
+    function encontrarPoligonoPorPonto(lat, lng) {
+      const ponto = turf.point([lng, lat]);
+
+      for (const feature of dadosGeojson.features) {
+        try {
+          if (turf.booleanPointInPolygon(ponto, feature)) {
+            return feature;
+          }
+        } catch (e) {
+          console.warn("Erro ao testar polígono:", feature, e);
+        }
+      }
+
+      return null;
+    }
+
+    async function buscarEndereco() {
+      const campo = document.getElementById("campo-busca");
+      const termoOriginal = campo.value.trim();
+
+      if (!termoOriginal) {
+        mensagem("Digite um endereço para buscar.");
+        return;
+      }
+
+      mensagem("Buscando endereço...");
+
+      const termo = termoOriginal.toLowerCase().includes("brasil")
+        ? termoOriginal
+        : termoOriginal + ", Brasil";
+
+      const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q=" + encodeURIComponent(termo);
+
+      try {
+        const resp = await fetch(url, {
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        const resultados = await resp.json();
+
+        if (!resultados || resultados.length === 0) {
+          mensagem("Endereço não encontrado. Tente informar rua, número, cidade e UF.");
+          return;
+        }
+
+        const r = resultados[0];
+        const lat = Number(r.lat);
+        const lng = Number(r.lon);
+
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+          mensagem("Endereço encontrado, mas sem coordenadas válidas.");
+          return;
+        }
+
+        if (marcadorBusca) {
+          map.removeLayer(marcadorBusca);
+        }
+
+        marcadorBusca = L.marker([lat, lng]).addTo(map)
+          .bindPopup(`<strong>Endereço encontrado</strong><br>${r.display_name}`)
+          .openPopup();
+
+        map.setView([lat, lng], 15);
+
+        const feature = encontrarPoligonoPorPonto(lat, lng);
+
+        if (!feature) {
+          mensagem("Endereço localizado, mas o ponto não caiu dentro de nenhum polígono do GeoJSON.");
+          return;
+        }
+
+        const layer = encontrarLayerPorFeature(feature);
+
+        if (!layer) {
+          mensagem("Polígono encontrado nos dados, mas não foi possível selecionar no mapa.");
+          return;
+        }
+
+        selecionarLayer(layer);
+        marcadorBusca.openPopup();
+
+        const p = feature.properties || {};
+        mensagem("Endereço localizado no polígono: " + (p["ID_REGIAO"] || p["NM_MUN"] || "sem nome"));
+
+      } catch (error) {
+        mensagem("Erro ao buscar endereço. Teste novamente ou verifique a conexão.");
+        console.error(error);
+      }
+    }
+
+    document.getElementById("btn-buscar").addEventListener("click", buscarEndereco);
+
+    document.getElementById("campo-busca").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") buscarEndereco();
+    });
 
     fetch(caminhoGeojson)
       .then(response => {
@@ -274,37 +461,25 @@
         return response.json();
       })
       .then(data => {
-        const camada = L.geoJSON(data, {
+        dadosGeojson = data;
+
+        camadaGeojson = L.geoJSON(data, {
           style: estiloPadrao,
 
           onEachFeature: function(feature, layer) {
             const p = feature.properties || {};
 
-            const popup = `
-              <div class="popup-titulo">${p["ID_REGIAO"] || p["NM_MUN"] || "Polígono"}</div>
-              <div class="popup-linha"><strong>Finalizados</strong><span>${formatar(p["FINALIZADO"])}</span></div>
-              <div class="popup-linha"><strong>Carteira</strong><span>${formatar(p["CARTEIRA"])}</span></div>
-              <div class="popup-linha"><strong>Aplicar T2</strong><span>${formatar(p["APLICAR T2"])}</span></div>
-              <div class="popup-linha"><strong>Aplicar T3</strong><span>${formatar(p["APLICAR T3"])}</span></div>
-            `;
-
-            layer.bindPopup(popup);
+            layer.bindPopup(criarPopup(p));
 
             layer.on("click", function() {
-              if (camadaSelecionada) {
-                camadaSelecionada.setStyle(estiloPadrao());
-              }
-
-              camadaSelecionada = layer;
-              estiloSelecionado(layer);
-              atualizarCards(p);
-              layer.openPopup();
+              mensagem("");
+              selecionarLayer(layer);
             });
           }
         }).addTo(map);
 
-        if (camada.getBounds().isValid()) {
-          map.fitBounds(camada.getBounds(), { padding: [18, 18] });
+        if (camadaGeojson.getBounds().isValid()) {
+          map.fitBounds(camadaGeojson.getBounds(), { padding: [18, 18] });
         } else {
           mostrarAviso("O GeoJSON carregou, mas o mapa não encontrou limites válidos nas geometrias.");
         }
