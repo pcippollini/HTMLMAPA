@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mapa Individual - Casa Verde</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIINfQlk8gFoG9E3xCmJgqYV+R7wUQg01tU="
+        crossorigin="" />
+
+  <style>
+    :root {
+      --preto: #111111;
+      --grafite: #252525;
+      --cinza-escuro: #3a3a3a;
+      --cinza-medio: #777777;
+      --cinza-claro: #eef1f3;
+      --card: #ffffff;
+      --texto: #222222;
+      --finalizado: #d71920;
+      --carteira: #1d2f8f;
+      --t2: #00a9e0;
+      --outros: #777777;
+      --localizacao: #111111;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background: var(--cinza-claro);
+    }
+
+    #map {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .topbar {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+      pointer-events: none;
+    }
+
+    .titulo-card {
+      flex: 1;
+      background: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      padding: 9px 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+      pointer-events: auto;
+      min-width: 0;
+    }
+
+    .titulo-card h1 {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.1;
+      color: var(--preto);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .titulo-card .sub {
+      margin-top: 3px;
+      font-size: 11px;
+      color: var(--cinza-escuro);
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 0 11px;
+      min-width: 46px;
+      background: var(--preto);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.24);
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .btn.sec {
+      background: #fff;
+      color: var(--preto);
+      border: 1px solid #ddd;
+    }
+
+    .status {
+      position: absolute;
+      left: 10px;
+      bottom: 26px;
+      z-index: 1000;
+      max-width: calc(100% - 20px);
+      background: rgba(255,255,255,0.96);
+      border-radius: 12px;
+      padding: 8px 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+      font-size: 12px;
+      color: var(--cinza-escuro);
+      display: none;
+    }
+
+    .legend {
+      position: absolute;
+      right: 10px;
+      bottom: 26px;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      border-radius: 12px;
+      padding: 8px 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .legend b {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--preto);
+    }
+
+    .dot {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: -1px;
+      border: 1px solid rgba(0,0,0,0.25);
+    }
+
+    .popup {
+      min-width: 230px;
+      max-width: 310px;
+      font-size: 13px;
+    }
+
+    .popup .nome {
+      font-weight: 700;
+      color: var(--preto);
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .popup .linha {
+      margin: 3px 0;
+    }
+
+    .popup .tag {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .popup a {
+      display: inline-block;
+      margin-top: 7px;
+      text-decoration: none;
+      color: #0b57d0;
+      font-weight: 700;
+    }
+
+    .leaflet-control-attribution {
+      font-size: 10px;
+    }
+
+    .user-marker {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--localizacao);
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 3px rgba(17,17,17,0.22);
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+      }
+      .titulo-card h1 { font-size: 14px; }
+      .titulo-card .sub { font-size: 10px; }
+      .legend {
+        left: 8px;
+        right: auto;
+        bottom: 72px;
+        font-size: 11px;
+      }
+      .status {
+        left: 8px;
+        bottom: 20px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="titulo-card">
+      <h1>Mapa Individual - Casa Verde</h1>
+      <div class="sub" id="resumo">Carregando pontos, polígono e GPS...</div>
+    </div>
+    <button class="btn" id="btnLocalizar" title="Usar GPS">GPS</button>
+    <button class="btn sec" id="btnCentralizar" title="Centralizar no mapa">Mapa</button>
+  </div>
+
+  <div id="map"></div>
+
+  <div class="legend">
+    <b>Legenda</b>
+    <span><i class="dot" style="background:var(--finalizado)"></i>FINALIZADO</span><br>
+    <span><i class="dot" style="background:var(--carteira)"></i>CARTEIRA</span><br>
+    <span><i class="dot" style="background:var(--t2)"></i>APLICAR T2</span><br>
+    <span><i class="dot" style="background:var(--outros)"></i>OUTROS</span>
+  </div>
+
+  <div class="status" id="status"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+
+  <script>
+    /*
+      Estrutura esperada no seu repositório:
+
+      HTMLMAPA/
+        DADOS/
+          São Paulo_Casa Verde.geojson      -> polígono
+          São Paulo_Casa Verdea.geojson     -> pontos
+        INDEX_MAPAS/
+          casa_verde.html                   -> este arquivo
+
+      Como este HTML fica dentro de INDEX_MAPAS, ele busca os GeoJSON em ../DADOS/
+    */
+
+    const ARQUIVO_POLIGONO = '../DADOS/São Paulo_Casa Verde.geojson';
+    const ARQUIVO_PONTOS = '../DADOS/São Paulo_Casa Verdea.geojson';
+
+    const CORES = {
+      'FINALIZADO': '#d71920',
+      'CARTEIRA': '#1d2f8f',
+      'APLICAR T2': '#00a9e0',
+      'APLICAR T3': '#2d4aa5',
+      'T2': '#00a9e0',
+      'T3': '#2d4aa5',
+      'OUTROS': '#777777'
+    };
+
+    const map = L.map('map', {
+      zoomControl: true,
+      preferCanvas: true
+    }).setView([-23.4971, -46.6583], 14);
+
+    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 20,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      maxZoom: 20,
+      attribution: '&copy; OpenStreetMap contributors, Humanitarian OpenStreetMap Team'
+    });
+
+    const baseLayers = {
+      'OpenStreetMap': osm,
+      'OpenStreetMap HOT': osmHOT
+    };
+
+    const overlayLayers = {};
+    const statusEl = document.getElementById('status');
+    const resumoEl = document.getElementById('resumo');
+
+    let boundsGeral = L.latLngBounds([]);
+    let camadaPoligono = null;
+    let camadaPontos = null;
+    let userMarker = null;
+    let userCircle = null;
+    let watchId = null;
+
+    function mostrarStatus(texto, manter = false) {
+      statusEl.innerHTML = texto;
+      statusEl.style.display = 'block';
+      if (!manter) {
+        setTimeout(() => statusEl.style.display = 'none', 5500);
+      }
+    }
+
+    function textoSeguro(valor) {
+      if (valor === null || valor === undefined || valor === '') return '';
+      return String(valor)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function pegarCampo(p, nomes) {
+      for (const nome of nomes) {
+        if (p[nome] !== undefined && p[nome] !== null && String(p[nome]).trim() !== '') {
+          return p[nome];
+        }
+      }
+      return '';
+    }
+
+    function corPorAcao(acao) {
+      const chave = String(acao || '').trim().toUpperCase();
+      return CORES[chave] || CORES.OUTROS;
+    }
+
+    function estiloPonto(feature) {
+      const p = feature.properties || {};
+      const acao = pegarCampo(p, ['O_QUE_FAZER', 'ACAO', 'STATUS']);
+      const cor = corPorAcao(acao);
+      return {
+        radius: 6,
+        color: '#ffffff',
+        weight: 1.4,
+        fillColor: cor,
+        fillOpacity: 0.92
+      };
+    }
+
+    function popupPonto(feature) {
+      const p = feature.properties || {};
+      const nome = pegarCampo(p, ['NOMEFANTASIA', 'RAZAOSOCIAL', 'RAZAO_SOCIAL', 'Name', 'NOME']);
+      const razao = pegarCampo(p, ['RAZAOSOCIAL', 'RAZAO_SOCIAL']);
+      const cnpj = pegarCampo(p, ['CNPJ']);
+      const endereco = pegarCampo(p, ['ENDEE', 'ENDERECO', 'address']);
+      const acao = pegarCampo(p, ['O_QUE_FAZER', 'ACAO', 'STATUS']);
+      const agente = pegarCampo(p, ['AGENTE']);
+      const maps = pegarCampo(p, ['LMAPS', 'MAPS', 'GOOGLE_MAPS']);
+
+      const cor = corPorAcao(acao);
+      const linkMaps = maps
+        ? `<a href="${textoSeguro(maps)}" target="_blank" rel="noopener">Abrir no Maps</a>`
+        : '';
+
+      return `
+        <div class="popup">
+          <div class="nome">${textoSeguro(nome || razao || 'Ponto')}</div>
+          ${cnpj ? `<div class="linha"><b>CNPJ:</b> ${textoSeguro(cnpj)}</div>` : ''}
+          ${razao && razao !== nome ? `<div class="linha"><b>Razão social:</b> ${textoSeguro(razao)}</div>` : ''}
+          ${endereco ? `<div class="linha"><b>Endereço:</b> ${textoSeguro(endereco)}</div>` : ''}
+          ${agente ? `<div class="linha"><b>Agente:</b> ${textoSeguro(agente)}</div>` : ''}
+          ${acao ? `<span class="tag" style="background:${cor}">${textoSeguro(acao)}</span>` : ''}
+          <br>${linkMaps}
+        </div>
+      `;
+    }
+
+    function popupPoligono(feature) {
+      const p = feature.properties || {};
+      const nome = pegarCampo(p, ['Name', 'NOME_REGIAO', 'REGIAO', 'Name_min']);
+      const er = pegarCampo(p, ['ESCRITORIO_REGIONAL', 'ESCRITORIO', 'ER']);
+      return `
+        <div class="popup">
+          <div class="nome">${textoSeguro(nome || 'Polígono')}</div>
+          ${er ? `<div class="linha"><b>Escritório Regional:</b> ${textoSeguro(er)}</div>` : ''}
+        </div>
+      `;
+    }
+
+    async function carregarGeoJSON(caminho) {
+      const resposta = await fetch(encodeURI(caminho), { cache: 'no-store' });
+      if (!resposta.ok) {
+        throw new Error(`Não consegui carregar ${caminho}. Código HTTP: ${resposta.status}`);
+      }
+      return await resposta.json();
+    }
+
+    async function iniciarMapa() {
+      try {
+        const [poligonoData, pontosData] = await Promise.all([
+          carregarGeoJSON(ARQUIVO_POLIGONO),
+          carregarGeoJSON(ARQUIVO_PONTOS)
+        ]);
+
+        camadaPoligono = L.geoJSON(poligonoData, {
+          style: {
+            color: '#111111',
+            weight: 2.2,
+            opacity: 0.95,
+            fillColor: '#111111',
+            fillOpacity: 0.06
+          },
+          onEachFeature: function(feature, layer) {
+            layer.bindPopup(popupPoligono(feature));
+          }
+        }).addTo(map);
+
+        camadaPontos = L.geoJSON(pontosData, {
+          pointToLayer: function(feature, latlng) {
+            return L.circleMarker(latlng, estiloPonto(feature));
+          },
+          onEachFeature: function(feature, layer) {
+            layer.bindPopup(popupPonto(feature));
+          }
+        }).addTo(map);
+
+        overlayLayers['Polígono Casa Verde'] = camadaPoligono;
+        overlayLayers['Pontos'] = camadaPontos;
+        L.control.layers(baseLayers, overlayLayers, { collapsed: true }).addTo(map);
+
+        if (camadaPoligono.getBounds().isValid()) boundsGeral.extend(camadaPoligono.getBounds());
+        if (camadaPontos.getBounds().isValid()) boundsGeral.extend(camadaPontos.getBounds());
+
+        if (boundsGeral.isValid()) {
+          map.fitBounds(boundsGeral, { padding: [26, 26] });
+        }
+
+        const qtdPontos = pontosData.features ? pontosData.features.length : 0;
+        const qtdPoligonos = poligonoData.features ? poligonoData.features.length : 0;
+
+        const contagem = {};
+        (pontosData.features || []).forEach(f => {
+          const acao = pegarCampo(f.properties || {}, ['O_QUE_FAZER', 'ACAO', 'STATUS']) || 'OUTROS';
+          contagem[acao] = (contagem[acao] || 0) + 1;
+        });
+
+        const resumoAcoes = Object.entries(contagem)
+          .map(([k, v]) => `${k}: ${v}`)
+          .join(' | ');
+
+        resumoEl.textContent = `${qtdPontos} pontos | ${qtdPoligonos} polígono | ${resumoAcoes}`;
+      } catch (erro) {
+        console.error(erro);
+        mostrarStatus(`<b>Erro ao carregar mapa:</b><br>${textoSeguro(erro.message)}<br><br>Confira se os arquivos estão em <b>../DADOS/</b> com exatamente o mesmo nome.`, true);
+        resumoEl.textContent = 'Erro ao carregar GeoJSON';
+      }
+    }
+
+    function localizarUsuario(centralizarSempre = true) {
+      if (!navigator.geolocation) {
+        mostrarStatus('Este navegador não permite usar GPS/geolocalização.');
+        return;
+      }
+
+      mostrarStatus('Solicitando GPS do aparelho...', true);
+
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          const latlng = [pos.coords.latitude, pos.coords.longitude];
+          const precisao = pos.coords.accuracy || 0;
+
+          if (!userMarker) {
+            const icon = L.divIcon({
+              className: '',
+              html: '<div class="user-marker"></div>',
+              iconSize: [18, 18],
+              iconAnchor: [9, 9]
+            });
+            userMarker = L.marker(latlng, { icon }).addTo(map).bindPopup('Sua localização atual');
+            userCircle = L.circle(latlng, {
+              radius: precisao,
+              color: '#111111',
+              weight: 1,
+              fillColor: '#111111',
+              fillOpacity: 0.08
+            }).addTo(map);
+          } else {
+            userMarker.setLatLng(latlng);
+            userCircle.setLatLng(latlng).setRadius(precisao);
+          }
+
+          if (centralizarSempre) {
+            map.setView(latlng, Math.max(map.getZoom(), 17));
+          }
+
+          mostrarStatus(`GPS atualizado. Precisão aproximada: ${Math.round(precisao)} m.`);
+        },
+        erro => {
+          let msg = 'Não foi possível obter sua localização.';
+          if (erro.code === 1) msg = 'GPS bloqueado. Autorize a localização no navegador/celular.';
+          if (erro.code === 2) msg = 'Localização indisponível no momento.';
+          if (erro.code === 3) msg = 'Tempo esgotado para localizar.';
+          mostrarStatus(msg, true);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 15000,
+          maximumAge: 10000
+        }
+      );
+    }
+
+    function iniciarAcompanhamentoGPS() {
+      if (!navigator.geolocation || watchId !== null) return;
+
+      watchId = navigator.geolocation.watchPosition(
+        pos => {
+          const latlng = [pos.coords.latitude, pos.coords.longitude];
+          const precisao = pos.coords.accuracy || 0;
+
+          if (!userMarker) {
+            const icon = L.divIcon({
+              className: '',
+              html: '<div class="user-marker"></div>',
+              iconSize: [18, 18],
+              iconAnchor: [9, 9]
+            });
+            userMarker = L.marker(latlng, { icon }).addTo(map).bindPopup('Sua localização atual');
+            userCircle = L.circle(latlng, {
+              radius: precisao,
+              color: '#111111',
+              weight: 1,
+              fillColor: '#111111',
+              fillOpacity: 0.08
+            }).addTo(map);
+          } else {
+            userMarker.setLatLng(latlng);
+            userCircle.setLatLng(latlng).setRadius(precisao);
+          }
+        },
+        () => {},
+        {
+          enableHighAccuracy: true,
+          maximumAge: 10000,
+          timeout: 20000
+        }
+      );
+    }
+
+    document.getElementById('btnLocalizar').addEventListener('click', () => {
+      localizarUsuario(true);
+      iniciarAcompanhamentoGPS();
+    });
+
+    document.getElementById('btnCentralizar').addEventListener('click', () => {
+      if (boundsGeral.isValid()) map.fitBounds(boundsGeral, { padding: [26, 26] });
+    });
+
+    iniciarMapa();
+  </script>
+</body>
+</html>
