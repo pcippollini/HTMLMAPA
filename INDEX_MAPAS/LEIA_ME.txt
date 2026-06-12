@@ -1,0 +1,1 @@
+HTMLs atualizados com novos pontos e cores: FINALIZADO vermelho sangue, CARTEIRA azul marinho, T2 amarelo, T3 verde água. Os arquivos HTML têm o mesmo nome dos arquivos de polígono usados como base.
