@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAPAS 2026 - TESTE</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    :root{--verde-escuro:#0f3f31;--verde-medio:#17865d;--verde-claro:#2ecc71;--fundo:#eef2f4;--texto:#0b4d3d}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--fundo);color:var(--texto);overflow:hidden}
+    header{height:54px;background:linear-gradient(90deg,#0f3f31,#2ecc71);color:white;display:flex;align-items:center;padding:0 22px;box-shadow:0 3px 12px rgba(0,0,0,.18);z-index:1000;position:relative}
+    header h1{margin:0;font-size:25px;font-weight:900} main{height:calc(100vh - 54px);display:flex;flex-direction:column}
+    .painel{background:#edf1f4;padding:10px 12px;box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:900}
+    .buscas{display:grid;grid-template-columns:1fr 110px 1fr 110px 145px;gap:8px;margin-bottom:8px}
+    input,button{height:34px;border-radius:9px;font-size:13px} input{border:1px solid #cfd8dc;padding:0 10px;outline:none} input:focus{border-color:var(--verde-medio);box-shadow:0 0 0 2px rgba(23,134,93,.15)}
+    button{border:0;background:var(--verde-escuro);color:white;font-weight:800;cursor:pointer} button:hover{background:#126349}
+    .selecionada{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:10px;align-items:stretch}
+    .card{background:white;border-radius:12px;min-height:58px;padding:8px 10px;text-align:center;box-shadow:0 5px 12px rgba(0,0,0,.10);border-top:4px solid var(--verde-claro)}
+    .card:nth-child(3){border-top-color:#3498db}.card:nth-child(4){border-top-color:#e67e22}.card:nth-child(5){border-top-color:#9b59b6}
+    .card-label{font-size:12px;color:#777;font-weight:800;margin-bottom:4px}.card-value{font-size:21px;font-weight:900;color:#167a58;line-height:1.15;word-break:break-word}#regiao-atual .card-value{font-size:15px}
+    #mensagem{display:none;margin-top:7px;color:#8a5a00;font-size:13px;font-weight:700} #map{flex:1;width:100%;min-height:300px}
+    .popup-titulo{font-size:16px;font-weight:900;color:#0f3f31;margin-bottom:8px}.popup-linha{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #eee;padding:5px 0;font-size:14px}.popup-linha strong{color:#0f3f31}
+    @media(max-width:950px){header h1{font-size:21px}.buscas{grid-template-columns:1fr}.selecionada{grid-template-columns:repeat(2,1fr)}#regiao-atual{grid-column:span 2}}
+  </style>
+</head>
+<body>
+<header><h1>MAPAS 2026</h1></header>
+<main>
+  <section class="painel">
+    <div class="buscas">
+      <input id="campo-endereco" type="text" placeholder="Buscar endereço. Ex: Rua Augusta, 1500, São Paulo" />
+      <button id="btn-endereco">Rua</button>
+      <input id="campo-regiao" type="text" placeholder="Buscar ID_REGIAO ou município. Ex: Adamantina" />
+      <button id="btn-regiao">Região</button>
+      <button id="btn-localizacao">Minha localização</button>
+    </div>
+    <div class="selecionada">
+      <div id="regiao-atual" class="card"><div class="card-label">Região selecionada</div><div id="valor-regiao" class="card-value">--</div></div>
+      <div class="card"><div class="card-label">Finalizados</div><div id="card-finalizado" class="card-value">--</div></div>
+      <div class="card"><div class="card-label">Carteira</div><div id="card-carteira" class="card-value">--</div></div>
+      <div class="card"><div class="card-label">Aplicar T2</div><div id="card-t2" class="card-value">--</div></div>
+      <div class="card"><div class="card-label">Aplicar T3</div><div id="card-t3" class="card-value">--</div></div>
+    </div>
+    <div id="mensagem"></div>
+  </section>
+  <div id="map"></div>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+<script>
+const caminhoGeojson="DADOS/mapa_leaft.geojson";
+const map=L.map("map",{zoomControl:true}).setView([-22.5,-48.5],7);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap"}).addTo(map);
+let dadosGeojson=null,camadaGeojson=null,camadaSelecionada=null,marcadorBusca=null;
+setTimeout(()=>map.invalidateSize(),300);
+function numero(v){if(v===null||v===undefined||v==="")return 0;const n=Number(v);return Number.isFinite(n)?n:0}
+function formatar(v){return numero(v).toLocaleString("pt-BR")}
+function texto(v){return v===null||v===undefined||v===""?"--":String(v)}
+function normalizar(s){return texto(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase().trim()}
+function mensagem(msg){const el=document.getElementById("mensagem");el.textContent=msg;el.style.display=msg?"block":"none"}
+function atualizarCards(p){document.getElementById("valor-regiao").textContent=texto(p["ID_REGIAO"]||p["NM_MUN"]||p["NM_DIST"]);document.getElementById("card-finalizado").textContent=formatar(p["FINALIZADO"]);document.getElementById("card-carteira").textContent=formatar(p["CARTEIRA"]);document.getElementById("card-t2").textContent=formatar(p["APLICAR T2"]);document.getElementById("card-t3").textContent=formatar(p["APLICAR T3"])}
+function estiloPadrao(){return{color:"#0f6b4d",weight:1.2,opacity:.9,fillColor:"#2ecc71",fillOpacity:.30}}
+function estiloSelecionado(layer){layer.setStyle({color:"#073b2d",weight:3,fillColor:"#f39c12",fillOpacity:.58});layer.bringToFront()}
+function criarPopup(p){return `<div class="popup-titulo">${texto(p["ID_REGIAO"]||p["NM_MUN"]||"Polígono")}</div><div class="popup-linha"><strong>Município</strong><span>${texto(p["NM_MUN"])}</span></div><div class="popup-linha"><strong>Finalizados</strong><span>${formatar(p["FINALIZADO"])}</span></div><div class="popup-linha"><strong>Carteira</strong><span>${formatar(p["CARTEIRA"])}</span></div><div class="popup-linha"><strong>Aplicar T2</strong><span>${formatar(p["APLICAR T2"])}</span></div><div class="popup-linha"><strong>Aplicar T3</strong><span>${formatar(p["APLICAR T3"])}</span></div>`}
+function selecionarLayer(layer,abrir=true){const p=layer.feature.properties||{};if(camadaSelecionada)camadaSelecionada.setStyle(estiloPadrao());camadaSelecionada=layer;estiloSelecionado(layer);atualizarCards(p);if(abrir)layer.openPopup();return p}
+function encontrarLayerPorFeature(f){let achado=null;camadaGeojson.eachLayer(layer=>{if(layer.feature===f)achado=layer});return achado}
+function encontrarPoligonoPorPonto(lat,lng){const ponto=turf.point([lng,lat]);for(const f of dadosGeojson.features){try{if(turf.booleanPointInPolygon(ponto,f))return f}catch(e){console.warn("Erro ao testar polígono",e)}}return null}
+function selecionarPorPonto(lat,lng,origem){const f=encontrarPoligonoPorPonto(lat,lng);if(!f){mensagem("Local encontrado, mas fora dos polígonos do GeoJSON.");return}const layer=encontrarLayerPorFeature(f);if(!layer){mensagem("Polígono encontrado, mas não foi possível selecionar no mapa.");return}selecionarLayer(layer,true);const p=f.properties||{};mensagem((origem||"Local")+" dentro do polígono: "+texto(p["ID_REGIAO"]||p["NM_MUN"]))}
+async function buscarEndereco(){const termoOriginal=document.getElementById("campo-endereco").value.trim();if(!termoOriginal){mensagem("Digite um endereço para buscar.");return}mensagem("Buscando endereço...");const termo=termoOriginal.toLowerCase().includes("brasil")?termoOriginal:termoOriginal+", Brasil";const url="https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q="+encodeURIComponent(termo);try{const resp=await fetch(url,{headers:{"Accept":"application/json"}});const resultados=await resp.json();if(!resultados||resultados.length===0){mensagem("Endereço não encontrado. Tente rua, número, cidade e UF.");return}const r=resultados[0],lat=Number(r.lat),lng=Number(r.lon);if(marcadorBusca)map.removeLayer(marcadorBusca);marcadorBusca=L.marker([lat,lng]).addTo(map).bindPopup(`<strong>Endereço encontrado</strong><br>${r.display_name}`);map.setView([lat,lng],15);marcadorBusca.openPopup();selecionarPorPonto(lat,lng,"Endereço localizado")}catch(error){console.error(error);mensagem("Erro ao buscar endereço. Tente novamente.")}}
+function buscarRegiao(){const termo=normalizar(document.getElementById("campo-regiao").value);if(!termo){mensagem("Digite um ID_REGIAO, município ou distrito.");return}let layerEncontrado=null;camadaGeojson.eachLayer(layer=>{const p=layer.feature.properties||{};const alvo=[p["ID_REGIAO"],p["NM_MUN"],p["NM_DIST"],p["NM_RGINT"]].map(normalizar).join(" | ");if(!layerEncontrado&&alvo.includes(termo))layerEncontrado=layer});if(!layerEncontrado){mensagem("Região não encontrada. Tente parte do nome do município ou ID_REGIAO.");return}selecionarLayer(layerEncontrado,true);map.fitBounds(layerEncontrado.getBounds(),{padding:[35,35]});const p=layerEncontrado.feature.properties||{};mensagem("Região localizada: "+texto(p["ID_REGIAO"]||p["NM_MUN"]))}
+function minhaLocalizacao(){if(!navigator.geolocation){mensagem("Seu navegador não permite localizar sua posição.");return}mensagem("Buscando sua localização...");navigator.geolocation.getCurrentPosition(pos=>{const lat=pos.coords.latitude,lng=pos.coords.longitude;if(marcadorBusca)map.removeLayer(marcadorBusca);marcadorBusca=L.marker([lat,lng]).addTo(map).bindPopup("<strong>Minha localização</strong>");map.setView([lat,lng],15);marcadorBusca.openPopup();selecionarPorPonto(lat,lng,"Sua localização")},erro=>{console.error(erro);mensagem("Não foi possível obter sua localização. Verifique a permissão do navegador.")},{enableHighAccuracy:true,timeout:10000})}
+document.getElementById("btn-endereco").addEventListener("click",buscarEndereco);document.getElementById("btn-regiao").addEventListener("click",buscarRegiao);document.getElementById("btn-localizacao").addEventListener("click",minhaLocalizacao);document.getElementById("campo-endereco").addEventListener("keydown",e=>{if(e.key==="Enter")buscarEndereco()});document.getElementById("campo-regiao").addEventListener("keydown",e=>{if(e.key==="Enter")buscarRegiao()});
+fetch(caminhoGeojson).then(r=>{if(!r.ok)throw new Error("GeoJSON não encontrado em "+caminhoGeojson);return r.json()}).then(data=>{dadosGeojson=data;camadaGeojson=L.geoJSON(data,{style:estiloPadrao,onEachFeature:(feature,layer)=>{const p=feature.properties||{};layer.bindPopup(criarPopup(p));layer.on("click",()=>{mensagem("");selecionarLayer(layer,true)})}}).addTo(map);if(camadaGeojson.getBounds().isValid())map.fitBounds(camadaGeojson.getBounds(),{padding:[18,18]});mensagem("Teste carregado. Use clique no polígono, busca por rua, busca por região ou minha localização.")}).catch(error=>{console.error(error);mensagem("Erro: "+error.message)});
+</script>
+</body>
+</html>
