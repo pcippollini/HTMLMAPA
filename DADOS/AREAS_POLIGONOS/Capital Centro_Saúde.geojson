@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "Capital Centro_Saúde",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 911, "NM_MUN": "São Paulo", "NM_DIST": "Saúde", "ER_REGIAO": "Capital Centro_Saúde", "ER_REGIAO_CIDADE": "Capital Centro_Saúde" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.638342, -23.599645 ], [ -46.623788, -23.599702 ], [ -46.628156, -23.60969 ], [ -46.627082, -23.614663 ], [ -46.628086, -23.622661 ], [ -46.629816, -23.629186 ], [ -46.634494, -23.629756 ], [ -46.641503, -23.629293 ], [ -46.645349, -23.630705 ], [ -46.646444, -23.631861 ], [ -46.647407, -23.630313 ], [ -46.65059, -23.629443 ], [ -46.655102, -23.620758 ], [ -46.661687, -23.617398 ], [ -46.65193, -23.606855 ], [ -46.650886, -23.598561 ], [ -46.638342, -23.599645 ] ] ] ] } }
+]
+}
