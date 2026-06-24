@@ -11,7 +11,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-E59KMQFDEK');
 </script>
 
@@ -20,12 +19,13 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
 <style>
 html, body, #map { height:100%; width:100%; margin:0; padding:0; font-family: Arial, sans-serif; }
-.info-box{position:absolute;z-index:1000;top:10px;left:10px;background:white;padding:9px 11px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.25);font-size:13px;line-height:1.35;max-width:270px;}
+.info-box{position:absolute;z-index:1000;top:10px;left:10px;background:white;padding:9px 11px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.25);font-size:13px;line-height:1.35;max-width:285px;}
 .gps-box{position:absolute;z-index:1000;bottom:20px;left:10px;background:white;padding:8px 10px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.25);font-size:13px;}
 .btn{display:inline-block;margin-top:6px;padding:7px 10px;background:#222;color:#fff;border:0;border-radius:7px;cursor:pointer;font-weight:bold;font-size:12px;}
-.legend{margin-top:6px;display:grid;grid-template-columns:auto 1fr;gap:4px 6px;align-items:center;}
+.legend{margin-top:6px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 6px;align-items:center;}
 .dot{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid #333;}
 .dot.fin{background:#8B0000}.dot.car{background:#001F54}.dot.t2{background:#FFD400}.dot.t3{background:#40E0D0}
+.contador{font-weight:bold;text-align:right;min-width:32px;}
 .marker-dot{width:16px;height:16px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 3px rgba(0,0,0,.65);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;line-height:16px;}
 .marker-fin{background:#8B0000;color:white;font-size:12px;}
 .marker-car{background:#001F54;color:white;}
@@ -43,10 +43,10 @@ html, body, #map { height:100%; width:100%; margin:0; padding:0; font-family: Ar
   Pontos: <span id="totalPontos">0</span><br>
   <span id="statusArea">GPS ainda não iniciado</span>
   <div class="legend">
-    <span class="dot fin"></span><span>FINALIZADO</span>
-    <span class="dot car"></span><span>CARTEIRA</span>
-    <span class="dot t2"></span><span>T2</span>
-    <span class="dot t3"></span><span>T3</span>
+    <span class="dot fin"></span><span>FINALIZADO</span><span class="contador" id="totalFinalizado">0</span>
+    <span class="dot car"></span><span>CARTEIRA</span><span class="contador" id="totalCarteira">0</span>
+    <span class="dot t2"></span><span>T2</span><span class="contador" id="totalT2">0</span>
+    <span class="dot t3"></span><span>T3</span><span class="contador" id="totalT3">0</span>
   </div>
   <button class="btn" onclick="centralizarGPS()">Minha localização</button>
   <div class="loading" id="loadingInfo">Carregando dados...</div>
@@ -56,7 +56,7 @@ html, body, #map { height:100%; width:100%; margin:0; padding:0; font-family: Ar
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 <script>
-const ARQUIVO_POLIGONO = "../DADOS/AREAS_POLIGONOS/Franca.geojson";
+const ARQUIVO_POLIGONO = "../DADOS/AREAS_POLIGONOS/Franca_Franca.geojson";
 const ARQUIVO_PONTOS = "../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Franca_Franca.geojson";
 
 let areaGeojson = null;
@@ -67,13 +67,13 @@ const map = L.map('map', {preferCanvas:true});
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap'}).addTo(map);
 
 function normaliza(v){
-  return String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().toUpperCase();
+  return String(v||'').normalize('NFD').replace(/[̀-ͯ]/g,'').trim().toUpperCase();
 }
 
 function classeIcone(v){
   const s=normaliza(v);
-  if(s === 'FINALIZADO') return ['marker-fin','×'];
-  if(s === 'CARTEIRA') return ['marker-car',''];
+  if(s.includes('FINALIZADO')) return ['marker-fin','×'];
+  if(s.includes('CARTEIRA')) return ['marker-car',''];
   if(s.includes('T2')) return ['marker-t2','2'];
   if(s.includes('T3')) return ['marker-t3','3'];
   return ['marker-outro',''];
@@ -90,6 +90,24 @@ function nomePonto(p){
 
 function enderecoPonto(p){
   return p.ENDEE || p.ENDERECO || p.ENDERECO_COMPLETO || '';
+}
+
+function atualizarContadores(data){
+  const features = Array.isArray(data && data.features) ? data.features : [];
+  const cont = {finalizado:0, carteira:0, t2:0, t3:0};
+  features.forEach(f => {
+    const p = f.properties || {};
+    const status = normaliza(p.O_QUE_FAZER);
+    if(status.includes('FINALIZADO')) cont.finalizado++;
+    else if(status.includes('CARTEIRA')) cont.carteira++;
+    else if(status.includes('T2')) cont.t2++;
+    else if(status.includes('T3')) cont.t3++;
+  });
+  document.getElementById('totalPontos').innerHTML = features.length;
+  document.getElementById('totalFinalizado').innerHTML = cont.finalizado;
+  document.getElementById('totalCarteira').innerHTML = cont.carteira;
+  document.getElementById('totalT2').innerHTML = cont.t2;
+  document.getElementById('totalT3').innerHTML = cont.t3;
 }
 
 function centralizarGPS(){
@@ -142,6 +160,7 @@ async function carregarMapa(){
 
     areaGeojson = await areaResp.json();
     pontosGeojson = await pontosResp.json();
+    atualizarContadores(pontosGeojson);
 
     const areaLayer = L.geoJSON(areaGeojson, {
       style:{color:'#0b3d91',weight:3,fillColor:'#0b3d91',fillOpacity:0.10}
@@ -167,14 +186,13 @@ async function carregarMapa(){
     }).eachLayer(l => markers.addLayer(l));
 
     map.addLayer(markers);
-    document.getElementById('totalPontos').innerHTML = pontosGeojson.features ? pontosGeojson.features.length : 0;
     document.getElementById('loadingInfo').innerHTML = 'Dados carregados';
     iniciarGPS();
 
   } catch(e) {
     console.error(e);
     document.getElementById('loadingInfo').innerHTML = 'Erro ao carregar dados. Confira os caminhos dos GeoJSON.';
-    map.setView([-22.75, -47.41], 11);
+    map.setView([-23.55, -46.63], 9);
   }
 }
 
