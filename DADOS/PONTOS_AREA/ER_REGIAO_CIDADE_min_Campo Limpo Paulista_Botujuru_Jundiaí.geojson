@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Campo Limpo Paulista_Botujuru_Jundiaí",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "46334270000130", "IDCIDADE": "CAMPO_LIMPO_PAULISTA", "NOMEFANTASIA": "46.334.270_STEFANI_SILVA_OLIVEIRA", "RAZAOSOCIAL": "46.334.270_STEFANI_SILVA_OLIVEIRA", "ENDEE": "RUA_AVARE1121__VILA_CONSTANCA_13238-486", "LATITUDE": "-23.2369442", "LONGITUDE": "-46.7592517", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.7592517,-23.2369442", "O_QUE_FAZER": "APLICAR T2", "ER_REGIAO_CIDADE_min": "Campo Limpo Paulista_Botujuru_Jundiaí" }, "geometry": { "type": "Point", "coordinates": [ -46.7592517, -23.2369442 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "49369193000141", "IDCIDADE": "CAMPO_LIMPO_PAULISTA", "NOMEFANTASIA": "MAXCIEL_DA_SILVA_SOARES", "RAZAOSOCIAL": "MARCENARIA_REALIZA", "ENDEE": "RUA_PEDRO_LOBO171__VILA_FIRENZE_13238-663", "LATITUDE": "-23.2468523", "LONGITUDE": "-46.7576946", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.7576946,-23.2468523", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Campo Limpo Paulista_Botujuru_Jundiaí" }, "geometry": { "type": "Point", "coordinates": [ -46.7576946, -23.2468523 ] } }
+]
+}
