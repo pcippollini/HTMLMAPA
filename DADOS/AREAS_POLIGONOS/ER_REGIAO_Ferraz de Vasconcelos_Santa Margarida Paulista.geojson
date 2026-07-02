@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Ferraz de Vasconcelos_Santa Margarida Paulista",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 261, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "Ferraz de Vasconcelos", "NM_DIST": "Santa Margarida Paulista", "CD_SUBDIST": "35157071000", "ER_REGIAO": "Ferraz de Vasconcelos_Santa Margarida Paulista", "ER_REGIAO_CIDADE": "Ferraz de Vasconcelos_Santa Margarida Paulista_Alto Tietê" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.373370799999975, -23.511495 ], [ -46.370672, -23.511214 ], [ -46.366395699999941, -23.51215579999996 ], [ -46.366915199999937, -23.517029599999944 ], [ -46.368337699999984, -23.519915 ], [ -46.368345699999963, -23.52474559999996 ], [ -46.366950199999962, -23.52719129999997 ], [ -46.362933799999951, -23.527821699999947 ], [ -46.363801399999943, -23.52957 ], [ -46.369903099999931, -23.529396099999929 ], [ -46.370851899999934, -23.530439399999977 ], [ -46.37345369999997, -23.530520599999932 ], [ -46.373309, -23.529949099999953 ], [ -46.375356, -23.529048899999964 ], [ -46.377095199999985, -23.518543099999931 ], [ -46.378479099999936, -23.516252 ], [ -46.37455, -23.515483 ], [ -46.374306, -23.514088 ], [ -46.375358, -23.512959 ], [ -46.373370799999975, -23.511495 ] ] ] ] } }
+]
+}

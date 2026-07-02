@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_São Paulo_Pari",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 890, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Pari", "CD_SUBDIST": "35503085600", "ER_REGIAO": "São Paulo_Pari", "ER_REGIAO_CIDADE": "São Paulo_Pari" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.607066, -23.523001 ], [ -46.605745, -23.526895 ], [ -46.612544, -23.533614 ], [ -46.613384, -23.532907 ], [ -46.616055, -23.535573 ], [ -46.625184, -23.534201 ], [ -46.625201499999946, -23.519303 ], [ -46.617668, -23.518983 ], [ -46.61158, -23.522823 ], [ -46.607066, -23.523001 ] ] ] ] } }
+]
+}

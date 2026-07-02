@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Centro_Bela Vista",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 841, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Bela Vista", "CD_SUBDIST": "35503080700", "ER_REGIAO": "Capital Centro_Bela Vista", "ER_REGIAO_CIDADE": "Capital Centro_Bela Vista" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.641065, -23.573339 ], [ -46.658908, -23.559223 ], [ -46.655652, -23.555051 ], [ -46.64631, -23.550836 ], [ -46.644613, -23.554417 ], [ -46.63751, -23.556134 ], [ -46.639962, -23.561487 ], [ -46.641065, -23.573339 ] ] ] ] } }
+]
+}

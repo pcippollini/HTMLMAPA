@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Centro_República",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 900, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "República", "CD_SUBDIST": "35503086600", "ER_REGIAO": "Capital Centro_República", "ER_REGIAO_CIDADE": "Capital Centro_República" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.63751, -23.556134 ], [ -46.644957, -23.554103 ], [ -46.647813, -23.547623 ], [ -46.64766, -23.54155 ], [ -46.646561, -23.540983 ], [ -46.646125, -23.53905 ], [ -46.640286, -23.535013 ], [ -46.633537, -23.53583 ], [ -46.634105, -23.541219 ], [ -46.63886, -23.548666 ], [ -46.636632, -23.552516 ], [ -46.63751, -23.556134 ] ] ] ] } }
+]
+}
