@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Centro_Cambuci",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 848, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Cambuci", "CD_SUBDIST": "35503081400", "ER_REGIAO": "Capital Centro_Cambuci", "ER_REGIAO_CIDADE": "Capital Centro_Cambuci" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.612022, -23.568427 ], [ -46.614652, -23.573671 ], [ -46.618284, -23.577167 ], [ -46.618113, -23.579026 ], [ -46.619283, -23.578186 ], [ -46.625435, -23.578266 ], [ -46.62272, -23.5651515 ], [ -46.623906, -23.561924 ], [ -46.625225, -23.561696 ], [ -46.624363, -23.559114 ], [ -46.626544, -23.558127 ], [ -46.626815, -23.554499 ], [ -46.624844, -23.554272 ], [ -46.6252038, -23.553297 ], [ -46.610221, -23.554583 ], [ -46.603893, -23.567145 ], [ -46.608284, -23.568485 ], [ -46.60934, -23.567282 ], [ -46.612022, -23.568427 ] ] ] ] } }
+]
+}

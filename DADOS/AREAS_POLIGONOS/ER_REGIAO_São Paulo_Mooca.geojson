@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_São Paulo_Mooca",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 887, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Mooca", "CD_SUBDIST": "35503085300", "ER_REGIAO": "São Paulo_Mooca", "ER_REGIAO_CIDADE": "São Paulo_Mooca" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.597015, -23.581575 ], [ -46.609128, -23.556285 ], [ -46.614876, -23.547728 ], [ -46.59363, -23.543686 ], [ -46.58836, -23.550058 ], [ -46.583664, -23.554021 ], [ -46.589507, -23.564899 ], [ -46.585759, -23.568365 ], [ -46.582518, -23.568609 ], [ -46.581491, -23.569383 ], [ -46.581336, -23.572978 ], [ -46.584853, -23.574431 ], [ -46.585108, -23.576283 ], [ -46.587916, -23.580507 ], [ -46.589479, -23.58104 ], [ -46.590914, -23.580215 ], [ -46.5901322, -23.581924 ], [ -46.597015, -23.581575 ] ] ] ] } }
+]
+}

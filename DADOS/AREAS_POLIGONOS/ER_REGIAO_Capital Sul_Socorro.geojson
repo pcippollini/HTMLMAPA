@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Sul_Socorro",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 913, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Socorro", "CD_SUBDIST": "35503087900", "ER_REGIAO": "Capital Sul_Socorro", "ER_REGIAO_CIDADE": "Capital Sul_Socorro" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.697126, -23.688671 ], [ -46.702477, -23.705346 ], [ -46.706794, -23.705313 ], [ -46.712368, -23.708141 ], [ -46.722265, -23.710921 ], [ -46.721875, -23.706449 ], [ -46.727339, -23.694344 ], [ -46.725431, -23.685699 ], [ -46.727644, -23.671308 ], [ -46.724924, -23.668759 ], [ -46.721232, -23.657223 ], [ -46.719709, -23.656583 ], [ -46.71312, -23.661441 ], [ -46.702864, -23.677731 ], [ -46.698481, -23.682539 ], [ -46.695621, -23.687533 ], [ -46.697126, -23.688671 ] ] ] ] } }
+]
+}

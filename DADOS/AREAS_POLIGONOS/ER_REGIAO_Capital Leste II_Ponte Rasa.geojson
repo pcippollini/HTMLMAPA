@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Leste II_Ponte Rasa",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 898, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Ponte Rasa", "CD_SUBDIST": "35503086400", "ER_REGIAO": "Capital Leste II_Ponte Rasa", "ER_REGIAO_CIDADE": "Capital Leste II_Ponte Rasa" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.489706, -23.527753 ], [ -46.495741, -23.521311 ], [ -46.499778, -23.520154 ], [ -46.507459, -23.520475 ], [ -46.512211, -23.519226 ], [ -46.520985, -23.514194 ], [ -46.509558, -23.509509 ], [ -46.503861, -23.508333 ], [ -46.501176, -23.508771 ], [ -46.499926, -23.50751 ], [ -46.49386, -23.506416 ], [ -46.490699, -23.507583 ], [ -46.478031, -23.506912 ], [ -46.475061, -23.5237839 ], [ -46.480947, -23.525864 ], [ -46.483886, -23.52516 ], [ -46.486159, -23.526167 ], [ -46.487822, -23.525714 ], [ -46.489706, -23.527753 ] ] ] ] } }
+]
+}

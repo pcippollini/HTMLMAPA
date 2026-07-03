@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Norte_Vila Medeiros",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 926, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Vila Medeiros", "CD_SUBDIST": "35503089200", "ER_REGIAO": "Capital Norte_Vila Medeiros", "ER_REGIAO_CIDADE": "Capital Norte_Vila Medeiros" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.577831, -23.495272 ], [ -46.584367, -23.494949 ], [ -46.588408, -23.498746 ], [ -46.59218, -23.50035 ], [ -46.596818, -23.498179 ], [ -46.596889, -23.496762 ], [ -46.598142, -23.496012 ], [ -46.597568, -23.492722 ], [ -46.598857, -23.491947 ], [ -46.594917, -23.489355 ], [ -46.590229, -23.4818 ], [ -46.583182, -23.477928 ], [ -46.579221, -23.473995 ], [ -46.573944, -23.473283 ], [ -46.5716741, -23.472219 ], [ -46.564585, -23.48502 ], [ -46.561108, -23.487316 ], [ -46.560041, -23.489097 ], [ -46.56051, -23.496378 ], [ -46.562045, -23.50008 ], [ -46.568452, -23.504008 ], [ -46.577831, -23.495272 ] ] ] ] } }
+]
+}

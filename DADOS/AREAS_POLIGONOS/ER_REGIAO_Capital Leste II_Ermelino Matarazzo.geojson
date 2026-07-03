@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Leste II_Ermelino Matarazzo",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 862, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Ermelino Matarazzo", "CD_SUBDIST": "35503082800", "ER_REGIAO": "Capital Leste II_Ermelino Matarazzo", "ER_REGIAO_CIDADE": "Capital Leste II_Ermelino Matarazzo" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.5003241, -23.4786705 ], [ -46.499984, -23.477012 ], [ -46.493825, -23.475996 ], [ -46.488446, -23.47764 ], [ -46.479999, -23.476914 ], [ -46.469337, -23.481058 ], [ -46.470256, -23.484062 ], [ -46.469051, -23.4851 ], [ -46.4677168, -23.4883901 ], [ -46.469632, -23.489261 ], [ -46.470256, -23.493877 ], [ -46.46822, -23.495796 ], [ -46.467639, -23.499127 ], [ -46.473974, -23.505027 ], [ -46.479209, -23.50742 ], [ -46.490699, -23.507583 ], [ -46.494339, -23.506703 ], [ -46.4938709, -23.4999223 ], [ -46.497666, -23.496054 ], [ -46.498388, -23.491524 ], [ -46.505602, -23.489026 ], [ -46.503547, -23.485797 ], [ -46.498073, -23.485381 ], [ -46.496711, -23.484403 ], [ -46.5003241, -23.4786705 ] ] ] ] } }
+]
+}

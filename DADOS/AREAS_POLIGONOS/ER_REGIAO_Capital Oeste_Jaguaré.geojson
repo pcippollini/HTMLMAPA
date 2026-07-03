@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Oeste_Jaguaré",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 875, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Jaguaré", "CD_SUBDIST": "35503084100", "ER_REGIAO": "Capital Oeste_Jaguaré", "ER_REGIAO_CIDADE": "Capital Oeste_Jaguaré" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.733193, -23.553193 ], [ -46.743797, -23.558418 ], [ -46.747604, -23.558646 ], [ -46.751471, -23.554865 ], [ -46.755167, -23.555799 ], [ -46.755991, -23.555337 ], [ -46.760707, -23.545574 ], [ -46.759639, -23.53871 ], [ -46.760615, -23.535959 ], [ -46.759936, -23.532671 ], [ -46.760358, -23.529763 ], [ -46.756891, -23.526259 ], [ -46.756353, -23.524618 ], [ -46.751919, -23.525416 ], [ -46.74993, -23.526598 ], [ -46.747997, -23.533676 ], [ -46.73155, -23.548235 ], [ -46.733193, -23.553193 ] ] ] ] } }
+]
+}

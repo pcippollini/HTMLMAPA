@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 879, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Jardim Paulista", "CD_SUBDIST": "35503084500", "ER_REGIAO": "Capital Oeste_Jardim Paulista", "ER_REGIAO_CIDADE": "Capital Oeste_Jardim Paulista" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.648937, -23.567639 ], [ -46.660773, -23.578632 ], [ -46.670216, -23.58414 ], [ -46.670747099999971, -23.576638099999968 ], [ -46.678472, -23.567773 ], [ -46.676562, -23.565377 ], [ -46.681353, -23.559348 ], [ -46.682689, -23.556281 ], [ -46.67746, -23.551021 ], [ -46.665552, -23.556399 ], [ -46.66291, -23.555697 ], [ -46.648937, -23.567639 ] ] ] ] } }
+{ "type": "Feature", "properties": { "fid": 879, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Jardim Paulista", "CD_SUBDIST": "35503084500", "ER_REGIAO": "Capital Oeste_Jardim Paulista", "ER_REGIAO_CIDADE": "Capital Oeste_Jardim Paulista" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.648937, -23.567639 ], [ -46.660773, -23.578632 ], [ -46.670216, -23.58414 ], [ -46.6707471, -23.5766381 ], [ -46.678472, -23.567773 ], [ -46.676562, -23.565377 ], [ -46.681353, -23.559348 ], [ -46.682689, -23.556281 ], [ -46.67746, -23.551021 ], [ -46.665552, -23.556399 ], [ -46.66291, -23.555697 ], [ -46.648937, -23.567639 ] ] ] ] } }
 ]
 }

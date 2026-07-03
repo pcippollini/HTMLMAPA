@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Oeste_Vila Leopoldina",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 922, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Vila Leopoldina", "CD_SUBDIST": "35503088800", "ER_REGIAO": "Capital Oeste_Vila Leopoldina", "ER_REGIAO_CIDADE": "Capital Oeste_Vila Leopoldina" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.719159, -23.531986 ], [ -46.719565, -23.536895 ], [ -46.72573, -23.53745 ], [ -46.727902, -23.539532 ], [ -46.727956, -23.541163 ], [ -46.729841, -23.541282 ], [ -46.734544, -23.545716 ], [ -46.747997, -23.533676 ], [ -46.749267, -23.527544 ], [ -46.751919, -23.525416 ], [ -46.748892, -23.524233 ], [ -46.746819, -23.520031 ], [ -46.744311, -23.518064 ], [ -46.732702, -23.51775 ], [ -46.726409, -23.514688 ], [ -46.725365, -23.517899 ], [ -46.722131, -23.521474 ], [ -46.719159, -23.531986 ] ] ] ] } }
+]
+}

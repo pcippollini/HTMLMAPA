@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_Capital Oeste_Barra Funda",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 840, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Barra Funda", "CD_SUBDIST": "35503080600", "ER_REGIAO": "Capital Oeste_Barra Funda", "ER_REGIAO_CIDADE": "Capital Oeste_Barra Funda" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.673634, -23.531816 ], [ -46.681318, -23.527159 ], [ -46.682533, -23.525002 ], [ -46.687775, -23.521555 ], [ -46.693658, -23.510417 ], [ -46.693467, -23.508283 ], [ -46.68376, -23.510218 ], [ -46.677521, -23.513831 ], [ -46.653948, -23.5167645 ], [ -46.654092, -23.517781 ], [ -46.659486, -23.522783 ], [ -46.660893, -23.527778 ], [ -46.660944, -23.532099 ], [ -46.663427, -23.537046 ], [ -46.663427, -23.534989 ], [ -46.665123, -23.533927 ], [ -46.673634, -23.531816 ] ] ] ] } }
+]
+}
