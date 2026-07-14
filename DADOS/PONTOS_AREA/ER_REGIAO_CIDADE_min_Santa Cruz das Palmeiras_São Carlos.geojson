@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Santa Cruz das Palmeiras_São Carlos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "10676827000173", "IDCIDADE": "SANTA_CRUZ_DAS_PALMEIRAS", "NOMEFANTASIA": "ANDRE_PEREIRA_BARRETTO_LOCACAO_LTDA", "RAZAOSOCIAL": "P_B_LOCACAO", "ENDEE": "ESTRADA_BREJAO0__ZONA_RURAL_13650-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.2481327,-21.8260648", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santa Cruz das Palmeiras_São Carlos" }, "geometry": { "type": "Point", "coordinates": [ -47.2481327, -21.8260648 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "47251461000109", "IDCIDADE": "SANTA_CRUZ_DAS_PALMEIRAS", "NOMEFANTASIA": "LUCIANO_HENRIQUE_MARANGON", "RAZAOSOCIAL": "LUCIANO_HENRIQUE_MARANGON", "ENDEE": "RUA_DOUTOR_ALCEBIADES396__CENTRO_13650-049", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.2513917,-21.8288587", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santa Cruz das Palmeiras_São Carlos" }, "geometry": { "type": "Point", "coordinates": [ -47.2513917, -21.8288587 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "42075615000127", "IDCIDADE": "SANTA_CRUZ_DAS_PALMEIRAS", "NOMEFANTASIA": "42.075.615_ELIZABETH_DOS_REIS_PEREIRA", "RAZAOSOCIAL": "FE_MODAS", "ENDEE": "RUA_SERGIPE60__RESIDENCIAL_PARQUE_VAROTTI_13655-438", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.2359751,-21.8208079", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santa Cruz das Palmeiras_São Carlos" }, "geometry": { "type": "Point", "coordinates": [ -47.2359751, -21.8208079 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "39711409000151", "IDCIDADE": "SANTA_CRUZ_DAS_PALMEIRAS", "NOMEFANTASIA": "ADRIANO_SOUZA_BARBOSA_CALCADOS", "RAZAOSOCIAL": "ADRIANO_CALCADOS", "ENDEE": "RUA_BENTO_FONOFF296__JARDIM_DAS_PALMEIRAS_13657-322", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.2466486,-21.8375423", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santa Cruz das Palmeiras_São Carlos" }, "geometry": { "type": "Point", "coordinates": [ -47.2466486, -21.8375423 ] } }
+]
+}

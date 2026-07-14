@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Sertãozinho_Cruz das Posses_Ribeirão Preto",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "05344914000193", "IDCIDADE": "SERTAOZINHO", "NOMEFANTASIA": "05.344.914_VAGNO_WANDERLEY_SOUSA_BAZARE", "RAZAOSOCIAL": "CHAVEIRO_BAZARE", "ENDEE": "AVENIDA_JOSEPHA_BATISTA_DE_OLIVEIRA13__JARDIM_OURO_VERDE_(CRUZ_DAS_POSSES)_14179-024", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.9061915,-21.0695597", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Sertãozinho_Cruz das Posses_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.9061915, -21.0695597 ] } }
+]
+}

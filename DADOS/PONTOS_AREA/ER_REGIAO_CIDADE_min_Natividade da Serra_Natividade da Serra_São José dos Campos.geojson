@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Natividade da Serra_Natividade da Serra_São José dos Campos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "58897783000138", "IDCIDADE": "NATIVIDADE_DA_SERRA", "NOMEFANTASIA": "58.897.783_ANDREIA_APARECIDA_LEMES", "RAZAOSOCIAL": "ANDREIA_APARECIDA_LEMES", "ENDEE": "AVENIDA_CORONEL_LUIZ_FERNANDES_DA_SILVA427__CENTRO_12180-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-45.4439204,-23.3791016", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Natividade da Serra_Natividade da Serra_São José dos Campos" }, "geometry": { "type": "Point", "coordinates": [ -45.4439204, -23.3791016 ] } }
+]
+}

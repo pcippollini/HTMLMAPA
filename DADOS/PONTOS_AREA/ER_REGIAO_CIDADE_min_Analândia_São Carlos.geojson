@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Analândia_São Carlos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "02385850000180", "IDCIDADE": "ANALANDIA", "NOMEFANTASIA": "ASSONI_&_ASSONI_LTDA", "RAZAOSOCIAL": "MERCADINHO_DA_ESTANCIA", "ENDEE": "RUA_4373__CENTRO_13550-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.6632812,-22.1278855", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Analândia_São Carlos" }, "geometry": { "type": "Point", "coordinates": [ -47.6632812, -22.1278855 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "00504231000132", "IDCIDADE": "ARABA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "HOTEL_ALTO_DA_BOA_VISTA_LTDA", "ENDEE": "AVENIDA_OITO_555_CENTRO_13550-000_ARABA", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.1235689,-47.6642821", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Analândia_São Carlos" }, "geometry": { "type": "Point", "coordinates": [ -47.6642821, -22.1235689 ] } }
+]
+}

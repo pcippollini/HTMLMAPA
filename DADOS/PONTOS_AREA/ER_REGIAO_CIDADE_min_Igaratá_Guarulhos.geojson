@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Igaratá_Guarulhos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "59326557000160", "IDCIDADE": "IGARATA", "NOMEFANTASIA": "59.326.557_JOAO_VITOR_BATISTA_DE_MORAES", "RAZAOSOCIAL": "59.326.557_JOAO_VITOR_BATISTA_DE_MORAES", "ENDEE": "10A_ETELVINA_FERREIRA_DE_SOUZA360__JARDIM_ROSA_HELENA_12350-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.1600264,-23.2121011", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Igaratá_Guarulhos" }, "geometry": { "type": "Point", "coordinates": [ -46.1600264, -23.2121011 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "24464827000114", "IDCIDADE": "IGARATA", "NOMEFANTASIA": "HRS_COMPONENTES_AUTOMOTIVOS_LTDA", "RAZAOSOCIAL": "HRS", "ENDEE": "RODOVIA_DOM_PEDRO_I_SN__AGUA_BRANCA_12350-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.1563012,-23.2102253", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Igaratá_Guarulhos" }, "geometry": { "type": "Point", "coordinates": [ -46.1563012, -23.2102253 ] } }
+]
+}

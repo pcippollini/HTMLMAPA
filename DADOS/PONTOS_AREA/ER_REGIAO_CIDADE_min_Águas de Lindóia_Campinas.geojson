@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Águas de Lindóia_Campinas",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "23902300000161", "IDCIDADE": "AGUAS_DE_LINDOIA", "NOMEFANTASIA": "FRIDA_HOY_IND_E_COM_DE_MALHAS_LTDA", "RAZAOSOCIAL": "FRIDA_HOY", "ENDEE": "RUA_CAMPINAS1076__BELA_VISTA_13940-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.6127727,-22.471207", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Águas de Lindóia_Campinas" }, "geometry": { "type": "Point", "coordinates": [ -46.6127727, -22.471207 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "40757603000157", "IDCIDADE": "AGUAS_DE_LINDOIA", "NOMEFANTASIA": "ROBSON_HENRIQUE_GODOY_DE_PAULA_32660096813", "RAZAOSOCIAL": "ROBSON_GODOY_BEATY", "ENDEE": "RUA_JAGUARIUNA49__BELA_VISTA_13940-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.6147042,-22.4707851", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Águas de Lindóia_Campinas" }, "geometry": { "type": "Point", "coordinates": [ -46.6147042, -22.4707851 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "52547267000105", "IDCIDADE": "AGUAS_DE_LINDOIA", "NOMEFANTASIA": "52.547.267_MERCIO_DE_ASSIS_MOTA", "RAZAOSOCIAL": "MERCIO_DE_ASSIS_MOTA", "ENDEE": "RUA_MATO_GROSSO154__CENTRO_13940-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.6340509,-22.4771044", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Águas de Lindóia_Campinas" }, "geometry": { "type": "Point", "coordinates": [ -46.6340509, -22.4771044 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "49277993000132", "IDCIDADE": "AGUAS_DE_LINDOIA", "NOMEFANTASIA": "RICARDO_DIAS_SOUZA_SOCIEDADE_INDIVIDUAL_DE_ADVOCACIA", "RAZAOSOCIAL": "ICARDO_DIAS_SOUZA_SOCIEDADE_INDIVIDUAL_DE_ADVOCACIA", "ENDEE": "RUA_RIO_DE_JANEIRO300__CENTRO_13940-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.631669,-22.4762809", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Águas de Lindóia_Campinas" }, "geometry": { "type": "Point", "coordinates": [ -46.631669, -22.4762809 ] } }
+]
+}

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Santa Gertrudes_Piracicaba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "44718196000120", "IDCIDADE": "SANTA_GERTRUDES", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "DAIANA_GUEDES_DE_OLIVEIRA_10344729419", "ENDEE": "RUA_DONA_GENU_FELIPE_646_PARQUE_DOS_JEQUITIBAS_13512-212_SANTA_GERTRUDES", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.4411664,-47.5410103", "O_QUE_FAZER": "APLICAR T2", "ER_REGIAO_CIDADE_min": "Santa Gertrudes_Piracicaba" }, "geometry": { "type": "Point", "coordinates": [ -47.5410103, -22.4411664 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "56781846000160", "IDCIDADE": "RIO_CLARO", "NOMEFANTASIA": "CMK_ELETRONICS", "RAZAOSOCIAL": "C_M_K_COMPONENTES_LTDA", "ENDEE": "RUA_JOSE_FELICIO_CASTELLANO2026__JARDIM_AMERICA_13506-092", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5328867,-22.44399", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Santa Gertrudes_Piracicaba" }, "geometry": { "type": "Point", "coordinates": [ -47.5328867, -22.44399 ] } }
+]
+}

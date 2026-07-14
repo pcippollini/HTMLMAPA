@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Taiúva_Barretos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "55075127000161", "IDCIDADE": "TAIUVA", "NOMEFANTASIA": "55.075.127_LEONEL_GONCALVES_DA_SILVA", "RAZAOSOCIAL": "LEONEL_GONCALVES_DA_SILVA", "ENDEE": "RUA_GERALDO_MOURA330__RES_NILSON_GARCIA_14720-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.4460198,-21.1237611", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Taiúva_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.4460198, -21.1237611 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "19009248000141", "IDCIDADE": "TAIUVA", "NOMEFANTASIA": "CLAUDECIR_TRENTIN_13222217823", "RAZAOSOCIAL": "CLAUDECIR_TRENTIN", "ENDEE": "RUA_JOSE_DE_ALENCAR14__SAO_LUCAS_14720-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.4460198,-21.1237611", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Taiúva_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.4460198, -21.1237611 ] } }
+]
+}

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 274447, "CNPJ": "15564006000169", "IDCIDADE": "ASSIS", "NOMEFANTASIA": "GMS_CONSULTORIA_AMBIENTAL_E_SERVICOS_LTDA", "RAZAOSOCIAL": "GMS_CONSULTORIA_EAMBIENTAL__E_SERVCOS_LTDA", "ENDEE": "RODOVIA_MANILIO_GOBBI_-_SP_284_-_RUA_1_-_CHACARA_05_SN__AREA_RURAL_DE_ASSIS_19819-899", "LATITUDE": "-22.340102", "LONGITUDE": "-50.6481909", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.6481909,-22.340102", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Paraguaçu Paulista_Sapezal_Marília" }, "geometry": { "type": "Point", "coordinates": [ -50.6481909, -22.340102 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "15564006000169", "IDCIDADE": "ASSIS", "NOMEFANTASIA": "GMS_CONSULTORIA_AMBIENTAL_E_SERVICOS_LTDA", "RAZAOSOCIAL": "GMS_CONSULTORIA_EAMBIENTAL__E_SERVCOS_LTDA", "ENDEE": "RODOVIA_MANILIO_GOBBI_-_SP_284_-_RUA_1_-_CHACARA_05_SN__AREA_RURAL_DE_ASSIS_19819-899", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.6481909,-22.340102", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Paraguaçu Paulista_Sapezal_Marília" }, "geometry": { "type": "Point", "coordinates": [ -50.6481909, -22.340102 ] } }
 ]
 }

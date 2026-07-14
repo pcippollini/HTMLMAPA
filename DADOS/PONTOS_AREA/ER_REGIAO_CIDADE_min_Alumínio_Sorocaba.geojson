@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Alumínio_Sorocaba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "29680267000159", "IDCIDADE": "ALUMINIO", "NOMEFANTASIA": "EVELYN_SCOLA_ALVES_CORREA_ROUPAS", "RAZAOSOCIAL": "ECOVILE", "ENDEE": "RUA_ANTONIO_DE_CASTRO_FIGUEROA153__CENTRO_18125-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.2521655,-23.5278072", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Alumínio_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -47.2521655, -23.5278072 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "12693062000105", "IDCIDADE": "ALUMINIO", "NOMEFANTASIA": "12.693.062_HELENA_DE_FREITAS_SOUZA", "RAZAOSOCIAL": "INFORMAX", "ENDEE": "RUA_EDUARDO_GRILLO147__PEDAGIO_18125-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.2571883,-23.5186887", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Alumínio_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -47.2571883, -23.5186887 ] } }
+]
+}

@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Boracéia_Bauru",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "15543045000180", "IDCIDADE": "BORACEIA", "NOMEFANTASIA": "15.543.045_JOEL_TORRENTE_DA_SILVA", "RAZAOSOCIAL": "JOEL_TORRENTE_DA_SILVA", "ENDEE": "RUA_DANIEL_MASSUCATO535__JARDIM_MORADA_DO_SOL_17273-060", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.7844943,-22.1940861", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Boracéia_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.7844943, -22.1940861 ] } }
+]
+}

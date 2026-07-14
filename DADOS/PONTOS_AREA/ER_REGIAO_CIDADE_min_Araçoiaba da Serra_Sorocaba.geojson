@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Araçoiaba da Serra_Sorocaba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "54352217000190", "IDCIDADE": "ARACOIABA_DA_SERRA", "NOMEFANTASIA": "54.352.217_DENILSON_RODRIGUES_DE_ALMEIDA", "RAZAOSOCIAL": "54.352.217_DENILSON_RODRIGUES_DE_ALMEIDA", "ENDEE": "ALAMEDA_DAS_MARGARIDAS63__ARACOIABINHA_18190-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.608493,-23.5087103", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Araçoiaba da Serra_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -47.608493, -23.5087103 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "47588778000127", "IDCIDADE": "ARACOIABA_DA_SERRA", "NOMEFANTASIA": "47.588.778_JULIANO_JOSE_DE_FREITAS", "RAZAOSOCIAL": "JULIANO_JOSE_DE_FREITAS", "ENDEE": "RUA_LUCIO_AFONSO_MIRANDA261__MIRANTES_DO_IPANEMA_18190-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5954067,-23.4749688", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Araçoiaba da Serra_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -47.5954067, -23.4749688 ] } }
+]
+}

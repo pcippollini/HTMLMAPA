@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_São Carlos_Água Vermelha_São Carlos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "31748891000192", "IDCIDADE": "SAO_CARLOS", "NOMEFANTASIA": "HB_DIESEL", "RAZAOSOCIAL": "V_HUGO_DA_SILVA_MECANICA", "ENDEE": "AVENIDA_BELA_CINTRA200__AGUA_VERMELHA_13570-770", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.8956782,-21.8985337", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "São Carlos_Água Vermelha_São Carlos" }, "geometry": { "type": "Point", "coordinates": [ -47.8956782, -21.8985337 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "50070092000154", "IDCIDADE": "SAO_CARLOS", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "FLAVIO_AZAR_CONSULTORIA_E_ENGENHARIA_FACE_LTDA", "ENDEE": "AVENIDA_MIGUEL_DAMHA_1000_PARQUE_RESIDENCIAL_DAMHA_13565-251_SAO_CARLOS", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.9632493,-47.8984126", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São Carlos_Água Vermelha_São Carlos" }, "geometry": { "type": "Point", "coordinates": [ -47.8984126, -21.9632493 ] } }
+]
+}

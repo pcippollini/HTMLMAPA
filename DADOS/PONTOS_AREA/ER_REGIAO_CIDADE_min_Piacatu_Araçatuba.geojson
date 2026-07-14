@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Piacatu_Araçatuba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "58703142000103", "IDCIDADE": "PIACATU", "NOMEFANTASIA": "ACQUA_MAIS_DISTRIBUIDORA_DE_AGUA_LTDA", "RAZAOSOCIAL": "ACQUA_MAIS_DISTRIBUIDORA_DE_AGUA_LTDA", "ENDEE": "RUA_ANTONIO_VENDRAME869__CENTRO_16230-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.6007629,-21.5904409", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Piacatu_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.6007629, -21.5904409 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "47829632000126", "IDCIDADE": "PIACATU", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "47.829.632_MIRELE_APARECIDA_SANTOS_BEGO", "ENDEE": "RUA_PADRE_THEODORO_RATISBONE_5311_JARDIM_SUARAO_11741-788_PIACATU", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.5941579,-50.5998054", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Piacatu_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.5998054, -21.5941579 ] } }
+]
+}

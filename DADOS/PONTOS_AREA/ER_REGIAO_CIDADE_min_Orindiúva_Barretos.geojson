@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Orindiúva_Barretos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "07564914000124", "IDCIDADE": "ORINDIUVA", "NOMEFANTASIA": "LUCILENE_APARECIDA_MARTINEZ_MARCILIO_SALWANININ", "RAZAOSOCIAL": "ESTCAO_DA_MODA_", "ENDEE": "AVENIDA_JOSE_NUNES_DOS_SANTOS610__CENTRO_15480-001", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.3548619,-20.1897738", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Orindiúva_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -49.3548619, -20.1897738 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "20785885000199", "IDCIDADE": "ORINDIUVA", "NOMEFANTASIA": "20.785.885_MAGNA_DE_FATIMA_NOGUEIRA_TOLENTINO", "RAZAOSOCIAL": "MAGNA_DE_FATIMA_NOGUEIRA_TOLENTINO", "ENDEE": "AVENIDA_JOSE_NUNES_DOS_SANTOS270__JARDIM_PAULISTA_15482-012", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.3532465,-20.1886353", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Orindiúva_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -49.3532465, -20.1886353 ] } }
+]
+}

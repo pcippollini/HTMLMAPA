@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_São Simão_Ribeirão Preto",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "33072322000103", "IDCIDADE": "SAO_SIMAO", "NOMEFANTASIA": "SIMONE_BARBOSA_29173424803", "RAZAOSOCIAL": "BORDADOS_DAS_MENINAS", "ENDEE": "RUA_HAFIZA_GERAIGIRE_JORGE168__JARDIM_DOS_IMIGRANTES_14200-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5565432,-21.4800867", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São Simão_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.5565432, -21.4800867 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "04621729000136", "IDCIDADE": "SAO_SIMAO", "NOMEFANTASIA": "ELIANA_CRISTINA_LUIZETI", "RAZAOSOCIAL": "ELIANA_CRISTINA_LUIZETI", "ENDEE": "RUA_NICARAGUA486__JARDIM_DAS_AMERICAS_14200-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5844924,-21.4593087", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São Simão_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.5844924, -21.4593087 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "26952141000106", "IDCIDADE": "SAO_SIMAO", "NOMEFANTASIA": "OCRACINO_MUNIZ", "RAZAOSOCIAL": "MUNIZ_TRANSPORTES", "ENDEE": "RUA_SIMAO_DA_SILVA_TEIXEIRA4024__CENTRO_14200-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.571893,-21.4667098", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São Simão_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.571893, -21.4667098 ] } }
+]
+}

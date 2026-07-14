@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Torrinha_Bauru",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "26361841000118", "IDCIDADE": "TORRINHA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "WM_&_TA_TRANSPORTES_DE_CARGAS_LTDA", "ENDEE": "RUA_ALEXANDRE_REDONDO_535_VILA_BALBINA_17360-324_TORRINHA", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.4350624,-48.1708136", "O_QUE_FAZER": "APLICAR T2", "ER_REGIAO_CIDADE_min": "Torrinha_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.1708136, -22.4350624 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "26458458000182", "IDCIDADE": "TORRINHA", "NOMEFANTASIA": "PEDRO_FELIPE_DELLA_COLETTA", "RAZAOSOCIAL": "PEDRO_FELIPE_DELLA_COLETTA", "ENDEE": "RUA_DURVAL_MARQUES425__JARDIM_BARBOSA_17360-226", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.1661413,-22.4265874", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Torrinha_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.1661413, -22.4265874 ] } }
+]
+}
