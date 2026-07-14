@@ -32,8 +32,8 @@ html,body,#map{height:100%;width:100%;margin:0;padding:0;font-family:Arial,sans-
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 <script>
-const ARQUIVO_POLIGONO="../DADOS/AREAS_POLIGONOS/ER_REGIAO_Capital Sul_Campo Limpo(2).geojson";
-const ARQUIVO_PONTOS="../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Capital Sul_Campo Limpo(2).geojson";
+const ARQUIVO_POLIGONO="../DADOS/AREAS_POLIGONOS/ER_REGIAO_Capital Sul_Campo Limpo.geojson";
+const ARQUIVO_PONTOS="../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Capital Sul_Campo Limpo.geojson";
 let areaGeojson=null,pontosGeojson=null,gpsMarker=null,gpsCircle=null,lastLatLng=null;
 const map=L.map('map',{preferCanvas:true});
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
