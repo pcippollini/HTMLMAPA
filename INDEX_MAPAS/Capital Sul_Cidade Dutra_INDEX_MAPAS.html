@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Capital Sul - Campo Belo</title>
+<title>Capital Sul - Cidade Dutra</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E59KMQFDEK"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-E59KMQFDEK');</script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -24,7 +24,7 @@ html,body,#map{height:100%;width:100%;margin:0;padding:0;font-family:Arial,sans-
 </head>
 <body>
 <div id="map"></div>
-<div class="info-box"><b>Capital Sul - Campo Belo</b><br>Pontos: <span id="totalPontos">0</span><br><span id="statusArea">GPS ainda não iniciado</span>
+<div class="info-box"><b>Capital Sul - Cidade Dutra</b><br>Pontos: <span id="totalPontos">0</span><br><span id="statusArea">GPS ainda não iniciado</span>
 <div class="legend"><span class="dot fin"></span><span>FINALIZADO: <b id="totalFinalizado">0</b></span><span class="dot car"></span><span>CARTEIRA: <b id="totalCarteira">0</b></span><span class="dot t2"></span><span>T2: <b id="totalT2">0</b></span><span class="dot t3"></span><span>T3: <b id="totalT3">0</b></span></div>
 <button class="btn" onclick="centralizarGPS()">Minha localização</button><div class="loading" id="loadingInfo">Carregando dados...</div></div>
 <div class="gps-box" id="gpsInfo">Aguardando permissão do GPS...</div>
@@ -32,8 +32,8 @@ html,body,#map{height:100%;width:100%;margin:0;padding:0;font-family:Arial,sans-
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 <script>
-const ARQUIVO_POLIGONO="../DADOS/AREAS_POLIGONOS/ER_REGIAO_Capital Sul_Campo Belo(2).geojson";
-const ARQUIVO_PONTOS="../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Capital Sul_Campo Belo(2).geojson";
+const ARQUIVO_POLIGONO="../DADOS/AREAS_POLIGONOS/ER_REGIAO_Capital Sul_Cidade Dutra(1).geojson";
+const ARQUIVO_PONTOS="../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Capital Sul_Cidade Dutra(2).geojson";
 let areaGeojson=null,pontosGeojson=null,gpsMarker=null,gpsCircle=null,lastLatLng=null;
 const map=L.map('map',{preferCanvas:true});
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
