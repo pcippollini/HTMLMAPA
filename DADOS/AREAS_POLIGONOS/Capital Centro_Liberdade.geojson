@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "Capital Centro_Liberdade",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 883, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Liberdade", "CD_SUBDIST": "35503084900", "ER_REGIAO": "Capital Centro_Liberdade", "ER_REGIAO_CIDADE": "Capital Centro_Liberdade" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.632943, -23.57676 ], [ -46.634177, -23.575526 ], [ -46.633761, -23.575014 ], [ -46.641065, -23.573339 ], [ -46.63989, -23.561205 ], [ -46.63751, -23.556134 ], [ -46.628628, -23.556175 ], [ -46.626815, -23.554499 ], [ -46.626544, -23.558127 ], [ -46.624363, -23.559114 ], [ -46.625225, -23.561696 ], [ -46.623906, -23.561924 ], [ -46.62272, -23.565151499999956 ], [ -46.625435, -23.578266 ], [ -46.63261, -23.578502 ], [ -46.632943, -23.57676 ] ] ] ] } }
+]
+}

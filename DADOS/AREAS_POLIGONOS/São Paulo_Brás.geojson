@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "São Paulo_Brás",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 844, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Brás", "CD_SUBDIST": "35503081000", "ER_REGIAO": "São Paulo_Brás", "ER_REGIAO_CIDADE": "São Paulo_Brás" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.610221, -23.554583 ], [ -46.625203799999952, -23.553297 ], [ -46.624871, -23.551296 ], [ -46.626336, -23.547843 ], [ -46.626262, -23.544700499999976 ], [ -46.628197, -23.541373 ], [ -46.625184, -23.534201 ], [ -46.616055, -23.535573 ], [ -46.613384, -23.532907 ], [ -46.608623, -23.537042 ], [ -46.607049, -23.542566 ], [ -46.604451, -23.545851 ], [ -46.614876, -23.547728 ], [ -46.610221, -23.554583 ] ] ] ] } }
+]
+}
