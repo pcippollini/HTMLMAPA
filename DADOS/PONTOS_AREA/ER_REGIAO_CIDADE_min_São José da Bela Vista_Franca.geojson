@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_São José da Bela Vista_Franca",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "60637560000183", "IDCIDADE": "SAO_JOSE_DA_BELA_VISTA", "NOMEFANTASIA": "60.637.560_GUILHERME_DA_SILVA_PAIVA", "RAZAOSOCIAL": "SERRALHERIA_SILVA_", "ENDEE": "RUA_AFONSO_RAIMUNDO402__JARDIM_ELDORADO_14440-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.6356426,-20.5877718", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São José da Bela Vista_Franca" }, "geometry": { "type": "Point", "coordinates": [ -47.6356426, -20.5877718 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "29276187000132", "IDCIDADE": "SAO_JOSE_DA_BELA_VISTA", "NOMEFANTASIA": "CARLOS_ROBERTO_ALVES_MARQUEZINI_28294128856", "RAZAOSOCIAL": "DOIS_AMORES", "ENDEE": "RUA_CAPITAO_ANSELMO_DINIZ1235__CENTRO_14440-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.6386804,-20.591833", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São José da Bela Vista_Franca" }, "geometry": { "type": "Point", "coordinates": [ -47.6386804, -20.591833 ] } }
+]
+}

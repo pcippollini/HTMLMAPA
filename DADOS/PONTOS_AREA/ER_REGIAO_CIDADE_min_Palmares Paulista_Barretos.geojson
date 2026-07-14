@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Palmares Paulista_Barretos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "38175542000178", "IDCIDADE": "PALMARES_PAULISTA", "NOMEFANTASIA": "JEAN_FERNANDO_DA_SILVA_39526495896", "RAZAOSOCIAL": "JFS_ENGENHARIA", "ENDEE": "RUA_JOSE_PEREIRA_NETO531__CJ_RES_CDHU_15828-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.8061509,-21.0873177", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Palmares Paulista_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.8061509, -21.0873177 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "44448079000193", "IDCIDADE": "PALMARES_PAULISTA", "NOMEFANTASIA": "44.448.079_BRENA_MARIA_DE_OLIVEIRA", "RAZAOSOCIAL": "BRENA_ESMERALDA", "ENDEE": "RUA_CAMPOS_SALLES696__RESIDENCIAL_BEATRIZ_MARIN_GOMIERI_15829-060", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.8006117,-21.0906183", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Palmares Paulista_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.8006117, -21.0906183 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "26673062000158", "IDCIDADE": "PALMARES_PAULISTA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "ELISANGELA_ANTONIA_NUNES_MIRANDA", "ENDEE": "RUA_13_DE_MAIO_02_BARROZO_15828-000_PALMARES_PAULISTA", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.0881657,-48.8096463", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Palmares Paulista_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.8096463, -21.0881657 ] } }
+]
+}

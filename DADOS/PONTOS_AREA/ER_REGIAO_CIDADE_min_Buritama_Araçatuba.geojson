@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Buritama_Araçatuba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "15350104000101", "IDCIDADE": "BURITAMA", "NOMEFANTASIA": "FELIZ_CRIANCA_ARTESANATOS_E_BRINQUEDOS_PEDAGOGICOS_LTDA", "RAZAOSOCIAL": "ARTESANATOS_FELIZ_CRIANCA", "ENDEE": "RUA_DOS_PEREIRAS940__CENTRO_15290-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.1514042,-21.0635265", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Buritama_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.1514042, -21.0635265 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "58971668000166", "IDCIDADE": "BURITAMA", "NOMEFANTASIA": "O_J_L_ENERGIA_SOLAR_SPE_LTDA", "RAZAOSOCIAL": "O_J_L_ENERGIA_SOLAR_SPE_LTDA", "ENDEE": "ESTRADA_LIN_FERRARI_QUE_LIGA_BURITAMA_AO_LOTEAMENTO_RIVIEIRA_1570_15290-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.1438741,-21.0652138", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Buritama_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.1438741, -21.0652138 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "15013234000140", "IDCIDADE": "BURITAMA", "NOMEFANTASIA": "SILVIA_LINGERIE_LTDA", "RAZAOSOCIAL": "SILVIA_LINGERIE", "ENDEE": "RUA_FLORIANO_PEIXOTO887__CENTRO_15290-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.1457889,-21.0665208", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Buritama_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.1457889, -21.0665208 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "21777351000183", "IDCIDADE": "BURITAMA", "NOMEFANTASIA": "21.777.351_ROSANA_APARECIDA_GONCALVES_RANUCCI", "RAZAOSOCIAL": "SOL_E_LUA_LINGERIE", "ENDEE": "RUA_GUILHERME_GUERBAS326__CENTRO_15290-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.1497086,-21.070181", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Buritama_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.1497086, -21.070181 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "53841508000189", "IDCIDADE": "BURITAMA", "NOMEFANTASIA": "BATOM_DUO_LTDA", "RAZAOSOCIAL": "BATON_DUO", "ENDEE": "RUA_JOAQUIM_PEREIRA_ROSA521__CENTRO_15290-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.148496,-21.0689319", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Buritama_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.148496, -21.0689319 ] } }
+]
+}

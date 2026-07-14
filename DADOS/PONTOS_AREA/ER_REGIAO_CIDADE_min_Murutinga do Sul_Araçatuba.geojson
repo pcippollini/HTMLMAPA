@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Murutinga do Sul_Araçatuba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "30821980000154", "IDCIDADE": "MURUTINGA_DO_SUL", "NOMEFANTASIA": "SOLANGE_SOARES_DOS_SANTOS_MALAMAN_10506846806", "RAZAOSOCIAL": "LANCHONETE_NATI_E_NANDA_", "ENDEE": "RUA_JACYRA_MARCUSSI_HUSSEIN464__CENTRO_16950-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.2776183,-20.9916302", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Murutinga do Sul_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -51.2776183, -20.9916302 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "37234336000129", "IDCIDADE": "MURUTINGA_DO_SUL", "NOMEFANTASIA": "CRISTIANO_DOS_SANTOS_SILVA_GAS", "RAZAOSOCIAL": "FAMILIA_RUAS_AGUA_E_GAS", "ENDEE": "RUA_MURUTINGA_DO_SUL320__CENTRO_16950-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.2795089,-20.9888444", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Murutinga do Sul_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -51.2795089, -20.9888444 ] } }
+]
+}

@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_São Roque_Mailasqui_Osasco",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "36268729000190", "IDCIDADE": "SAO_ROQUE", "NOMEFANTASIA": "36.268.729_GERSON_EDUARDO_APARECIDO_DE_MORAES", "RAZAOSOCIAL": "MORAES_CONSTRUTORA", "ENDEE": "RUA_JOSE_ROSA310__JARDIM_PONTA-PORA_18143-757", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.0957535,-23.558648", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São Roque_Mailasqui_Osasco" }, "geometry": { "type": "Point", "coordinates": [ -47.0957535, -23.558648 ] } }
+]
+}

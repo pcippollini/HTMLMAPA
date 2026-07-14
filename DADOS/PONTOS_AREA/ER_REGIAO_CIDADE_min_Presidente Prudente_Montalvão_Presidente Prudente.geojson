@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Presidente Prudente_Montalvão_Presidente Prudente",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "11629397000100", "IDCIDADE": "PRESIDENTE_PRUDENTE", "NOMEFANTASIA": "EMPREENDIMENTOS_MATRICARDI", "RAZAOSOCIAL": "MOACIR_APARECIDO_MATRICARDI_DA_COSTA_JUNIOR", "ENDEE": "AVENIDA_NATANAEL_TOLEDO13__RESIDENCIAL_DAIANE_19110-110", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.3438436,-22.0451841", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Presidente Prudente_Montalvão_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.3438436, -22.0451841 ] } }
+]
+}

@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Tambaú_Ribeirão Preto",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "42135910000121", "IDCIDADE": "TAMBAU", "NOMEFANTASIA": "JULIANA_APARECIDA_DE_OLIVEIRA_LTDA", "RAZAOSOCIAL": "JULIANA_APARECIDA_DE_OLIVEIRA_LTDA", "ENDEE": "RUA_BENEDITO_CLAUDINEZ_DA_CUNHA330__SANTA_CAROLINA_II_13710-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.2583019,-21.7035818", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Tambaú_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.2583019, -21.7035818 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "11165856000133", "IDCIDADE": "TAMBAU", "NOMEFANTASIA": "11.165.856_TATIANA_ROSIRIS_RAMOS_PEDROSO", "RAZAOSOCIAL": "INOTEC_SOLUTIONS", "ENDEE": "RUA_JOSE_LIPRI248__CENTRO_13710-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.2716198,-21.7055592", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Tambaú_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.2716198, -21.7055592 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "46372801000189", "IDCIDADE": "TAMBAU", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "CERAMICA_ESTEVES_LTDA", "ENDEE": "RUA_CASTOR_SOBREIRA_SN_JARDIM_B_ESPERANCA_13710-000_TAMBAU", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.7148636,-47.2689065", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Tambaú_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.2689065, -21.7148636 ] } }
+]
+}

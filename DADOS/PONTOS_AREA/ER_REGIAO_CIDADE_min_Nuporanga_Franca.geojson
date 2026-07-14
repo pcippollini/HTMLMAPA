@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Nuporanga_Franca",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "57105602000120", "IDCIDADE": "NUPORANGA", "NOMEFANTASIA": "57.105.602_AUGUSTO_SILVEIRA_DE_FARIA", "RAZAOSOCIAL": "AUGUSTO_SILVEIRA_DE_FARIA", "ENDEE": "RUA_SAO_JOSE335__CENTRO_14670-029", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.7502065,-20.7284751", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Nuporanga_Franca" }, "geometry": { "type": "Point", "coordinates": [ -47.7502065, -20.7284751 ] } }
+]
+}

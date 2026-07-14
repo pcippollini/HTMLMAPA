@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Sales_Bauru",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "23621722000169", "IDCIDADE": "SALES", "NOMEFANTASIA": "L_A_A_-_ASSESSORIA_LTDA", "RAZAOSOCIAL": "LEANDRO_AMENDOLA_", "ENDEE": "AVENIDA_RAMILLO_SALLES895__CENTRO_14980-001", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.4908183,-21.3437655", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Sales_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -49.4908183, -21.3437655 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "53317109000113", "IDCIDADE": "SALES", "NOMEFANTASIA": "53.317.109_JUCILENE_GUERREIRO", "RAZAOSOCIAL": "PARAISO_TOURS", "ENDEE": "RUA_PADRE_ANCHIETA_89B__JARDIM_PLANALTO_14980-404", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.4991721,-21.3397047", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Sales_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -49.4991721, -21.3397047 ] } }
+]
+}

@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Santo Antônio do Aracanguá_Santo Antônio do Aracanguá_Araçatuba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "97529427000113", "IDCIDADE": "SANTO_ANTONIO_DO_ARACANGUA", "NOMEFANTASIA": "JOSE_BERNARDO_FIGUEIREDO_09540884845", "RAZAOSOCIAL": "RANDOLI'S_CABELEREIRA_E_ESTETICA", "ENDEE": "RUA_SANTA_CLARA213__SAO_FRANCISCO_16130-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.492236,-20.935394", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santo Antônio do Aracanguá_Santo Antônio do Aracanguá_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.492236, -20.935394 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "46253214000170", "IDCIDADE": "SANTO_ANTONIO_DO_ARACANGUA", "NOMEFANTASIA": "HSTECH_ASSISTENCIA_TECNICA_LTDA", "RAZAOSOCIAL": "HSTECH_ASSISTENCIA_TECNICA_LTDA", "ENDEE": "RUA_SANTO_ANTONIO_DO_ARACANGUA229__SANTO_ANTONIO_DO_ARACANGUA_16130-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.4968154,-20.9373748", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santo Antônio do Aracanguá_Santo Antônio do Aracanguá_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.4968154, -20.9373748 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "16888179000103", "IDCIDADE": "SANTO_ANTONIO_DO_ARACANGUA", "NOMEFANTASIA": "J.K_MINIMERCADO_LTDA", "RAZAOSOCIAL": "J.K_MINIMERCADO_LTDA", "ENDEE": "RUA_VICENTINOPOLIS98__CENTRO_16140-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.4950278,-20.9362275", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santo Antônio do Aracanguá_Santo Antônio do Aracanguá_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.4950278, -20.9362275 ] } }
+]
+}

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Bananal_Guaratinguetá",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "50791357000103", "IDCIDADE": "ELDORADO", "NOMEFANTASIA": "POUSADA_E_RESTAURANTE_RECANTO_DAS_AGUAS_LTDA", "RAZAOSOCIAL": "POUSADA_RECANTO_DAS_AGUAS_", "ENDEE": "ESTRADA_MUNICIPAL_DE_ELDORADO0__BANANAL_PEQUENO_11960-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-44.3227583,-22.6836488", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Bananal_Guaratinguetá" }, "geometry": { "type": "Point", "coordinates": [ -44.3227583, -22.6836488 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "49866196000190", "IDCIDADE": "BANANAL", "NOMEFANTASIA": "49.866.196_VERA_LUCIA_LOPES_SANTIAGO", "RAZAOSOCIAL": "49.866.196_VERA_LUCIA_LOPES_SANTIAGO", "ENDEE": "AVENIDA_JOAO_BARBOSA_DE_CAMARGO1160__VILA_BOM_JARDIM_12850-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-44.3218223,-22.6921046", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Bananal_Guaratinguetá" }, "geometry": { "type": "Point", "coordinates": [ -44.3218223, -22.6921046 ] } }
+]
+}

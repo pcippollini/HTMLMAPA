@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Bernardino de Campos_Ourinhos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "10719539000159", "IDCIDADE": "BERNARDINO_DE_CAMPOS", "NOMEFANTASIA": "HELENA_MASSAMI_TANIGUCHI", "RAZAOSOCIAL": "GARDEN-SERRA_MAQUINAS_FLORESTA_JARDIM_E_LOCACAO", "ENDEE": "AVENIDA_CORONEL_ALBINO_ALVES_GARCIA1001__CENTRO_18960-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.482284,-23.0109047", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Bernardino de Campos_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.482284, -23.0109047 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "57091056000116", "IDCIDADE": "OURINHOS", "NOMEFANTASIA": "L2M_BARREIROS_LTDA", "RAZAOSOCIAL": "BARREIROS_MOLAS_E_FREIOS", "ENDEE": "RODOVIA_RAPOSO_TAVARES_S/N__CHACARA_BOM_RETIRO_19912-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.5295502,-23.0863245", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Bernardino de Campos_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.5295502, -23.0863245 ] } }
+]
+}

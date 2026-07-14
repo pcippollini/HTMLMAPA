@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Cerqueira César_Botucatu",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "37812121000148", "IDCIDADE": "CERQUEIRA_CESAR", "NOMEFANTASIA": "37.812.121_SERAFIM_JACOB_LINDO", "RAZAOSOCIAL": "37.812.121_SERAFIM_JACOB_LINDO", "ENDEE": "RUA_JOSE_JOAQUIM_ESTEVES373__CENTRO_18760-031", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.1651213,-23.03386", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Cerqueira César_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -49.1651213, -23.03386 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "01985074000197", "IDCIDADE": "CERQUEIRA_CESAR", "NOMEFANTASIA": "LAJES_CERQUEIRA_CESAR_LTDA", "RAZAOSOCIAL": "REDE_CONSTRUIR_CERQUEIRA_CESAR", "ENDEE": "RUA_RIACHUELO376__CENTRO_18760-049", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.1708552,-23.0349875", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Cerqueira César_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -49.1708552, -23.0349875 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "62176823000120", "IDCIDADE": "CERQUEIRA_CESAR", "NOMEFANTASIA": "62.176.823_TALITA_ONELIH_MATIAS_DA_SILVA", "RAZAOSOCIAL": "TALITA_ONELIH_MATIAS_DA_SILVA", "ENDEE": "RUA_ANTONIO_LUIZ_DA_COSTA50__NOVA_CERQUEIRA_18762-086", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.1788673,-23.0351943", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Cerqueira César_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -49.1788673, -23.0351943 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "60575759000124", "IDCIDADE": "CERQUEIRA_CESAR", "NOMEFANTASIA": "60.575.759_AMANDA_ALICE_DA_SILVEIRA", "RAZAOSOCIAL": "AMANDA_MAZZA_MODOA_FEMININA_E_COSMETICOS", "ENDEE": "RUA_DAS_AMORAS136__JARDIM_TROPICAL_18767-080", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.1524035,-23.038825", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Cerqueira César_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -49.1524035, -23.038825 ] } }
+]
+}
