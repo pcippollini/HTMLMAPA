@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Macatuba_Bauru",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "34549787000167", "IDCIDADE": "MACATUBA", "NOMEFANTASIA": "MARINEIDE_DA_SILVA_FERNANDES_POMPOLLO_13894034831", "RAZAOSOCIAL": "RECICLAGEM", "ENDEE": "RUA_EUGENIO_SABOIA237__JARDIM_VENEZA_17290-380", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.716581,-22.507965", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Macatuba_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.716581, -22.507965 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "31282150000169", "IDCIDADE": "MACATUBA", "NOMEFANTASIA": "MARLY_APARECIDA_DOS_SANTOS_GABRIEL_12015109889", "RAZAOSOCIAL": "GABRIELY", "ENDEE": "RUA_ANTONIO_GONCALVES_DA_SILVA115__NUCLEO_HABITACIONAL_JARDIM_AMERICA_17293-220", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.7221031,-22.5282678", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Macatuba_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.7221031, -22.5282678 ] } }
+]
+}

@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Miracatu_Oliveira Barros_Vale do Ribeira",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "07845518000175", "IDCIDADE": "MIRACATU", "NOMEFANTASIA": "BLOCOS_PAULO", "RAZAOSOCIAL": "PAULO_C_DA_SILVA_ARTEFATOS_DE_CIMENTO", "ENDEE": "RODOVIA_REGIS_BITTENCOURT0__OLIVEIRA_BARROS_11850-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.54243,-24.32301", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Miracatu_Oliveira Barros_Vale do Ribeira" }, "geometry": { "type": "Point", "coordinates": [ -47.54243, -24.32301 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "60033677000158", "IDCIDADE": "MIRACATU", "NOMEFANTASIA": "FLORA_WOLPERT", "RAZAOSOCIAL": "FLORA_WOLPERT_AGRO_COMERCIAL_E_PAISAGISMO_LTDA", "ENDEE": "RUA_JORGE_WOLPERT109__OLIVEIRA_BARROS_11850-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5426417,-24.3203597", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Miracatu_Oliveira Barros_Vale do Ribeira" }, "geometry": { "type": "Point", "coordinates": [ -47.5426417, -24.3203597 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "34471398000166", "IDCIDADE": "MIRACATU", "NOMEFANTASIA": "VIDA_NOVA", "RAZAOSOCIAL": "ALEX_MORAIS_DOS_SANTOS", "ENDEE": "RUA_JORGE_WOLPERT206__OLIVEIRA_BARROS_11850-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5423733,-24.3200281", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Miracatu_Oliveira Barros_Vale do Ribeira" }, "geometry": { "type": "Point", "coordinates": [ -47.5423733, -24.3200281 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "09260701000134", "IDCIDADE": "MIRACATU", "NOMEFANTASIA": "AGROPECUARIA_E_MATERIAIS_PARA_CONSTRUCOES_VIDA_NOVA", "RAZAOSOCIAL": "AGROPECUARIA_E_MATERIAIS_PARA_CONSTRUCOES_VIDA_NOVA_LTDA", "ENDEE": "RUA_JORGE_WOLPERT206__OLIVEIRA_BARROS_11850-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5423651,-24.3200302", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Miracatu_Oliveira Barros_Vale do Ribeira" }, "geometry": { "type": "Point", "coordinates": [ -47.5423651, -24.3200302 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "51596217000147", "IDCIDADE": "MIRACATU", "NOMEFANTASIA": "PADARIA_KALID", "RAZAOSOCIAL": "PADARIA_E_CONFEITARIA_KALID_LTDA", "ENDEE": "RUA_VEREADOR_RUBENS_FLORENCIO240__OLIVEIRA_BARROS_11850-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5431368,-24.3186043", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Miracatu_Oliveira Barros_Vale do Ribeira" }, "geometry": { "type": "Point", "coordinates": [ -47.5431368, -24.3186043 ] } }
+]
+}
