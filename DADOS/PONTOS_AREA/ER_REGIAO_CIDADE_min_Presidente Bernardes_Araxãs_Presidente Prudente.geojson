@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Presidente Bernardes_Araxãs_Presidente Prudente",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "14975022000181", "IDCIDADE": "ALFREDO_MARCONDES", "NOMEFANTASIA": "C._V._MAINO_LTDA.", "RAZAOSOCIAL": "NEIPLAST", "ENDEE": "RODOVIA_JULIO_BUDISK_SP-501507__DISTRITO_INDUSTRIAL_19180-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.4276599,-21.9337472", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Presidente Bernardes_Araxãs_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.4276599, -21.9337472 ] } }
+]
+}

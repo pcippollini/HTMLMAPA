@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Santa Cruz da Esperança_Ribeirão Preto",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "52323305000138", "IDCIDADE": "SANTA_CRUZ_DA_ESPERANCA", "NOMEFANTASIA": "MARIANA_VEIGA_LUNARDELO", "RAZAOSOCIAL": "MARIANA_VEIGA_LUNARDELO", "ENDEE": "SANTO_LUNARDELLO_496_CENTRO_SANTA_CRUZ_DA_ESPERANCA_14250-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.2918668,-47.4288793", "O_QUE_FAZER": "APLICAR T3", "ER_REGIAO_CIDADE_min": "Santa Cruz da Esperança_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.4288793, -21.2918668 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "28946684000138", "IDCIDADE": "SANTA_CRUZ_DA_ESPERANCA", "NOMEFANTASIA": "ROSA_DE_SARON_MODAS", "RAZAOSOCIAL": "28.946.684_TALITA_BARBARA_FERRI_SILVA", "ENDEE": "CAPITAO_JOAO_BATISTA_FERREIRA_600_CENTRO_SANTA_CRUZ_DA_ESPERANCA_14250-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.2918668,-47.4288793", "O_QUE_FAZER": "Finalizado", "ER_REGIAO_CIDADE_min": "Santa Cruz da Esperança_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.4288793, -21.2918668 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "60735344000170", "IDCIDADE": "SANTA_CRUZ_DA_ESPERANCA", "NOMEFANTASIA": "J._P._OVOS", "RAZAOSOCIAL": "J._P._OVOS", "ENDEE": "RUA_ILARIO_CASSIANO_DA_SILVA_420_JARDIM_SAO_PEDRO_14250-000_SANTA_CRUZ_DA_ESPERANCA", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.2954315,-47.4281639", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santa Cruz da Esperança_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.4281639, -21.2954315 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "51568748000126", "IDCIDADE": "SANTA_CRUZ_DA_ESPERANCA", "NOMEFANTASIA": "RESTAURANTE_AROMA_CAIPIRA", "RAZAOSOCIAL": "RESTAURANTE_AROMA_CAIPIRA", "ENDEE": "RUA_JULIO_PRESTES_718_CENTRO_14250-000_SANTA_CRUZ_DA_ESPERANCA", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.2921711,-47.4305639", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santa Cruz da Esperança_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.4305639, -21.2921711 ] } }
+]
+}

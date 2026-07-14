@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Arandu_Botucatu",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "03644712000131", "IDCIDADE": "ARANDU", "NOMEFANTASIA": "G.T.S._REPRESENTACAO_LTDA", "RAZAOSOCIAL": "G.T.S._REPRESENTACAO_LTDA_-_ME_-_CNPJ_03.644.712/0001-31", "ENDEE": "RUA_ANTONIO_L.SOBRINHO329__CENTRO_18710-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.0530548,-23.1346315", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Arandu_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -49.0530548, -23.1346315 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "17777072000142", "IDCIDADE": "ARANDU", "NOMEFANTASIA": "APARECIDO_ANTUNES_ALVES_&_CIA._LTDA", "RAZAOSOCIAL": "AMDS_ENG_E_CONSTR", "ENDEE": "RUA_CAETANO_FIORATO570__CENTRO_18710-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.0528492,-23.1324041", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Arandu_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -49.0528492, -23.1324041 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "55573273000117", "IDCIDADE": "ARANDU", "NOMEFANTASIA": "AUTO_POSTO_MENECHINI_LTDA", "RAZAOSOCIAL": "AUTO_POSTO_MANECHINI", "ENDEE": "RUA_JOAO_BATISTA_PEREIRA405__CENTRO_18710-011", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.0533294,-23.1341492", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Arandu_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -49.0533294, -23.1341492 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "31461756000161", "IDCIDADE": "ARANDU", "NOMEFANTASIA": "EDUARDA_CRISTINE_BERNARDO_DE_AQUINO_RESTAURANTE", "RAZAOSOCIAL": "BENDITO_POTE", "ENDEE": "RUA_JUVENAL_DOS_SANTOS115__NASCER_DO_SOL_18710-382", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.0469324,-23.1344846", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Arandu_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -49.0469324, -23.1344846 ] } }
+]
+}

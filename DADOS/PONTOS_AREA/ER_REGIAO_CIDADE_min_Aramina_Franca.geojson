@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Aramina_Franca",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "39515547000165", "IDCIDADE": "ARAMINA", "NOMEFANTASIA": "ADRIANO_LUCA_MARTINS_27630398808", "RAZAOSOCIAL": "PRODUTORA_ALIANCA", "ENDEE": "RUA_OSVALDO_CAMPOS1380__VILA_ELZA_14550-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.7898463,-20.0913799", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Aramina_Franca" }, "geometry": { "type": "Point", "coordinates": [ -47.7898463, -20.0913799 ] } }
+]
+}

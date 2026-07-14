@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Rubiácea_Araçatuba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "47826332000193", "IDCIDADE": "RUBIACEA", "NOMEFANTASIA": "FARINA_SANTA", "RAZAOSOCIAL": "DANIELA_SANITA_BONFIETTI", "ENDEE": "RUA_EPITACIO_PESSOA36__CENTRO_16750-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.7282107,-21.3005632", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Rubiácea_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.7282107, -21.3005632 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "05810218000125", "IDCIDADE": "RUBIACEA", "NOMEFANTASIA": "MERCADO_BONFIETI", "RAZAOSOCIAL": "ELAINE_S._BONFIETTI_LTDA", "ENDEE": "RUA_FRANCISCO_DE_PAULA_LEITE_NOGUEIRA22__CENTRO_16750-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.7294988,-21.3005816", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Rubiácea_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.7294988, -21.3005816 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "05112616000178", "IDCIDADE": "RUBIACEA", "NOMEFANTASIA": "ACOUGUE_LE_M", "RAZAOSOCIAL": "LUIZ_CARLOS_PATRIAN", "ENDEE": "RUA_SIR_ALEXANDER_FLEMING117__CENTRO_16750-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.7291746,-21.3006628", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Rubiácea_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.7291746, -21.3006628 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "10786712000131", "IDCIDADE": "RUBIACEA", "NOMEFANTASIA": "PROVAR_MOVEIS", "RAZAOSOCIAL": "PROLAR_MOVEIS_E_ELETRODOMESTICOS_LTDA", "ENDEE": "RUA_SIR_ALEXANDER_FLEMING59__CENTRO_16750-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.7291133,-21.3002513", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Rubiácea_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.7291133, -21.3002513 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "47679612000116", "IDCIDADE": "RUBIACEA", "NOMEFANTASIA": "HISMA_LTDA", "RAZAOSOCIAL": "HISMA", "ENDEE": "8A_8A_R_ALFREDO_CASTILHO120__CENTRO_16750-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.7259407,-21.2996884", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Rubiácea_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.7259407, -21.2996884 ] } }
+]
+}

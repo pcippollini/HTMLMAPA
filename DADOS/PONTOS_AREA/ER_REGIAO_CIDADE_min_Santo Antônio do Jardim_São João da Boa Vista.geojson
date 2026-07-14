@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Santo Antônio do Jardim_São João da Boa Vista",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "51304228000106", "IDCIDADE": "SANTO_ANTONIO_DO_JARDIM", "NOMEFANTASIA": "ESCRITORIO_CONTABIL_ARTIMISIA_S/C_LTDA", "RAZAOSOCIAL": "ESCRITORIO_ARTIMISIA", "ENDEE": "RUA_SENADOR_ABELARDO_CESAR56__CENTRO_13995-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.6846253,-22.1150856", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Santo Antônio do Jardim_São João da Boa Vista" }, "geometry": { "type": "Point", "coordinates": [ -46.6846253, -22.1150856 ] } }
+]
+}

@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Cabreúva_Bom Fim do Bom Jesus_Jundiaí",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "48494985000185", "IDCIDADE": "CABREUVA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "KEILA_MICHELE_RODRIGUES_ANDRADE_33311546873", "ENDEE": "RUA_JUIZ_DE_FORA_42_NOVO_BONFIM_13317-772_CABREUVA", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.2813143,-47.0592115", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Cabreúva_Bom Fim do Bom Jesus_Jundiaí" }, "geometry": { "type": "Point", "coordinates": [ -47.0592115, -23.2813143 ] } }
+]
+}

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_São Sebastião da Grama_São João da Boa Vista",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "34581327000116", "IDCIDADE": "SAO_SEBASTIAO_DA_GRAMA", "NOMEFANTASIA": "34.581.327_MARIANGELA_CRISTINA_DA_CRUZ", "RAZAOSOCIAL": "ARTCRUZ", "ENDEE": "RUA_PARANA_189_A__VILA_GOMES_13790-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.8284396,-21.7117492", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São Sebastião da Grama_São João da Boa Vista" }, "geometry": { "type": "Point", "coordinates": [ -46.8284396, -21.7117492 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "50845548000100", "IDCIDADE": "SAO_SEBASTIAO_DA_GRAMA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "50.845.548_VANDECI_OLIVEIRA_SILVA", "ENDEE": "RUA_BASILIO_PALMIRO_105_SANTA_MARIA_1_13790-000_SAO_SEBASTIAO_DA_GRAMA", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.7199184,-46.8290817", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "São Sebastião da Grama_São João da Boa Vista" }, "geometry": { "type": "Point", "coordinates": [ -46.8290817, -21.7199184 ] } }
+]
+}

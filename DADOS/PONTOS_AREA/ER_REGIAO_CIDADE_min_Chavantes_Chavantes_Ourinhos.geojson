@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Chavantes_Chavantes_Ourinhos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "30686535000129", "IDCIDADE": "CHAVANTES", "NOMEFANTASIA": "30.686.535_PAULO_EDUARDO_MAXIMINO_FONTES", "RAZAOSOCIAL": "30.686.535_PAULO_EDUARDO_MAXIMINO_FONTES", "ENDEE": "RUA_ZICO_LEITE116__CENTRO_18970-033", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.7121381,-23.0384863", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Chavantes_Chavantes_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.7121381, -23.0384863 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "48359269000195", "IDCIDADE": "CHAVANTES", "NOMEFANTASIA": "INDUSTRIA_GRAFICA_CHAVANTES_LTDA", "RAZAOSOCIAL": "INDUSTRIA_GRAFICA_CHAVANTES", "ENDEE": "RUA_MAESTRO_SEBASTIAO_FONSECA426__JARDIM_CONCEICAO_18970-176", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.708231,-23.0393282", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Chavantes_Chavantes_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.708231, -23.0393282 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "46183146000110", "IDCIDADE": "CHAVANTES", "NOMEFANTASIA": "CESAR_MUSSIO_FERREIRA_15377889819", "RAZAOSOCIAL": "CESAR_MUSSIO_FERREIRA_15377889819", "ENDEE": "RUA_DINORAH_BUENO_PEREIRA_SILVA96__CHAVANTES_NOVO_18970-275", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.6990948,-23.0443671", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Chavantes_Chavantes_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.6990948, -23.0443671 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "15081167000100", "IDCIDADE": "CHAVANTES", "NOMEFANTASIA": "15.081.167_JOSE_ROBERTO_LIMA", "RAZAOSOCIAL": "LIMA_SOM", "ENDEE": "RUA_DIRCEU_VEDOVELLO324__JARDIM_NOSSO_LAR_18972-012", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.7107036,-23.0348337", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Chavantes_Chavantes_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.7107036, -23.0348337 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "54068083000180", "IDCIDADE": "CHAVANTES", "NOMEFANTASIA": "54.068.083_DANILO_DE_JESUS_VELOZO", "RAZAOSOCIAL": "VELOZO_TELECOM", "ENDEE": "RUA_JOSE_ROQUEJANI112__ORLANDO_QUAGLIATO_18972-066", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.7141258,-23.0350995", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Chavantes_Chavantes_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.7141258, -23.0350995 ] } }
+]
+}

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Itaporanga_Ourinhos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "42702778000192", "IDCIDADE": "PARANAPUA", "NOMEFANTASIA": "ENCANTO", "RAZAOSOCIAL": "ENCANTO", "ENDEE": "LUCIA2425__CENTRO_15745-035", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.4898296,-23.7091485", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Itaporanga_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.4898296, -23.7091485 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "49609782000150", "IDCIDADE": "ITAPORANGA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "49.609.782_AUGUSTO_FRANCISCO_RIBEIRO", "ENDEE": "RUA_QUINZE_DE_NOVEMBRO_517_CENTRO_18480-000_ITAPORANGA", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.702542,-49.4830873", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Itaporanga_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.4830873, -23.702542 ] } }
+]
+}
