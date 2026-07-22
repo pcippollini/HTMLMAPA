@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "44150378000147", "IDCIDADE": "MOGI_DAS_CRUZES", "NOMEFANTASIA": "44.150.378_DIEGO_CESAR_MARTINS_DE_MATTOS", "RAZAOSOCIAL": "44.150.378_DIEGO_CESAR_MARTINS_DE_MATTOS", "ENDEE": "ESTRADA_DO_SAO_LAZARO2__BOA_VISTA_08767-005", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.1265239,-23.6549146", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Mogi das Cruzes_Biritiba-Ussu_Alto Tietê" }, "geometry": { "type": "Point", "coordinates": [ -46.1265239, -23.6549146 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "44150378000147", "IDCIDADE": "MOGI_DAS_CRUZES", "NOMEFANTASIA": "44.150.378_DIEGO_CESAR_MARTINS_DE_MATTOS", "RAZAOSOCIAL": "44.150.378_DIEGO_CESAR_MARTINS_DE_MATTOS", "ENDEE": "ESTRADA_DO_SAO_LAZARO2__BOA_VISTA_08767-005", "LATITUDE": "-23.6549146", "LONGITUDE": "-46.1265239", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.1265239,-23.6549146", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Mogi das Cruzes_Biritiba-Ussu_Alto Tietê" }, "geometry": { "type": "Point", "coordinates": [ -46.1265239, -23.6549146 ] } }
 ]
 }

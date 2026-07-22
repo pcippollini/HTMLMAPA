@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "15001510000150", "IDCIDADE": "CAJOBI", "NOMEFANTASIA": "CASA_DAS_PORTAS_DE_CAJOBI_LTDA", "RAZAOSOCIAL": "CASA_DO_BATENTE_E_GUARNICAO", "ENDEE": "RUA_ANTONIO_GLERIAN4__CENTRO_15410-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.8052166,-20.8820234", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Cajobi_Cajobi_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.8052166, -20.8820234 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "15001510000150", "IDCIDADE": "CAJOBI", "NOMEFANTASIA": "CASA_DAS_PORTAS_DE_CAJOBI_LTDA", "RAZAOSOCIAL": "CASA_DO_BATENTE_E_GUARNICAO", "ENDEE": "RUA_ANTONIO_GLERIAN4__CENTRO_15410-000", "LATITUDE": "-20.8820234", "LONGITUDE": "-48.8052166", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.8052166,-20.8820234", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Cajobi_Cajobi_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.8052166, -20.8820234 ] } }
 ]
 }

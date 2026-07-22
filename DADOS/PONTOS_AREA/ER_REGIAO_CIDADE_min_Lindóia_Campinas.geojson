@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "28846447000103", "IDCIDADE": "LINDOIA", "NOMEFANTASIA": "IMPACTO_GRAFICA_LTDA", "RAZAOSOCIAL": "IMPACTO_COMUNICACAO_VISUAL", "ENDEE": "AVENIDA_31_DE_MARCO1028__CENTRO_13950-019", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.6475192,-22.5248474", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Lindóia_Campinas" }, "geometry": { "type": "Point", "coordinates": [ -46.6475192, -22.5248474 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "28846447000103", "IDCIDADE": "LINDOIA", "NOMEFANTASIA": "IMPACTO_GRAFICA_LTDA", "RAZAOSOCIAL": "IMPACTO_COMUNICACAO_VISUAL", "ENDEE": "AVENIDA_31_DE_MARCO1028__CENTRO_13950-019", "LATITUDE": "-22.5248474", "LONGITUDE": "-46.6475192", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.6475192,-22.5248474", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Lindóia_Campinas" }, "geometry": { "type": "Point", "coordinates": [ -46.6475192, -22.5248474 ] } }
 ]
 }

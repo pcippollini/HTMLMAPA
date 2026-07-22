@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Mendonça_São José do Rio Preto",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "49051264000163", "IDCIDADE": "MENDONCA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "49.051.264 LEONARDO BENEVIDES DE MIRANDA", "ENDEE": "RUA_SANTOS DUMONT_718_CENTRO_15220-005_MENDONCA", "LATITUDE": "-21.183829", "LONGITUDE": "-49.5799904", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.183829,-49.5799904", "O_QUE_FAZER": "APLICAR T2", "ER_REGIAO_CIDADE_min": "Mendonça_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.5799904, -21.183829 ] } }
+]
+}

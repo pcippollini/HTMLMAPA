@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "64353023000162", "IDCIDADE": "CONCHAL", "NOMEFANTASIA": "64.353.023_DANIEL_DE_SOUZA_OLIVEIRA", "RAZAOSOCIAL": "DANIEL_DE_SOUZA_OLIVEIRA", "ENDEE": "RODOVIA_PROFESSOR_ZEFERINO_VAZ0__DISTRITO_INDUSTRIAL_II_13837-600", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.1735949,-22.4178396", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Conchal_Tujuguaba_Campinas" }, "geometry": { "type": "Point", "coordinates": [ -47.1735949, -22.4178396 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "64353023000162", "IDCIDADE": "CONCHAL", "NOMEFANTASIA": "64.353.023_DANIEL_DE_SOUZA_OLIVEIRA", "RAZAOSOCIAL": "DANIEL_DE_SOUZA_OLIVEIRA", "ENDEE": "RODOVIA_PROFESSOR_ZEFERINO_VAZ0__DISTRITO_INDUSTRIAL_II_13837-600", "LATITUDE": "-22.4178396", "LONGITUDE": "-47.1735949", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.1735949,-22.4178396", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Conchal_Tujuguaba_Campinas" }, "geometry": { "type": "Point", "coordinates": [ -47.1735949, -22.4178396 ] } }
 ]
 }

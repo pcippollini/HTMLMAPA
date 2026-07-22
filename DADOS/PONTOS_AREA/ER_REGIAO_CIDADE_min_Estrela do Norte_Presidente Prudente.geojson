@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "19944358000109", "IDCIDADE": "ESTRELA_DO_NORTE", "NOMEFANTASIA": "LEANDRO_MENEZES_FEITOSA_LTDA", "RAZAOSOCIAL": "LEANDRO_MENEZES_FEITOSA", "ENDEE": "RUA_PREFEITO_JOSE_CARLOS_FERRAZ414__CENTRO_19230-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.6610231,-22.4880036", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Estrela do Norte_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.6610231, -22.4880036 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "19944358000109", "IDCIDADE": "ESTRELA_DO_NORTE", "NOMEFANTASIA": "LEANDRO_MENEZES_FEITOSA_LTDA", "RAZAOSOCIAL": "LEANDRO_MENEZES_FEITOSA", "ENDEE": "RUA_PREFEITO_JOSE_CARLOS_FERRAZ414__CENTRO_19230-000", "LATITUDE": "-22.4880036", "LONGITUDE": "-51.6610231", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.6610231,-22.4880036", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Estrela do Norte_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.6610231, -22.4880036 ] } }
 ]
 }

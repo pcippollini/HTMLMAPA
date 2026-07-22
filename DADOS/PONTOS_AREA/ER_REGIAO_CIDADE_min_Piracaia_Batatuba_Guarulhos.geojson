@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "48140397000143", "IDCIDADE": "PIRACAIA", "NOMEFANTASIA": "48.140.397_ALISSON_MARCIANO_PINHEIRO", "RAZAOSOCIAL": "ALISSON_MARCIANO_PINHEIRO_51956021825", "ENDEE": "RUA_MUNICIPAL111__CANEDOS_12970-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.4441117,-23.1065501", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Piracaia_Batatuba_Guarulhos" }, "geometry": { "type": "Point", "coordinates": [ -46.4441117, -23.1065501 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "48140397000143", "IDCIDADE": "PIRACAIA", "NOMEFANTASIA": "48.140.397_ALISSON_MARCIANO_PINHEIRO", "RAZAOSOCIAL": "ALISSON_MARCIANO_PINHEIRO_51956021825", "ENDEE": "RUA_MUNICIPAL111__CANEDOS_12970-000", "LATITUDE": "-23.1065501", "LONGITUDE": "-46.4441117", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.4441117,-23.1065501", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Piracaia_Batatuba_Guarulhos" }, "geometry": { "type": "Point", "coordinates": [ -46.4441117, -23.1065501 ] } }
 ]
 }

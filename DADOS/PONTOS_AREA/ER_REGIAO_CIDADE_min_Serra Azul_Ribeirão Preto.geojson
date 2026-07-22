@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "11686279000125", "IDCIDADE": "SERRA_AZUL", "NOMEFANTASIA": "MIX-EXPRES_LTDA", "RAZAOSOCIAL": "MIX-EXPRESS_LTDA", "ENDEE": "RUA_PEDRO_SIRIANI440__CENTRO_14230-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5675111,-21.3125458", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Serra Azul_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.5675111, -21.3125458 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "11686279000125", "IDCIDADE": "SERRA_AZUL", "NOMEFANTASIA": "MIX-EXPRES_LTDA", "RAZAOSOCIAL": "MIX-EXPRESS_LTDA", "ENDEE": "RUA_PEDRO_SIRIANI440__CENTRO_14230-000", "LATITUDE": "-21.3125458", "LONGITUDE": "-47.5675111", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5675111,-21.3125458", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Serra Azul_Ribeirão Preto" }, "geometry": { "type": "Point", "coordinates": [ -47.5675111, -21.3125458 ] } }
 ]
 }

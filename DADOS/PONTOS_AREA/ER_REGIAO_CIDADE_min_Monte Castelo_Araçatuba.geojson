@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "56281865000128", "IDCIDADE": "TEODORO_SAMPAIO", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "56.281.865_LUCAS_FERNANDO_DOS_SANTOS", "ENDEE": "RUA_ALTINO_FRANCISCO_CRUZ_669_CENTRO_17960-000_TEODORO_SAMPAIO", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.302229,-51.564556", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Monte Castelo_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -51.564556, -21.302229 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "56281865000128", "IDCIDADE": "TEODORO_SAMPAIO", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "56.281.865 LUCAS FERNANDO DOS SANTOS", "ENDEE": "RUA_ALTINO FRANCISCO CRUZ_669_CENTRO_17960-000_TEODORO_SAMPAIO", "LATITUDE": "-21.302229", "LONGITUDE": "-51.564556", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.302229,-51.564556", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Monte Castelo_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -51.564556, -21.302229 ] } }
 ]
 }

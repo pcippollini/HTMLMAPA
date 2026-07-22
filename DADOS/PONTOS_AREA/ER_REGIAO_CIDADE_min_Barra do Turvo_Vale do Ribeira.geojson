@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "56795411000175", "IDCIDADE": "BARRA_DO_TURVO", "NOMEFANTASIA": "56.795.411_CLAUDEMIR_GONCALVES_AURELIO", "RAZAOSOCIAL": "56.795.411_CLAUDEMIR_GONCALVES_AURELIO", "ENDEE": "RUA_ARISTON_BERNARDO_DO_NASCIMENTO416__JARDIM_TERRA_NOVA_11955-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.5048959,-24.7561862", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Barra do Turvo_Vale do Ribeira" }, "geometry": { "type": "Point", "coordinates": [ -48.5048959, -24.7561862 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "56795411000175", "IDCIDADE": "BARRA_DO_TURVO", "NOMEFANTASIA": "56.795.411_CLAUDEMIR_GONCALVES_AURELIO", "RAZAOSOCIAL": "56.795.411_CLAUDEMIR_GONCALVES_AURELIO", "ENDEE": "RUA_ARISTON_BERNARDO_DO_NASCIMENTO416__JARDIM_TERRA_NOVA_11955-000", "LATITUDE": "-24.7561862", "LONGITUDE": "-48.5048959", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.5048959,-24.7561862", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Barra do Turvo_Vale do Ribeira" }, "geometry": { "type": "Point", "coordinates": [ -48.5048959, -24.7561862 ] } }
 ]
 }

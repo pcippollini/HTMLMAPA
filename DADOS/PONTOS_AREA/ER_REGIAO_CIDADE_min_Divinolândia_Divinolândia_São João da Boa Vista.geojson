@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "34594558000164", "IDCIDADE": "DIVINOLANDIA", "NOMEFANTASIA": "DIVINO_REAL_FC_LTDA", "RAZAOSOCIAL": "DIVINO_REAL", "ENDEE": "RUA_FRANCISCO_PEREIRA_DE_SOUZA272__CENTRO_13780-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.7376306,-21.6614375", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Divinolândia_Divinolândia_São João da Boa Vista" }, "geometry": { "type": "Point", "coordinates": [ -46.7376306, -21.6614375 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "34594558000164", "IDCIDADE": "DIVINOLANDIA", "NOMEFANTASIA": "DIVINO_REAL_FC_LTDA", "RAZAOSOCIAL": "DIVINO_REAL", "ENDEE": "RUA_FRANCISCO_PEREIRA_DE_SOUZA272__CENTRO_13780-000", "LATITUDE": "-21.6614375", "LONGITUDE": "-46.7376306", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-46.7376306,-21.6614375", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Divinolândia_Divinolândia_São João da Boa Vista" }, "geometry": { "type": "Point", "coordinates": [ -46.7376306, -21.6614375 ] } }
 ]
 }

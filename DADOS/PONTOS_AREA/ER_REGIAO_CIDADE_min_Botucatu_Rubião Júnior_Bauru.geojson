@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "34706086000194", "IDCIDADE": "BOTUCATU", "NOMEFANTASIA": "FERNANDA_APARECIDA_DE_SOUZA_ANCELI_TERRAPLANAGEM", "RAZAOSOCIAL": "AER_TERRAPLENAGEM", "ENDEE": "RUA_PEDRO_PANIGUEL644__VILA_FORMOSA_18618-070", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.4986846,-22.894124", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Botucatu_Rubião Júnior_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.4986846, -22.894124 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "34706086000194", "IDCIDADE": "BOTUCATU", "NOMEFANTASIA": "FERNANDA_APARECIDA_DE_SOUZA_ANCELI_TERRAPLANAGEM", "RAZAOSOCIAL": "AER_TERRAPLENAGEM", "ENDEE": "RUA_PEDRO_PANIGUEL644__VILA_FORMOSA_18618-070", "LATITUDE": "-22.894124", "LONGITUDE": "-48.4986846", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.4986846,-22.894124", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Botucatu_Rubião Júnior_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.4986846, -22.894124 ] } }
 ]
 }

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "49315418000187", "IDCIDADE": "IBIRA", "NOMEFANTASIA": "49.315.418_MARIA_LAUDENICE_BARBOSA_DOS_SANTOS_SILVA", "RAZAOSOCIAL": "ANA_ASSADOS_E_MARMITARIA_", "ENDEE": "RUA_JOSE_ALVES_DE_MELO658__CENTRO_15860-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.2442133,-21.0819167", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Ibirá_Ibirá_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.2442133, -21.0819167 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "49315418000187", "IDCIDADE": "IBIRA", "NOMEFANTASIA": "49.315.418_MARIA_LAUDENICE_BARBOSA_DOS_SANTOS_SILVA", "RAZAOSOCIAL": "ANA_ASSADOS_E_MARMITARIA_", "ENDEE": "RUA_JOSE_ALVES_DE_MELO658__CENTRO_15860-000", "LATITUDE": "-21.0819167", "LONGITUDE": "-49.2442133", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.2442133,-21.0819167", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Ibirá_Ibirá_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.2442133, -21.0819167 ] } }
 ]
 }

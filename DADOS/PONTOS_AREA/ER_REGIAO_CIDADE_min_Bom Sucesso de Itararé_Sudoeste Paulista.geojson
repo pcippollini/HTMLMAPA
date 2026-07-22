@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "09475936000143", "IDCIDADE": "BOM_SUCESSO_DE_ITARARE", "NOMEFANTASIA": "I.V._AMARAL_ANDRADE_LTDA", "RAZAOSOCIAL": "GAS_VERNEQUE", "ENDEE": "RUA_ANGELICA_BRIZOLA201__JARDIM_PRIMAVERA_18475-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.1413119,-24.3189716", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Bom Sucesso de Itararé_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -49.1413119, -24.3189716 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "09475936000143", "IDCIDADE": "BOM_SUCESSO_DE_ITARARE", "NOMEFANTASIA": "I.V._AMARAL_ANDRADE_LTDA", "RAZAOSOCIAL": "GAS_VERNEQUE", "ENDEE": "RUA_ANGELICA_BRIZOLA201__JARDIM_PRIMAVERA_18475-000", "LATITUDE": "-24.3189716", "LONGITUDE": "-49.1413119", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.1413119,-24.3189716", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Bom Sucesso de Itararé_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -49.1413119, -24.3189716 ] } }
 ]
 }
