@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Capital Norte - Tucuruvi</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E59KMQFDEK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-E59KMQFDEK');
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+<style>
+:root{
+  --finalizado:#8B0000;
+  --carteira-fampe:#D946EF;
+  --carteira:#123D68;
+  --t2:#FACC15;
+  --t3:#14B8A6;
+  --t4:#F97316;
+  --m1:#7C3AED;
+  --outro:#6B7280;
+  --painel:#111827;
+  --painel2:#1F2937;
+  --texto:#F9FAFB;
+  --borda:#374151;
+}
+
+*{box-sizing:border-box}
+html,body,#map{height:100%;width:100%;margin:0}
+body{font-family:Arial,sans-serif;overflow:hidden}
+#map{background:#ddd}
+
+.resumo{
+  position:absolute;
+  z-index:1000;
+  top:10px;
+  left:10px;
+  width:210px;
+  padding:10px;
+  border-radius:11px;
+  background:rgba(17,24,39,.94);
+  color:var(--texto);
+  box-shadow:0 3px 14px rgba(0,0,0,.35);
+}
+.resumo-titulo{font-size:14px;font-weight:700;margin-bottom:5px}
+.resumo-linha{display:flex;justify-content:space-between;font-size:12px;margin:3px 0}
+.resumo-linha strong{font-size:13px}
+.resumo-status{font-size:11px;color:#D1D5DB;margin-top:6px}
+
+.menu-btn{
+  position:absolute;
+  z-index:1201;
+  top:10px;
+  right:10px;
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:10px;
+  background:#111827;
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 3px 14px rgba(0,0,0,.35);
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1199;
+  background:rgba(0,0,0,.38);
+  display:none;
+}
+
+.menu-lateral{
+  position:fixed;
+  z-index:1200;
+  top:0;
+  right:-410px;
+  width:min(390px,92vw);
+  height:100vh;
+  overflow:auto;
+  background:var(--painel);
+  color:var(--texto);
+  padding:16px;
+  box-shadow:-5px 0 20px rgba(0,0,0,.4);
+  transition:right .25s ease;
+}
+.menu-lateral.aberto{right:0}
+.menu-overlay.aberto{display:block}
+
+.menu-cabecalho{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-right:54px;
+  margin-bottom:12px;
+}
+.menu-cabecalho h2{font-size:17px;margin:0}
+.menu-fechar{
+  border:0;
+  border-radius:7px;
+  background:#374151;
+  color:white;
+  padding:7px 10px;
+  cursor:pointer;
+}
+
+.secao{
+  border-top:1px solid var(--borda);
+  padding-top:12px;
+  margin-top:12px;
+}
+.secao h3{font-size:13px;margin:0 0 8px;color:#E5E7EB}
+
+.grade-estatisticas{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+}
+.estatistica{
+  border:1px solid var(--borda);
+  background:var(--painel2);
+  color:white;
+  border-radius:8px;
+  padding:7px 4px;
+  text-align:center;
+  cursor:pointer;
+  font-size:9px;
+}
+.estatistica strong{display:block;font-size:16px;margin-top:2px}
+.estatistica.ativo{outline:2px solid white}
+
+.busca{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:6px;
+}
+.busca input{
+  width:100%;
+  padding:9px;
+  border:1px solid #4B5563;
+  border-radius:7px;
+  background:#F9FAFB;
+  color:#111;
+}
+.btn{
+  padding:9px 10px;
+  border:0;
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:700;
+}
+.btn-claro{background:#F9FAFB;color:#111827}
+.btn-sec{background:#374151;color:white}
+.acoes-menu{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+
+.lista-status{display:grid;gap:5px}
+.item-status{
+  display:grid;
+  grid-template-columns:22px 1fr auto;
+  align-items:center;
+  gap:7px;
+  background:var(--painel2);
+  border:1px solid var(--borda);
+  border-radius:7px;
+  padding:6px 7px;
+  cursor:pointer;
+  font-size:11px;
+}
+.item-status.ativo{outline:2px solid white}
+.amostra{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  border:2px solid white;
+  box-shadow:0 0 3px rgba(0,0,0,.65);
+}
+.item-status b{text-align:right}
+
+.info-regiao,.ajuda{font-size:11px;line-height:1.45;color:#D1D5DB}
+.info-regiao code{word-break:break-all;color:#FDE68A}
+
+.marker-status{
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  border:2px solid #fff;
+  box-shadow:0 0 4px rgba(0,0,0,.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font:700 7px Arial;
+  color:white;
+  text-shadow:0 1px 2px #000;
+}
+.gps-marker{
+  width:18px;
+  height:18px;
+  background:#1976d2;
+  border:3px solid #fff;
+  border-radius:50%;
+  box-shadow:0 0 0 5px rgba(25,118,210,.25),0 0 8px rgba(0,0,0,.6);
+}
+.popup-status{
+  display:inline-block;
+  margin-top:4px;
+  padding:3px 6px;
+  border-radius:5px;
+  color:white;
+  font-weight:700;
+  font-size:10px;
+}
+
+@media(max-width:600px){
+  .resumo{top:6px;left:6px;width:190px}
+  .menu-btn{top:6px;right:6px}
+  .grade-estatisticas{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+</style>
+</head>
+
+<body>
+<div id="map"></div>
+
+<section class="resumo">
+  <div class="resumo-titulo">Capital Norte - Tucuruvi</div>
+  <div class="resumo-linha"><span>Total</span><strong id="resTotal">0</strong></div>
+  <div class="resumo-linha"><span>Finalizado</span><strong id="resFinalizado">0</strong></div>
+  <div class="resumo-linha"><span>Carteiras</span><strong id="resCarteiras">0</strong></div>
+  <div class="resumo-linha"><span>Ações</span><strong id="resAcoes">0</strong></div>
+  <div class="resumo-status" id="statusArea">GPS ainda não iniciado</div>
+</section>
+
+<button class="menu-btn" id="abrirMenu" title="Abrir menu">☰</button>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<aside class="menu-lateral" id="menuLateral">
+  <div class="menu-cabecalho">
+    <h2>Menu do mapa</h2>
+    <button class="menu-fechar" id="fecharMenu">Fechar</button>
+  </div>
+
+  <section class="secao">
+    <h3>Buscar ponto</h3>
+    <div class="busca">
+      <input id="campoBusca" type="search" placeholder="CNPJ, empresa ou endereço">
+      <button class="btn btn-claro" id="btnBuscar">Buscar</button>
+    </div>
+    <div class="info-regiao" id="resultadoBusca" style="margin-top:6px"></div>
+  </section>
+
+  <section class="secao">
+    <h3>Estatísticas e filtros consolidados</h3>
+    <div class="grade-estatisticas">
+      <button class="estatistica" data-filtro="TODOS">TOTAL<strong id="cTotal">0</strong></button>
+      <button class="estatistica" data-filtro="FINALIZADO">FINALIZADO<strong id="cFinalizado">0</strong></button>
+      <button class="estatistica" data-filtro="CARTEIRAS">CARTEIRAS<strong id="cCarteiras">0</strong></button>
+      <button class="estatistica" data-filtro="ACOES">AÇÕES<strong id="cAcoes">0</strong></button>
+      <button class="estatistica" data-filtro="T2">T2<strong id="cT2">0</strong></button>
+      <button class="estatistica" data-filtro="T3">T3<strong id="cT3">0</strong></button>
+      <button class="estatistica" data-filtro="T4">T4<strong id="cT4">0</strong></button>
+      <button class="estatistica" data-filtro="M1">M1<strong id="cM1">0</strong></button>
+    </div>
+  </section>
+
+  <section class="secao">
+    <h3>Legenda e contagem exata por O_QUE_FAZER</h3>
+    <div class="lista-status" id="listaStatus"></div>
+  </section>
+
+  <section class="secao">
+    <h3>Ações do mapa</h3>
+    <div class="acoes-menu">
+      <button class="btn btn-claro" id="btnGps">Minha localização</button>
+      <button class="btn btn-sec" id="btnCentralizar">Centralizar mapa</button>
+      <button class="btn btn-sec" id="btnLimparFiltro">Limpar filtro</button>
+      <button class="btn btn-sec" id="btnFecharPopups">Fechar popups</button>
+    </div>
+  </section>
+
+  <section class="secao">
+    <h3>Informações da região</h3>
+    <div class="info-regiao">
+      <b>Mapa:</b> Capital Norte - Tucuruvi<br>
+      <b>Áreas:</b> 1<br>
+      <b>Arquivo da área:</b><br>
+      <code>ER_REGIAO_Capital Norte_Tucuruvi.geojson</code><br>
+      <b>Arquivo de pontos:</b><br>
+      <code>ER_REGIAO_CIDADE_min_Capital Norte_Tucuruvi.geojson</code>
+    </div>
+  </section>
+
+  <section class="secao">
+    <h3>Ajuda</h3>
+    <div class="ajuda">
+      Use os cartões ou os itens da legenda para filtrar os pontos. A busca procura por CNPJ, razão social,
+      nome fantasia e endereço. “Minha localização” ativa o GPS e informa se você está dentro ou fora da área.
+    </div>
+  </section>
+</aside>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+<script>
+const ARQUIVO_POLIGONO =
+  "../DADOS/AREAS_POLIGONOS/ER_REGIAO_Capital Norte_Tucuruvi.geojson";
+
+const ARQUIVO_PONTOS =
+  "../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Capital Norte_Tucuruvi.geojson";
+
+const STATUS_VALIDOS = [
+  'FINALIZADO',
+  'CARTEIRA - FAMPE',
+  'CARTEIRA',
+  'APLICAR T3',
+  'APLICAR T2',
+  'APLICAR M1',
+  'APLICAR T2,T3',
+  'APLICAR T2,M1',
+  'APLICAR T2,T4',
+  'APLICAR T2,T4,M1',
+  'APLICAR T3,T4,M1',
+  'APLICAR T4',
+  'APLICAR T4,M1'
+];
+
+const CORES = {
+  FINALIZADO:'#8B0000',
+  'CARTEIRA - FAMPE':'#D946EF',
+  CARTEIRA:'#123D68',
+  T2:'#FACC15',
+  T3:'#14B8A6',
+  T4:'#F97316',
+  M1:'#7C3AED',
+  OUTRO:'#6B7280'
+};
+
+let areaGeojson = null;
+let pontosGeojson = null;
+let gpsMarker = null;
+let gpsCircle = null;
+let lastLatLng = null;
+let watchId = null;
+let boundsInicial = null;
+let filtroAtual = 'TODOS';
+let layersPontos = [];
+
+const map = L.map('map',{preferCanvas:true});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19,
+  attribution:'&copy; OpenStreetMap'
+}).addTo(map);
+
+const markers = L.markerClusterGroup({
+  chunkedLoading:true,
+  maxClusterRadius:45,
+  disableClusteringAtZoom:17
+}).addTo(map);
+
+function normaliza(valor){
+  return String(valor || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .replace(/\s+/g,' ')
+    .replace(/\s*,\s*/g,',')
+    .trim()
+    .toUpperCase();
+}
+
+function acoesDoStatus(valor){
+  const s = normaliza(valor);
+
+  if(s === 'FINALIZADO') return ['FINALIZADO'];
+  if(s === 'CARTEIRA - FAMPE') return ['CARTEIRA - FAMPE'];
+  if(s === 'CARTEIRA') return ['CARTEIRA'];
+
+  const acoes = [];
+  if(s.includes('T2')) acoes.push('T2');
+  if(s.includes('T3')) acoes.push('T3');
+  if(s.includes('T4')) acoes.push('T4');
+  if(s.includes('M1')) acoes.push('M1');
+
+  return acoes.length ? acoes : ['OUTRO'];
+}
+
+function fundoStatus(valor){
+  const acoes = acoesDoStatus(valor);
+  const cores = acoes.map(acao => CORES[acao] || CORES.OUTRO);
+
+  if(cores.length === 1) return cores[0];
+
+  const fatia = 100 / cores.length;
+  return `conic-gradient(${cores.map((cor,i) =>
+    `${cor} ${i * fatia}% ${(i + 1) * fatia}%`
+  ).join(',')})`;
+}
+
+function textoIcone(valor){
+  const s = normaliza(valor);
+  if(s === 'FINALIZADO') return '✓';
+  if(s === 'CARTEIRA - FAMPE') return 'F';
+  if(s === 'CARTEIRA') return 'C';
+  return acoesDoStatus(s).join('+');
+}
+
+function makeIcon(status){
+  const acoes = acoesDoStatus(status);
+  const escuro = acoes.length === 1 && (acoes[0] === 'T2' || acoes[0] === 'T3');
+
+  return L.divIcon({
+    className:'',
+    html:`<div class="marker-status" style="background:${fundoStatus(status)};color:${escuro ? '#111' : '#fff'}">${textoIcone(status)}</div>`,
+    iconSize:[25,25],
+    iconAnchor:[12,12],
+    popupAnchor:[0,-11]
+  });
+}
+
+function nomePonto(p){
+  return p.RAZAOSOCIAL || p.RAZAO_SOCIAL || p.NOMEFANTASIA || p.NOME_FANTASIA || p.FANTASIA || 'Ponto';
+}
+
+function enderecoPonto(p){
+  return p.ENDEE || p.ENDERECO || p.ENDERECO_COMPLETO || '';
+}
+
+function textoPesquisa(p){
+  return normaliza([
+    p.CNPJ,
+    p.NR_CNPJ,
+    p.RAZAOSOCIAL,
+    p.RAZAO_SOCIAL,
+    p.NOMEFANTASIA,
+    p.NOME_FANTASIA,
+    p.FANTASIA,
+    p.ENDEE,
+    p.ENDERECO,
+    p.ENDERECO_COMPLETO
+  ].filter(Boolean).join(' '));
+}
+
+function statusPassaFiltro(status,filtro){
+  const s = normaliza(status);
+
+  if(filtro === 'TODOS') return true;
+  if(filtro === 'FINALIZADO') return s === 'FINALIZADO';
+  if(filtro === 'CARTEIRAS') return s === 'CARTEIRA' || s === 'CARTEIRA - FAMPE';
+  if(filtro === 'ACOES') return s.startsWith('APLICAR ');
+  if(filtro === 'T2') return s.includes('T2');
+  if(filtro === 'T3') return s.includes('T3');
+  if(filtro === 'T4') return s.includes('T4');
+  if(filtro === 'M1') return s.includes('M1');
+
+  return s === filtro;
+}
+
+function aplicarFiltro(filtro){
+  filtroAtual = filtro;
+  markers.clearLayers();
+
+  layersPontos.forEach(item => {
+    if(statusPassaFiltro(item.status,filtro)){
+      markers.addLayer(item.layer);
+    }
+  });
+
+  document.querySelectorAll('[data-filtro]').forEach(el => {
+    el.classList.toggle('ativo',el.dataset.filtro === filtro);
+  });
+
+  document.getElementById('resultadoBusca').textContent =
+    filtro === 'TODOS'
+      ? 'Todos os pontos estão visíveis.'
+      : `Filtro aplicado: ${filtro}`;
+}
+
+function dentroDaArea(lat,lng){
+  try{
+    if(!areaGeojson || !Array.isArray(areaGeojson.features)) return false;
+    const ponto = turf.point([lng,lat]);
+
+    return areaGeojson.features.some(feature => {
+      const tipo = feature?.geometry?.type;
+      return (tipo === 'Polygon' || tipo === 'MultiPolygon') &&
+        turf.booleanPointInPolygon(ponto,feature);
+    });
+  }catch(e){
+    return false;
+  }
+}
+
+function contar(data){
+  const features = Array.isArray(data.features) ? data.features : [];
+  const exatos = Object.fromEntries(STATUS_VALIDOS.map(s => [s,0]));
+
+  const resumo = {
+    total:features.length,
+    finalizado:0,
+    carteiras:0,
+    acoes:0,
+    t2:0,
+    t3:0,
+    t4:0,
+    m1:0
+  };
+
+  features.forEach(feature => {
+    const status = normaliza((feature.properties || {}).O_QUE_FAZER);
+
+    if(exatos[status] !== undefined) exatos[status]++;
+
+    if(status === 'FINALIZADO') resumo.finalizado++;
+    if(status === 'CARTEIRA' || status === 'CARTEIRA - FAMPE') resumo.carteiras++;
+    if(status.startsWith('APLICAR ')) resumo.acoes++;
+    if(status.includes('T2')) resumo.t2++;
+    if(status.includes('T3')) resumo.t3++;
+    if(status.includes('T4')) resumo.t4++;
+    if(status.includes('M1')) resumo.m1++;
+  });
+
+  return {resumo,exatos};
+}
+
+function atualizarPainel(data){
+  const {resumo,exatos} = contar(data);
+
+  resTotal.textContent = resumo.total;
+  resFinalizado.textContent = resumo.finalizado;
+  resCarteiras.textContent = resumo.carteiras;
+  resAcoes.textContent = resumo.acoes;
+
+  cTotal.textContent = resumo.total;
+  cFinalizado.textContent = resumo.finalizado;
+  cCarteiras.textContent = resumo.carteiras;
+  cAcoes.textContent = resumo.acoes;
+  cT2.textContent = resumo.t2;
+  cT3.textContent = resumo.t3;
+  cT4.textContent = resumo.t4;
+  cM1.textContent = resumo.m1;
+
+  listaStatus.innerHTML = STATUS_VALIDOS.map(status => `
+    <div class="item-status" data-filtro="${status}">
+      <span class="amostra" style="background:${fundoStatus(status)}"></span>
+      <span>${status}</span>
+      <b>${exatos[status]}</b>
+    </div>
+  `).join('');
+
+  listaStatus.querySelectorAll('[data-filtro]').forEach(el => {
+    el.addEventListener('click',() => aplicarFiltro(el.dataset.filtro));
+  });
+}
+
+function abrirMenu(){
+  menuLateral.classList.add('aberto');
+  menuOverlay.classList.add('aberto');
+}
+
+function fecharMenu(){
+  menuLateral.classList.remove('aberto');
+  menuOverlay.classList.remove('aberto');
+}
+
+function iniciarGPS(){
+  if(!navigator.geolocation){
+    statusArea.textContent = 'GPS não suportado neste navegador.';
+    return;
+  }
+
+  if(watchId !== null){
+    if(lastLatLng) map.setView(lastLatLng,17);
+    return;
+  }
+
+  watchId = navigator.geolocation.watchPosition(pos => {
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+    const acc = Math.round(pos.coords.accuracy || 0);
+
+    lastLatLng = L.latLng(lat,lng);
+
+    if(!gpsMarker){
+      gpsMarker = L.marker(lastLatLng,{
+        icon:L.divIcon({
+          className:'',
+          html:'<div class="gps-marker"></div>',
+          iconSize:[24,24],
+          iconAnchor:[12,12]
+        })
+      }).addTo(map);
+
+      gpsCircle = L.circle(lastLatLng,{
+        radius:acc,
+        color:'#1976d2',
+        weight:1,
+        fillOpacity:.08
+      }).addTo(map);
+    }else{
+      gpsMarker.setLatLng(lastLatLng);
+      gpsCircle.setLatLng(lastLatLng).setRadius(acc);
+    }
+
+    statusArea.textContent =
+      `${dentroDaArea(lat,lng) ? '🟢 Dentro da área' : '🔴 Fora da área'} · ${acc} m`;
+
+    if(menuLateral.classList.contains('aberto')){
+      resultadoBusca.textContent = `GPS ativo. Precisão aproximada: ${acc} m.`;
+    }
+  },() => {
+    statusArea.textContent = 'GPS não autorizado ou indisponível.';
+  },{
+    enableHighAccuracy:true,
+    maximumAge:3000,
+    timeout:15000
+  });
+}
+
+function buscarPonto(){
+  const termo = normaliza(campoBusca.value);
+
+  if(!termo){
+    resultadoBusca.textContent = 'Digite um CNPJ, empresa ou endereço.';
+    return;
+  }
+
+  const encontrados = layersPontos.filter(item =>
+    item.textoPesquisa.includes(termo)
+  );
+
+  if(!encontrados.length){
+    resultadoBusca.textContent = 'Nenhum ponto encontrado.';
+    return;
+  }
+
+  aplicarFiltro('TODOS');
+
+  const primeiro = encontrados[0];
+  markers.zoomToShowLayer(primeiro.layer,() => {
+    map.setView(primeiro.layer.getLatLng(),17);
+    primeiro.layer.openPopup();
+  });
+
+  resultadoBusca.textContent =
+    encontrados.length === 1
+      ? '1 ponto encontrado.'
+      : `${encontrados.length} pontos encontrados. Exibindo o primeiro.`;
+}
+
+async function carregarMapa(){
+  try{
+    const [areaResp,pontosResp] = await Promise.all([
+      fetch(encodeURI(ARQUIVO_POLIGONO)),
+      fetch(encodeURI(ARQUIVO_PONTOS))
+    ]);
+
+    if(!areaResp.ok) throw new Error('Erro ao carregar polígono: ' + ARQUIVO_POLIGONO);
+    if(!pontosResp.ok) throw new Error('Erro ao carregar pontos: ' + ARQUIVO_PONTOS);
+
+    areaGeojson = await areaResp.json();
+    pontosGeojson = await pontosResp.json();
+
+    const areaLayer = L.geoJSON(areaGeojson,{
+      style:{
+        color:'#123D68',
+        weight:3,
+        fillColor:'#123D68',
+        fillOpacity:.10
+      }
+    }).addTo(map);
+
+    if(areaLayer.getBounds().isValid()){
+      boundsInicial = areaLayer.getBounds();
+      map.fitBounds(boundsInicial,{padding:[20,20]});
+    }
+
+    L.geoJSON(pontosGeojson,{
+      pointToLayer:(feature,latlng) => {
+        const p = feature.properties || {};
+        return L.marker(latlng,{icon:makeIcon(p.O_QUE_FAZER)});
+      },
+      onEachFeature:(feature,layer) => {
+        const p = feature.properties || {};
+        const ll = layer.getLatLng();
+        const gmaps =
+          `https://www.google.com/maps/search/?api=1&query=${ll.lat},${ll.lng}`;
+
+        layer.bindPopup(`
+          <b>${nomePonto(p)}</b><br>
+          ${enderecoPonto(p)}<br>
+          <b>Ação:</b> ${p.O_QUE_FAZER || ''}<br>
+          <span class="popup-status" style="background:${fundoStatus(p.O_QUE_FAZER)}">
+            ${normaliza(p.O_QUE_FAZER) || 'SEM STATUS'}
+          </span><br><br>
+          <a target="_blank" rel="noopener noreferrer" href="${gmaps}">
+            Abrir no Google Maps
+          </a>
+        `);
+
+        layersPontos.push({
+          layer,
+          status:normaliza(p.O_QUE_FAZER),
+          textoPesquisa:textoPesquisa(p)
+        });
+
+        markers.addLayer(layer);
+      }
+    });
+
+    atualizarPainel(pontosGeojson);
+    aplicarFiltro('TODOS');
+    statusArea.textContent = 'Mapa carregado · GPS não iniciado';
+
+  }catch(e){
+    console.error(e);
+    statusArea.textContent = 'Erro ao carregar dados.';
+    resultadoBusca.textContent =
+      'Confira os nomes e caminhos dos arquivos GeoJSON.';
+    map.setView([-23.48,-46.61],12);
+  }
+}
+
+abrirMenu.addEventListener('click',abrirMenu);
+fecharMenu.addEventListener('click',fecharMenu);
+menuOverlay.addEventListener('click',fecharMenu);
+
+document.querySelectorAll('.estatistica').forEach(el => {
+  el.addEventListener('click',() => aplicarFiltro(el.dataset.filtro));
+});
+
+btnGps.addEventListener('click',() => {
+  iniciarGPS();
+  if(lastLatLng) map.setView(lastLatLng,17);
+});
+
+btnCentralizar.addEventListener('click',() => {
+  if(boundsInicial) map.fitBounds(boundsInicial,{padding:[20,20]});
+});
+
+btnLimparFiltro.addEventListener('click',() => aplicarFiltro('TODOS'));
+btnFecharPopups.addEventListener('click',() => map.closePopup());
+btnBuscar.addEventListener('click',buscarPonto);
+campoBusca.addEventListener('keydown',e => {
+  if(e.key === 'Enter') buscarPonto();
+});
+
+carregarMapa();
+</script>
+</body>
+</html>
