@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "Ferraz de Vasconcelos_Santo Antônio Paulista",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
-"xy_coordinate_resolution": 1e-15,
-"features": [
-{ "type": "Feature", "properties": { "fid": 262, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "Ferraz de Vasconcelos", "NM_DIST": "Santo Antônio Paulista", "CD_SUBDIST": "35157071500", "ER_REGIAO": "Ferraz de Vasconcelos_Santo Antônio Paulista", "ER_REGIAO_CIDADE": "Ferraz de Vasconcelos_Santo Antônio Paulista_Alto Tietê", "USO": "SIM" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.3805341, -23.5523725 ], [ -46.3820728, -23.5540321 ], [ -46.3900044, -23.5553039 ], [ -46.394995, -23.550959 ], [ -46.395054, -23.548956 ], [ -46.392071, -23.549359 ], [ -46.387922, -23.546936 ], [ -46.38772, -23.545656 ], [ -46.3894708, -23.5426013 ], [ -46.3879381, -23.5414812 ], [ -46.3862348, -23.5430238 ], [ -46.3846314, -23.5433141 ], [ -46.3843937, -23.5448967 ], [ -46.38291, -23.5460619 ], [ -46.3805801, -23.5442547 ], [ -46.378551, -23.5445949 ], [ -46.3788123, -23.5461076 ], [ -46.3775772, -23.547107 ], [ -46.3799077, -23.5499383 ], [ -46.3805341, -23.5523725 ] ] ] ] } }
-]
-}

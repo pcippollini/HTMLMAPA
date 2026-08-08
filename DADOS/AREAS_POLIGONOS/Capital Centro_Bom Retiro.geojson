@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "Capital Centro_Bom Retiro",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
-"xy_coordinate_resolution": 1e-15,
-"features": [
-{ "type": "Feature", "properties": { "fid": 843, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Bom Retiro", "CD_SUBDIST": "35503080900", "ER_REGIAO": "Capital Centro_Bom Retiro", "ER_REGIAO_CIDADE": "Capital Centro_Bom Retiro" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.626544, -23.537605 ], [ -46.639149, -23.535017 ], [ -46.643587, -23.529126 ], [ -46.648007, -23.528742 ], [ -46.648405, -23.526747 ], [ -46.654054, -23.517914 ], [ -46.653948, -23.516764499999965 ], [ -46.625201499999946, -23.519303 ], [ -46.62516, -23.533964 ], [ -46.626544, -23.537605 ] ] ] ] } }
-]
-}

@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "Capital Centro_Moema",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
-"xy_coordinate_resolution": 1e-15,
-"features": [
-{ "type": "Feature", "properties": { "fid": 866, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Moema", "CD_SUBDIST": "35503083200", "ER_REGIAO": "Capital Centro_Moema", "ER_REGIAO_CIDADE": "Capital Centro_Moema" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.66611219999993, -23.615857199999937 ], [ -46.673683, -23.611618 ], [ -46.67663, -23.608563 ], [ -46.674176, -23.602052 ], [ -46.672455, -23.590487 ], [ -46.670216, -23.58414 ], [ -46.660773, -23.578632 ], [ -46.653567, -23.572104 ], [ -46.650596, -23.574094 ], [ -46.651085, -23.579507 ], [ -46.64767, -23.584902 ], [ -46.648056, -23.588635 ], [ -46.649788, -23.59077 ], [ -46.648033, -23.59267 ], [ -46.649991, -23.592376 ], [ -46.650479, -23.593395 ], [ -46.651643, -23.60616 ], [ -46.661687, -23.617398 ], [ -46.66611219999993, -23.615857199999937 ] ] ] ] } }
-]
-}

@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "Capital Oeste_Itaim Bibi",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
-"xy_coordinate_resolution": 1e-15,
-"features": [
-{ "type": "Feature", "properties": { "fid": 869, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "São Paulo", "NM_DIST": "Itaim Bibi", "CD_SUBDIST": "35503083500", "ER_REGIAO": "Capital Oeste_Itaim Bibi", "ER_REGIAO_CIDADE": "Capital Oeste_Itaim Bibi" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.671062, -23.576848 ], [ -46.670184, -23.584014 ], [ -46.672455, -23.590487 ], [ -46.674176, -23.602052 ], [ -46.678079, -23.612827 ], [ -46.687304, -23.626346 ], [ -46.692642, -23.625377 ], [ -46.6961, -23.623603 ], [ -46.698429, -23.620906 ], [ -46.701378, -23.620078 ], [ -46.698178, -23.606785 ], [ -46.691486, -23.586705 ], [ -46.689671, -23.586377 ], [ -46.6835, -23.580437 ], [ -46.678789, -23.580393 ], [ -46.673108, -23.577089 ], [ -46.671062, -23.576848 ] ] ] ] } }
-]
-}
