@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Ferraz de Vasconcelos</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E59KMQFDEK"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-E59KMQFDEK');
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+<style>
+:root{--painel:#111827;--painel2:#1F2937;--texto:#F9FAFB;--borda:#374151}
+*{box-sizing:border-box}
+html,body,#map{height:100%;width:100%;margin:0}
+body{font-family:Arial,sans-serif;overflow:hidden}
+#map{background:#ddd}
+.resumo{position:absolute;z-index:1000;top:10px;left:10px;width:225px;padding:10px;border-radius:11px;background:rgba(17,24,39,.95);color:#fff;box-shadow:0 3px 14px rgba(0,0,0,.35)}
+.titulo{font-weight:700;font-size:14px;margin-bottom:5px}
+.linha{display:flex;justify-content:space-between;font-size:12px;margin:3px 0}
+.statusgps{font-size:11px;color:#D1D5DB;margin-top:6px}
+.acoes{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px}
+.btn{border:0;border-radius:7px;padding:7px 6px;font-size:11px;font-weight:700;cursor:pointer}
+.btn-pri{background:#fff;color:#111827}.btn-sec{background:#374151;color:#fff}
+.fab{position:absolute;z-index:1100;right:10px;width:48px;height:44px;border:0;border-radius:10px;background:#111827;color:white;font-size:20px;box-shadow:0 3px 14px rgba(0,0,0,.35);cursor:pointer}
+#btnLegenda{top:10px}#btnProximo{top:62px;font-size:11px}
+.modal-bg{position:fixed;inset:0;z-index:1190;background:rgba(0,0,0,.42);display:none}
+.modal-bg.aberto{display:block}
+.painel-flutuante{position:fixed;z-index:1200;top:50%;left:50%;transform:translate(-50%,-50%);width:min(390px,92vw);max-height:82vh;overflow:auto;background:var(--painel);color:var(--texto);border-radius:12px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,.5);display:none}
+.painel-flutuante.aberto{display:block}
+.cab{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.cab h3{margin:0;font-size:16px}.fechar{background:#374151;color:white;border:0;border-radius:7px;padding:6px 9px;cursor:pointer}
+.lista{display:grid;gap:5px}
+.item{display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:7px;background:var(--painel2);border:1px solid var(--borda);border-radius:7px;padding:7px;font-size:11px;cursor:pointer;color:white}
+.bola{width:18px;height:18px;border-radius:50%;border:2px solid white}
+.marker-status{width:21px;height:21px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 4px rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;font:700 8px Arial;color:#fff}
+.gps-marker{width:18px;height:18px;background:#2563EB;border:3px solid white;border-radius:50%;box-shadow:0 0 0 6px rgba(37,99,235,.25)}
+.proximo-info{font-size:12px;line-height:1.5}
+.rota{display:inline-block;margin-top:8px;background:#2563EB;color:white;text-decoration:none;padding:8px 10px;border-radius:7px;font-weight:700}
+.aviso{font-size:11px;color:#FACC15;margin-top:7px}
+@media(max-width:600px){.resumo{top:6px;left:6px;width:205px}.fab{right:6px}#btnLegenda{top:6px}#btnProximo{top:58px}}
+</style>
+</head>
+
+<body>
+<div id="map"></div>
+
+<section class="resumo">
+<div class="titulo">Ferraz de Vasconcelos</div>
+<div class="linha"><span>Pontos</span><b id="totalPontos">0</b></div>
+<div class="linha"><span>Finalizado</span><b id="totalFinalizado">0</b></div>
+<div class="linha"><span>Carteiras</span><b id="totalCarteira">0</b></div>
+<div class="statusgps" id="statusGPS">Carregando mapa...</div>
+<div class="acoes">
+<button class="btn btn-pri" id="btnGPS">Minha localização</button>
+<button class="btn btn-sec" id="btnCentro">Centralizar</button>
+</div>
+</section>
+
+<button class="fab" id="btnLegenda">☰</button>
+<button class="fab" id="btnProximo">Próximo</button>
+
+<div class="modal-bg" id="fundo"></div>
+
+<div class="painel-flutuante" id="painelLegenda">
+<div class="cab"><h3>Legenda</h3><button class="fechar">Fechar</button></div>
+<div class="lista" id="listaLegenda"></div>
+<div class="aviso" id="naoReconhecido"></div>
+</div>
+
+<div class="painel-flutuante" id="painelProximo">
+<div class="cab"><h3>Próximo ponto</h3><button class="fechar">Fechar</button></div>
+<div id="conteudoProximo"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+<script>
+const NOME_MAPA="Ferraz de Vasconcelos";
+const TIPO_MAPA="COMPOSTO";
+const CAMADAS_POLIGONO=[{"nome": "ER_REGIAO_Ferraz de Vasconcelos_Ferraz de Vasconcelos.geojson", "arquivo": "../DADOS/AREAS_POLIGONOS/ER_REGIAO_Ferraz de Vasconcelos_Ferraz de Vasconcelos.geojson"}, {"nome": "ER_REGIAO_Ferraz de Vasconcelos_Santa Margarida Paulista.geojson", "arquivo": "../DADOS/AREAS_POLIGONOS/ER_REGIAO_Ferraz de Vasconcelos_Santa Margarida Paulista.geojson"}, {"nome": "ER_REGIAO_Ferraz de Vasconcelos_Santo Antônio Paulista.geojson", "arquivo": "../DADOS/AREAS_POLIGONOS/ER_REGIAO_Ferraz de Vasconcelos_Santo Antônio Paulista.geojson"}];
+const CAMADAS_PONTOS=[{"nome": "ER_REGIAO_CIDADE_min_Ferraz de Vasconcelos_Ferraz de Vasconcelos_Alto Tietê.geojson", "arquivo": "../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Ferraz de Vasconcelos_Ferraz de Vasconcelos_Alto Tietê.geojson"}, {"nome": "ER_REGIAO_CIDADE_min_Ferraz de Vasconcelos_Santa Margarida Paulista_Alto Tietê.geojson", "arquivo": "../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Ferraz de Vasconcelos_Santa Margarida Paulista_Alto Tietê.geojson"}, {"nome": "ER_REGIAO_CIDADE_min_Ferraz de Vasconcelos_Santo Antônio Paulista_Alto Tietê.geojson", "arquivo": "../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Ferraz de Vasconcelos_Santo Antônio Paulista_Alto Tietê.geojson"}];
+const STATUS_VALIDOS=["FINALIZADO", "CARTEIRA", "CARTEIRA - FAMPE", "T2", "T3", "T4", "M1", "M2", "M3", "M4"];
+const CORES={"FINALIZADO": "#8B0000", "CARTEIRA": "#123D68", "CARTEIRA - FAMPE": "#D946EF", "T2": "#FACC15", "T3": "#14B8A6", "T4": "#F97316", "M1": "#7C3AED", "M2": "#06B6D4", "M3": "#EC4899", "M4": "#84CC16"};
+
+const map=L.map('map',{preferCanvas:true});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
+
+const grupoAreas=L.featureGroup().addTo(map);
+const markers=L.markerClusterGroup({chunkedLoading:true,maxClusterRadius:45,disableClusteringAtZoom:17}).addTo(map);
+
+let areasCarregadas=[];
+let pontosFeatures=[];
+let pontosIndex=[];
+let statusPresentes=[];
+let boundsInicial=null;
+let lastLatLng=null;
+let gpsMarker=null;
+let gpsCircle=null;
+let watchId=null;
+let hiddenAt=null;
+
+function normaliza(v){
+  return String(v??'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim().toUpperCase();
+}
+
+function statusCanonico(v){
+  const s=normaliza(v);
+  const aliases={
+    'APLICAR T2':'T2','APLICAR T3':'T3','APLICAR T4':'T4',
+    'APLICAR M1':'M1','APLICAR M2':'M2','APLICAR M3':'M3','APLICAR M4':'M4'
+  };
+  return aliases[s]||s;
+}
+
+function corStatus(v){return CORES[statusCanonico(v)]||'#6B7280';}
+
+function textoIcone(v){
+  const s=statusCanonico(v);
+  if(s==='FINALIZADO') return '✓';
+  if(s==='CARTEIRA') return 'C';
+  if(s==='CARTEIRA - FAMPE') return 'F';
+  return s;
+}
+
+function makeIcon(status){
+  const s=statusCanonico(status);
+  const escuro=['T2','M4'].includes(s);
+  return L.divIcon({
+    className:'',
+    html:`<div class="marker-status" style="background:${corStatus(s)};color:${escuro?'#111':'#fff'}">${textoIcone(s)}</div>`,
+    iconSize:[25,25],iconAnchor:[12,12],popupAnchor:[0,-11]
+  });
+}
+
+function valor(p,nomes){
+  for(const n of nomes){
+    if(p[n]!==undefined && p[n]!==null && String(p[n]).trim()!=='') return p[n];
+  }
+  return '';
+}
+
+function nomePonto(p){
+  return valor(p,['NOME_FANTASIA','NOMEFANTASIA','FANTASIA','RAZAO_SOCIAL','RAZAOSOCIAL'])||'Ponto';
+}
+
+function popupPonto(f,ll){
+  const p=f.properties||{};
+  const cnpj=valor(p,['CNPJ','NR_CNPJ']);
+  const end=valor(p,['ENDERECO_COMPLETO','ENDERECO','ENDEE']);
+  const cidade=valor(p,['CIDADE','MUNICIPIO','NM_MUN']);
+  const agente=valor(p,['AGENTE','NOME_AGENTE']);
+  const status=statusCanonico(p.O_QUE_FAZER);
+  const maps=`https://www.google.com/maps/search/?api=1&query=${ll.lat},${ll.lng}`;
+
+  return `<b>${nomePonto(p)}</b><br>
+  ${cnpj?`<b>CNPJ:</b> ${cnpj}<br>`:''}
+  ${end?`<b>Endereço:</b> ${end}<br>`:''}
+  ${cidade?`<b>Cidade:</b> ${cidade}<br>`:''}
+  ${agente?`<b>Agente:</b> ${agente}<br>`:''}
+  <b>Status:</b> <span style="color:${corStatus(status)};font-weight:700">${status||'Não informado'}</span><br><br>
+  <a target="_blank" rel="noopener noreferrer" href="${maps}">Abrir no Google Maps</a>`;
+}
+
+function registrar(evento,params={}){
+  if(typeof gtag==='function'){
+    gtag('event',evento,{mapa:NOME_MAPA,tipo_mapa:TIPO_MAPA,...params});
+  }
+}
+
+function contar(fs){
+  const c={TOTAL:fs.length,NAO_RECONHECIDO:0};
+  STATUS_VALIDOS.forEach(s=>c[s]=0);
+  fs.forEach(f=>{
+    const s=statusCanonico((f.properties||{}).O_QUE_FAZER);
+    if(c[s]!==undefined) c[s]++;
+    else c.NAO_RECONHECIDO++;
+  });
+  return c;
+}
+
+function atualizarContadores(c){
+  totalPontos.textContent=c.TOTAL;
+  totalFinalizado.textContent=c.FINALIZADO||0;
+  totalCarteira.textContent=(c.CARTEIRA||0)+(c['CARTEIRA - FAMPE']||0);
+
+  statusPresentes=STATUS_VALIDOS.filter(s=>(c[s]||0)>0);
+
+  listaLegenda.innerHTML=statusPresentes.map(s=>`
+    <div class="item">
+      <span class="bola" style="background:${CORES[s]}"></span>
+      <span>${s}</span>
+      <b>${c[s]}</b>
+    </div>
+  `).join('');
+
+  naoReconhecido.textContent=c.NAO_RECONHECIDO
+    ? `Atenção: ${c.NAO_RECONHECIDO} ponto(s) com status não reconhecido.`
+    : '';
+}
+
+function abrir(id){
+  fundo.classList.add('aberto');
+  document.getElementById(id).classList.add('aberto');
+}
+
+function fecharTudo(){
+  fundo.classList.remove('aberto');
+  document.querySelectorAll('.painel-flutuante').forEach(e=>e.classList.remove('aberto'));
+}
+
+fundo.addEventListener('click',fecharTudo);
+document.querySelectorAll('.fechar').forEach(b=>b.addEventListener('click',fecharTudo));
+
+async function buscarJson(caminho){
+  const r=await fetch(encodeURI(caminho));
+  if(!r.ok) throw new Error(`${r.status} — ${caminho}`);
+  return r.json();
+}
+
+async function carregarAreas(){
+  return Promise.allSettled(
+    CAMADAS_POLIGONO.map(async item=>{
+      const gj=await buscarJson(item.arquivo);
+      areasCarregadas.push(gj);
+
+      const layer=L.geoJSON(gj,{
+        style:{color:'#123D68',weight:3,fillColor:'#123D68',fillOpacity:.10},
+        onEachFeature:(f,l)=>{
+          const p=f.properties||{};
+          const nome=valor(p,['NOME_REGIAO','REGIAO','NM_MUN','NM_DIST'])||item.nome;
+          l.bindPopup(`<b>${nome}</b>`);
+        }
+      });
+
+      layer.addTo(grupoAreas);
+      return item.nome;
+    })
+  );
+}
+
+async function carregarPontos(){
+  return Promise.allSettled(
+    CAMADAS_PONTOS.map(async item=>{
+      const gj=await buscarJson(item.arquivo);
+      const fs=Array.isArray(gj.features)?gj.features:[];
+
+      pontosFeatures.push(...fs);
+
+      L.geoJSON(gj,{
+        pointToLayer:(f,ll)=>L.marker(ll,{icon:makeIcon((f.properties||{}).O_QUE_FAZER)}),
+        onEachFeature:(f,l)=>{
+          const p=f.properties||{};
+          const ll=l.getLatLng();
+
+          l.bindPopup(popupPonto(f,ll));
+
+          l.on('popupopen',()=>{
+            registrar('ponto_clicado',{status:statusCanonico(p.O_QUE_FAZER)});
+          });
+
+          pontosIndex.push({
+            layer:l,
+            latlng:ll,
+            status:statusCanonico(p.O_QUE_FAZER),
+            props:p
+          });
+
+          markers.addLayer(l);
+        }
+      });
+
+      return item.nome;
+    })
+  );
+}
+
+function estaDentro(lat,lng){
+  try{
+    const pt=turf.point([lng,lat]);
+    return areasCarregadas.some(gj=>
+      (gj.features||[]).some(f=>
+        ['Polygon','MultiPolygon'].includes(f?.geometry?.type) &&
+        turf.booleanPointInPolygon(pt,f)
+      )
+    );
+  }catch(e){
+    return false;
+  }
+}
+
+function iniciarGPS(){
+  if(!navigator.geolocation){
+    statusGPS.textContent='GPS não suportado.';
+    return;
+  }
+
+  if(watchId!==null){
+    if(lastLatLng) map.setView(lastLatLng,17);
+    return;
+  }
+
+  registrar('gps_ativado');
+
+  watchId=navigator.geolocation.watchPosition(
+    pos=>{
+      const lat=pos.coords.latitude;
+      const lng=pos.coords.longitude;
+      const acc=Math.round(pos.coords.accuracy||0);
+
+      lastLatLng=L.latLng(lat,lng);
+
+      if(!gpsMarker){
+        gpsMarker=L.marker(lastLatLng,{
+          icon:L.divIcon({
+            className:'',
+            html:'<div class="gps-marker"></div>',
+            iconSize:[24,24],
+            iconAnchor:[12,12]
+          })
+        }).addTo(map);
+
+        gpsCircle=L.circle(lastLatLng,{
+          radius:acc,
+          color:'#2563EB',
+          weight:1,
+          fillOpacity:.08
+        }).addTo(map);
+      }else{
+        gpsMarker.setLatLng(lastLatLng);
+        gpsCircle.setLatLng(lastLatLng).setRadius(acc);
+      }
+
+      statusGPS.textContent=
+        `${estaDentro(lat,lng)?'🟢 Dentro da área':'🔴 Fora da área'} · ${acc} m`;
+    },
+    ()=>statusGPS.textContent='GPS não autorizado ou indisponível.',
+    {enableHighAccuracy:true,maximumAge:3000,timeout:15000}
+  );
+}
+
+function abrirMenuProximo(){
+  if(!lastLatLng){
+    conteudoProximo.innerHTML=
+      '<div class="aviso">Ative “Minha localização” antes de buscar o próximo ponto.</div>';
+    abrir('painelProximo');
+    return;
+  }
+
+  conteudoProximo.innerHTML=
+    '<div class="lista">'+
+    statusPresentes.map(s=>`
+      <button class="item" data-status="${s}">
+        <span class="bola" style="background:${CORES[s]}"></span>
+        <span>${s}</span>
+        <span>›</span>
+      </button>
+    `).join('')+
+    '</div>';
+
+  conteudoProximo.querySelectorAll('[data-status]').forEach(
+    b=>b.addEventListener('click',()=>acharProximo(b.dataset.status))
+  );
+
+  abrir('painelProximo');
+}
+
+function acharProximo(status){
+  const candidatos=pontosIndex.filter(x=>x.status===status);
+  if(!candidatos.length) return;
+
+  const origem=turf.point([lastLatLng.lng,lastLatLng.lat]);
+
+  candidatos.forEach(x=>{
+    x.dist=turf.distance(
+      origem,
+      turf.point([x.latlng.lng,x.latlng.lat]),
+      {units:'kilometers'}
+    );
+  });
+
+  candidatos.sort((a,b)=>a.dist-b.dist);
+
+  const x=candidatos[0];
+  const metros=x.dist<1?Math.round(x.dist*1000):null;
+
+  markers.zoomToShowLayer(x.layer,()=>{
+    map.setView(x.latlng,17);
+    x.layer.openPopup();
+  });
+
+  registrar('proximo_usado',{status});
+
+  const rota=
+    `https://www.google.com/maps/dir/?api=1&origin=${lastLatLng.lat},${lastLatLng.lng}`+
+    `&destination=${x.latlng.lat},${x.latlng.lng}&travelmode=driving`;
+
+  conteudoProximo.innerHTML=`
+    <div class="proximo-info">
+      <b>Status:</b> ${status}<br>
+      <b>Ponto:</b> ${nomePonto(x.props)}<br>
+      <b>Distância em linha reta:</b>
+      ${metros!==null?metros+' m':x.dist.toFixed(2)+' km'}<br>
+      <a id="linkRota" class="rota" target="_blank" rel="noopener noreferrer" href="${rota}">
+        Abrir rota no Google Maps
+      </a>
+    </div>
+  `;
+
+  document.getElementById('linkRota').addEventListener(
+    'click',
+    ()=>registrar('rota_gerada',{status})
+  );
+}
+
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='hidden'){
+    hiddenAt=Date.now();
+  }else if(document.visibilityState==='visible' && hiddenAt){
+    const min=Math.round((Date.now()-hiddenAt)/60000);
+
+    if(min>=30){
+      registrar('mapa_retomado',{tempo_ausente:min});
+    }
+
+    hiddenAt=null;
+  }
+});
+
+(async function iniciar(){
+  const [resultadoAreas,resultadoPontos]=await Promise.all([
+    carregarAreas(),
+    carregarPontos()
+  ]);
+
+  if(grupoAreas.getBounds().isValid()){
+    boundsInicial=grupoAreas.getBounds();
+    map.fitBounds(boundsInicial,{padding:[20,20]});
+  }else{
+    map.setView([-23.55,-46.63],11);
+  }
+
+  atualizarContadores(contar(pontosFeatures));
+
+  const errosArea=resultadoAreas.filter(x=>x.status==='rejected').length;
+  const errosPontos=resultadoPontos.filter(x=>x.status==='rejected').length;
+
+  statusGPS.textContent=(errosArea||errosPontos)
+    ? `Mapa carregado com pendências: ${errosArea} área(s), ${errosPontos} arquivo(s) de pontos.`
+    : 'Mapa carregado · GPS não iniciado';
+
+  registrar('mapa_aberto');
+  iniciarGPS();
+})();
+
+btnLegenda.addEventListener('click',()=>abrir('painelLegenda'));
+btnProximo.addEventListener('click',abrirMenuProximo);
+btnGPS.addEventListener('click',iniciarGPS);
+btnCentro.addEventListener('click',()=>{
+  if(boundsInicial){
+    map.fitBounds(boundsInicial,{padding:[20,20]});
+  }
+});
+</script>
+</body>
+</html>
