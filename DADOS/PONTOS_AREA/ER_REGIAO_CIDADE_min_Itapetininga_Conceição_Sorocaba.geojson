@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Itapetininga_Conceição_Sorocaba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "29072750000150", "IDCIDADE": "ITAPETININGA", "NOMEFANTASIA": "MERCADO SAO JUDAS", "RAZAOSOCIAL": "VANDERLEI LEONEL DE MEDEIROS", "ENDEE": "RUA SAO BENTO, 263, CONCEICAO, 18218-000, ITAPETININGA, SP, BRASIL", "LATITUDE": "-23.6998984", "LONGITUDE": "-48.0927849", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.6998984,-48.0927849", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Itapetininga_Conceição_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -48.0927849, -23.6998984 ] } }
+]
+}

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "17497031000100", "IDCIDADE": "NIPOA", "NOMEFANTASIA": "17.497.031_BRUNO_CELIS_ESTEVES", "RAZAOSOCIAL": "BRUNO_CELIS_ESTEVES", "ENDEE": "RUA_JERONIMO_PEREIRA_DA_SILVA1032__CENTRO_15240-000", "LATITUDE": "-20.9108811", "LONGITUDE": "-49.7774046", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.7774046,-20.9108811", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Nipoã_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.7774046, -20.9108811 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "17497031000100", "IDCIDADE": "NIPOA", "NOMEFANTASIA": "17.497.031_BRUNO_CELIS_ESTEVES", "RAZAOSOCIAL": "BRUNO_CELIS_ESTEVES", "ENDEE": "RUA_JERONIMO_PEREIRA_DA_SILVA1032__CENTRO_15240-000", "LATITUDE": "-20.9108811", "LONGITUDE": "-49.7774046", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.7774046,-20.9108811", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Nipoã_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.7774046, -20.9108811 ] } }
 ]
 }

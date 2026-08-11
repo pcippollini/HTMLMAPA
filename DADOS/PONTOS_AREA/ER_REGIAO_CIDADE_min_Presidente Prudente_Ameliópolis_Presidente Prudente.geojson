@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "31843482000175", "IDCIDADE": "PRESIDENTE_PRUDENTE", "NOMEFANTASIA": "31.843.482_TANIA_REGINA_COELHO_DOS_SANTOS", "RAZAOSOCIAL": "31.843.482_TANIA_REGINA_COELHO_DOS_SANTOS", "ENDEE": "RUA_CLAUDIO_DA_SILVA_BONFIM37__CENTRO_19140-010", "LATITUDE": "-21.8035881", "LONGITUDE": "-51.3021087", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.3021087,-21.8035881", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Presidente Prudente_Ameliópolis_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.3021087, -21.8035881 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "31843482000175", "IDCIDADE": "PRESIDENTE_PRUDENTE", "NOMEFANTASIA": "31.843.482_TANIA_REGINA_COELHO_DOS_SANTOS", "RAZAOSOCIAL": "31.843.482_TANIA_REGINA_COELHO_DOS_SANTOS", "ENDEE": "RUA_CLAUDIO_DA_SILVA_BONFIM37__CENTRO_19140-010", "LATITUDE": "-21.8035881", "LONGITUDE": "-51.3021087", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.3021087,-21.8035881", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Presidente Prudente_Ameliópolis_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.3021087, -21.8035881 ] } }
 ]
 }

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Itapeva_Alto da Brancal_Sudoeste Paulista",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "45356279000189", "IDCIDADE": "ITAPEVA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "45.356.279 KEILA PRISCILA CARRIEL CRISPIM", "ENDEE": "RODOVIA PEDRO RODRIGUES GARCIA, 1334, ALTO DA BRANCAL, 18400-970, ITAPEVA, SP, BRASIL", "LATITUDE": "-24.1057707", "LONGITUDE": "-48.8177839", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-24.1057707,-48.8177839", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Itapeva_Alto da Brancal_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -48.8177839, -24.1057707 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "22541004000110", "IDCIDADE": "ITAPEVA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "VINICIUS DE MORAIS RODRIGUES", "ENDEE": "RODOVIA PEDRO RODRIGUES GARCIA, 1213, ALTO DA BRANCAL, 18400-970, ITAPEVA, SP, BRASIL", "LATITUDE": "-24.1082604", "LONGITUDE": "-48.8074408", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-24.1082604,-48.8074408", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Itapeva_Alto da Brancal_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -48.8074408, -24.1082604 ] } }
+]
+}

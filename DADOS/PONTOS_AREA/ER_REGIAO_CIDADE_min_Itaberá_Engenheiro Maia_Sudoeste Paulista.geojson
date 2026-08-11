@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Itaberá_Engenheiro Maia_Sudoeste Paulista",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "43494740000134", "IDCIDADE": "ITABERÁ", "NOMEFANTASIA": null, "RAZAOSOCIAL": "43.494.740 VALTER RICARDO DE MELO", "ENDEE": "AVENIDA ENGENHEIRO MAIA, 601, CENTRO (ENGENHEIRO MAIA), 18455-002, ITABERÁ, SP, BRASIL", "LATITUDE": "-24.0378149", "LONGITUDE": "-49.098455", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-24.0378149,-49.098455", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Itaberá_Engenheiro Maia_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -49.098455, -24.0378149 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "44001590000142", "IDCIDADE": "ITABERÁ", "NOMEFANTASIA": "AGROGARCIA", "RAZAOSOCIAL": "OTACILIO GARCIA TRANSPORTES", "ENDEE": "ESTRADA ITABERA TAQUARUSSU SITIO AGUAS CLARAS, SN, TAQUARUSSU, 18440-000, ITABERÁ, SP, BRASIL", "LATITUDE": "-24.1184275", "LONGITUDE": "-49.1210292", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-24.1184275,-49.1210292", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Itaberá_Engenheiro Maia_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -49.1210292, -24.1184275 ] } }
+]
+}

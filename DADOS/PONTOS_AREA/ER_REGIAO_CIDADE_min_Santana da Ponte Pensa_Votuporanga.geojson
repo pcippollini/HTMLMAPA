@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Santana da Ponte Pensa_Votuporanga",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "37880221000101", "IDCIDADE": "SANTANA DA PONTE PENSA", "NOMEFANTASIA": "MINIMERCADO PONTO CERTO", "RAZAOSOCIAL": "PETERSON DE SOUZA FERRONI", "ENDEE": "AVENIDA SANTANA, 405, CENTRO, 15765000, SANTANA DA PONTE PENSA, SP, BRASIL", "LATITUDE": "-20.2545399", "LONGITUDE": "-50.7982395", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.2545399,-50.7982395", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Santana da Ponte Pensa_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -50.7982395, -20.2545399 ] } }
+]
+}

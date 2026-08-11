@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Charqueada_Charqueada_Piracicaba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "34514870000109", "IDCIDADE": "CHARQUEADA", "NOMEFANTASIA": "TRANS SANTANA", "RAZAOSOCIAL": "CAROLINA DA SILVA SANTANA TRANSPORTES", "ENDEE": "TRAVESSA ARTHUR FURLAN, 355, PARQUE NACOES, 13515000, CHARQUEADA, SP, BRASIL", "LATITUDE": "-22.51237", "LONGITUDE": "-47.77068", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.51237,-47.77068", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Charqueada_Charqueada_Piracicaba" }, "geometry": { "type": "Point", "coordinates": [ -47.77068, -22.51237 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "29243194000138", "IDCIDADE": "CHARQUEADA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "SCI-AGRO ESTUDOS ANALITICOS LTDA", "ENDEE": "VIA VICENTE VERDI, 835, INDUSTRIAL, 13518-070, CHARQUEADA, SP, BRASIL", "LATITUDE": "-22.5320194", "LONGITUDE": "-47.7648267", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.5320194,-47.7648267", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Charqueada_Charqueada_Piracicaba" }, "geometry": { "type": "Point", "coordinates": [ -47.7648267, -22.5320194 ] } }
+]
+}

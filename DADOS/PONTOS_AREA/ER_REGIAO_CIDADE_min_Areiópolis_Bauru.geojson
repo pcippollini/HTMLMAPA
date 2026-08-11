@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Areiópolis_Bauru",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "10653542000117", "IDCIDADE": "AREIÓPOLIS", "NOMEFANTASIA": "FABIO ADRIANO ALVES", "RAZAOSOCIAL": "FABIO A ALVES MARCENARIA", "ENDEE": "RUA MARIA CONCEIÇÃO CASTILHO BERNARDES, 625, VILA CREMER, 18670-524, AREIÓPOLIS, SP, BRASIL", "LATITUDE": "-22.6708683", "LONGITUDE": "-48.6668325", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.6708683,-48.6668325", "O_QUE_FAZER": "APLICAR T2", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Areiópolis_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.6668325, -22.6708683 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "30256260000193", "IDCIDADE": "AREIÓPOLIS", "NOMEFANTASIA": null, "RAZAOSOCIAL": "30.256.260 ISAMARA RIBEIRO DE OLIVEIRA MANOEL", "ENDEE": "RUA MILTON FERREIRA DE LIMA, 215, RESIDENCIAL BEM VIVER, 18671-228, AREIÓPOLIS, SP, BRASIL", "LATITUDE": "-22.6866392", "LONGITUDE": "-48.6717368", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.6866392,-48.6717368", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Areiópolis_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.6717368, -22.6866392 ] } }
+]
+}

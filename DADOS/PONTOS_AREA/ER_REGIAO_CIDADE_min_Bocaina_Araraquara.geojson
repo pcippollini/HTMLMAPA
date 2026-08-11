@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Bocaina_Araraquara",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "32455242000166", "IDCIDADE": "BOCAINA", "NOMEFANTASIA": "GAN CONSULTORIA", "RAZAOSOCIAL": "GAN CONSULTORIA LTDA", "ENDEE": "RUA VALADAO, 231, CENTRO, 17240-053, BOCAINA, SP, BRASIL", "LATITUDE": "-22.1405173", "LONGITUDE": "-48.5202771", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.1405173,-48.5202771", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Bocaina_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.5202771, -22.1405173 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "38184275000103", "IDCIDADE": "BOCAINA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "EVANDRO DA SILVA COMERCIO DE EPI LTDA", "ENDEE": "ALAMEDA DAS ANGELICAS, 85, ANDAR 1, JARDIM NOVA BOCAINA, 17240-000, BOCAINA, SP, BRASIL", "LATITUDE": "-22.1420165", "LONGITUDE": "-48.5302367", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.1420165,-48.5302367", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Bocaina_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.5302367, -22.1420165 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "57843064000171", "IDCIDADE": "BOCAINA", "NOMEFANTASIA": "STEFANI  CRISTINA PAGLIOLOGO LIMA", "RAZAOSOCIAL": "57.843.064 STEFANI CRISTINA PAGLIOLOGO LIMA", "ENDEE": "RUA DOUTOR EMÍLIO CASASCO, 512, CENTRO, 17240-065, BOCAINA, SP, BRASIL", "LATITUDE": "-22.1434344", "LONGITUDE": "-48.5243888", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.1434344,-48.5243888", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Bocaina_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.5243888, -22.1434344 ] } }
+]
+}

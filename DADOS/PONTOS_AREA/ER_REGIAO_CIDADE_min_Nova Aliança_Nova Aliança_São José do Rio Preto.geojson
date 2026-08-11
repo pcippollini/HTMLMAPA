@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Nova Aliança_Nova Aliança_São José do Rio Preto",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "41844165000127", "IDCIDADE": "NOVA ALIANÇA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "BEATRIZ CRISTINA FERREIRA - TRANSPORTES", "ENDEE": "RUA NAYDE NOGUEIRA AYRUTH, 221, JARDIM DOS IPE, 15210-000, NOVA ALIANÇA, SP, BRASIL", "LATITUDE": "-21.0141528", "LONGITUDE": "-49.5036176", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.0141528,-49.5036176", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Nova Aliança_Nova Aliança_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.5036176, -21.0141528 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "09302907000180", "IDCIDADE": "NOVA ALIANÇA", "NOMEFANTASIA": "SAN TRANSPORTES", "RAZAOSOCIAL": "SAN TRANSPORTES E LOGISTICA LTDA", "ENDEE": "RUA GOTARDI, 300, ANEXO 1, CENTRO, 15210-035, NOVA ALIANÇA, SP, BRASIL", "LATITUDE": "-21.0169924", "LONGITUDE": "-49.4986741", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.0169924,-49.4986741", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Nova Aliança_Nova Aliança_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.4986741, -21.0169924 ] } }
+]
+}

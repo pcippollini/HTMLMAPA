@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Florínea_Marília",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "56427135000192", "IDCIDADE": "FLORÍNEA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "56.427.135 MARISTELA MORAIS ROMANCINI", "ENDEE": "RUA PREFEITO JOSE ALFERES FILHO, 398, CENTRO, 19870-009, FLORÍNEA, SP, BRASIL", "LATITUDE": "-22.9020149", "LONGITUDE": "-50.7282783", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.9020149,-50.7282783", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Florínea_Marília" }, "geometry": { "type": "Point", "coordinates": [ -50.7282783, -22.9020149 ] } }
+]
+}

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "06219967000145", "IDCIDADE": "PALESTINA", "NOMEFANTASIA": "LUCIENI_SCATOLIN_VIEGAS", "RAZAOSOCIAL": "LU_MAGAZINE", "ENDEE": "RUA_TRINTA_DE_MAIO1263__CENTRO_15470-000", "LATITUDE": "-20.3904027", "LONGITUDE": "-49.4342966", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.4342966,-20.3904027", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Palestina_Palestina_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.4342966, -20.3904027 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "06219967000145", "IDCIDADE": "PALESTINA", "NOMEFANTASIA": "LUCIENI_SCATOLIN_VIEGAS", "RAZAOSOCIAL": "LU_MAGAZINE", "ENDEE": "RUA_TRINTA_DE_MAIO1263__CENTRO_15470-000", "LATITUDE": "-20.3904027", "LONGITUDE": "-49.4342966", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.4342966,-20.3904027", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Palestina_Palestina_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.4342966, -20.3904027 ] } }
 ]
 }

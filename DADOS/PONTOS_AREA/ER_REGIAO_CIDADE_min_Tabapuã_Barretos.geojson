@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Tabapuã_Barretos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "32768009000133", "IDCIDADE": "TABAPUÃ", "NOMEFANTASIA": "SUPERMERCADO VAROLLO", "RAZAOSOCIAL": "SILVIO PEREIRA DOS SANTOS - SUPERMERCADO", "ENDEE": "AVENIDA FLORIANO PEIXOTO, 871, CENTRO, 15880-000, TABAPUÃ, SP, BRASIL", "LATITUDE": "-20.9660472", "LONGITUDE": "-49.0300848", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.9660472,-49.0300848", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Tabapuã_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -49.0300848, -20.9660472 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "02158025000143", "IDCIDADE": "TABAPUÃ", "NOMEFANTASIA": "TRANSPORTE SW", "RAZAOSOCIAL": "LUIZ ANTONIO SARTORELLO", "ENDEE": "RUA NATAL POLIDORO, 1413, ALTO TABAPUA, 15880-000, TABAPUÃ, SP, BRASIL", "LATITUDE": "-20.9684499", "LONGITUDE": "-49.0361858", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.9684499,-49.0361858", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Tabapuã_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -49.0361858, -20.9684499 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "24423650000108", "IDCIDADE": "TABAPUÃ", "NOMEFANTASIA": null, "RAZAOSOCIAL": "RODRIGO PERPETUO PINHATI 32604884801", "ENDEE": "AVENIDA ERASMO ALBERTO HOELZ, 1219, CENTRO, 15880-000, TABAPUÃ, SP, BRASIL", "LATITUDE": "-20.9698489", "LONGITUDE": "-49.0327154", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.9698489,-49.0327154", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Tabapuã_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -49.0327154, -20.9698489 ] } }
+]
+}

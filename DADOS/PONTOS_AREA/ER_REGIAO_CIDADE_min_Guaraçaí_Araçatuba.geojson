@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Guaraçaí_Araçatuba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "07241015000190", "IDCIDADE": "GUARAÇAÍ", "NOMEFANTASIA": "IPE MOVEIS RUSTICOS", "RAZAOSOCIAL": "MAX FRANCO BALSAN", "ENDEE": "RECANTO NOSSA SENHORA APARECIDA, S/N, MOINHO, 16980-000, GUARAÇAÍ, SP, BRASIL", "LATITUDE": "-21.033561", "LONGITUDE": "-51.2083812", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.033561,-51.2083812", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Guaraçaí_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -51.2083812, -21.033561 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "01578779000190", "IDCIDADE": "GUARAÇAÍ", "NOMEFANTASIA": "MARCENARIA DOIS IRMAOS", "RAZAOSOCIAL": "CASEMIRO & CASEMIRO GUARACAI LTDA", "ENDEE": "ESTANCIA DOIS IRMAOS, S/N, PLANO ALTO, 16980-000, GUARAÇAÍ, SP, BRASIL", "LATITUDE": "-21.0360173", "LONGITUDE": "-51.2106483", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.0360173,-51.2106483", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Guaraçaí_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -51.2106483, -21.0360173 ] } }
+]
+}

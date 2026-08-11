@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Santa Ernestina_Araraquara",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "46737029000151", "IDCIDADE": "SANTA ERNESTINA", "NOMEFANTASIA": "ELETRO MOVEIS BELINTANI", "RAZAOSOCIAL": "ELETRO MOVEIS SANTA ERNESTINA LTDA", "ENDEE": "RUA MARIA CARVALHO OLIVEIRA, 247, CENTRO, 15970-000, SANTA ERNESTINA, SP, BRASIL", "LATITUDE": "-21.4620982", "LONGITUDE": "-48.3895354", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.4620982,-48.3895354", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Santa Ernestina_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.3895354, -21.4620982 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "08957966000123", "IDCIDADE": "SANTA ERNESTINA", "NOMEFANTASIA": "TOLINI MATERIAIS PARA CONSTRUCAO", "RAZAOSOCIAL": "TOLINI MATERIAIS PARA CONSTRUCAO LTDA", "ENDEE": "RUA DOS ANTONINO, 163, JARDIM SAO PAULO, 15970-000, SANTA ERNESTINA, SP, BRASIL", "LATITUDE": "-21.4636687", "LONGITUDE": "-48.3953997", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.4636687,-48.3953997", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Santa Ernestina_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.3953997, -21.4636687 ] } }
+]
+}

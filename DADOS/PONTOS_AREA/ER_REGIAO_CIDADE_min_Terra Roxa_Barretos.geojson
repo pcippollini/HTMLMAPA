@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "44343704000132", "IDCIDADE": "TERRA_ROXA", "NOMEFANTASIA": "ROSANIA_APARECIDA_SILVA_DOS_SANTOS_13561008801", "RAZAOSOCIAL": "ROSANIA_APARECIDA_SILVA_DOS_SANTOS", "ENDEE": "RUA_NESTOR_GUIZELINI371__JARDIM_DAS_PRATAS_14745-000", "LATITUDE": "-20.7928024", "LONGITUDE": "-48.3195045", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.3195045,-20.7928024", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Terra Roxa_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.3195045, -20.7928024 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "44343704000132", "IDCIDADE": "TERRA_ROXA", "NOMEFANTASIA": "ROSANIA_APARECIDA_SILVA_DOS_SANTOS_13561008801", "RAZAOSOCIAL": "ROSANIA_APARECIDA_SILVA_DOS_SANTOS", "ENDEE": "RUA_NESTOR_GUIZELINI371__JARDIM_DAS_PRATAS_14745-000", "LATITUDE": "-20.7928024", "LONGITUDE": "-48.3195045", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.3195045,-20.7928024", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Terra Roxa_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.3195045, -20.7928024 ] } }
 ]
 }

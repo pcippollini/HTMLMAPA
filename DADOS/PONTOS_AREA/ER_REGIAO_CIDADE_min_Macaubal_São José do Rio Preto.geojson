@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Macaubal_São José do Rio Preto",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "32682754000165", "IDCIDADE": "MACAUBAL", "NOMEFANTASIA": null, "RAZAOSOCIAL": "MF AGRICOLA LOURENCO LTDA", "ENDEE": "RUA SIMAO NIMER, 319, BRCAO ., CENTRO, 15270-000, MACAUBAL, SP, BRASIL", "LATITUDE": "-20.7994775", "LONGITUDE": "-49.9614109", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.7994775,-49.9614109", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Macaubal_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.9614109, -20.7994775 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "15319949000126", "IDCIDADE": "MACAUBAL", "NOMEFANTASIA": null, "RAZAOSOCIAL": "JONE BRIGATI", "ENDEE": "RUA JERONIMO NARCISO RAMOS, 1380, CENTRO, 15270-000, MACAUBAL, SP, BRASIL", "LATITUDE": "-20.8087482", "LONGITUDE": "-49.9654316", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.8087482,-49.9654316", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Macaubal_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.9654316, -20.8087482 ] } }
+]
+}

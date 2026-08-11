@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "46106574000140", "IDCIDADE": "ITAPURA", "NOMEFANTASIA": "JOSE_AUGUSTO_NOGUEIRA_DA_SILVA_06280107450", "RAZAOSOCIAL": "CASA_DO_NORTE", "ENDEE": "RUA_JOAO_SOARES1082__CENTRO_15390-000", "LATITUDE": "-20.6475062", "LONGITUDE": "-51.5066833", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.5066833,-20.6475062", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Itapura_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -51.5066833, -20.6475062 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "46106574000140", "IDCIDADE": "ITAPURA", "NOMEFANTASIA": "JOSE_AUGUSTO_NOGUEIRA_DA_SILVA_06280107450", "RAZAOSOCIAL": "CASA_DO_NORTE", "ENDEE": "RUA_JOAO_SOARES1082__CENTRO_15390-000", "LATITUDE": "-20.6475062", "LONGITUDE": "-51.5066833", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.5066833,-20.6475062", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Itapura_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -51.5066833, -20.6475062 ] } }
 ]
 }

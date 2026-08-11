@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Caconde_Barrânia_São João da Boa Vista",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "15683499000156", "IDCIDADE": "CACONDE", "NOMEFANTASIA": null, "RAZAOSOCIAL": "15.683.499 ELIANA DONIZETE GOULART", "ENDEE": "RUA JOAO TEODORO MENDES 26, 3, CENTRO (BARRANIA), 13775-970, CACONDE, SP, BRASIL", "LATITUDE": "-21.5409851", "LONGITUDE": "-46.5135789", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.5409851,-46.5135789", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Caconde_Barrânia_São João da Boa Vista" }, "geometry": { "type": "Point", "coordinates": [ -46.5135789, -21.5409851 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "29112123000104", "IDCIDADE": "CACONDE", "NOMEFANTASIA": null, "RAZAOSOCIAL": "GIVANILDO DONIZETE DA SILVA 26122590827", "ENDEE": "RUA ISAIAS FERNANDES CORREA, 190, BARRANIA, 13770-000, CACONDE, SP, BRASIL", "LATITUDE": "-21.5418965", "LONGITUDE": "-46.5128859", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.5418965,-46.5128859", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Caconde_Barrânia_São João da Boa Vista" }, "geometry": { "type": "Point", "coordinates": [ -46.5128859, -21.5418965 ] } },
+{ "type": "Feature", "properties": { "CNPJ": "37318233000147", "IDCIDADE": "CACONDE", "NOMEFANTASIA": "DC COFFEE - COMERCIO DE CAFES", "RAZAOSOCIAL": "DANILO CESAR PEREIRA", "ENDEE": "RUA DO COMERCIO, 155, BARRANIA, 13775-000, CACONDE, SP, BRASIL", "LATITUDE": "-21.5421276", "LONGITUDE": "-46.5139909", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.5421276,-46.5139909", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Caconde_Barrânia_São João da Boa Vista" }, "geometry": { "type": "Point", "coordinates": [ -46.5139909, -21.5421276 ] } }
+]
+}
