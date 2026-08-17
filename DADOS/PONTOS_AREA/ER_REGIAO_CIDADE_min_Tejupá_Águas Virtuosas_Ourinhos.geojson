@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "46223590000112", "IDCIDADE": "TEJUPÁ", "NOMEFANTASIA": "MINI MERCADO N S APARECIDA", "RAZAOSOCIAL": "MINI MERCADO N S APARECIDA DE TAQUARAS LTDA", "ENDEE": "RUA ANGELO BERGAMO, 611, DISTRITO DE AGUAS VIRTUOSAS, 18835-004, TEJUPÁ, SP, BRASIL", "LATITUDE": "-23.3980436", "LONGITUDE": "-49.3498888", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.3980436,-49.3498888", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Tejupá_Águas Virtuosas_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.3498888, -23.3980436 ] } }
+{ "type": "Feature", "properties": { "fid": 210851, "CNPJ": "46223590000112", "IDCIDADE": "TEJUPÁ", "NOMEFANTASIA": "MINI MERCADO N S APARECIDA", "RAZAOSOCIAL": "MINI MERCADO N S APARECIDA DE TAQUARAS LTDA", "ENDEE": "RUA ANGELO BERGAMO, 611, DISTRITO DE AGUAS VIRTUOSAS, 18835-004, TEJUPÁ, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.3980436,-49.3498888", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Tejupá_Águas Virtuosas_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.3498888, -23.3980436 ] } }
 ]
 }

@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Restinga_Franca",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 308412, "CNPJ": "46135032000103", "IDCIDADE": "RESTINGA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "46.135.032 PAULA CRISTIANE RIBEIRO", "ENDEE": "10A AVENIDA AZARIAS MARTINS, 557, CENTRO, 14430-000, RESTINGA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.6026174,-47.4849506", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Restinga_Franca" }, "geometry": { "type": "Point", "coordinates": [ -47.4849506, -20.6026174 ] } },
+{ "type": "Feature", "properties": { "fid": 308413, "CNPJ": "44990633000160", "IDCIDADE": "RESTINGA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "KASEBRE REPRESENTACAO E COMERCIO DE MADEIRAS E MATERIAIS PARA CONSTRUCAO LTDA", "ENDEE": "RUA DOUTOR FERNANDO FALLEIROS DE LIMA, 35, DISTRITO INDUSTRIAL, 14430-000, RESTINGA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.5965109,-47.4734378", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Restinga_Franca" }, "geometry": { "type": "Point", "coordinates": [ -47.4734378, -20.5965109 ] } },
+{ "type": "Feature", "properties": { "fid": 308414, "CNPJ": "51229593000101", "IDCIDADE": "RESTINGA", "NOMEFANTASIA": "Casa do Pao Restinga", "RAZAOSOCIAL": "CASA DO PAO RESTINGA LTDA", "ENDEE": "RUA OLIVIA MARTINS FERREIRA, 857, CENTRO, 14430-000, RESTINGA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.6019693,-47.4790552", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Restinga_Franca" }, "geometry": { "type": "Point", "coordinates": [ -47.4790552, -20.6019693 ] } }
+]
+}

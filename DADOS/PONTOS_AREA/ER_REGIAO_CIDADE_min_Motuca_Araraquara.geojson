@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Motuca_Araraquara",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 308000, "CNPJ": "12767854000187", "IDCIDADE": "MOTUCA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "JAIRO CARDOSO DA SILVA 37102474890", "ENDEE": "RUA SAO SEBASTIAO, 487, CENTRO, 14835-000, MOTUCA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.5084037,-48.1469151", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Motuca_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.1469151, -21.5084037 ] } }
+]
+}

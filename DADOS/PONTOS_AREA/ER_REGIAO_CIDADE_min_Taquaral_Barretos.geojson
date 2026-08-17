@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "15245547000124", "IDCIDADE": "TAQUARAL", "NOMEFANTASIA": "SIMONE_APARECIDA_GASPAR_33473294810", "RAZAOSOCIAL": "SIMONE_APARECIDA_GASPAR", "ENDEE": "RUA_CENTRAL689__CENTRO_14765-000", "LATITUDE": "-21.0733724", "LONGITUDE": "-48.4094512", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.4094512,-21.0733724", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Taquaral_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.4094512, -21.0733724 ] } }
+{ "type": "Feature", "properties": { "fid": 246979, "CNPJ": "15245547000124", "IDCIDADE": "TAQUARAL", "NOMEFANTASIA": "SIMONE_APARECIDA_GASPAR_33473294810", "RAZAOSOCIAL": "SIMONE_APARECIDA_GASPAR", "ENDEE": "RUA_CENTRAL689__CENTRO_14765-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-48.4094512,-21.0733724", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Taquaral_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -48.4094512, -21.0733724 ] } }
 ]
 }

@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Sarapuí_Sarapuí_Sorocaba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 308650, "CNPJ": "62786329000187", "IDCIDADE": "SARAPUI", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "62.786.329 ANA APARECIDA DOS SANTOS DA PENHA", "ENDEE": "RUA BENEDITO GENEROSO PRESTES FILHO, 167, VILA RICA, 18225-242, SARAPUÍ, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.6440309,-47.819978", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Sarapuí_Sarapuí_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -47.819978, -23.6440309 ] } }
+]
+}

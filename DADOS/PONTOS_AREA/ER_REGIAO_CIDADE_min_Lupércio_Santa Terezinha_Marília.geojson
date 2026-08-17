@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "08518236000126", "IDCIDADE": "LUPERCIO", "NOMEFANTASIA": "ESBORINI_MC", "RAZAOSOCIAL": "ELIANE_APARECIDA_SANTINI_ESBORINI", "ENDEE": "AVENIDA_ELOY_DA_CRUZ_COELHO102__SANTA_TEREZINHA_17429-002", "LATITUDE": "-22.3823782", "LONGITUDE": "-49.7602428", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.7602428,-22.3823782", "O_QUE_FAZER": "CARTEIRA", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Lupércio_Santa Terezinha_Marília" }, "geometry": { "type": "Point", "coordinates": [ -49.7602428, -22.3823782 ] } }
+{ "type": "Feature", "properties": { "fid": 62402, "CNPJ": "08518236000126", "IDCIDADE": "LUPERCIO", "NOMEFANTASIA": "ESBORINI_MC", "RAZAOSOCIAL": "ELIANE_APARECIDA_SANTINI_ESBORINI", "ENDEE": "AVENIDA_ELOY_DA_CRUZ_COELHO102__SANTA_TEREZINHA_17429-002", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-49.7602428,-22.3823782", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Lupércio_Santa Terezinha_Marília" }, "geometry": { "type": "Point", "coordinates": [ -49.7602428, -22.3823782 ] } }
 ]
 }

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "19922980000108", "IDCIDADE": "MONÇÕES", "NOMEFANTASIA": "CONVENIENCIA FENIX", "RAZAOSOCIAL": "CONVENIENCIA FENIX DE MONCOES LTDA", "ENDEE": "RUA RIO DE JANEIRO, 821, CENTRO, 15275-000, MONÇÕES, SP, BRASIL", "LATITUDE": "-20.8551379", "LONGITUDE": "-50.0879249", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.8551379,-50.0879249", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Monções_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -50.0879249, -20.8551379 ] } }
+{ "type": "Feature", "properties": { "fid": 205637, "CNPJ": "19922980000108", "IDCIDADE": "MONÇÕES", "NOMEFANTASIA": "CONVENIENCIA FENIX", "RAZAOSOCIAL": "CONVENIENCIA FENIX DE MONCOES LTDA", "ENDEE": "RUA RIO DE JANEIRO, 821, CENTRO, 15275-000, MONÇÕES, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.8551379,-50.0879249", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Monções_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -50.0879249, -20.8551379 ] } }
 ]
 }

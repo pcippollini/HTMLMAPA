@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "CNPJ": "54416108000199", "IDCIDADE": "TAPIRAI", "NOMEFANTASIA": "54.416.108_GISLENE_APARECIDA_DOS_SANTOS_SOUZA", "RAZAOSOCIAL": "GISLENE_APARECIDA_DOS_SANTOS_SOUZA", "ENDEE": "RUA_FRANCISCO_DE_CAMARGO151__JARDIM_NOVA_CONQUISTA_18180-000", "LATITUDE": "-23.9632471", "LONGITUDE": "-47.5071671", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5071671,-23.9632471", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Tapiraí_Tapiraí_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -47.5071671, -23.9632471 ] } }
+{ "type": "Feature", "properties": { "fid": 295428, "CNPJ": "54416108000199", "IDCIDADE": "TAPIRAI", "NOMEFANTASIA": "54.416.108_GISLENE_APARECIDA_DOS_SANTOS_SOUZA", "RAZAOSOCIAL": "GISLENE_APARECIDA_DOS_SANTOS_SOUZA", "ENDEE": "RUA_FRANCISCO_DE_CAMARGO151__JARDIM_NOVA_CONQUISTA_18180-000", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-47.5071671,-23.9632471", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Tapiraí_Tapiraí_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -47.5071671, -23.9632471 ] } }
 ]
 }

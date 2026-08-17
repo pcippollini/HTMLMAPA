@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Ubatuba_Picinguaba_Guaratinguetá",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 301418, "CNPJ": "55140809000100", "IDCIDADE": "UBATUBA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "55.140.809 ROBERTO MARTON DOS SANTOS", "ENDEE": "SERVIDAO DO DICO, 87, UBATUMIRIM, 11698-237, UBATUBA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.3319811,-44.8958445", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Ubatuba_Picinguaba_Guaratinguetá" }, "geometry": { "type": "Point", "coordinates": [ -44.8958445, -23.3319811 ] } },
+{ "type": "Feature", "properties": { "fid": 301429, "CNPJ": "22947379000184", "IDCIDADE": "UBATUBA", "NOMEFANTASIA": "Quiosque e Restaurante do Denilson", "RAZAOSOCIAL": "DENILSON RONCONI QUIOSQUE E RESTAURANTE", "ENDEE": "RUA ALTIVO SALOMAO, 89, QUIOSQDO DENILSON, UBATUMIRIM, 11698-218, UBATUBA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.3408012,-44.8848511", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Ubatuba_Picinguaba_Guaratinguetá" }, "geometry": { "type": "Point", "coordinates": [ -44.8848511, -23.3408012 ] } }
+]
+}

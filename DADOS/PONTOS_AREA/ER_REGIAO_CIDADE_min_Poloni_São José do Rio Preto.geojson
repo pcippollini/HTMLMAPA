@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Poloni_São José do Rio Preto",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 308256, "CNPJ": "34830184000139", "IDCIDADE": "POLONI", "NOMEFANTASIA": "Clinica Veterinaria Isabela Ribeiro", "RAZAOSOCIAL": "ISABELA RIBEIRO CLINICA VETERINARIA", "ENDEE": "RUA SAO PAULO, 259, CENTRO, 15160-000, POLONI, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.7843148,-49.8135568", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Poloni_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.8135568, -20.7843148 ] } },
+{ "type": "Feature", "properties": { "fid": 308257, "CNPJ": "41923568000161", "IDCIDADE": "POLONI", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "LEONARDO COSTA - VIDROS", "ENDEE": "RUA SAO PAULO, 275, CENTRO, 15160-021, POLONI, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.7846678,-49.8126639", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Poloni_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.8126639, -20.7846678 ] } }
+]
+}

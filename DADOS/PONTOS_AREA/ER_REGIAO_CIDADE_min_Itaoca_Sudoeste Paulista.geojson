@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Itaoca_Sudoeste Paulista",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 307736, "CNPJ": "52129518000123", "IDCIDADE": "ITAOCA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "52.129.518 DOUGLAS ELIEL DE OLIVEIRA TEODORO", "ENDEE": "12A TRAVESSA TRAVESSA GURUTUBINHA, 186, GURUTUBINHA, 18360-000, ITAOCA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-24.64113,-48.8401195", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Itaoca_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -48.8401195, -24.64113 ] } }
+]
+}

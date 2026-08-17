@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Emilianópolis_Presidente Prudente",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 307555, "CNPJ": "59386751000130", "IDCIDADE": "EMILIANOPOLIS", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "59.386.751 JAMERSON DOS SANTOS MOURA", "ENDEE": "10A RUA GERTRUDES SILVESTRE FERREIRA, 233, CENTRO, 19350-000, EMILIANÓPOLIS, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.8302469,-51.4822482", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Emilianópolis_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.4822482, -21.8302469 ] } }
+]
+}
