@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 206507, "CNPJ": "04487333000148", "IDCIDADE": "ALTO ALEGRE", "NOMEFANTASIA": "CASA MOVEIS", "RAZAOSOCIAL": "VANDER PEREIRA MOVEIS LTDA", "ENDEE": "AVENIDA DOUTOR ACYR ALVES LEITE, 622, FUNDOS., CENTRO, 16310-057, ALTO ALEGRE, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.5833267,-50.1676477", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Alto Alegre_Alto Alegre_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.1676477, -21.5833267 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "04487333000148", "IDCIDADE": "ALTO ALEGRE", "NOMEFANTASIA": "CASA_MOVEIS", "RAZAOSOCIAL": "VANDER_PEREIRA_MOVEIS_LTDA", "ENDEE": "AVENIDA DOUTOR ACYR ALVES LEITE, 622, FUNDOS., CENTRO, 16310-057, ALTO ALEGRE, SP, BRASIL", "LATITUDE": "-21.5833267", "LONGITUDE": "-50.1676477", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.5833267,-50.1676477", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Alto Alegre_Alto Alegre_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.1676477, -21.5833267 ] } }
 ]
 }

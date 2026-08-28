@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 5210, "CNPJ": "52771735000112", "IDCIDADE": "BOREBI", "NOMEFANTASIA": "LETICIA FERREIRA", "RAZAOSOCIAL": "52.771.735 LETICIA FERREIRA", "ENDEE": "RUA SETE DE SETEMBRO, 480, CENTRO, 18675-007, BOREBI, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.5701736,-48.9717324", "O_QUE_FAZER": "APLICAR T2", "ER_REGIAO_CIDADE_min": "Borebi_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.9717324, -22.5701736 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "52771735000112", "IDCIDADE": "BOREBI", "NOMEFANTASIA": "LETICIA_FERREIRA", "RAZAOSOCIAL": "52.771.735_LETICIA_FERREIRA", "ENDEE": "RUA SETE DE SETEMBRO, 480, CENTRO, 18675-007, BOREBI, SP, BRASIL", "LATITUDE": "-22.5701736", "LONGITUDE": "-48.9717324", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.5701736,-48.9717324", "O_QUE_FAZER": "APLICAR T2", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Borebi_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -48.9717324, -22.5701736 ] } }
 ]
 }

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 251286, "CNPJ": "20475727000132", "IDCIDADE": "TUPA", "NOMEFANTASIA": "LUCILENE_MARIA_RODRIGUES_PIMENTA_32203269863", "RAZAOSOCIAL": "LUCILENEMARIARODRIGUESPIMENTA", "ENDEE": "AVENIDA_ARISTIDES_DINAMARCO26__CENTRO_17620-005", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.4444826,-21.9426679", "O_QUE_FAZER": "FINALIZADO", "ER_REGIAO_CIDADE_min": "Tupã_Parnaso_Marília" }, "geometry": { "type": "Point", "coordinates": [ -50.4444826, -21.9426679 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "20475727000132", "IDCIDADE": "TUPA", "NOMEFANTASIA": "LUCILENE_MARIA_RODRIGUES_PIMENTA_32203269863", "RAZAOSOCIAL": "LUCILENEMARIARODRIGUESPIMENTA", "ENDEE": "AVENIDA_ARISTIDES_DINAMARCO26__CENTRO_17620-005", "LATITUDE": "-21.9426679", "LONGITUDE": "-50.4444826", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-50.4444826,-21.9426679", "O_QUE_FAZER": "FINALIZADO", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Tupã_Parnaso_Marília" }, "geometry": { "type": "Point", "coordinates": [ -50.4444826, -21.9426679 ] } }
 ]
 }

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 297782, "CNPJ": "57882392000187", "IDCIDADE": "VOTUPORANGA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "57.882.392 EDER MARCELO XAVIER LAU", "ENDEE": "RUA JOSE PERINELLI, 123, CASA, SIMONSEN, 15515-026, VOTUPORANGA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.451489,-49.897914", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Votuporanga_Simonsen_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -49.897914, -20.451489 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "57882392000187", "IDCIDADE": "VOTUPORANGA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "57.882.392_EDER_MARCELO_XAVIER_LAU", "ENDEE": "RUA JOSE PERINELLI, 123, CASA, SIMONSEN, 15515-026, VOTUPORANGA, SP, BRASIL", "LATITUDE": "-20.451489", "LONGITUDE": "-49.897914", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.451489,-49.897914", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Votuporanga_Simonsen_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -49.897914, -20.451489 ] } }
 ]
 }

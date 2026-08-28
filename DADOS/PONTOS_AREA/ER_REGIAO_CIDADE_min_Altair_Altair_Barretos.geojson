@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Altair_Altair_Barretos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "49109888000194", "IDCIDADE": "ALTAIR", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "49.109.888_VANESSA_DOMINGUES_DO_AMARAL", "ENDEE": "RUA 3, 460, CENTRO, 15430-007, ALTAIR, SP, BRASIL", "LATITUDE": "-20.5266866", "LONGITUDE": "-49.0604143", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.5266866,-49.0604143", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Altair_Altair_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -49.0604143, -20.5266866 ] } }
+]
+}

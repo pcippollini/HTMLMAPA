@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 39038, "CNPJ": "12514823000114", "IDCIDADE": "DRACENA", "NOMEFANTASIA": "KASA_BELLA", "RAZAOSOCIAL": "KATO_PRESENTES_E_DECORACOES_LTDA", "ENDEE": "AVENIDA_PRESIDENTE_VARGAS601__CENTRO_17900-115", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.6283,-21.6492267", "O_QUE_FAZER": "CARTEIRA", "ER_REGIAO_CIDADE_min": "Dracena_Jaciporã_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.6283, -21.6492267 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "12514823000114", "IDCIDADE": "DRACENA", "NOMEFANTASIA": "KASA_BELLA", "RAZAOSOCIAL": "KATO_PRESENTES_E_DECORACOES_LTDA", "ENDEE": "AVENIDA_PRESIDENTE_VARGAS601__CENTRO_17900-115", "LATITUDE": "-21.6492267", "LONGITUDE": "-51.6283", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-51.6283,-21.6492267", "O_QUE_FAZER": "CARTEIRA", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Dracena_Jaciporã_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.6283, -21.6492267 ] } }
 ]
 }

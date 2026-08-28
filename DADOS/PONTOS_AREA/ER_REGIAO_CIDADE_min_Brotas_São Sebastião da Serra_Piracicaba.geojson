@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 207867, "CNPJ": "35998786000162", "IDCIDADE": "BROTAS", "NOMEFANTASIA": "SUPERMERCADO BOM DIA BROTAS", "RAZAOSOCIAL": "SUPERMERCADO HERREIRA, SILVA & CIA LTDA", "ENDEE": "RUA JOSE ARTHUR PINTO, 140, PATRIMONIO SAO SEBASTIAO DA SERRA, 17380-000, BROTAS, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.4424506,-48.0098737", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Brotas_São Sebastião da Serra_Piracicaba" }, "geometry": { "type": "Point", "coordinates": [ -48.0098737, -22.4424506 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "35998786000162", "IDCIDADE": "BROTAS", "NOMEFANTASIA": "SUPERMERCADO_BOM_DIA_BROTAS", "RAZAOSOCIAL": "SUPERMERCADO_HERREIRA,_SILVA_&_CIA_LTDA", "ENDEE": "RUA JOSE ARTHUR PINTO, 140, PATRIMONIO SAO SEBASTIAO DA SERRA, 17380-000, BROTAS, SP, BRASIL", "LATITUDE": "-22.4424506", "LONGITUDE": "-48.0098737", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.4424506,-48.0098737", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Brotas_São Sebastião da Serra_Piracicaba" }, "geometry": { "type": "Point", "coordinates": [ -48.0098737, -22.4424506 ] } }
 ]
 }

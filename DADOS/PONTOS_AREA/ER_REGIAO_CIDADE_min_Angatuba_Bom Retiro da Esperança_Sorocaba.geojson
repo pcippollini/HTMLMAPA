@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 213321, "CNPJ": "56061081000194", "IDCIDADE": "ANGATUBA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "56.061.081 SILMARA LOPES DE PROENCA DO AMARAL", "ENDEE": "RUA GABRIEL FERREIRA VAZ, 263, BOM RETIRO, 18240-000, ANGATUBA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.5501158,-48.3040801", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Angatuba_Bom Retiro da Esperança_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -48.3040801, -23.5501158 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "56061081000194", "IDCIDADE": "ANGATUBA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "56.061.081_SILMARA_LOPES_DE_PROENCA_DO_AMARAL", "ENDEE": "RUA GABRIEL FERREIRA VAZ, 263, BOM RETIRO, 18240-000, ANGATUBA, SP, BRASIL", "LATITUDE": "-23.5501158", "LONGITUDE": "-48.3040801", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-23.5501158,-48.3040801", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Angatuba_Bom Retiro da Esperança_Sorocaba" }, "geometry": { "type": "Point", "coordinates": [ -48.3040801, -23.5501158 ] } }
 ]
 }

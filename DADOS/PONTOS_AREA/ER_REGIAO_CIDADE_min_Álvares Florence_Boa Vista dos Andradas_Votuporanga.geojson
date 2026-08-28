@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 205178, "CNPJ": "48395733000107", "IDCIDADE": "ÁLVARES FLORENCE", "NOMEFANTASIA": null, "RAZAOSOCIAL": "LUCILENE MARIA DA SILVA FERNANDES 24622752824", "ENDEE": "RUA 21 DE ABRIL, 254, CASA TERREA, BOA VISTA DOS ANDRADAS, 15540-000, ÁLVARES FLORENCE, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.2013323,-49.8733691", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Álvares Florence_Boa Vista dos Andradas_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -49.8733691, -20.2013323 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "48395733000107", "IDCIDADE": "ALVARES FLORENCE", "NOMEFANTASIA": null, "RAZAOSOCIAL": "LUCILENE_MARIA_DA_SILVA_FERNANDES_24622752824", "ENDEE": "RUA 21 DE ABRIL, 254, CASA TERREA, BOA VISTA DOS ANDRADAS, 15540-000, ÁLVARES FLORENCE, SP, BRASIL", "LATITUDE": "-20.2013323", "LONGITUDE": "-49.8733691", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.2013323,-49.8733691", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Álvares Florence_Boa Vista dos Andradas_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -49.8733691, -20.2013323 ] } }
 ]
 }

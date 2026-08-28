@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 307734, "CNPJ": "53825446000111", "IDCIDADE": "ITAJOBI", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "53.825.446 CAIO HENRIQUE DE MORAES", "ENDEE": "RUA BANDEIRANTES, 320, DISTRITO NOVA CARDOSO, 15840-000, ITAJOBI, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.332801,-49.163748", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Itajobi_Nova Cardoso_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.163748, -21.332801 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "53825446000111", "IDCIDADE": "ITAJOBI", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "53.825.446_CAIO_HENRIQUE_DE_MORAES", "ENDEE": "RUA BANDEIRANTES, 320, DISTRITO NOVA CARDOSO, 15840-000, ITAJOBI, SP, BRASIL", "LATITUDE": "-21.332801", "LONGITUDE": "-49.163748", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.332801,-49.163748", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Itajobi_Nova Cardoso_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.163748, -21.332801 ] } }
 ]
 }

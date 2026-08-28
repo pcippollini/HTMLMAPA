@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 299078, "CNPJ": "64485851000154", "IDCIDADE": "PRESIDENTE BERNARDES", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "64.485.851 JOAO VITOR DA SILVA", "ENDEE": "RUA CAPITAO OTAVIO CAMILO DE SOUZA, 4, CENTRO (NOVA PATRIA), 19325-008, PRESIDENTE BERNARDES, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.2189494,-51.6406982", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Presidente Bernardes_Nova Pátria_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.6406982, -22.2189494 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "64485851000154", "IDCIDADE": "PRESIDENTE BERNARDES", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "64.485.851_JOAO_VITOR_DA_SILVA", "ENDEE": "RUA CAPITAO OTAVIO CAMILO DE SOUZA, 4, CENTRO (NOVA PATRIA), 19325-008, PRESIDENTE BERNARDES, SP, BRASIL", "LATITUDE": "-22.2189494", "LONGITUDE": "-51.6406982", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-22.2189494,-51.6406982", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Presidente Bernardes_Nova Pátria_Presidente Prudente" }, "geometry": { "type": "Point", "coordinates": [ -51.6406982, -22.2189494 ] } }
 ]
 }

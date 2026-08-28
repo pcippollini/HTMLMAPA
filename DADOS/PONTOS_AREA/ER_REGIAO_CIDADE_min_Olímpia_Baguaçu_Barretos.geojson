@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 297936, "CNPJ": "30706269000159", "IDCIDADE": "OLIMPIA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "30.706.269 ANDREA PAULA DE JESUS DA SILVA", "ENDEE": "RUA MANOEL ANTONIO SECUNDINO, 272, CENTRO (BAGUACU), 15409-504, OLÍMPIA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.6905033,-49.0686208", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Olímpia_Baguaçu_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -49.0686208, -20.6905033 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "30706269000159", "IDCIDADE": "OLIMPIA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "30.706.269_ANDREA_PAULA_DE_JESUS_DA_SILVA", "ENDEE": "RUA MANOEL ANTONIO SECUNDINO, 272, CENTRO (BAGUACU), 15409-504, OLÍMPIA, SP, BRASIL", "LATITUDE": "-20.6905033", "LONGITUDE": "-49.0686208", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.6905033,-49.0686208", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Olímpia_Baguaçu_Barretos" }, "geometry": { "type": "Point", "coordinates": [ -49.0686208, -20.6905033 ] } }
 ]
 }

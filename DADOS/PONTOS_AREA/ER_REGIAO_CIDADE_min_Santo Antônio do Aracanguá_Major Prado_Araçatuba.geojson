@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 308557, "CNPJ": "66540689000155", "IDCIDADE": "SANTO ANTONIO DO ARACANGUA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "66.540.689 EDNELSON TOMASI DE CAMPOS JUNIOR", "ENDEE": "10A RUA RUA, 219, MAJOR PRADO, 16150-000, SANTO ANTÔNIO DO ARACANGUÁ, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.8735227,-50.4929492", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Santo Antônio do Aracanguá_Major Prado_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.4929492, -20.8735227 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "66540689000155", "IDCIDADE": "SANTO ANTONIO DO ARACANGUA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "66.540.689_EDNELSON_TOMASI_DE_CAMPOS_JUNIOR", "ENDEE": "10A RUA RUA, 219, MAJOR PRADO, 16150-000, SANTO ANTÔNIO DO ARACANGUÁ, SP, BRASIL", "LATITUDE": "-20.8735227", "LONGITUDE": "-50.4929492", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.8735227,-50.4929492", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Santo Antônio do Aracanguá_Major Prado_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.4929492, -20.8735227 ] } }
 ]
 }

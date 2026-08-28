@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 308833, "CNPJ": "55718106000117", "IDCIDADE": "UBARANA", "NOMEFANTASIA": "Enxovais Sao Sebastiao", "RAZAOSOCIAL": "ENXOVAIS SAO SEBASTIAO LTDA", "ENDEE": "RUA ALFREDO MARTINS DE SOUZA, 541, CENTRO, 15225-049, UBARANA, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.1674163,-49.7207898", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Ubarana_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -49.7207898, -21.1674163 ] } }
+{ "type": "Feature", "properties": { "CNPJ": "55718106000117", "IDCIDADE": "UBARANA", "NOMEFANTASIA": "Enxovais_Sao_Sebastiao", "RAZAOSOCIAL": "ENXOVAIS_SAO_SEBASTIAO_LTDA", "ENDEE": "RUA ALFREDO MARTINS DE SOUZA, 541, CENTRO, 15225-049, UBARANA, SP, BRASIL", "LATITUDE": "-21.1674163", "LONGITUDE": "-49.7207898", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.1674163,-49.7207898", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Ubarana_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -49.7207898, -21.1674163 ] } }
 ]
 }

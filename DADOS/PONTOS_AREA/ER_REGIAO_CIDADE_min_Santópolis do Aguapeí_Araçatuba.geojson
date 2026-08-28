@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Santópolis do Aguapeí_Araçatuba",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": "43419093000104", "IDCIDADE": "SANTOPOLIS DO AGUAPEI", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "JOSE_FABIANO_CARDOSO_DE_OLIVEIRA_28166654881", "ENDEE": "1A RUA ACRE, 17, CASA, COHAB II, 16240-000, SANTÓPOLIS DO AGUAPEÍ, SP, BRASIL", "LATITUDE": "-21.6416642", "LONGITUDE": "-50.5034213", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.6416642,-50.5034213", "O_QUE_FAZER": "CARTEIRA - FAMPE", "field_10": null, "field_11": null, "field_12": null, "field_13": null, "ER_REGIAO_CIDADE_min": "Santópolis do Aguapeí_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.5034213, -21.6416642 ] } }
+]
+}
