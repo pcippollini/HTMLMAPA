@@ -31,7 +31,7 @@ body{font-family:Arial,sans-serif;overflow:hidden}
 .btn{border:0;border-radius:7px;padding:7px 6px;font-size:11px;font-weight:700;cursor:pointer}
 .btn-pri{background:#fff;color:#111827}.btn-sec{background:#374151;color:#fff}
 .fab{position:absolute;z-index:1100;right:10px;width:48px;height:44px;border:0;border-radius:10px;background:#111827;color:white;font-size:20px;box-shadow:0 3px 14px rgba(0,0,0,.35);cursor:pointer}
-#btnLegenda{top:10px}#btnProximo{top:62px;font-size:11px}
+#btnLegenda{top:10px}#btnProximo{top:62px;font-size:11px}#btnBusca{top:114px}
 .modal-bg{position:fixed;inset:0;z-index:1190;background:rgba(0,0,0,.42);display:none}
 .modal-bg.aberto{display:block}
 .painel-flutuante{position:fixed;z-index:1200;top:50%;left:50%;transform:translate(-50%,-50%);width:min(390px,92vw);max-height:82vh;overflow:auto;background:var(--painel);color:var(--texto);border-radius:12px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,.5);display:none}
@@ -45,8 +45,16 @@ body{font-family:Arial,sans-serif;overflow:hidden}
 .gps-marker{width:18px;height:18px;background:#2563EB;border:3px solid white;border-radius:50%;box-shadow:0 0 0 6px rgba(37,99,235,.25)}
 .proximo-info{font-size:12px;line-height:1.5}
 .rota{display:inline-block;margin-top:8px;background:#2563EB;color:white;text-decoration:none;padding:8px 10px;border-radius:7px;font-weight:700}
+.busca-linha{display:grid;grid-template-columns:1fr auto;gap:7px}
+.busca-input{width:100%;border:1px solid #4B5563;border-radius:8px;padding:10px;background:#fff;color:#111827;font-size:14px;outline:none}
+.busca-input:focus{border-color:#60A5FA;box-shadow:0 0 0 2px rgba(96,165,250,.25)}
+.busca-btn{border:0;border-radius:8px;padding:0 13px;background:#2563EB;color:#fff;font-weight:700;cursor:pointer}
+.resultados-busca{display:grid;gap:6px;margin-top:10px}
+.resultado-busca{width:100%;border:1px solid var(--borda);border-radius:8px;padding:9px;background:var(--painel2);color:#fff;text-align:left;font-size:12px;line-height:1.35;cursor:pointer}
+.resultado-busca:hover{background:#374151}
+.mensagem-busca{margin-top:10px;font-size:12px;color:#D1D5DB;line-height:1.4}
 .aviso{font-size:11px;color:#FACC15;margin-top:7px}
-@media(max-width:600px){.resumo{top:6px;left:6px;width:205px}.fab{right:6px}#btnLegenda{top:6px}#btnProximo{top:58px}}
+@media(max-width:600px){.resumo{top:6px;left:6px;width:205px}.fab{right:6px}#btnLegenda{top:6px}#btnProximo{top:58px}#btnBusca{top:110px}}
 </style>
 </head>
 
@@ -67,6 +75,7 @@ body{font-family:Arial,sans-serif;overflow:hidden}
 
 <button class="fab" id="btnLegenda">☰</button>
 <button class="fab" id="btnProximo">Próximo</button>
+<button class="fab" id="btnBusca" title="Buscar endereço">🔎</button>
 
 <div class="modal-bg" id="fundo"></div>
 
@@ -81,6 +90,16 @@ body{font-family:Arial,sans-serif;overflow:hidden}
 <div id="conteudoProximo"></div>
 </div>
 
+<div class="painel-flutuante" id="painelBusca">
+<div class="cab"><h3>Buscar endereço</h3><button class="fechar">Fechar</button></div>
+<div class="busca-linha">
+<input class="busca-input" id="campoBusca" type="search" placeholder="Rua, número, bairro e cidade" autocomplete="street-address">
+<button class="busca-btn" id="executarBusca">Buscar</button>
+</div>
+<div class="mensagem-busca" id="mensagemBusca">Digite um endereço para localizá-lo no mapa.</div>
+<div class="resultados-busca" id="resultadosBusca"></div>
+</div>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
@@ -89,7 +108,7 @@ body{font-family:Arial,sans-serif;overflow:hidden}
 const NOME_MAPA="Angatuba";
 const TIPO_MAPA="COMPOSTO";
 const CAMADAS_POLIGONO=[{"nome": "ER_REGIAO_Angatuba_Angatuba.geojson", "arquivo": "../DADOS/AREAS_POLIGONOS/ER_REGIAO_Angatuba_Angatuba.geojson"}, {"nome": "ER_REGIAO_Angatuba_Bom Retiro da Esperança.geojson", "arquivo": "../DADOS/AREAS_POLIGONOS/ER_REGIAO_Angatuba_Bom Retiro da Esperança.geojson"}];
-const CAMADAS_PONTOS=[{"nome": "ER_REGIAO_CIDADE_min_Angatuba_Angatuba_Botucatu.geojson", "arquivo": "../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Angatuba_Angatuba_Botucatu.geojson"}];
+const CAMADAS_PONTOS=[{"nome": "ER_REGIAO_CIDADE_min_Angatuba_Angatuba_Botucatu.geojson", "arquivo": "../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Angatuba_Angatuba_Botucatu.geojson"}, {"nome": "ER_REGIAO_CIDADE_min_Angatuba_Bom Retiro da Esperança_Sorocaba.geojson", "arquivo": "../DADOS/PONTOS_AREA/ER_REGIAO_CIDADE_min_Angatuba_Bom Retiro da Esperança_Sorocaba.geojson"}];
 const STATUS_VALIDOS=["FINALIZADO", "CARTEIRA", "CARTEIRA - FAMPE", "T2", "T3", "T4", "M1", "M2", "M3", "M4"];
 const CORES={"FINALIZADO": "#8B0000", "CARTEIRA": "#123D68", "CARTEIRA - FAMPE": "#D946EF", "T2": "#FACC15", "T3": "#14B8A6", "T4": "#F97316", "M1": "#7C3AED", "M2": "#06B6D4", "M3": "#EC4899", "M4": "#84CC16"};
 
@@ -109,6 +128,7 @@ let gpsMarker=null;
 let gpsCircle=null;
 let watchId=null;
 let hiddenAt=null;
+let marcadorBusca=null;
 
 function normaliza(v){
   return String(v??'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim().toUpperCase();
@@ -217,6 +237,97 @@ function abrir(id){
 function fecharTudo(){
   fundo.classList.remove('aberto');
   document.querySelectorAll('.painel-flutuante').forEach(e=>e.classList.remove('aberto'));
+}
+
+function escaparHTML(v){
+  return String(v??'')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+}
+
+function abrirResultadoBusca(resultado){
+  const lat=Number(resultado.lat);
+  const lng=Number(resultado.lon);
+  if(!Number.isFinite(lat)||!Number.isFinite(lng)) return;
+
+  if(marcadorBusca) map.removeLayer(marcadorBusca);
+
+  const endereco=resultado.display_name||'Endereço encontrado';
+  const maps=`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+
+  marcadorBusca=L.marker([lat,lng]).addTo(map).bindPopup(`
+    <b>Endereço encontrado</b><br>
+    ${escaparHTML(endereco)}<br><br>
+    <a class="rota" target="_blank" rel="noopener noreferrer" href="${maps}">
+      Abrir no Google Maps
+    </a>
+  `);
+
+  fecharTudo();
+  map.setView([lat,lng],18);
+  marcadorBusca.openPopup();
+  registrar('endereco_encontrado');
+}
+
+async function buscarEndereco(){
+  const consulta=campoBusca.value.trim();
+
+  if(consulta.length<3){
+    mensagemBusca.textContent='Digite pelo menos 3 caracteres.';
+    resultadosBusca.innerHTML='';
+    return;
+  }
+
+  executarBusca.disabled=true;
+  mensagemBusca.textContent='Buscando endereço...';
+  resultadosBusca.innerHTML='';
+
+  try{
+    const params=new URLSearchParams({
+      format:'jsonv2',
+      q:consulta,
+      limit:'5',
+      addressdetails:'1',
+      countrycodes:'br',
+      'accept-language':'pt-BR'
+    });
+
+    if(map.getBounds().isValid()){
+      const b=map.getBounds();
+      params.set('viewbox',`${b.getWest()},${b.getNorth()},${b.getEast()},${b.getSouth()}`);
+      params.set('bounded','0');
+    }
+
+    const resposta=await fetch(`https://nominatim.openstreetmap.org/search?${params.toString()}`);
+    if(!resposta.ok) throw new Error(`Falha na busca (${resposta.status})`);
+
+    const resultados=await resposta.json();
+
+    if(!Array.isArray(resultados)||!resultados.length){
+      mensagemBusca.textContent='Nenhum endereço encontrado. Tente incluir número, bairro e cidade.';
+      return;
+    }
+
+    mensagemBusca.textContent=`${resultados.length} resultado(s) encontrado(s):`;
+    resultadosBusca.innerHTML=resultados.map((r,i)=>`
+      <button class="resultado-busca" data-indice="${i}">
+        📍 ${escaparHTML(r.display_name||'Endereço encontrado')}
+      </button>
+    `).join('');
+
+    resultadosBusca.querySelectorAll('[data-indice]').forEach(b=>{
+      b.addEventListener('click',()=>abrirResultadoBusca(resultados[Number(b.dataset.indice)]));
+    });
+
+    registrar('busca_endereco',{resultados:resultados.length});
+  }catch(e){
+    mensagemBusca.textContent='Não foi possível buscar agora. Verifique a internet e tente novamente.';
+  }finally{
+    executarBusca.disabled=false;
+  }
 }
 
 fundo.addEventListener('click',fecharTudo);
@@ -465,6 +576,14 @@ document.addEventListener('visibilitychange',()=>{
 
 btnLegenda.addEventListener('click',()=>abrir('painelLegenda'));
 btnProximo.addEventListener('click',abrirMenuProximo);
+btnBusca.addEventListener('click',()=>{
+  abrir('painelBusca');
+  setTimeout(()=>campoBusca.focus(),50);
+});
+executarBusca.addEventListener('click',buscarEndereco);
+campoBusca.addEventListener('keydown',e=>{
+  if(e.key==='Enter') buscarEndereco();
+});
 btnGPS.addEventListener('click',iniciarGPS);
 btnCentro.addEventListener('click',()=>{
   if(boundsInicial){
