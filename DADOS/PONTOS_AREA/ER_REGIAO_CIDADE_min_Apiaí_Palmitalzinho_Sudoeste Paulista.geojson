@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 227503, "CNPJ": "45352099000129", "IDCIDADE": "APIAI", "NOMEFANTASIA": null, "RAZAOSOCIAL": "ALZINA_ROSNER_CAVALHEIRO", "ENDEE": "RUA PALMITALZINHO, SN, PALMITALZINHO, 18324-502, APIAÍ, SP, BRASIL", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-24.3659248,-49.0453013", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Apiaí_Palmitalzinho_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -49.0453013, -24.3659248 ] } }
+{ "type": "Feature", "properties": { "fid": 312525, "CNPJ": "45352099000129", "IDCIDADE": "APIAI", "NOMEFANTASIA": null, "RAZAOSOCIAL": "ALZINA_ROSNER_CAVALHEIRO", "ENDEE": "RUA_PALMITALZINHO,_SN,_PALMITALZINHO,_18324-502,_APIAI,_SP,_BRASIL", "LATITUDE": "-24.3659248", "LONGITUDE": "-49.0453013", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-24.3659248,-49.0453013", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Apiaí_Palmitalzinho_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -49.0453013, -24.3659248 ] } }
 ]
 }
