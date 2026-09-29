@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 21387, "CNPJ": "02442611000115", "IDCIDADE": "UNIAO_PAULISTA", "NOMEFANTASIA": "MERCADO_E_ACOUGUE_DO_PAULO", "RAZAOSOCIAL": "AZENHA_&_BARRETO_SUPERMERCADO_LTDA", "ENDEE": "RUA_SAO_PEDRO,_126,_CENTRO,_15250-000,_UNIAO_PAULISTA,_SP,_BRASIL", "LATITUDE": "-20.8886703", "LONGITUDE": "-49.8996789", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-20.8886703,-49.8996789", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "União Paulista_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.8996789, -20.8886703 ] } }
+{ "type": "Feature", "properties": { "fid": 235259, "CNPJ": "02442611000115", "IDCIDADE": "UNIAO PAULISTA", "NOMEFANTASIA": "Mercado_e_Acougue_do_Paulo", "RAZAOSOCIAL": "AZENHA_&_BARRETO_SUPERMERCADO_LTDA", "ENDEE": "RUA SAO PEDRO, 126, CENTRO, 15250-000, UNIÃO PAULISTA, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - FAMPE", "PROJETO": "-", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "União Paulista_São José do Rio Preto" }, "geometry": { "type": "Point", "coordinates": [ -49.8996789, -20.8886703 ] } }
 ]
 }

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 35062, "CNPJ": "60966969000143", "IDCIDADE": "GLICERIO", "NOMEFANTASIA": "TIAGO_SILVEIRA_ELIAS", "RAZAOSOCIAL": "60.966.969_TIAGO_SILVEIRA_ELIAS", "ENDEE": "AVENIDA_CASTILHO,_331,_CENTRO,_16280-020,_GLICERIO,_SP,_BRASIL", "LATITUDE": "-21.205188", "LONGITUDE": "-50.1770532", "LMAPS": "https://www.google.com/maps?q=&layer=c&cbll=-21.205188,-50.1770532", "O_QUE_FAZER": "APLICAR T2", "ER_REGIAO_CIDADE_min": "Glicério_Juritis_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.1770532, -21.205188 ] } }
+{ "type": "Feature", "properties": { "fid": 946, "CNPJ": "60966969000143", "IDCIDADE": "GLICERIO", "NOMEFANTASIA": "TIAGO_SILVEIRA_ELIAS", "RAZAOSOCIAL": "60.966.969_TIAGO_SILVEIRA_ELIAS", "ENDEE": "AVENIDA CASTILHO, 331, CENTRO, 16280-020, GLICÉRIO, SP, BRASIL", "O_QUE_FAZER": "APLICAR T2", "PROJETO": "OXIGENA", "ORIGEM": "SURVEYMONKEY", "ER_REGIAO_CIDADE_min": "Glicério_Juritis_Araçatuba" }, "geometry": { "type": "Point", "coordinates": [ -50.1770532, -21.205188 ] } }
 ]
 }
