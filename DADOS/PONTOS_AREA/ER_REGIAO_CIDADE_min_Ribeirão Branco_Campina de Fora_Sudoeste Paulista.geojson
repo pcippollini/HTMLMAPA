@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 260001, "CNPJ": "09522204000167", "IDCIDADE": "RIBEIRAO BRANCO", "NOMEFANTASIA": null, "RAZAOSOCIAL": "TRANSPORTES_MP_ANDRADE_LTDA", "ENDEE": "RUA ITARARE, 377, CENTRO (CAMPINA DE FORA), 18434-002, RIBEIRÃO BRANCO, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - FAMPE", "PROJETO": "-", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "Ribeirão Branco_Campina de Fora_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -48.9472266, -24.3099806 ] } }
+{ "type": "Feature", "properties": { "fid": 315819, "CNPJ": 9522204000167, "IDCIDADE": "RIBEIRAO BRANCO", "NOMEFANTASIA": null, "RAZAOSOCIAL": "TRANSPORTES_MP_ANDRADE_LTDA", "ENDEE": "RUA ITARARE, 377, CENTRO (CAMPINA DE FORA), 18434-002, RIBEIRÃO BRANCO, SP, BRASIL", "LATITUDE": -24.3099806, "LONGITUDE": -48.9472266, "O_QUE_FAZER": "CARTEIRA - FAMPE", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "Ribeirão Branco_Campina de Fora_Sudoeste Paulista" }, "geometry": { "type": "Point", "coordinates": [ -48.9472266, -24.3099806 ] } }
 ]
 }

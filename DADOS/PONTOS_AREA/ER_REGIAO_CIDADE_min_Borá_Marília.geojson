@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 239206, "CNPJ": "42693753000170", "IDCIDADE": "BORA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "42.693.753_JOSE_HENRIQUE_DA_ROCHA_MACHADO", "ENDEE": "RUA ADELAIDE DE SOUZA BARREIROS, 176, NOVA BORA, 19740-024, BORÁ, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - FAMPE", "PROJETO": "-", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "Borá_Marília" }, "geometry": { "type": "Point", "coordinates": [ -50.5452675, -22.2717804 ] } }
+{ "type": "Feature", "properties": { "fid": 76648, "CNPJ": 42693753000170, "IDCIDADE": "BORA", "NOMEFANTASIA": "-", "RAZAOSOCIAL": "42.693.753_JOSE_HENRIQUE_DA_ROCHA_MACHADO", "ENDEE": "RUA ADELAIDE DE SOUZA BARREIROS, 176, NOVA BORA, 19740-024, BORÁ, SP, BRASIL", "LATITUDE": -22.2717804, "LONGITUDE": -50.5452675, "O_QUE_FAZER": "CARTEIRA - FAMPE", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "Borá_Marília" }, "geometry": { "type": "Point", "coordinates": [ -50.5452675, -22.2717804 ] } }
 ]
 }

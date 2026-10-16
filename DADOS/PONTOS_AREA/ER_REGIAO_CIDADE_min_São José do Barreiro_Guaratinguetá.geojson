@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 277607, "CNPJ": "28275304000180", "IDCIDADE": "SÃO JOSÉ DO BARREIRO", "NOMEFANTASIA": "MERCEARIA DA VILA LTDA", "RAZAOSOCIAL": "MERCEARIA DA VILA LTDA", "ENDEE": "RUA JOAQUIM FERREIRA SERAFIN, 17, VILA NOVA, 12830-000, SÃO JOSÉ DO BARREIRO, SP, BRASIL", "O_QUE_FAZER": "FINALIZADO", "PROJETO": "-", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "São José do Barreiro_Guaratinguetá" }, "geometry": { "type": "Point", "coordinates": [ -44.58179, -22.6451084 ] } }
+{ "type": "Feature", "properties": { "fid": 100090, "CNPJ": 28275304000180, "IDCIDADE": "SÃO JOSÉ DO BARREIRO", "NOMEFANTASIA": "MERCEARIA DA VILA LTDA", "RAZAOSOCIAL": "MERCEARIA DA VILA LTDA", "ENDEE": "RUA JOAQUIM FERREIRA SERAFIN, 17, VILA NOVA, 12830-000, SÃO JOSÉ DO BARREIRO, SP, BRASIL", "LATITUDE": -22.6451084, "LONGITUDE": -44.58179, "O_QUE_FAZER": "FINALIZADO", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "São José do Barreiro_Guaratinguetá" }, "geometry": { "type": "Point", "coordinates": [ -44.58179, -22.6451084 ] } }
 ]
 }

@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 243485, "CNPJ": "64090755000107", "IDCIDADE": "ANHEMBI", "NOMEFANTASIA": null, "RAZAOSOCIAL": "64.090.755_JOSE_FELIS_DE_SOUSA", "ENDEE": "RUA ANTONIO MOREIRA DA SILVA, 156, CENTRO (PIRAMBOIA), 18639-004, ANHEMBI, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - FAMPE", "PROJETO": "-", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "Anhembi_Pirambóia_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -48.1607794, -22.9332822 ] } }
+{ "type": "Feature", "properties": { "fid": 137825, "CNPJ": 64090755000107, "IDCIDADE": "ANHEMBI", "NOMEFANTASIA": null, "RAZAOSOCIAL": "64.090.755_JOSE_FELIS_DE_SOUSA", "ENDEE": "RUA ANTONIO MOREIRA DA SILVA, 156, CENTRO (PIRAMBOIA), 18639-004, ANHEMBI, SP, BRASIL", "LATITUDE": -22.9332822, "LONGITUDE": -48.1607794, "O_QUE_FAZER": "CARTEIRA - FAMPE", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "Anhembi_Pirambóia_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -48.1607794, -22.9332822 ] } }
 ]
 }
