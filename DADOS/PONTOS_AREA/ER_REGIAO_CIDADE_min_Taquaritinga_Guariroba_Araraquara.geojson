@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Taquaritinga_Guariroba_Araraquara",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": 51048607000182, "IDCIDADE": "TAQUARITINGA", "NOMEFANTASIA": "AGRO ATLAS TAQUARITINGA", "RAZAOSOCIAL": "FV AGRO PULVERIZACAO LTDA", "ENDEE": "RUA ERNESTO FIORAVANTI, 135, CENTRO (GUARIROBA), 15908-003, TAQUARITINGA, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Taquaritinga_Guariroba_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.6248001, -21.4768004 ] } },
+{ "type": "Feature", "properties": { "CNPJ": 15862908000181, "IDCIDADE": "TAQUARITINGA", "NOMEFANTASIA": "GNET NETWORK SOLUTIONS", "RAZAOSOCIAL": "V MICALI TELECOMUNICACOES", "ENDEE": "RUA ERNESTO FIORAVANTI, 135, CENTRO (GUARIROBA), 15908-003, TAQUARITINGA, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Taquaritinga_Guariroba_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.6248001, -21.4768004 ] } }
+]
+}

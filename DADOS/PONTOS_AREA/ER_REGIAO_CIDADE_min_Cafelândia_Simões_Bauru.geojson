@@ -4,6 +4,6 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 46242, "CNPJ": 39675242000110, "IDCIDADE": "CAFELANDIA", "NOMEFANTASIA": "EDSON_APARECIDO_DOS_SANTOS", "RAZAOSOCIAL": "39.675.242_IZABELLY_CAROLLINY_APARECIDA_LEITE", "ENDEE": "AVENIDA CORONEL AMANDO SIMOES, 373, CENTRO, 16510-024, CAFELÂNDIA, SP, BRASIL", "LATITUDE": -21.6651536, "LONGITUDE": -49.435682, "O_QUE_FAZER": "APLICAR T3", "ORIGEM": "SURVEYMONKEY", "ER_REGIAO_CIDADE_min": "Cafelândia_Simões_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -49.435682, -21.6651536 ] } }
+{ "type": "Feature", "properties": { "CNPJ": 39675242000110, "IDCIDADE": "CAFELANDIA", "NOMEFANTASIA": "EDSON_APARECIDO_DOS_SANTOS", "RAZAOSOCIAL": "39.675.242_IZABELLY_CAROLLINY_APARECIDA_LEITE", "ENDEE": "AVENIDA CORONEL AMANDO SIMOES, 373, CENTRO, 16510-024, CAFELANDIA, SP, BRASIL", "O_QUE_FAZER": "APLICAR T3", "ER_REGIAO_CIDADE_min": "Cafelândia_Simões_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -49.435682, -21.6651536 ] } }
 ]
 }

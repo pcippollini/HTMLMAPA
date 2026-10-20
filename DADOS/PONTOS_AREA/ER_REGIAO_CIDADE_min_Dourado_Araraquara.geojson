@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Dourado_Araraquara",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": 64576511000139, "IDCIDADE": "DOURADO", "NOMEFANTASIA": null, "RAZAOSOCIAL": "DANILO CARVALHO GONCALVES MOVEIS", "ENDEE": "AVENIDA MARCHADOR BRASIL, 790, ND, 13596-046, DOURADO, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Dourado_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.3175212, -22.1108812 ] } },
+{ "type": "Feature", "properties": { "CNPJ": 61091288000141, "IDCIDADE": "DOURADO", "NOMEFANTASIA": null, "RAZAOSOCIAL": "61.091.288 RODRIGO ADRIANO GREGOR", "ENDEE": "RUA DOS FERROVIARIOS, 253, JARDIM PAULISTA, 13596-036, DOURADO, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Dourado_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.3148348, -22.1101538 ] } },
+{ "type": "Feature", "properties": { "CNPJ": 46127612000140, "IDCIDADE": "DOURADO", "NOMEFANTASIA": "MOREIRA MOVEIS", "RAZAOSOCIAL": "MOREIRA MOVEIS LTDA", "ENDEE": "RODOVIA LUIZ AUGUSTO DE OLIVEIRA SP 215, 215, RURAL, 13590-000, DOURADO, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Dourado_Araraquara" }, "geometry": { "type": "Point", "coordinates": [ -48.3267739, -22.0914518 ] } }
+]
+}

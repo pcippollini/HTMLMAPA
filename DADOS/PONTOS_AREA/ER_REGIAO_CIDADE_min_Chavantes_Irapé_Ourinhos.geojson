@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Chavantes_Irapé_Ourinhos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": 51562415000190, "IDCIDADE": "CHAVANTES", "NOMEFANTASIA": null, "RAZAOSOCIAL": "51.562.415 SIDNEI GONCALVES DOS REIS", "ENDEE": "RUA ELIAS GABRIEL, 452, CENTRO (IRAPE), 18980-008, CHAVANTES, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Chavantes_Irapé_Ourinhos" }, "geometry": { "type": "Point", "coordinates": [ -49.7376602, -23.0608102 ] } }
+]
+}

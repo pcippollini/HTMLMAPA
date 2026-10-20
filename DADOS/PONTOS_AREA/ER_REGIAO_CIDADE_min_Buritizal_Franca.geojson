@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Buritizal_Franca",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": 60200713000120, "IDCIDADE": "BURITIZAL", "NOMEFANTASIA": null, "RAZAOSOCIAL": "A.J.M. ENGENHARIA CIVIL LTDA", "ENDEE": "RUA IVO GARCIA DA SILVEIRA, 75, JARDIM ANGELO, 14570-376, BURITIZAL, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Buritizal_Franca" }, "geometry": { "type": "Point", "coordinates": [ -47.7105454, -20.1936224 ] } }
+]
+}

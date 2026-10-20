@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ER_REGIAO_CIDADE_min_Arealva_Jacuba_Bauru",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "CNPJ": 66081072000119, "IDCIDADE": "AREALVA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "ORGANIZACAO SOUZA MELLO MASTER TEXTIL LTDA", "ENDEE": "RUA AMARO SARDINHA, 40, SANTA IZABEL, 17167-006, AREALVA, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Arealva_Jacuba_Bauru" }, "geometry": { "type": "Point", "coordinates": [ -49.0025898, -22.1169165 ] } }
+]
+}

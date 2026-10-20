@@ -4,6 +4,7 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{ "type": "Feature", "properties": { "fid": 21054, "CNPJ": 19922980000108, "IDCIDADE": "MONCOES", "NOMEFANTASIA": "CONVENIENCIA_FENIX", "RAZAOSOCIAL": "CONVENIENCIA_FENIX_DE_MONCOES_LTDA", "ENDEE": "RUA RIO DE JANEIRO, 821, CENTRO, 15275-000, MONÇÕES, SP, BRASIL", "LATITUDE": -20.8551379, "LONGITUDE": -50.0879249, "O_QUE_FAZER": "CARTEIRA - FAMPE", "ORIGEM": "-", "ER_REGIAO_CIDADE_min": "Monções_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -50.0879249, -20.8551379 ] } }
+{ "type": "Feature", "properties": { "CNPJ": 19922980000108, "IDCIDADE": "MONCOES", "NOMEFANTASIA": "CONVENIENCIA_FENIX", "RAZAOSOCIAL": "CONVENIENCIA_FENIX_DE_MONCOES_LTDA", "ENDEE": "RUA RIO DE JANEIRO, 821, CENTRO, 15275-000, MONCOES, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Monções_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -50.0879249, -20.8551379 ] } },
+{ "type": "Feature", "properties": { "CNPJ": 60976234000109, "IDCIDADE": "MONCOES", "NOMEFANTASIA": null, "RAZAOSOCIAL": "G & G AGROPECUARIA E VETERINARIA LTDA", "ENDEE": "RUA LUIZ GONZAGA, 713, CENTRO, 15275-031, MONCOES, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - DESENVOLVE", "ER_REGIAO_CIDADE_min": "Monções_Votuporanga" }, "geometry": { "type": "Point", "coordinates": [ -50.0879144, -20.853351 ] } }
 ]
 }
