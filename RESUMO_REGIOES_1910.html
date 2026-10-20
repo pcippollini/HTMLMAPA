@@ -1,224 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#123d68">
-  <title>Resumo por Região | Mapa de Status</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyo+Z7Q2KgpxfYg=" crossorigin="">
-  <style>
-    :root { color-scheme: light; --azul:#123d68; --verde:#0f766e; --fundo:#f6f8fb; --linha:#e5eaf0; --texto:#172536; }
-    * { box-sizing:border-box; }
-    html, body { margin:0; height:100%; font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif; color:var(--texto); }
-    body { display:flex; flex-direction:column; background:var(--fundo); }
-    header { z-index:500; position:relative; display:flex; align-items:center; justify-content:space-between;
-             flex-wrap:wrap; gap:10px; padding:13px 18px; background:#fff; box-shadow:0 2px 12px #0f234015; }
-    .titulo { display:flex; align-items:center; gap:11px; min-width:0; }
-    .marca { width:12px; height:35px; background:var(--azul); border-radius:5px; flex:none; }
-    h1 { font-size:17px; font-weight:750; margin:0; color:var(--azul); line-height:1.2; }
-    .subtitulo { font-size:11px; color:#64748b; margin-top:3px; }
-    .acoes { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-    #contador { padding:7px 10px; border:1px solid var(--linha); border-radius:999px;
-                font-size:12px; background:#f8fafc; color:#334155; font-weight:650; }
-    button { background:var(--azul); border:0; color:#fff; font-weight:650; font-size:12px;
-             border-radius:7px; padding:9px 11px; cursor:pointer; }
-    button:focus-visible { outline:3px solid #fb923c; outline-offset:2px; }
-    #mapa { flex:1; min-height:260px; width:100%; background:#e7edf2; }
-    #mensagem { position:absolute; left:50%; top:92px; transform:translateX(-50%); z-index:600;
-                width:min(520px,calc(100% - 28px)); padding:12px 15px; background:#fff;
-                box-shadow:0 6px 24px #11213b2b; border-left:4px solid var(--verde);
-                font-size:13px; line-height:1.45; border-radius:8px; }
-    #mensagem.erro { border-left-color:#b91c1c; }
-    #mensagem[hidden] { display:none; }
-    .leaflet-container { font-family:inherit; }
-    .leaflet-popup-content-wrapper { border-radius:12px; box-shadow:0 8px 28px #142b4233; }
-    .leaflet-popup-content { margin:0; min-width:250px; max-width:315px; }
-    .leaflet-popup-close-button { top:10px!important; right:10px!important; color:#fff!important; font-size:23px!important; }
-    .popup-cabecalho { background:var(--azul); color:#fff; padding:15px 34px 14px 16px;
-                      border-radius:11px 11px 0 0; }
-    .popup-sobre { text-transform:uppercase; font-size:10px; letter-spacing:.8px; opacity:.8; font-weight:700; }
-    .popup-nome { font-size:16px; font-weight:800; margin-top:4px; line-height:1.3; overflow-wrap:anywhere; }
-    .popup-municipio { font-size:12px; opacity:.87; margin-top:5px; overflow-wrap:anywhere; }
-    .popup-conteudo { max-height:min(57vh,400px); overflow:auto; padding:12px 16px 16px; }
-    .grupo { margin-top:12px; }
-    .grupo:first-child { margin-top:0; }
-    .grupo-titulo { font-size:10px; text-transform:uppercase; font-weight:800; letter-spacing:.6px; color:#64748b;
-                    padding:0 0 5px; border-bottom:1px solid var(--linha); }
-    .indicador { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px; align-items:center;
-                 border-bottom:1px solid #eef2f6; padding:7px 0; font-size:12px; }
-    .indicador:last-child { border-bottom:0; }
-    .indicador-nome { min-width:0; overflow-wrap:anywhere; }
-    .indicador-numero { color:var(--azul); font-variant-numeric:tabular-nums; font-weight:800; font-size:14px; }
-    .rodape { position:absolute; z-index:450; bottom:25px; left:12px; background:#fff; border-radius:7px;
-              font-size:11px; padding:7px 10px; box-shadow:0 2px 9px #102a4333; pointer-events:none; color:#475569; }
-    @media(max-width:600px) {
-      header { padding:9px 12px; }
-      h1 { font-size:15px; }
-      .subtitulo { font-size:10px; }
-      #contador { font-size:11px; padding:5px 9px; }
-      button { font-size:11px; padding:7px 9px; }
-      #mensagem { top:105px; }
-      .rodape { bottom:25px; font-size:10px; max-width:210px; }
-      .leaflet-popup-content { min-width:225px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Resumo por Região | São Paulo</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif}body{display:flex;flex-direction:column;color:#17283b}
+header{min-height:54px;background:#123d68;color:white;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 16px;z-index:500}
+header strong{font-size:15px}#contagem{font-size:12px;white-space:nowrap;color:#d9e6f3}#mapa{flex:1;min-height:200px;background:#e4edf2}
+#aviso{position:absolute;z-index:600;top:70px;left:50%;transform:translateX(-50%);padding:11px 15px;background:white;box-shadow:0 2px 14px #0002;border-radius:8px;font-size:13px;max-width:calc(100% - 30px)}
+#aviso[hidden]{display:none}.leaflet-container{font-family:Arial,Helvetica,sans-serif}.leaflet-popup-content{margin:0;width:268px!important}.leaflet-popup-content-wrapper{padding:0;border-radius:11px;overflow:hidden}.leaflet-popup-close-button{color:white!important;top:9px!important;right:9px!important;font-size:22px!important}.pop-titulo{background:#123d68;color:white;padding:13px 32px 12px 14px}.pop-titulo b{font-size:15px;display:block}.pop-titulo small{display:block;margin-top:4px;color:#d5e5f2}.pop-itens{padding:9px 14px;max-height:54vh;overflow-y:auto}.pop-item{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:6px 0;border-bottom:1px solid #edf1f5;font-size:12px}.pop-item:last-child{border-bottom:0}.pop-item b{font-size:14px;color:#123d68}
+@media(max-width:480px){header{padding:10px}header strong{font-size:13px}#contagem{font-size:11px}.leaflet-popup-content{width:245px!important}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="titulo">
-      <span class="marca" aria-hidden="true"></span>
-      <div>
-        <h1>Resumo de status por região</h1>
-        <div class="subtitulo">São Paulo · Clique em uma região para consultar as quantidades</div>
-      </div>
-    </div>
-    <div class="acoes">
-      <span id="contador">Carregando regiões...</span>
-      <button type="button" id="abrirArquivo" title="Usar o GeoJSON do computador, inclusive para teste local">Abrir GeoJSON</button>
-      <input type="file" id="arquivoLocal" accept=".geojson,.json,application/geo+json,application/json" hidden>
-    </div>
-  </header>
-
-  <main id="mapa" aria-label="Mapa interativo das regiões de São Paulo"></main>
-  <div id="mensagem" role="status">Carregando o mapa e as regiões...</div>
-  <div class="rodape">Toque ou clique em uma área para ver os 10 indicadores.</div>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script>
-    'use strict';
-    // O HTML deve ficar na raiz do repositório HTMLMAPA.
-    // O GeoJSON deve ficar na subpasta DADOS com exatamente este nome.
-    const CAMINHO_GEOJSON = './DADOS/RESUMO_REGIÃO_1910.geojson';
-
-    const CAMPOS = [
-      { nome: 'Etapas', campos: ['T2', 'T3', 'T4', 'T5', 'M1', 'M2'] },
-      { nome: 'Carteiras', campos: ['CARTEIRA', 'CARTEIRA - DESENVOLVE', 'CARTEIRA - FAMPE'] },
-      { nome: 'Conclusão', campos: ['FINALIZADO'] }
-    ];
-
-    const formatarNumero = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
-    const mensagem = document.getElementById('mensagem');
-    const contador = document.getElementById('contador');
-    let conjuntoRegioes = null;
-    let selecionada = null;
-
-    const mapa = L.map('mapa', { preferCanvas: true, zoomControl: true }).setView([-22.6, -48.6], 7);
-    const renderizador = L.canvas({ padding: 0.25 });
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'
-    }).addTo(mapa);
-
-    const estiloPadrao = { color: '#24618c', weight: 1.1, opacity: .8, fillColor: '#398ab6', fillOpacity: .20, renderer: renderizador };
-    const estiloRealce = { color: '#0f766e', weight: 2.6, opacity: 1, fillColor: '#38b2ac', fillOpacity: .42 };
-    const estiloSelecionado = { color: '#d97706', weight: 3.2, opacity: 1, fillColor: '#fbbf24', fillOpacity: .43 };
-
-    function textoSeguro(valor) {
-      return String(valor ?? 'Não informado').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    }
-
-    function valorNumerico(valor) {
-      const numero = Number(valor ?? 0);
-      return Number.isFinite(numero) ? formatarNumero.format(numero) : '—';
-    }
-
-    function criarPopup(propriedades) {
-      const p = propriedades || {};
-      // ER_REGIAO, NM_MUN e REGIAO são campos existentes no arquivo recebido.
-      const nome = textoSeguro(p.ER_REGIAO || p.REGIAO || p.NM_MUN);
-      const municipio = textoSeguro(p.NM_MUN);
-      const idRegiao = textoSeguro(p.REGIAO);
-      const grupos = CAMPOS.map(grupo => {
-        const linhas = grupo.campos.map(chave =>
-          `<div class="indicador"><span class="indicador-nome">${textoSeguro(chave)}</span><strong class="indicador-numero">${valorNumerico(p[chave])}</strong></div>`
-        ).join('');
-        return `<section class="grupo"><div class="grupo-titulo">${textoSeguro(grupo.nome)}</div>${linhas}</section>`;
-      }).join('');
-      return `<div class="popup-cabecalho"><div class="popup-sobre">Região</div><div class="popup-nome">${nome}</div><div class="popup-municipio">Município: ${municipio}<br>Referência: ${idRegiao}</div></div><div class="popup-conteudo">${grupos}</div>`;
-    }
-
-    function mostrarMensagem(texto, erro = false) {
-      mensagem.textContent = texto;
-      mensagem.classList.toggle('erro', erro);
-      mensagem.hidden = false;
-    }
-
-    function esconderMensagem() { mensagem.hidden = true; }
-
-    function carregarRegioes(geojson) {
-      if (!geojson || geojson.type !== 'FeatureCollection' || !Array.isArray(geojson.features)) {
-        throw new Error('Arquivo inválido: é necessário um GeoJSON do tipo FeatureCollection.');
-      }
-      if (conjuntoRegioes) mapa.removeLayer(conjuntoRegioes);
-      conjuntoRegioes = null;
-      selecionada = null;
-
-      conjuntoRegioes = L.geoJSON(geojson, {
-        style: () => ({ ...estiloPadrao }),
-        onEachFeature: (feature, layer) => {
-          layer.bindPopup(criarPopup(feature.properties), { maxWidth: 345, minWidth: 245, autoPanPadding: [14, 14] });
-          layer.on('mouseover', () => {
-            if (layer !== selecionada) layer.setStyle(estiloRealce);
-          });
-          layer.on('mouseout', () => {
-            if (layer !== selecionada) conjuntoRegioes.resetStyle(layer);
-          });
-          layer.on('click', () => {
-            if (selecionada && selecionada !== layer) conjuntoRegioes.resetStyle(selecionada);
-            selecionada = layer;
-            layer.setStyle(estiloSelecionado);
-          });
-        }
-      }).addTo(mapa);
-
-      mapa.on('popupclose', () => {
-        if (selecionada && conjuntoRegioes) conjuntoRegioes.resetStyle(selecionada);
-        selecionada = null;
-      });
-
-      if (conjuntoRegioes.getLayers().length > 0) {
-        mapa.fitBounds(conjuntoRegioes.getBounds(), { padding: [14, 14], maxZoom: 12 });
-      }
-      contador.textContent = `${formatarNumero.format(geojson.features.length)} regiões`;
-      esconderMensagem();
-    }
-
-    async function carregarDoGitHub() {
-      try {
-        const url = new URL(CAMINHO_GEOJSON, document.baseURI);
-        const resposta = await fetch(url, { cache: 'no-store' });
-        if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
-        const dados = await resposta.json();
-        carregarRegioes(dados);
-      } catch (erro) {
-        console.error('Falha ao carregar GeoJSON:', erro);
-        contador.textContent = 'GeoJSON não carregado';
-        mostrarMensagem('Não foi possível carregar DADOS/RESUMO_REGIÃO_1910.geojson. Confirme o caminho e o nome no GitHub. Para testar no computador, use “Abrir GeoJSON”.', true);
-      }
-    }
-
-    document.getElementById('abrirArquivo').addEventListener('click', () => {
-      document.getElementById('arquivoLocal').click();
-    });
-
-    document.getElementById('arquivoLocal').addEventListener('change', async (evento) => {
-      const arquivo = evento.target.files && evento.target.files[0];
-      if (!arquivo) return;
-      try {
-        mostrarMensagem('Abrindo GeoJSON local...');
-        carregarRegioes(JSON.parse(await arquivo.text()));
-      } catch (erro) {
-        console.error('Falha ao ler arquivo local:', erro);
-        mostrarMensagem(`Erro ao abrir o arquivo: ${erro.message}`, true);
-      } finally {
-        evento.target.value = '';
-      }
-    });
-
-    carregarDoGitHub();
-  </script>
-</body>
-</html>
+<header><strong>Resumo de status por região</strong><span id="contagem">Carregando...</span></header>
+<div id="mapa"></div><div id="aviso">Carregando regiões...</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+'use strict';
+// Arquivo publicado na pasta DADOS, ao lado da pasta raiz que contém este HTML.
+const ARQUIVO='./DADOS/RESUMO_REGIÃO_1910.geojson';
+const CAMPOS=['T2','T3','T4','T5','M1','M2','CARTEIRA','CARTEIRA - DESENVOLVE','CARTEIRA - FAMPE','FINALIZADO'];
+const esc=v=>String(v??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const numero=v=>Number.isFinite(Number(v))?Number(v).toLocaleString('pt-BR'):'—';
+const map=L.map('mapa',{preferCanvas:true,zoomControl:true,zoomSnap:.5}).setView([-22.8,-48.5],7);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap'}).addTo(map);
+const canvas=L.canvas({padding:.2});
+const padrao={renderer:canvas,color:'#2776a2',weight:1,opacity:.8,fillColor:'#409ac5',fillOpacity:.19};
+const ativo={color:'#d97706',weight:2.6,fillColor:'#ffc168',fillOpacity:.5};
+let atual=null,layerGeo=null;
+function popup(p){
+ let nome=esc(p.ER_REGIAO||p.REGIAO||'Região');
+ let local=esc(p.NM_MUN||'');
+ return `<div class="pop-titulo"><b>${nome}</b><small>${local}</small></div><div class="pop-itens">${CAMPOS.map(k=>`<div class="pop-item"><span>${esc(k)}</span><b>${numero(p[k])}</b></div>`).join('')}</div>`;
+}
+async function iniciar(){
+ try {
+  const resposta=await fetch(ARQUIVO);
+  if(!resposta.ok)throw new Error('HTTP '+resposta.status);
+  const dados=await resposta.json();
+  if(dados.type!=='FeatureCollection'||!Array.isArray(dados.features))throw new Error('GeoJSON inválido');
+  // Popups gerados somente no clique; sem eventos de mouseover para cada polígono.
+  layerGeo=L.geoJSON(dados,{style:()=>padrao,onEachFeature:(f,layer)=>{
+   layer.on('click',()=>{
+    if(atual&&atual!==layer)atual.setStyle(padrao);
+    atual=layer;layer.setStyle(ativo);
+    layer.bindPopup(popup(f.properties||{}),{maxWidth:285,autoPan:true}).openPopup();
+   });
+  }}).addTo(map);
+  const bounds=layerGeo.getBounds();if(bounds.isValid())map.fitBounds(bounds,{padding:[12,12]});
+  document.getElementById('contagem').textContent=dados.features.length.toLocaleString('pt-BR')+' regiões';
+  document.getElementById('aviso').hidden=true;
+  map.on('popupclose',()=>{if(atual){atual.setStyle(padrao);atual=null;}});
+ }catch(e){
+  console.error(e);const aviso=document.getElementById('aviso');
+  aviso.textContent='Não foi possível abrir DADOS/RESUMO_REGIÃO_1910.geojson. Confira se os dois arquivos foram enviados nas pastas corretas ao GitHub Pages. Detalhes: '+e.message;
+  document.getElementById('contagem').textContent='Falha no GeoJSON';
+ }
+}
+iniciar();
+</script>
+</body></html>
