@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Projeto Oxigena - Mogi das Cruzes</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<style>
+:root{--painel:#111827;--painel2:#1F2937;--texto:#F9FAFB;--borda:#374151;--azul:#123D68;--amarelo:#FACC15}
+*{box-sizing:border-box}
+html,body,#map{height:100%;width:100%;margin:0}
+body{font-family:Arial,sans-serif;overflow:hidden;background:#ddd}
+#map{background:#ddd}
+.summary{position:absolute;z-index:1000;top:10px;left:10px;width:270px;max-width:calc(100vw - 80px);padding:12px;border-radius:12px;background:rgba(17,24,39,.96);color:#fff;box-shadow:0 3px 14px rgba(0,0,0,.35)}
+.summary h1{margin:0 0 2px;font-size:16px;line-height:1.2}
+.summary .sub{font-size:12px;color:#CBD5E1;margin-bottom:8px}
+.line{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin:4px 0}
+.statusgps{font-size:11px;color:#D1D5DB;margin-top:8px;line-height:1.35}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.btn{border:0;border-radius:8px;padding:8px 7px;font-size:11px;font-weight:700;cursor:pointer}
+.btn-main{background:#fff;color:#111827} .btn-sec{background:#374151;color:#fff}
+.side{position:absolute;z-index:1100;right:10px;top:10px;display:grid;gap:8px}
+.side button{width:48px;height:44px;border:0;border-radius:10px;background:#111827;color:white;font-size:20px;box-shadow:0 3px 14px rgba(0,0,0,.35);cursor:pointer}
+#nextButton{font-size:10px;font-weight:700;line-height:1.05;padding:0 2px}
+.overlay{position:fixed;inset:0;z-index:1190;background:rgba(0,0,0,.42);display:none}
+.overlay.open{display:block}
+.dialog{position:fixed;z-index:1200;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,94vw);max-height:84vh;overflow:auto;background:var(--painel);color:var(--texto);border-radius:12px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,.5);display:none}
+.dialog.open{display:block}
+.dialog .head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.dialog .head h3{margin:0;font-size:16px}
+.dialog .head button{background:#374151;color:white;border:0;border-radius:7px;padding:6px 9px;cursor:pointer}
+.list{display:grid;gap:6px}
+.item{display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:7px;background:var(--painel2);border:1px solid var(--borda);border-radius:7px;padding:8px;font-size:12px;color:white;cursor:pointer}
+/* JORNADA = alvo preto e branco; CARTEIRA = O₂ azul, inclusive nos clusters */
+.bullet-circle{width:17px;height:17px;border-radius:50%;background:radial-gradient(circle,#000 0 21%,#fff 23% 43%,#000 45% 66%,#fff 69% 100%);border:1px solid #111;display:inline-block;box-shadow:0 0 3px #000}
+.bullet-star{width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:900;background:#123D68;border:2px solid #fff;border-radius:50%;box-shadow:0 0 3px #000}
+.legend-note{font-size:11px;color:#D1D5DB;margin-top:8px;line-height:1.35}
+.jornada-marker{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle,#000 0 19%,#fff 21% 39%,#000 42% 62%,#fff 65% 82%,#000 85% 100%);border:1px solid #111;box-shadow:0 1px 5px rgba(0,0,0,.65)}
+.carteira-marker{width:34px;height:34px;border-radius:50%;background:#123D68;border:3px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;color:white;font-size:19px;font-weight:900;letter-spacing:-1px;line-height:1}
+.cluster-oxi{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:900;font-family:Arial,sans-serif;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.48);box-sizing:border-box;line-height:1.03}
+.cluster-oxi .oxi-symbol{font-size:20px;font-weight:900;letter-spacing:-1px}
+.cluster-oxi .oxi-count{font-size:14px;font-weight:900;margin-top:2px}
+.cluster-oxi .oxi-only-one{font-size:24px}
+.cluster-jornada{border-radius:50%;background:radial-gradient(circle,#000 0 16%,#fff 18% 32%,#000 34% 48%,#fff 50% 63%,#000 65%);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.48);display:flex;align-items:center;justify-content:center}
+.cluster-jornada span{font-size:14px;font-weight:900;color:#fff;background:#000;padding:3px 5px;border-radius:12px}
+.gps-marker{width:18px;height:18px;background:#2563EB;border:3px solid white;border-radius:50%;box-shadow:0 0 0 6px rgba(37,99,235,.25)}
+.popup{font-size:12px;line-height:1.4;max-width:340px}
+.popup strong{display:block;font-size:13px;margin-bottom:6px}
+.popup-grid{display:grid;gap:2px;max-height:230px;overflow:auto;padding-right:4px}
+.poplinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.poplinks a,.route-btn{display:inline-block;background:#2563EB;color:white;text-decoration:none;padding:8px 10px;border-radius:7px;font-weight:700;font-size:12px;border:0;cursor:pointer}
+.search-row{display:grid;grid-template-columns:1fr auto;gap:7px}
+.search-input{width:100%;border:1px solid #4B5563;border-radius:8px;padding:10px;background:#fff;color:#111827;font-size:14px;outline:none}
+.search-btn{border:0;border-radius:8px;padding:0 13px;background:#2563EB;color:#fff;font-weight:700;cursor:pointer}
+.search-results{display:grid;gap:6px;margin-top:10px}
+.search-result{width:100%;border:1px solid var(--borda);border-radius:8px;padding:9px;background:var(--painel2);color:#fff;text-align:left;font-size:12px;line-height:1.35;cursor:pointer}
+.search-result:hover{background:#374151}
+.message{margin-top:10px;font-size:12px;color:#D1D5DB;line-height:1.4}
+.warning{font-size:11px;color:#FACC15;margin-top:7px}
+.next-info{font-size:12px;line-height:1.5}
+.tutorial ul{padding-left:18px;margin:8px 0}
+.tutorial li{margin:6px 0}
+@media(max-width:600px){.summary{top:6px;left:6px;width:230px}.side{right:6px;top:6px}}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<section class="summary">
+  <h1>PROJETO OXIGENA</h1>
+  <div class="sub">MOGI DAS CRUZES</div>
+  <div class="line"><span>Total de pontos</span><b id="totalPontos">0</b></div>
+  <div class="line" id="linhaJornada"><span>Jornada</span><b id="totalJornada">0</b></div>
+  <div class="line"><span>Carteira - Oxigena</span><b id="totalCarteira">0</b></div>
+  <div class="statusgps" id="statusGPS">Carregando mapa...</div>
+  <div class="actions">
+    <button class="btn btn-main" id="btnGPS">Minha localização</button>
+    <button class="btn btn-sec" id="btnCentro">Centralizar</button>
+  </div>
+</section>
+<div class="side">
+  <button id="searchButton" aria-label="Buscar" title="Buscar CNPJ, nome ou endereço">⌕</button>
+  <button id="legendButton" aria-label="Legenda" title="Legenda">☰</button>
+  <button id="nextButton" aria-label="Próximo ponto" title="Próximo ponto">Próx<br>ponto</button>
+  <button id="orientButton" aria-label="Orientação" title="Orientação do mapa">⌖</button>
+  <button id="helpButton" aria-label="Tutorial" title="Tutorial">?</button>
+</div>
+<div class="overlay" id="overlay"></div>
+<section class="dialog" id="dialog">
+  <div class="head"><h3 id="dialogTitle"></h3><button id="closeButton">Fechar</button></div>
+  <div id="dialogBody"></div>
+</section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+<script>
+const NOME_MAPA='Mogi das Cruzes';
+const NOME_PROJETO='PROJETO OXIGENA';
+// Caminhos RELATIVOS a INDEX_MAPAS/, conforme estrutura oficial HTMLMAPA.
+// Arquivos GeoJSON externos: não são copiados/embutidos neste HTML.
+const CAMINHO_AREA='../DADOS/AREAS_POLIGONOS/AREA MOGI DAS CRUZES.geojson';
+const CAMINHO_PONTOS='../DADOS/PONTOS_AREA/MOGI DAS CRUZES.geojson';
+let GEOJSON_PONTOS=null;
+let GEOJSON_AREA=null;
+async function carregarGeoJSON(caminho){
+  const resposta=await fetch(encodeURI(caminho),{cache:'no-cache'});
+  if(!resposta.ok) throw new Error('HTTP '+resposta.status+' no arquivo '+caminho);
+  const dados=await resposta.json();
+  if(dados.type!=='FeatureCollection'||!Array.isArray(dados.features))
+    throw new Error('GeoJSON inválido: '+caminho);
+  return dados;
+}
+const E=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const norm=s=>String(s??'').normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().replace(/\s+/g,' ').trim();
+const prop=(p,keys)=>{for(const k of keys){if(p[k]!=null && String(p[k]).trim())return String(p[k]);}return ''};
+const nameOf=p=>prop(p,['NOMEFANTASIA','NOME_FANTASIA','RAZAOSOCIAL','RAZAO_SOCIAL'])||'Empresa sem nome';
+const cnpjOf=p=>{let raw=prop(p,['CNPJ','NR_CNPJ']).replace(/\D/g,'');return raw&&raw.length<=14?raw.padStart(14,'0'):prop(p,['CNPJ','NR_CNPJ']);};
+// Neste GeoJSON a classificação está em EVOLUÇÃO. Outras colunas são apenas alternativas.
+function statusDoPonto(p){return prop(p,['EVOLUÇÃO','EVOLUCAO','STATUS_FINAL','STATUS','O_QUE_FAZER','O QUE FAZER']);}
+function tipoStatus(raw){
+  const s=norm(raw);
+  if(s.includes('JORNADA')) return 'JORNADA';
+  if(s.includes('CARTEIRA')) return 'CARTEIRA - OXIGENA';
+  return s||'NÃO INFORMADO';
+}
+function infoStatus(raw){
+  const s=tipoStatus(raw);
+  if(s==='JORNADA') return {texto:'JORNADA', cor:'#123D68', tipo:'jornada'};
+  if(s==='CARTEIRA - OXIGENA') return {texto:'CARTEIRA - OXIGENA', cor:'#FACC15', tipo:'carteira'};
+  return {texto:s, cor:'#64748B', tipo:'outro'};
+}
+function googleLink(lat,lng,route=false){
+  const ll=lat+','+lng;
+  return route ? 'https://www.google.com/maps/dir/?api=1&destination='+ll+'&travelmode=driving' : 'https://www.google.com/maps/search/?api=1&query='+ll;
+}
+function markerIcon(raw){
+  const st=infoStatus(raw);
+  if(st.tipo==='jornada'){
+    return L.divIcon({className:'',html:'<div class="jornada-marker" title="JORNADA — mira preta e branca"></div>',iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]});
+  }
+  if(st.tipo==='carteira'){
+    return L.divIcon({className:'',html:'<div class="carteira-marker" title="CARTEIRA - OXIGENA">O₂</div>',iconSize:[34,34],iconAnchor:[17,17],popupAnchor:[0,-17]});
+  }
+  return L.divIcon({className:'',html:'<div class="jornada-marker" style="filter:grayscale(1);opacity:.65" title="Status diferente"></div>',iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]});
+}
+// O número do cluster representa somente os pontos CARTEIRA - OXIGENA.
+function clusterIcon(cluster){
+  const filhos=cluster.getAllChildMarkers();
+  const carteira=filhos.reduce((n,m)=>n+(m.options?.classeOxigena==='CARTEIRA - OXIGENA'?1:0),0);
+  const size=carteira>=100?68:carteira>=30?62:carteira>=10?56:50;
+  if(carteira===0){
+    return L.divIcon({className:'',html:'<div class="cluster-jornada" style="width:'+size+'px;height:'+size+'px" title="Cluster só de JORNADA"><span>'+filhos.length+'</span></div>',iconSize:[size,size],iconAnchor:[size/2,size/2]});
+  }
+  const cor=carteira>=100?'#0A2748':carteira>=30?'#123D68':carteira>=10?'#18659C':'#1681AC';
+  const html='<div class="cluster-oxi" style="width:'+size+'px;height:'+size+'px;background:'+cor+'" title="'+carteira+' pontos CARTEIRA - OXIGENA; '+filhos.length+' pontos no cluster"><span class="oxi-symbol">O₂</span><span class="oxi-count">'+carteira+'</span></div>';
+  return L.divIcon({className:'',html,iconSize:[size,size],iconAnchor:[size/2,size/2]});
+}
+function popupHtml(feature,latlng){
+  const p=feature.properties||{};
+  const rows=Object.entries(p).map(([k,v])=>{
+    let shown=v;
+    if(k.toUpperCase().includes('CNPJ')) shown=cnpjOf(p);
+    // Preserve o valor original de TODAS as colunas do GeoJSON no pop-up.
+    return '<div><b>'+E(k.replace(/_/g,' '))+':</b> '+E(shown==null?'':shown)+'</div>';
+  }).join('');
+  return '<div class="popup"><strong>'+E(nameOf(p))+'</strong><div class="popup-grid">'+rows+'</div></div><div class="poplinks">'+
+    '<a target="_blank" rel="noopener noreferrer" href="'+googleLink(latlng.lat,latlng.lng)+'">Google Maps</a>'+
+    '<a target="_blank" rel="noopener noreferrer" href="'+googleLink(latlng.lat,latlng.lng,true)+'">Rota até o ponto</a></div>';
+}
+function withinArea(lat,lng){
+  try{
+    const pt=turf.point([lng,lat]);
+    return (GEOJSON_AREA.features||[]).some(f=>['Polygon','MultiPolygon'].includes(f?.geometry?.type) && turf.booleanPointInPolygon(pt,f));
+  }catch(e){return false;}
+}
+const map=L.map('map',{preferCanvas:true});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
+const groupArea=L.featureGroup().addTo(map);
+const markers=L.markerClusterGroup({chunkedLoading:true,maxClusterRadius:45,disableClusteringAtZoom:17,iconCreateFunction:clusterIcon}).addTo(map);
+let gpsMarker=null,gpsCircle=null,gpsTrail=null,watchId=null,lastLatLng=null,boundsInicial=null,orientacaoAtiva=false,lastHeading=null;
+const pontosIndex=[];
+const contadores={TOTAL:0,'JORNADA':0,'CARTEIRA - OXIGENA':0,'OUTROS':0};
+
+async function iniciarCarregamento(){
+  const label=document.getElementById('statusGPS');
+  label.textContent='Lendo áreas e pontos no GitHub...';
+  try{
+    const [area,pontos]=await Promise.all([
+      carregarGeoJSON(CAMINHO_AREA),
+      carregarGeoJSON(CAMINHO_PONTOS)
+    ]);
+    GEOJSON_AREA=area;
+    GEOJSON_PONTOS=pontos;
+    if(!area.features.some(f=>['Polygon','MultiPolygon'].includes(f?.geometry?.type)))
+      throw new Error('O arquivo de área não contém polígonos.');
+    if(!pontos.features.some(f=>f?.geometry?.type==='Point'))
+      throw new Error('O arquivo de pontos não contém pontos.');
+L.geoJSON(GEOJSON_AREA,{
+  style:{color:'#123D68',weight:3,fillColor:'#123D68',fillOpacity:.10},
+  onEachFeature:(f,l)=>{
+    const p=f.properties||{};
+    const nome=prop(p,['ER_REGIAO_CIDADE','REGIAO','NM_DIST','NM_MUN'])||NOME_MAPA;
+    l.bindPopup('<b>'+E(nome)+'</b>');
+  }
+}).addTo(groupArea);
+
+L.geoJSON(GEOJSON_PONTOS,{
+  pointToLayer:(f,ll)=>{const status=infoStatus(statusDoPonto(f.properties||{})).texto;return L.marker(ll,{icon:markerIcon(status),classeOxigena:status});},
+  onEachFeature:(f,l)=>{
+    const p=f.properties||{};
+    const ll=l.getLatLng();
+    const st=infoStatus(statusDoPonto(p)).texto;
+    contadores.TOTAL++;
+    if(st==='JORNADA') contadores['JORNADA']++;
+    else if(st==='CARTEIRA - OXIGENA') contadores['CARTEIRA - OXIGENA']++;
+    else contadores.OUTROS++;
+    l.bindPopup(popupHtml(f,ll));
+    pontosIndex.push({layer:l,latlng:ll,status:st,props:p,feature:f});
+    markers.addLayer(l);
+  }
+});
+
+if(groupArea.getBounds().isValid()){boundsInicial=groupArea.getBounds();map.fitBounds(boundsInicial,{padding:[20,20]});} else {map.setView([-23.52,-46.18],11);}
+
+document.getElementById('totalPontos').textContent=contadores.TOTAL;
+document.getElementById('totalJornada').textContent=contadores['JORNADA'];
+document.getElementById('linhaJornada').style.display=contadores['JORNADA']?'flex':'none';
+document.getElementById('totalCarteira').textContent=contadores['CARTEIRA - OXIGENA'];
+document.getElementById('statusGPS').textContent='Mapa carregado · GPS não iniciado';
+
+
+    if(contadores.OUTROS){
+      label.textContent='Mapa carregado com alerta: '+contadores.OUTROS+' status não reconhecido(s) na classificação.';
+    }
+  }catch(erro){
+    console.error('Erro ao carregar GeoJSON:',erro);
+    label.textContent='ERRO: não foi possível carregar os GeoJSON oficiais.';
+    openDialog('Falha no carregamento',
+      '<div class="warning">'+E(erro.message||String(erro))+'</div>'+
+      '<div class="message">Confirme no repositório pcippollini/HTMLMAPA os caminhos exatos:</div>'+
+      '<div class="message">'+E(CAMINHO_AREA)+'<br>'+E(CAMINHO_PONTOS)+'</div>'+
+      '<div class="message">O HTML deve estar em INDEX_MAPAS/ e os dois arquivos GeoJSON devem estar publicados no GitHub. O OneDrive local não publica arquivos automaticamente.</div>'
+    );
+  }
+}
+
+const overlay=document.getElementById('overlay');
+const dialog=document.getElementById('dialog');
+const dialogTitle=document.getElementById('dialogTitle');
+const dialogBody=document.getElementById('dialogBody');
+function openDialog(title,html){dialogTitle.textContent=title;dialogBody.innerHTML=html;overlay.classList.add('open');dialog.classList.add('open');}
+function closeDialog(){overlay.classList.remove('open');dialog.classList.remove('open');}
+overlay.addEventListener('click',closeDialog);document.getElementById('closeButton').addEventListener('click',closeDialog);
+
+function startGPS(){
+  if(!navigator.geolocation){document.getElementById('statusGPS').textContent='GPS não suportado.';return;}
+  if(watchId!==null){if(lastLatLng)map.setView(lastLatLng,17);return;}
+  watchId=navigator.geolocation.watchPosition(pos=>{
+    const lat=pos.coords.latitude,lng=pos.coords.longitude,acc=Math.round(pos.coords.accuracy||0);
+    lastLatLng=L.latLng(lat,lng);
+    if(!gpsTrail) gpsTrail=L.polyline([],{color:'#2563EB',weight:3,opacity:.75}).addTo(map);
+    if(acc<=100 && (gpsTrail.getLatLngs().length===0 || gpsTrail.getLatLngs()[gpsTrail.getLatLngs().length-1].distanceTo(lastLatLng)>5)){
+      gpsTrail.addLatLng(lastLatLng);
+    }
+    if(!gpsMarker){
+      gpsMarker=L.marker(lastLatLng,{icon:L.divIcon({className:'',html:'<div class="gps-marker"></div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(map);
+      gpsCircle=L.circle(lastLatLng,{radius:acc,color:'#2563EB',weight:1,fillOpacity:.08}).addTo(map);
+    } else {gpsMarker.setLatLng(lastLatLng);gpsCircle.setLatLng(lastLatLng).setRadius(acc);}
+    document.getElementById('statusGPS').textContent=(withinArea(lat,lng)?'🟢 Dentro da área':'🔴 Fora da área')+' · '+acc+' m';
+  },()=>document.getElementById('statusGPS').textContent='GPS não autorizado ou indisponível.',{enableHighAccuracy:true,maximumAge:3000,timeout:15000});
+}
+function renderLegend(){
+  openDialog('Legenda',
+    '<div class="list">'+
+    (contadores['JORNADA']?'<div class="item"><span class="bullet-circle"></span><span>JORNADA</span><b>'+contadores['JORNADA']+'</b></div>':'')+
+    '<div class="item"><span class="bullet-star">O₂</span><span>CARTEIRA - OXIGENA</span><b>'+contadores['CARTEIRA - OXIGENA']+'</b></div>'+
+    '</div>'+
+    '<div class="legend-note">CARTEIRA - OXIGENA = círculo O₂ azul. '+(contadores['JORNADA']?'JORNADA = mira preta e branca. ':'')+'Os clusters O₂ mostram quantos pontos de carteira estão agrupados. Classificação prioritária: EVOLUÇÃO. O pop-up exibe todas as colunas originais.</div>'
+  );
+}
+function searchDialog(){
+  openDialog('Buscar CNPJ, nome ou endereço',
+    '<div class="search-row"><input id="searchInput" class="search-input" type="search" placeholder="CNPJ, razão social, fantasia ou endereço">'+
+    '<button id="runSearch" class="search-btn">Buscar</button></div>'+
+    '<div class="message" id="searchMsg">Digite pelo menos 2 caracteres.</div><div class="search-results" id="searchResults"></div>'
+  );
+  const input=document.getElementById('searchInput');
+  const msg=document.getElementById('searchMsg');
+  const results=document.getElementById('searchResults');
+  const execute=()=>{
+    const q=norm(input.value);
+    results.innerHTML='';
+    if(q.length<2){msg.textContent='Digite pelo menos 2 caracteres.';return;}
+    const found=pontosIndex.filter(x=>{
+      const p=x.props||{};
+      return Object.values(p).some(v=>norm(v).includes(q))||norm(cnpjOf(p)).includes(q);
+    }).slice(0,50);
+    msg.textContent=found.length?found.length+' resultado(s) encontrado(s).':'Nenhum resultado encontrado.';
+    results.innerHTML=found.map((x,i)=>'<button class="search-result" data-i="'+i+'"><b>'+E(nameOf(x.props))+'</b><br>'+E(cnpjOf(x.props))+'<br>'+E(prop(x.props,['ENDEE','ENDERECO']))+'</button>').join('');
+    [...results.querySelectorAll('[data-i]')].forEach((btn,i)=>btn.addEventListener('click',()=>{closeDialog();markers.zoomToShowLayer(found[i].layer,()=>{map.setView(found[i].latlng,18);found[i].layer.openPopup();});}));
+  };
+  document.getElementById('runSearch').addEventListener('click',execute);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')execute();});
+  setTimeout(()=>input.focus(),50);
+}
+function openNextDialog(){
+  if(!lastLatLng){openDialog('Próximo ponto','<div class="warning">Ative “Minha localização” antes de buscar o próximo ponto.</div>');return;}
+  openDialog('Próximo ponto',
+    '<div class="list">'+
+    (contadores['JORNADA']?'<button class="item" data-status="JORNADA"><span class="bullet-circle"></span><span>JORNADA</span><span>›</span></button>':'')+
+    '<button class="item" data-status="CARTEIRA - OXIGENA"><span class="bullet-star">O₂</span><span>CARTEIRA - OXIGENA</span><span>›</span></button>'+
+    '</div>'
+  );
+  [...dialogBody.querySelectorAll('[data-status]')].forEach(btn=>btn.addEventListener('click',()=>findNext(btn.dataset.status)));
+}
+function findNext(status){
+  const origem=turf.point([lastLatLng.lng,lastLatLng.lat]);
+  const candidatos=pontosIndex.filter(x=>x.status===status).map(x=>{
+    const dist=turf.distance(origem,turf.point([x.latlng.lng,x.latlng.lat]),{units:'kilometers'}); return {...x,dist};
+  }).sort((a,b)=>a.dist-b.dist);
+  if(!candidatos.length){openDialog('Próximo ponto','<div class="warning">Nenhum ponto com status '+E(status)+'.</div>');return;}
+  const x=candidatos[0];
+  const distTxt=x.dist<1?Math.round(x.dist*1000)+' m':x.dist.toFixed(2)+' km';
+  markers.zoomToShowLayer(x.layer,()=>{map.setView(x.latlng,17);x.layer.openPopup();});
+  openDialog('Próximo ponto',
+    '<div class="next-info"><b>Status:</b> '+E(status)+'<br><b>Ponto:</b> '+E(nameOf(x.props))+'<br><b>Distância em linha reta:</b> '+distTxt+'<br><br>'+
+    '<a class="route-btn" target="_blank" rel="noopener noreferrer" href="'+googleLink(x.latlng.lat,x.latlng.lng,true)+'">Abrir rota no Google Maps</a></div>'
+  );
+}
+function openTutorial(){
+  openDialog('Tutorial',
+    '<div class="tutorial">'+
+    '<div class="message"><b>'+NOME_PROJETO+'</b> · '+NOME_MAPA+'</div>'+
+    '<ul>'+
+    '<li><b>Marcadores:</b> círculo azul O₂ = <b>CARTEIRA - OXIGENA</b>. Clusters O₂ exibem a quantidade de pontos de carteira. '+(contadores['JORNADA']?'JORNADA = mira preta e branca.':'')+'</li>'+
+    '<li><b>Minha localização:</b> ativa o GPS, traça seu deslocamento e mostra se você está dentro da área do mapa.</li>'+
+    '<li><b>Buscar:</b> localiza CNPJ, nome fantasia, razão social e endereço.</li>'+
+    '<li><b>Próximo ponto:</b> encontra o ponto mais próximo por tipo de marcador.</li>'+
+    '<li><b>Pop-up:</b> ao clicar em um ponto, todas as colunas do GeoJSON são exibidas.</li>'+
+    '<li><b>Centralizar:</b> volta para o enquadramento inicial da área.</li>'+
+    '</ul></div>'
+  );
+}
+function toggleOrientation(){
+  orientacaoAtiva=!orientacaoAtiva;
+  if(orientacaoAtiva){
+    document.getElementById('orientButton').style.background='#2563EB';
+    if(typeof DeviceOrientationEvent!=='undefined' && window.addEventListener){
+      window.addEventListener('deviceorientation',handleOrientation);
+      if(!lastHeading) openDialog('Orientação','<div class="message">Se o seu aparelho suportar bússola, o mapa será girado conforme a orientação.</div>');
+    } else {openDialog('Orientação','<div class="warning">Este dispositivo ou navegador não informou sensores de orientação.</div>');}
+  } else {
+    document.getElementById('orientButton').style.background='#111827';
+    window.removeEventListener('deviceorientation',handleOrientation);
+    document.getElementById('map').style.transform='';
+    document.getElementById('map').style.transformOrigin='center center';
+  }
+}
+function handleOrientation(ev){
+  let heading = ev.webkitCompassHeading ?? (ev.alpha!=null ? 360-ev.alpha : null);
+  if(heading==null) return;
+  lastHeading=heading;
+  document.getElementById('map').style.transform='rotate(' + (-heading) + 'deg)';
+  document.getElementById('map').style.transformOrigin='center center';
+}
+
+document.getElementById('btnGPS').addEventListener('click',startGPS);
+document.getElementById('btnCentro').addEventListener('click',()=>{if(boundsInicial) map.fitBounds(boundsInicial,{padding:[20,20]});});
+document.getElementById('legendButton').addEventListener('click',renderLegend);
+document.getElementById('searchButton').addEventListener('click',searchDialog);
+document.getElementById('nextButton').addEventListener('click',openNextDialog);
+document.getElementById('helpButton').addEventListener('click',openTutorial);
+document.getElementById('orientButton').addEventListener('click',toggleOrientation);
+iniciarCarregamento();
+</script>
+</body>
+</html>
