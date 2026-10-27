@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>PROJETO ASSESSORIA — CAPITAL NORTE</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<style>
+:root{--painel:#111827;--painel2:#1F2937;--texto:#F9FAFB;--borda:#374151;--azul:#123D68;--amarelo:#FACC15}
+*{box-sizing:border-box}
+html,body,#map{height:100%;width:100%;margin:0}
+body{font-family:Arial,sans-serif;overflow:hidden;background:#ddd}
+#map{background:#ddd}
+.summary{position:absolute;z-index:1000;top:10px;left:10px;width:270px;max-width:calc(100vw - 80px);padding:12px;border-radius:12px;background:rgba(17,24,39,.96);color:#fff;box-shadow:0 3px 14px rgba(0,0,0,.35)}
+.summary h1{margin:0 0 2px;font-size:16px;line-height:1.2}
+.summary .sub{font-size:12px;color:#CBD5E1;margin-bottom:8px}
+.line{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin:4px 0}
+.statusgps{font-size:11px;color:#D1D5DB;margin-top:8px;line-height:1.35}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.btn{border:0;border-radius:8px;padding:8px 7px;font-size:11px;font-weight:700;cursor:pointer}
+.btn-main{background:#fff;color:#111827} .btn-sec{background:#374151;color:#fff}
+.side{position:absolute;z-index:1100;right:10px;top:10px;display:grid;gap:8px}
+.side button{width:48px;height:44px;border:0;border-radius:10px;background:#111827;color:white;font-size:20px;box-shadow:0 3px 14px rgba(0,0,0,.35);cursor:pointer}
+#nextButton{font-size:10px;font-weight:700;line-height:1.05;padding:0 2px}
+.overlay{position:fixed;inset:0;z-index:1190;background:rgba(0,0,0,.42);display:none}
+.overlay.open{display:block}
+.dialog{position:fixed;z-index:1200;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,94vw);max-height:84vh;overflow:auto;background:var(--painel);color:var(--texto);border-radius:12px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,.5);display:none}
+.dialog.open{display:block}
+.dialog .head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.dialog .head h3{margin:0;font-size:16px}
+.dialog .head button{background:#374151;color:white;border:0;border-radius:7px;padding:6px 9px;cursor:pointer}
+.list{display:grid;gap:6px}
+.item{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:7px;background:var(--painel2);border:1px solid var(--borda);border-radius:7px;padding:8px;font-size:12px;color:white;cursor:pointer}
+.bullet-circle{width:16px;height:16px;border-radius:50%;background:var(--azul);border:2px solid #fff;display:inline-block;box-shadow:0 0 4px rgba(0,0,0,.5)}
+.bullet-star{width:27px;height:27px;display:inline-flex;align-items:center;justify-content:center;color:#FFD600;font-size:27px;text-shadow:-1px -1px 0 #111,1px -1px 0 #111,-1px 1px 0 #111,1px 1px 0 #111,0 0 3px #111}
+.legend-note{font-size:11px;color:#D1D5DB;margin-top:8px;line-height:1.35}
+.blue-marker{width:20px;height:20px;border-radius:50%;background:#123D68;border:3px solid #fff;box-shadow:0 0 5px rgba(0,0,0,.7)}
+.fampe-marker{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:#FFD600;font-size:39px;font-weight:900;line-height:1;text-shadow:-1.3px -1.3px 0 #634B00,1.3px -1.3px 0 #634B00,-1.3px 1.3px 0 #634B00,1.3px 1.3px 0 #634B00,0 0 7px rgba(0,0,0,.60);}
+.gps-marker{width:18px;height:18px;background:#2563EB;border:3px solid white;border-radius:50%;box-shadow:0 0 0 6px rgba(37,99,235,.25)}
+.popup{font-size:12px;line-height:1.4;max-width:340px}
+.popup strong{display:block;font-size:13px;margin-bottom:6px}
+.popup-grid{display:grid;gap:2px;max-height:230px;overflow:auto;padding-right:4px}
+.poplinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.poplinks a,.route-btn{display:inline-block;background:#2563EB;color:white;text-decoration:none;padding:8px 10px;border-radius:7px;font-weight:700;font-size:12px;border:0;cursor:pointer}
+.search-row{display:grid;grid-template-columns:1fr auto;gap:7px}
+.search-input{width:100%;border:1px solid #4B5563;border-radius:8px;padding:10px;background:#fff;color:#111827;font-size:14px;outline:none}
+.search-btn{border:0;border-radius:8px;padding:0 13px;background:#2563EB;color:#fff;font-weight:700;cursor:pointer}
+.search-results{display:grid;gap:6px;margin-top:10px}
+.search-result{width:100%;border:1px solid var(--borda);border-radius:8px;padding:9px;background:var(--painel2);color:#fff;text-align:left;font-size:12px;line-height:1.35;cursor:pointer}
+.search-result:hover{background:#374151}
+.message{margin-top:10px;font-size:12px;color:#D1D5DB;line-height:1.4}
+.warning{font-size:11px;color:#FACC15;margin-top:7px}
+.next-info{font-size:12px;line-height:1.5}
+.tutorial ul{padding-left:18px;margin:8px 0}
+.tutorial li{margin:6px 0}
+@media(max-width:600px){.summary{top:6px;left:6px;width:230px}.side{right:6px;top:6px}}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<section class="summary">
+  <h1>PROJETO ASSESSORIA</h1>
+  <div class="sub">CAPITAL NORTE · STATUS_FINAL</div>
+  <div class="line"><span>Total de pontos</span><b id="totalPontos">0</b></div>
+  <div class="line"><span>CARTEIRA (círculo azul)</span><b id="totalCarteira">0</b></div>
+  <div class="line"><span>CARTEIRA - FAMPE (estrela)</span><b id="totalFampe">0</b></div>
+  <div class="statusgps" id="statusGPS">Carregando mapa...</div>
+  <div class="actions">
+    <button class="btn btn-main" id="btnGPS">Minha localização</button>
+    <button class="btn btn-sec" id="btnCentro">Centralizar</button>
+  </div>
+</section>
+<div class="side">
+  <button id="searchButton" aria-label="Buscar" title="Buscar CNPJ, nome ou endereço">⌕</button>
+  <button id="legendButton" aria-label="Legenda" title="Legenda">☰</button>
+  <button id="nextButton" aria-label="Próximo ponto" title="Próximo ponto">Próx<br>ponto</button>
+  <button id="orientButton" aria-label="Orientação" title="Orientação do mapa">⌖</button>
+  <button id="helpButton" aria-label="Tutorial" title="Tutorial">?</button>
+</div>
+<div class="overlay" id="overlay"></div>
+<section class="dialog" id="dialog">
+  <div class="head"><h3 id="dialogTitle"></h3><button id="closeButton">Fechar</button></div>
+  <div id="dialogBody"></div>
+</section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+<script>
+const NOME_MAPA='Capital Norte';
+const NOME_PROJETO='PROJETO ASSESSORIA';
+// Caminhos RELATIVOS a INDEX_MAPAS/, conforme estrutura oficial HTMLMAPA.
+// Arquivos GeoJSON externos: não são copiados/embutidos neste HTML.
+const CAMINHO_AREA='../DADOS/AREAS_POLIGONOS/AREA CAPITAL NORTE.geojson';
+const CAMINHO_PONTOS='../DADOS/PONTOS_AREA/CAPITAL NORTE.geojson';
+let GEOJSON_PONTOS=null;
+let GEOJSON_AREA=null;
+async function carregarGeoJSON(caminho){
+  const resposta=await fetch(encodeURI(caminho),{cache:'no-cache'});
+  if(!resposta.ok) throw new Error('HTTP '+resposta.status+' no arquivo '+caminho);
+  const dados=await resposta.json();
+  if(dados.type!=='FeatureCollection'||!Array.isArray(dados.features))
+    throw new Error('GeoJSON inválido: '+caminho);
+  return dados;
+}
+const E=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const norm=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/\s+/g,' ').trim();
+const prop=(p,keys)=>{for(const k of keys){if(p[k]!=null && String(p[k]).trim())return String(p[k]);}return ''};
+const nameOf=p=>prop(p,['NOMEFANTASIA','NOME_FANTASIA','RAZAOSOCIAL','RAZAO_SOCIAL'])||'Empresa sem nome';
+const cnpjOf=p=>{let raw=prop(p,['CNPJ','NR_CNPJ']).replace(/\D/g,'');return raw&&raw.length<=14?raw.padStart(14,'0'):prop(p,['CNPJ','NR_CNPJ']);};
+function tipoStatus(raw){
+  return norm(raw)||'NÃO INFORMADO';
+}
+function infoStatus(raw){
+  const texto=tipoStatus(raw);
+  if(texto==='CARTEIRA - FAMPE')
+    return {texto,cor:'#FFD600',tipo:'fampe',grupo:'FAMPE'};
+  // CARTEIRA e CARTEIRA - OXIGENA compartilham o círculo azul.
+  return {texto,cor:'#123D68',tipo:'azul',grupo:'AZUL'};
+}
+function googleLink(lat,lng,route=false){
+  const ll=lat+','+lng;
+  return route ? 'https://www.google.com/maps/dir/?api=1&destination='+ll+'&travelmode=driving' : 'https://www.google.com/maps/search/?api=1&query='+ll;
+}
+function markerIcon(raw){
+  const st=infoStatus(raw);
+  if(st.tipo==='fampe')
+    return L.divIcon({className:'',html:'<div class="fampe-marker" aria-label="Carteira FAMPE">★</div>',iconSize:[42,42],iconAnchor:[21,21],popupAnchor:[0,-20]});
+  return L.divIcon({className:'',html:'<div class="blue-marker" aria-label="Carteira"></div>',iconSize:[22,22],iconAnchor:[11,11],popupAnchor:[0,-11]});
+}
+function popupHtml(feature,latlng){
+  const p=feature.properties||{};
+  const rows=Object.entries(p).map(([k,v])=>{
+    const shown=k.toUpperCase().includes('CNPJ')?cnpjOf(p):(v===null||v===undefined?'':(typeof v==='object'?JSON.stringify(v):String(v)));
+    return '<div><b>'+E(k)+':</b> '+E(shown)+'</div>';
+  }).join('');
+  return '<div class="popup"><strong>'+E(nameOf(p))+'</strong><div class="popup-grid">'+rows+'</div></div><div class="poplinks">'+
+    '<a target="_blank" rel="noopener noreferrer" href="'+googleLink(latlng.lat,latlng.lng)+'">Google Maps</a>'+
+    '<a target="_blank" rel="noopener noreferrer" href="'+googleLink(latlng.lat,latlng.lng,true)+'">Rota até o ponto</a></div>';
+}
+function withinArea(lat,lng){
+  try{
+    const pt=turf.point([lng,lat]);
+    return (GEOJSON_AREA.features||[]).some(f=>['Polygon','MultiPolygon'].includes(f?.geometry?.type) && turf.booleanPointInPolygon(pt,f));
+  }catch(e){return false;}
+}
+const map=L.map('map',{preferCanvas:true});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
+const groupArea=L.featureGroup().addTo(map);
+const markers=L.markerClusterGroup({chunkedLoading:true,maxClusterRadius:45,disableClusteringAtZoom:17}).addTo(map);
+let gpsMarker=null,gpsCircle=null,gpsTrail=null,watchId=null,lastLatLng=null,boundsInicial=null,orientacaoAtiva=false,lastHeading=null;
+const pontosIndex=[];
+const contadores={TOTAL:0,'CARTEIRA':0,'CARTEIRA - OXIGENA':0,'CARTEIRA - FAMPE':0,OUTROS:0};
+
+async function iniciarCarregamento(){
+  const label=document.getElementById('statusGPS');
+  label.textContent='Lendo áreas e pontos no GitHub...';
+  try{
+    const [area,pontos]=await Promise.all([
+      carregarGeoJSON(CAMINHO_AREA),
+      carregarGeoJSON(CAMINHO_PONTOS)
+    ]);
+    GEOJSON_AREA=area;
+    GEOJSON_PONTOS=pontos;
+    if(!area.features.some(f=>['Polygon','MultiPolygon'].includes(f?.geometry?.type)))
+      throw new Error('O arquivo de área não contém polígonos.');
+    if(!pontos.features.some(f=>f?.geometry?.type==='Point'))
+      throw new Error('O arquivo de pontos não contém pontos.');
+L.geoJSON(GEOJSON_AREA,{
+  style:{color:'#123D68',weight:3,fillColor:'#123D68',fillOpacity:.10},
+  onEachFeature:(f,l)=>{
+    const p=f.properties||{};
+    const nome=prop(p,['ER_REGIAO_CIDADE','REGIAO','NM_DIST','NM_MUN'])||NOME_MAPA;
+    l.bindPopup('<b>'+E(nome)+'</b>');
+  }
+}).addTo(groupArea);
+
+const carregamentoMarcadores=[];
+L.geoJSON(GEOJSON_PONTOS,{
+  pointToLayer:(f,ll)=>L.marker(ll,{icon:markerIcon((f.properties||{}).STATUS_FINAL)}),
+  onEachFeature:(f,l)=>{
+    const p=f.properties||{};
+    const ll=l.getLatLng();
+    const st=infoStatus(p.STATUS_FINAL);
+    contadores.TOTAL++;
+    if(Object.prototype.hasOwnProperty.call(contadores,st.texto))contadores[st.texto]++;
+    else contadores.OUTROS++;
+    l.bindPopup(popupHtml(f,ll));
+    pontosIndex.push({layer:l,latlng:ll,status:st.texto,grupo:st.grupo,props:p,feature:f});
+    carregamentoMarcadores.push(l);
+  }
+});
+markers.addLayers(carregamentoMarcadores);
+if(groupArea.getBounds().isValid()){boundsInicial=groupArea.getBounds();map.fitBounds(boundsInicial,{padding:[20,20]});} else {map.setView([-23.44,-46.70],11);}
+
+document.getElementById('totalPontos').textContent=contadores.TOTAL;
+document.getElementById('totalCarteira').textContent=contadores['CARTEIRA']+contadores['CARTEIRA - OXIGENA']+contadores.OUTROS;
+document.getElementById('totalFampe').textContent=contadores['CARTEIRA - FAMPE'];
+document.getElementById('statusGPS').textContent='Mapa carregado · GPS não iniciado';
+
+
+    if(contadores.OUTROS){
+      label.textContent='Atenção: '+contadores.OUTROS+' valor(es) adicional(is) em STATUS_FINAL; marcadores azuis.';
+    }
+  }catch(erro){
+    console.error('Erro ao carregar GeoJSON:',erro);
+    label.textContent='ERRO: não foi possível carregar os GeoJSON oficiais.';
+    openDialog('Falha no carregamento',
+      '<div class="warning">'+E(erro.message||String(erro))+'</div>'+
+      '<div class="message">Confirme no repositório pcippollini/HTMLMAPA os caminhos exatos:</div>'+
+      '<div class="message">'+E(CAMINHO_AREA)+'<br>'+E(CAMINHO_PONTOS)+'</div>'+
+      '<div class="message">O HTML deve estar em INDEX_MAPAS/ e os dois arquivos GeoJSON devem estar publicados no GitHub. O OneDrive local não publica arquivos automaticamente.</div>'
+    );
+  }
+}
+
+const overlay=document.getElementById('overlay');
+const dialog=document.getElementById('dialog');
+const dialogTitle=document.getElementById('dialogTitle');
+const dialogBody=document.getElementById('dialogBody');
+function openDialog(title,html){dialogTitle.textContent=title;dialogBody.innerHTML=html;overlay.classList.add('open');dialog.classList.add('open');}
+function closeDialog(){overlay.classList.remove('open');dialog.classList.remove('open');}
+overlay.addEventListener('click',closeDialog);document.getElementById('closeButton').addEventListener('click',closeDialog);
+
+function startGPS(){
+  if(!navigator.geolocation){document.getElementById('statusGPS').textContent='GPS não suportado.';return;}
+  if(watchId!==null){if(lastLatLng)map.setView(lastLatLng,17);return;}
+  watchId=navigator.geolocation.watchPosition(pos=>{
+    const lat=pos.coords.latitude,lng=pos.coords.longitude,acc=Math.round(pos.coords.accuracy||0);
+    lastLatLng=L.latLng(lat,lng);
+    if(!gpsTrail) gpsTrail=L.polyline([],{color:'#2563EB',weight:3,opacity:.75}).addTo(map);
+    if(acc<=100 && (gpsTrail.getLatLngs().length===0 || gpsTrail.getLatLngs()[gpsTrail.getLatLngs().length-1].distanceTo(lastLatLng)>5)){
+      gpsTrail.addLatLng(lastLatLng);
+    }
+    if(!gpsMarker){
+      gpsMarker=L.marker(lastLatLng,{icon:L.divIcon({className:'',html:'<div class="gps-marker"></div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(map);
+      gpsCircle=L.circle(lastLatLng,{radius:acc,color:'#2563EB',weight:1,fillOpacity:.08}).addTo(map);
+    } else {gpsMarker.setLatLng(lastLatLng);gpsCircle.setLatLng(lastLatLng).setRadius(acc);}
+    document.getElementById('statusGPS').textContent=(withinArea(lat,lng)?'🟢 Dentro da área':'🔴 Fora da área')+' · '+acc+' m';
+  },()=>document.getElementById('statusGPS').textContent='GPS não autorizado ou indisponível.',{enableHighAccuracy:true,maximumAge:3000,timeout:15000});
+}
+function renderLegend(){
+  openDialog('Legenda · STATUS_FINAL',
+    '<div class="list">'+
+    '<div class="item"><span class="bullet-circle"></span><span>CARTEIRA</span><b>'+contadores['CARTEIRA']+'</b></div>'+
+    (contadores['CARTEIRA - OXIGENA']?'<div class="item"><span class="bullet-circle"></span><span>CARTEIRA - OXIGENA</span><b>'+contadores['CARTEIRA - OXIGENA']+'</b></div>':'')+
+    '<div class="item"><span class="bullet-star">★</span><span>CARTEIRA - FAMPE</span><b>'+contadores['CARTEIRA - FAMPE']+'</b></div>'+
+    '</div>'+
+    '<div class="legend-note">Dois tipos de marcador. Azul escuro = CARTEIRA; estrela amarela maior = CARTEIRA - FAMPE. O valor de STATUS_FINAL não é alterado.</div>'
+  );
+}
+function searchDialog(){
+  openDialog('Buscar CNPJ, nome ou endereço',
+    '<div class="search-row"><input id="searchInput" class="search-input" type="search" placeholder="CNPJ, razão social, fantasia ou endereço">'+
+    '<button id="runSearch" class="search-btn">Buscar</button></div>'+
+    '<div class="message" id="searchMsg">Digite pelo menos 2 caracteres.</div><div class="search-results" id="searchResults"></div>'
+  );
+  const input=document.getElementById('searchInput');
+  const msg=document.getElementById('searchMsg');
+  const results=document.getElementById('searchResults');
+  const execute=()=>{
+    const q=norm(input.value);
+    results.innerHTML='';
+    if(q.length<2){msg.textContent='Digite pelo menos 2 caracteres.';return;}
+    const found=pontosIndex.filter(x=>{
+      const p=x.props||{};
+      return Object.values(p).some(v=>norm(v).includes(q))||norm(cnpjOf(p)).includes(q);
+    }).slice(0,50);
+    msg.textContent=found.length?found.length+' resultado(s) encontrado(s).':'Nenhum resultado encontrado.';
+    results.innerHTML=found.map((x,i)=>'<button class="search-result" data-i="'+i+'"><b>'+E(nameOf(x.props))+'</b><br>'+E(cnpjOf(x.props))+'<br>'+E(prop(x.props,['ENDEE','ENDERECO']))+'</button>').join('');
+    [...results.querySelectorAll('[data-i]')].forEach((btn,i)=>btn.addEventListener('click',()=>{closeDialog();markers.zoomToShowLayer(found[i].layer,()=>{map.setView(found[i].latlng,18);found[i].layer.openPopup();});}));
+  };
+  document.getElementById('runSearch').addEventListener('click',execute);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')execute();});
+  setTimeout(()=>input.focus(),50);
+}
+function openNextDialog(){
+  if(!lastLatLng){openDialog('Próximo ponto','<div class="warning">Ative “Minha localização” antes de buscar o próximo ponto.</div>');return;}
+  openDialog('Próximo ponto',
+    '<div class="list">'+
+    '<button class="item" data-grupo="AZUL"><span class="bullet-circle"></span><span>CARTEIRA</span><span>›</span></button>'+
+    '<button class="item" data-grupo="FAMPE"><span class="bullet-star">★</span><span>CARTEIRA - FAMPE</span><span>›</span></button>'+
+    '</div>'
+  );
+  [...dialogBody.querySelectorAll('[data-grupo]')].forEach(btn=>btn.addEventListener('click',()=>findNext(btn.dataset.grupo)));
+}
+function findNext(grupo){
+  const origem=turf.point([lastLatLng.lng,lastLatLng.lat]);
+  const candidatos=pontosIndex.filter(x=>x.grupo===grupo).map(x=>{
+    const dist=turf.distance(origem,turf.point([x.latlng.lng,x.latlng.lat]),{units:'kilometers'});return {...x,dist};
+  }).sort((a,b)=>a.dist-b.dist);
+  if(!candidatos.length){openDialog('Próximo ponto','<div class="warning">Nenhum ponto para este grupo.</div>');return;}
+  const x=candidatos[0];
+  const distTxt=x.dist<1?Math.round(x.dist*1000)+' m':x.dist.toFixed(2)+' km';
+  markers.zoomToShowLayer(x.layer,()=>{map.setView(x.latlng,17);x.layer.openPopup();});
+  openDialog('Próximo ponto',
+    '<div class="next-info"><b>STATUS_FINAL:</b> '+E(x.status)+'<br><b>Ponto:</b> '+E(nameOf(x.props))+
+    '<br><b>Distância em linha reta:</b> '+distTxt+'<br><br>'+
+    '<a class="route-btn" target="_blank" rel="noopener noreferrer" href="'+googleLink(x.latlng.lat,x.latlng.lng,true)+'">Abrir rota no Google Maps</a></div>'
+  );
+}
+function openTutorial(){
+  openDialog('Tutorial',
+    '<div class="tutorial">'+
+    '<div class="message"><b>'+E(NOME_PROJETO)+' — '+E(NOME_MAPA)+'</b> — pontos classificados por STATUS_FINAL.</div>'+
+    '<ul>'+
+    '<li><b>Marcadores:</b> círculo azul escuro = CARTEIRA; estrela amarela maior = CARTEIRA - FAMPE.</li>'+
+    '<li><b>Minha localização:</b> ativa o GPS, registra a trilha e indica se você está dentro da área.</li>'+
+    '<li><b>Busca:</b> localiza empresas por CNPJ, nome e endereço, inclusive outros atributos do GeoJSON.</li>'+
+    '<li><b>Próximo ponto:</b> encontra o ponto mais próximo por grupo de marcador, com rota no Google Maps.</li>'+
+    '<li><b>Pop-up:</b> mostra todas as colunas de cada ponto, inclusive STATUS_FINAL sem alteração.</li>'+
+    '<li><b>Centralizar:</b> retorna para o enquadramento original.</li>'+
+    '<li><b>Orientação:</b> gira o mapa quando o navegador fornece o sensor do aparelho.</li>'+
+    '</ul></div>'
+  );
+}
+function toggleOrientation(){
+  orientacaoAtiva=!orientacaoAtiva;
+  if(orientacaoAtiva){
+    document.getElementById('orientButton').style.background='#2563EB';
+    if(typeof DeviceOrientationEvent!=='undefined' && window.addEventListener){
+      window.addEventListener('deviceorientation',handleOrientation);
+      if(!lastHeading) openDialog('Orientação','<div class="message">Se o seu aparelho suportar bússola, o mapa será girado conforme a orientação.</div>');
+    } else {openDialog('Orientação','<div class="warning">Este dispositivo ou navegador não informou sensores de orientação.</div>');}
+  } else {
+    document.getElementById('orientButton').style.background='#111827';
+    window.removeEventListener('deviceorientation',handleOrientation);
+    document.getElementById('map').style.transform='';
+    document.getElementById('map').style.transformOrigin='center center';
+  }
+}
+function handleOrientation(ev){
+  let heading = ev.webkitCompassHeading ?? (ev.alpha!=null ? 360-ev.alpha : null);
+  if(heading==null) return;
+  lastHeading=heading;
+  document.getElementById('map').style.transform='rotate(' + (-heading) + 'deg)';
+  document.getElementById('map').style.transformOrigin='center center';
+}
+
+document.getElementById('btnGPS').addEventListener('click',startGPS);
+document.getElementById('btnCentro').addEventListener('click',()=>{if(boundsInicial) map.fitBounds(boundsInicial,{padding:[20,20]});});
+document.getElementById('legendButton').addEventListener('click',renderLegend);
+document.getElementById('searchButton').addEventListener('click',searchDialog);
+document.getElementById('nextButton').addEventListener('click',openNextDialog);
+document.getElementById('helpButton').addEventListener('click',openTutorial);
+document.getElementById('orientButton').addEventListener('click',toggleOrientation);
+iniciarCarregamento();
+</script>
+</body>
+</html>
