@@ -1,0 +1,279 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>PROJETO OXIGENA · TESTE2</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<style>
+*{box-sizing:border-box}html,body,#map{margin:0;width:100%;height:100%;font-family:Arial,sans-serif}body{overflow:hidden}#map{background:#dbe4ea}
+.summary{position:absolute;z-index:1000;top:10px;left:10px;width:275px;max-width:calc(100vw - 77px);background:rgba(17,24,39,.96);color:white;border-radius:12px;padding:13px;box-shadow:0 3px 16px #0007}
+.summary h1{font-size:15px;margin:0 0 4px}.summary .sub{font-size:12px;color:#cbd5e1}.line{display:flex;justify-content:space-between;margin:7px 0;font-size:12px}.gps-status{font-size:11px;color:#dbeafe;line-height:1.45;margin-top:8px;overflow-wrap:anywhere}.actions{display:flex;gap:7px;margin-top:8px}.actions button{flex:1}
+.btn{border:0;padding:9px;border-radius:8px;background:#e5edf8;color:#111827;font-size:11px;font-weight:bold;cursor:pointer}.side{position:absolute;z-index:1100;right:10px;top:10px;display:grid;gap:7px}.side button{border:0;cursor:pointer;background:#111827;color:white;border-radius:9px;width:47px;min-height:43px;font-size:19px;box-shadow:0 2px 10px #0006}.side button.small{font-size:11px;font-weight:bold;line-height:1.1;padding:3px}.overlay{position:fixed;inset:0;background:#0008;z-index:1400;display:none}.overlay.open{display:block}.dialog{display:none;position:fixed;z-index:1401;top:50%;left:50%;transform:translate(-50%,-50%);width:min(480px,94vw);max-height:84vh;overflow:auto;border-radius:13px;background:#16263a;color:white;padding:15px;box-shadow:0 8px 35px #0009}.dialog.open{display:block}.dialog .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:9px}.dialog .head h3{margin:0;font-size:16px}.dialog .head button{border:0;border-radius:7px;padding:6px 11px;cursor:pointer}.legend-row{display:flex;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #3d5063;font-size:12px}.legend-row b{margin-left:auto}.swatch{display:flex;justify-content:center;align-items:center;width:23px;height:23px;min-width:23px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px #0005;color:#fff;font-weight:bold;font-size:12px}.swatch.target{background:repeating-radial-gradient(circle,#111 0 4px,#fff 5px 8px)!important}.swatch.star{background:transparent!important;color:#FFD600;border:0;font-size:25px;box-shadow:none;text-shadow:0 1px 2px #000}.dialog input,.dialog select{width:100%;padding:10px;border-radius:8px;font-size:14px;border:1px solid #8aa0b7;margin:6px 0}.result,.route-opt,.region-opt{display:block;background:#243a56;color:white;width:100%;border:1px solid #48607f;border-radius:8px;text-align:left;padding:11px;margin:6px 0;cursor:pointer;font-size:12px}.result:hover,.route-opt:hover,.region-opt:hover{background:#315173}.region-opt{display:flex;justify-content:space-between;gap:10px}.region-opt b{color:#facc15}.help{font-size:12px;line-height:1.55}.help li{margin-bottom:7px}
+.pm{width:24px;height:24px;border:2px solid #fff;border-radius:50%;background:var(--mc);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:900;box-shadow:0 1px 5px #0009;line-height:1}.pm.fampe{border:0;background:none;font-size:29px;color:var(--mc);text-shadow:0 1px 3px #0009}.pm.mira{background:radial-gradient(circle,#111 0 18%,#fff 19% 36%,#111 37% 55%,#fff 56% 74%,#111 75%);border:1px solid #111;color:transparent}.pm.icon-lg{font-size:12px}.cm{border-radius:50%;width:100%;height:100%;border:3px solid #fff;background:var(--cc);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 2px 7px #0008;font-weight:bold;line-height:1}.cm .cs{font-size:15px;line-height:1.12;white-space:nowrap}.cm .cn{font-size:15px;margin-top:2px}.cm.singleton{border-color:#e5e7eb}.gps-marker{width:18px;height:18px;border-radius:50%;background:#2563eb;border:3px solid white;box-shadow:0 0 0 6px #2563eb44}.popup{max-height:260px;overflow:auto;font-size:12px;min-width:200px}.popup .item{padding:4px 0;border-bottom:1px solid #e5e7eb;overflow-wrap:anywhere}.popup strong{font-size:13px}.popup a{display:inline-block;margin-top:8px;margin-right:8px;background:#145da0;color:white;padding:7px 9px;border-radius:6px;text-decoration:none}
+#regionSelect{display:none;position:fixed;inset:0;z-index:2000;background:rgba(5,14,28,.94);align-items:center;justify-content:center;padding:15px}#regionSelect.open{display:flex}.region-card{background:#142437;color:#fff;border:1px solid #48607f;padding:18px;border-radius:14px;width:min(540px,95vw);max-height:86vh;overflow:auto;box-shadow:0 12px 35px #0009}.region-card h2{margin:0 0 7px;font-size:20px}.region-card p{font-size:12px;color:#cbd5e1}.region-card .region-opt{font-size:14px}
+body.access-locked #map,body.access-locked .summary,body.access-locked .side,body.access-locked #regionSelect{visibility:hidden!important}
+@media(max-width:560px){.summary{left:6px;top:6px;width:222px;padding:10px}.side{right:6px;top:6px}.side button{width:43px;min-height:40px}.summary h1{font-size:13px}}
+body.access-locked #map,body.access-locked .summary,body.access-locked .side{visibility:hidden!important}
+.access-gate{position:fixed;inset:0;background:linear-gradient(155deg,#071c31,#112c48 52%,#0b1324);color:#F8FAFC;z-index:5000;display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto}
+.access-gate[hidden]{display:none!important}
+.access-card{width:min(440px,100%);background:#111e31;border:1px solid #436080;border-radius:18px;padding:24px;box-shadow:0 24px 75px #0008;font-family:Arial,sans-serif}
+.access-top{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.access-o2{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#123D68;border:3px solid white;font-size:24px;font-weight:900}
+.access-card h2{margin:0;font-size:19px}.access-card small{color:#b4c7dd}
+.access-card p{font-size:13px;line-height:1.55;color:#d1deec}
+.access-card label{display:block;font-size:12px;margin-bottom:6px;font-weight:700}
+.access-card input{width:100%;padding:13px;border-radius:9px;border:1px solid #6e829d;color:#071525;background:#fff;font-size:16px}
+.access-card button{display:block;width:100%;padding:13px 9px;background:#facc15;color:#071525;border:0;border-radius:9px;font-size:15px;font-weight:800;margin-top:13px;cursor:pointer}
+.access-card button:disabled{opacity:.5;cursor:wait}
+.access-card .access-retry{background:#29445f;color:#fff;border:1px solid #8aa4c0;margin-top:9px}
+.access-gps-help{font-size:12px!important;color:#fef3c7!important;background:#263b54;border:1px solid #627994;border-radius:9px;padding:10px;line-height:1.45}
+.access-gps-help[hidden]{display:none!important}
+.access-error{color:#fecaca!important;background:#4a1620;border:1px solid #dc4b57;padding:10px;border-radius:9px;white-space:pre-wrap}
+.access-status{color:#bae6fd!important}
+.access-privacy{border-top:1px solid #3b526e;margin-top:15px;padding-top:9px}
+</style></head><body class="access-locked">
+<section id="accessGate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="accessTitle">
+  <div class="access-card">
+    <div class="access-top"><div class="access-o2">O₂</div><div><h2 id="accessTitle">PROJETO OXIGENA</h2><small>TESTE2</small></div></div>
+    <p id="accessIntro">Identificação e localização são obrigatórias para acessar o mapa.</p>
+    <div id="accessNameBox"><label for="accessName">Nome e sobrenome</label><input id="accessName" type="text" autocomplete="name" maxlength="120" placeholder="Seu nome e sobrenome" /></div>
+    <button type="button" id="accessSubmit" disabled>Preparando acesso...</button>
+    <button type="button" id="accessRetryGPS" class="access-retry" disabled>Tentar GPS novamente</button>
+    <p id="accessGpsHelp" class="access-gps-help" hidden>Se a localização estiver bloqueada pelo Chrome, toque no ícone de controles ao lado do endereço do site → <b>Permissões</b> → <b>Localização</b> → <b>Permitir</b>. Ative também a localização do aparelho e tente novamente. O site não pode mudar essa permissão automaticamente.</p>
+    <p id="accessStatus" class="access-status" aria-live="polite">Carregando módulo de identificação...</p>
+    <p id="accessError" class="access-error" aria-live="assertive" hidden></p>
+    <p class="access-privacy"><small>Ao iniciar, este mapa solicita localização atual. Uma nova entrada após 36 horas registra no Firebase: nome, projeto, mapa, data/hora e coordenadas. O GPS acompanha sua posição somente no aparelho; não enviamos o trajeto ao Firebase. O nome fica salvo neste navegador. Se o GPS for negado ou indisponível, o mapa não abre.</small></p>
+  </div>
+</section>
+<div id="map"></div>
+<section class="summary"><h1 id="mapName">Mapa SP</h1><div class="sub" id="mapRegion"></div><div class="line"><span>Região selecionada</span><b id="regionName">—</b></div><div class="line"><span>Pontos visíveis</span><b id="total">0</b></div><div class="gps-status" id="gpsStatus">Aguardando acesso...</div><div class="actions"><button class="btn" id="gpsBtn">Minha localização</button><button class="btn" id="centerBtn">Centralizar</button></div></section>
+<div class="side"><button id="searchBtn" title="Pesquisa por CNPJ, nome e endereço">⌕</button><button id="legendBtn" title="Legenda">☰</button><button id="regionsBtn" title="Selecionar região">▤</button><button id="routesBtn" title="Menu de rotas">↗</button><button id="nextBtn" title="Próximo ponto" class="small">Próx.<br>ponto</button><button id="orientBtn" title="Orientação">⌖</button><button id="tutorialBtn" title="Tutorial">?</button></div>
+<div class="overlay" id="overlay"></div><section class="dialog" id="dialog"><div class="head"><h3 id="dialogTitle"></h3><button id="dialogClose">Fechar</button></div><div id="dialogContent"></div></section>
+<div id="regionSelect"><div class="region-card"><h2>Escolha sua região</h2><p id="regionInstructions">Selecione a região para carregar apenas os pontos necessários.</p><div id="regionOptions"></div></div></div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E59KMQFDEK"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-E59KMQFDEK');</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>window.SP_MAP_CONFIG={"project":"PROJETO OXIGENA","region":"TESTE2","regionLabel":"TESTE2","firebaseProject":"OXIGENA","regionalized":true,"iconKey":"EVOLUÇÃO","titleKey":"CNPJ","fields":["CNPJ","NOMEFANTASIA","RAZAOSOCIAL","ENDEE","EVOLUÇÃO","O QUE FAZER","REGIAO_min"],"styles":{"LIBERADO - PROJETO OXIGENA":{"icon":"O₂","color":"#123D68","label":"LIBERADO - PROJETO OXIGENA"},"VISITA LIBERADA":{"icon":"●","color":"#D946EF","label":"VISITA LIBERADA"},"VISITA PRIORITÁRIA":{"icon":"⭐","color":"#FACC15","label":"VISITA PRIORITÁRIA"}},"clusterKey":"EVOLUÇÃO","clusterValues":["VISITA PRIORITÁRIA"],"clusterIcon":"◎","clusterColor":"#123d68","pointZoom":16,"areaPath":"../DADOS/AREAS_POLIGONOS/AREA CAMPINAS.geojson","pointsPath":"../DADOS/PONTOS_AREA/CAMPINAS.geojson","regions":[{"label":"Campinas_Barão Geraldo_Campinas","count":470,"filename":"001_CAMPINAS_BARAO_GERALDO_CAMPINAS.geojson","path":"../DADOS/PONTOS_AREA/REGIOES_TESTE2_OXIGENA/001_CAMPINAS_BARAO_GERALDO_CAMPINAS.geojson"},{"label":"Campinas_Campinas_Campinas","count":8192,"filename":"001_CAMPINAS_CAMPINAS_CAMPINAS.geojson","path":"../DADOS/PONTOS_AREA/REGIOES_TESTE2_OXIGENA/001_CAMPINAS_CAMPINAS_CAMPINAS.geojson"},{"label":"Campinas_Campo Grande_Campinas","count":311,"filename":"001_CAMPINAS_CAMPO_GRANDE_CAMPINAS.geojson","path":"../DADOS/PONTOS_AREA/REGIOES_TESTE2_OXIGENA/001_CAMPINAS_CAMPO_GRANDE_CAMPINAS.geojson"},{"label":"Campinas_Joaquim Egídio_Campinas","count":3,"filename":"001_CAMPINAS_JOAQUIM_EGIDIO_CAMPINAS.geojson","path":"../DADOS/PONTOS_AREA/REGIOES_TESTE2_OXIGENA/001_CAMPINAS_JOAQUIM_EGIDIO_CAMPINAS.geojson"},{"label":"Campinas_Nova Aparecida_Campinas","count":162,"filename":"001_CAMPINAS_NOVA_APARECIDA_CAMPINAS.geojson","path":"../DADOS/PONTOS_AREA/REGIOES_TESTE2_OXIGENA/001_CAMPINAS_NOVA_APARECIDA_CAMPINAS.geojson"},{"label":"Campinas_Ouro Verde_Campinas","count":482,"filename":"001_CAMPINAS_OURO_VERDE_CAMPINAS.geojson","path":"../DADOS/PONTOS_AREA/REGIOES_TESTE2_OXIGENA/001_CAMPINAS_OURO_VERDE_CAMPINAS.geojson"},{"label":"Campinas_Souzas_Campinas","count":139,"filename":"001_CAMPINAS_SOUZAS_CAMPINAS.geojson","path":"../DADOS/PONTOS_AREA/REGIOES_TESTE2_OXIGENA/001_CAMPINAS_SOUZAS_CAMPINAS.geojson"}]};</script>
+<script>
+'use strict';
+const cfg=window.SP_MAP_CONFIG;
+const el=id=>document.getElementById(id);
+const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clean=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().trim();
+function val(f,key){return String(f?.properties?.[key]??'(vazio)');}
+function defaultName(p){return String(p?.NOMEFANTASIA||p?.RAZAOSOCIAL||p?.NOME_FANTASIA||p?.RAZAO_SOCIAL||p?.CNPJ||'Empresa');}
+function locationOf(feature){const co=feature?.geometry?.coordinates;if(feature?.geometry?.type==='Point'&&Array.isArray(co)&&Number.isFinite(+co[0])&&Number.isFinite(+co[1]))return L.latLng(+co[1],+co[0]);return null;}
+function isValidCoord(ll){return ll&&Math.abs(ll.lat)<=90&&Math.abs(ll.lng)<=180&&!(ll.lat===0&&ll.lng===0);}
+function getIcon(sym,color,forSingle=false){let cls='pm',symbol=sym;
+ if(sym==='◎'||sym==='🎯')cls+=' mira';else if(sym==='★'||sym==='⭐')cls+=' fampe';
+ if(sym==='⭐')symbol='★';if(sym==='🎯')symbol='';
+ return L.divIcon({className:'',html:'<div class="'+cls+'" style="--mc:'+safe(color)+'">'+safe(symbol)+'</div>',iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-13]});}
+function clusterGlyph(count,single=false){const dim=single?30:count>99?48:count>9?44:40;
+ const content='<div class="cm'+(single?' singleton':'')+'" style="--cc:'+safe(cfg.clusterColor)+'"><span class="cs">'+safe(cfg.clusterIcon)+'</span><span class="cn">'+count+'</span></div>';
+ return L.divIcon({className:'',html:content,iconSize:[dim,dim],iconAnchor:[dim/2,dim/2],popupAnchor:[0,-dim/2]});}
+function counted(markers){return cfg.clusterKey?markers.reduce((n,m)=>n+(m.options.countInCluster?1:0),0):markers.length;}
+let map=null,clusters=null,areaLayer=null,index=[],selectedRegion=null,activeRequest=0,gpsWatch=null,gpsMarker=null,gpsCircle=null,gpsPos=null,follow=true,loaded=false;
+function openDialog(title,html){el('dialogTitle').textContent=title;el('dialogContent').innerHTML=html;el('overlay').classList.add('open');el('dialog').classList.add('open');}
+function closeDialog(){el('overlay').classList.remove('open');el('dialog').classList.remove('open');}
+el('overlay').onclick=closeDialog;el('dialogClose').onclick=closeDialog;
+function buildPopup(f,ll){const p=f.properties||{};let h='<div class="popup"><strong>'+safe(cfg.titleKey?val(f,cfg.titleKey):defaultName(p))+'</strong>';
+ for(const k of cfg.fields)h+='<div class="item"><b>'+safe(k.replace(/_/g,' '))+':</b> '+safe(p[k]??'')+'</div>';
+ const la=ll.lat,lo=ll.lng;return h+'<a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination='+la+','+lo+'">Rota Google Maps</a><a target="_blank" rel="noopener noreferrer" href="https://waze.com/ul?ll='+la+'%2C'+lo+'&navigate=yes">Rota Waze</a></div>';}
+function makeMarkers(data){const entries=[];for(const f of data.features||[]){if(f.geometry?.type==='MultiPoint'){
+ for(const coords of f.geometry.coordinates||[])entries.push({type:'Feature',properties:f.properties,geometry:{type:'Point',coordinates:coords}});
+ }else if(f.geometry?.type==='Point')entries.push(f);}
+ const created=[];for(const f of entries){const ll=locationOf(f);if(!isValidCoord(ll))continue;const v=val(f,cfg.iconKey);const style=cfg.styles[v]||{icon:'●',color:'#64748b',label:v};const cv=cfg.clusterKey?val(f,cfg.clusterKey):'';const selected=!cfg.clusterKey||cfg.clusterValues.includes(cv);
+ const marker=L.marker(ll,{icon:clusterGlyph(selected?1:0,true),countInCluster:selected,kind:v}).bindPopup(buildPopup(f,ll));
+ marker.on('click',()=>{if(map.getZoom()<cfg.pointZoom){marker.closePopup();map.setView(ll,cfg.pointZoom,{animate:true});}});
+ created.push(marker);index.push({marker,ll,f,v,style,query:clean(JSON.stringify(f.properties||{}))});}
+ clusters.addLayers(created);applyZoomIcons();el('total').textContent=index.length.toLocaleString('pt-BR');el('gpsStatus').textContent='Mapa carregado. GPS disponível.';
+ const b=clusters.getBounds();if(b.isValid())map.fitBounds(b.pad(.10),{maxZoom:Math.min(cfg.pointZoom-2,14)});
+ else if(areaLayer?.getBounds()?.isValid())map.fitBounds(areaLayer.getBounds());}
+function applyZoomIcons(){if(!map||!clusters)return;const show=map.getZoom()>=cfg.pointZoom;
+ for(const x of index){const icon=show?getIcon(x.style.icon,x.style.color):clusterGlyph((!cfg.clusterKey||cfg.clusterValues.includes(val(x.f,cfg.clusterKey)))?1:0,true);x.marker.setIcon(icon);}
+ clusters.refreshClusters();}
+async function readJSON(path){const resp=await fetch(encodeURI(path),{cache:'no-store'});if(!resp.ok)throw Error('Não foi possível carregar '+path+' (HTTP '+resp.status+').');const obj=await resp.json();if(obj.type!=='FeatureCollection'||!Array.isArray(obj.features))throw Error('GeoJSON inválido: '+path);return obj;}
+async function selectRegion(region){if(!window.mapaAutorizado)return;selectedRegion=region;el('regionSelect').classList.remove('open');const request=++activeRequest;clusters.clearLayers();index=[];el('total').textContent='0';el('regionName').textContent=region?region.label:'TODAS';el('gpsStatus').textContent='Carregando pontos da região selecionada...';
+ try{let json;
+ if(cfg.regionalized){if(!region)throw Error('Região não selecionada.');json=await readJSON(region.path);}else json=await readJSON(cfg.pointsPath);
+ if(request!==activeRequest)return;
+ makeMarkers(json);
+ }catch(e){if(request!==activeRequest)return;el('gpsStatus').textContent='Erro ao carregar região.';openDialog('Erro de carregamento','<p>'+safe(e.message)+'</p><p>Confira o caminho e os arquivos publicados no GitHub.</p>');}}
+function showRegions(){if(!window.mapaAutorizado)return;if(!cfg.regionalized){openDialog('Regiões','Este mapa foi gerado sem regionalização.');return;}closeDialog();
+ const holder=el('regionOptions');holder.replaceChildren();for(const r of cfg.regions){const b=document.createElement('button');b.className='region-opt';const n=document.createElement('span');n.textContent=r.label;const q=document.createElement('b');q.textContent=r.count.toLocaleString('pt-BR')+' pontos';b.append(n,q);b.onclick=()=>selectRegion(r);holder.appendChild(b);}el('regionSelect').classList.add('open');}
+function renderLegend(){const stats=new Map();for(const x of index){const label=x.style.label||x.v;const row=stats.get(x.v)||{count:0,style:x.style,label};row.count++;stats.set(x.v,row);}return '<div class="help">'+[...stats].sort((a,b)=>a[0].localeCompare(b[0],'pt-BR')).map(([v,r])=>'<div class="legend-row"><span class="swatch '+(['◎','🎯'].includes(r.style.icon)?'target':['★','⭐'].includes(r.style.icon)?'star':'')+'" style="background:'+safe(r.style.color)+'">'+(['◎','🎯'].includes(r.style.icon)?'':safe(r.style.icon))+'</span><span>'+safe(r.label)+'</span><b>'+r.count.toLocaleString('pt-BR')+'</b></div>').join('')+'<p>Cluster: '+safe(cfg.clusterIcon)+' · '+(cfg.clusterKey?'contagem somente de valores escolhidos ('+safe(cfg.clusterKey)+')':'total de pontos agrupados')+'.</p></div>';}
+function showPoint(x){closeDialog();if(!x)return;map.setView(x.ll,cfg.pointZoom,{animate:true});clusters.zoomToShowLayer(x.marker,()=>x.marker.openPopup());}
+function search(){openDialog('Pesquisar CNPJ, nome ou endereço','<input id="q" placeholder="Digite o nome, CNPJ, endereço ou valor"><div id="searchResults" class="help">Digite ao menos dois caracteres.</div>');const q=el('q');q.focus();q.oninput=()=>{const s=clean(q.value),r=el('searchResults');if(s.length<2){r.textContent='Digite ao menos dois caracteres.';return;}const found=index.filter(x=>x.query.includes(s)).slice(0,40);r.replaceChildren();for(const x of found){const b=document.createElement('button');b.className='result';b.textContent=defaultName(x.f.properties)+' · '+String(x.f.properties?.CNPJ||'');b.onclick=()=>showPoint(x);r.appendChild(b);}if(!found.length)r.textContent='Não encontrado na região carregada.';};}
+function closest(){if(!gpsPos){openDialog('Próximo ponto','Ative o GPS para localizar a empresa mais próxima.');return;}if(!index.length){openDialog('Próximo ponto','Selecione uma região com pontos.');return;}
+ let best=null,d=Infinity;for(const x of index){const m=gpsPos.distanceTo(x.ll);if(m<d){d=m;best=x;}}if(best){showPoint(best);openDialog('Próximo ponto','<div class="help"><b>'+safe(defaultName(best.f.properties))+'</b><p>Distância em linha reta: '+Math.round(d).toLocaleString('pt-BR')+' m</p><button class="route-opt" id="routeNearest">Escolher rota</button></div>');el('routeNearest').onclick=()=>showRoutes(best);}}
+function showRoutes(item){
+ const categories=[...new Set(index.map(x=>x.style.label||x.v))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+ let h='<p class="help">Use a rota individual para o ponto selecionado ou monte um roteiro com até 9 pontos da região atual.</p>';
+ const target=item||(gpsPos&&index.length?index.reduce((a,b)=>gpsPos.distanceTo(b.ll)<gpsPos.distanceTo(a.ll)?b:a):null);
+ const loc=target?target.ll.lat+','+target.ll.lng:'';
+ if(target){
+ h+='<div class="help"><b>'+safe(defaultName(target.f.properties))+'</b></div><button class="route-opt" id="googleRoute">Google Maps — ponto escolhido/próximo</button><button class="route-opt" id="wazeRoute">Waze — ponto escolhido/próximo</button>';
+ }
+ h+='<hr style="border:0;border-top:1px solid #415269"><h4>Planejar vários pontos</h4>';
+ h+='<label class="help">Tipo de ponto</label><select id="routeType"><option value="">Todos os tipos</option>'+categories.map(c=>'<option value="'+safe(c)+'">'+safe(c)+'</option>').join('')+'</select>';
+ h+='<label class="help">Quantidade de destinos (máximo 9)</label><select id="routeQuantity">'+Array.from({length:9},(_,i)=>'<option value="'+(i+1)+'"'+(i===4?' selected':'')+'>'+(i+1)+'</option>').join('')+'</select>';
+ h+='<label class="help">Transporte</label><select id="routeTravel"><option value="driving">Carro</option><option value="walking">A pé</option></select>';
+ h+='<button class="route-opt" id="planRoute">Gerar rota no Google Maps</button><p class="help" id="routeMessage">O GPS fornece o ponto inicial e os destinos são ordenados pela menor distância direta a cada etapa.</p>';
+ openDialog('Menu de rotas',h);
+ if(target){el('googleRoute').onclick=()=>window.open('https://www.google.com/maps/dir/?api=1&destination='+loc+'&travelmode=driving','_blank','noopener');el('wazeRoute').onclick=()=>window.open('https://waze.com/ul?ll='+target.ll.lat+'%2C'+target.ll.lng+'&navigate=yes','_blank','noopener');}
+ el('planRoute').onclick=()=>{
+   if(!gpsPos){el('routeMessage').textContent='Ative o GPS para definir a origem do roteiro.';return;}
+   const chosen=el('routeType').value;
+   let remain=index.filter(x=>!chosen||(x.style.label||x.v)===chosen);
+   if(!remain.length){el('routeMessage').textContent='Não há pontos dessa categoria na região.';return;}
+   const total=Number(el('routeQuantity').value),chosenPoints=[];let origin=gpsPos;
+   for(let i=0;i<total&&remain.length;i++){
+     let best=0,d=Infinity;for(let k=0;k<remain.length;k++){const cur=origin.distanceTo(remain[k].ll);if(cur<d){best=k;d=cur;}}
+     const x=remain.splice(best,1)[0];chosenPoints.push(x);origin=x.ll;
+   }
+   const start=gpsPos.lat+','+gpsPos.lng;const last=chosenPoints[chosenPoints.length-1].ll;
+   const coords=x=>x.ll.lat+','+x.ll.lng;
+   const waypoints=chosenPoints.slice(0,-1).map(coords).join('|');
+   let link='https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(start)+'&destination='+encodeURIComponent(last.lat+','+last.lng)+'&travelmode='+el('routeTravel').value;
+   if(waypoints)link+='&waypoints='+encodeURIComponent(waypoints);
+   el('routeMessage').textContent='Roteiro com '+chosenPoints.length+' pontos. O Google Maps abrirá em nova aba.';
+   window.open(link,'_blank','noopener');
+ };
+}
+function tutorial(){openDialog('Tutorial · '+cfg.project,'<ol class="help"><li><b>Regiões:</b> se o mapa for regionalizado, escolha a área desejada; somente seus pontos serão carregados.</li><li><b>Legenda:</b> mostra categorias, ícones e quantidades da região.</li><li><b>Pesquisa:</b> busca CNPJ, nome e endereço entre os pontos carregados.</li><li><b>Rotas:</b> use Google Maps/Waze para um ponto ou monte uma rota com até 9 destinos, escolhendo categoria e transporte.</li><li><b>Próximo ponto:</b> calcula a distância em linha reta ao ponto mais próximo usando GPS.</li><li><b>Zoom:</b> os pontos individuais aparecem somente no nível '+cfg.pointZoom+' ou superior. Em zoom menor, aparecem clusters e agrupamentos de um ponto.</li><li><b>GPS:</b> permite tentar novamente se houver falha; caso a permissão esteja bloqueada, libere no navegador.</li><li><b>Dados:</b> o mapa lê GeoJSON publicados no GitHub, sem atualizar os arquivos originais.</li></ol>');}
+function gps(){if(!window.mapaAutorizado)return;if(!navigator.geolocation){window.exigirAcessoGPS?.('GPS indisponível.');return;}follow=true;if(gpsWatch!==null){navigator.geolocation.clearWatch(gpsWatch);gpsWatch=null;}
+ el('gpsStatus').textContent='Obtendo localização...';gpsWatch=navigator.geolocation.watchPosition(pos=>{if(!window.mapaAutorizado)return;const ll=L.latLng(pos.coords.latitude,pos.coords.longitude);if(!isValidCoord(ll))return;gpsPos=ll;const acc=pos.coords.accuracy||0;if(!gpsMarker){gpsMarker=L.marker(ll,{icon:L.divIcon({className:'',html:'<div class="gps-marker"></div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(map);gpsCircle=L.circle(ll,{radius:acc,color:'#2563eb',weight:1,fillOpacity:.06}).addTo(map);}else{gpsMarker.setLatLng(ll);gpsCircle.setLatLng(ll).setRadius(acc);}if(follow)map.panTo(ll);el('gpsStatus').textContent='GPS ativo · precisão: '+Math.round(acc)+' m';},err=>{if(gpsWatch!==null){navigator.geolocation.clearWatch(gpsWatch);gpsWatch=null;}window.exigirAcessoGPS?.(err.code===1?'Permissão de localização negada ou revogada.':'GPS indisponível ou sem resposta.');},{enableHighAccuracy:true,maximumAge:0,timeout:20000});}
+function init(){el('mapName').textContent=cfg.project;el('mapRegion').textContent=cfg.regionLabel;el('regionsBtn').style.display=cfg.regionalized?'':'none';map=L.map('map',{preferCanvas:true}).setView([-23.55,-46.63],10);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+ clusters=L.markerClusterGroup({chunkedLoading:true,chunkInterval:100,maxClusterRadius:55,spiderfyOnMaxZoom:false,showCoverageOnHover:false,disableClusteringAtZoom:cfg.pointZoom,iconCreateFunction:c=>clusterGlyph(counted(c.getAllChildMarkers()))}).addTo(map);
+ map.on('zoomend',applyZoomIcons);map.on('dragstart',()=>{follow=false;});
+ el('searchBtn').onclick=search;el('legendBtn').onclick=()=>openDialog('Legenda',renderLegend());el('regionsBtn').onclick=showRegions;el('routesBtn').onclick=()=>showRoutes();el('nextBtn').onclick=closest;el('tutorialBtn').onclick=tutorial;el('gpsBtn').onclick=gps;el('centerBtn').onclick=()=>{follow=false;if(clusters.getBounds().isValid())map.fitBounds(clusters.getBounds(),{maxZoom:Math.min(cfg.pointZoom-2,14)});else if(areaLayer?.getBounds()?.isValid())map.fitBounds(areaLayer.getBounds());};el('orientBtn').onclick=()=>openDialog('Orientação','<p class="help">Mapa orientado ao norte. A orientação de bússola depende da disponibilidade do sensor do dispositivo.</p>');
+ readJSON(cfg.areaPath).then(data=>{areaLayer=L.geoJSON(data,{style:{color:'#123D68',weight:3,fillOpacity:.07}}).addTo(map);if(!cfg.regionalized&&areaLayer.getBounds().isValid())map.fitBounds(areaLayer.getBounds(),{maxZoom:12});}).catch(err=>{el('gpsStatus').textContent='Alerta: área não carregada: '+err.message;});}
+window.exigirAcessoGPS=(message)=>{window.mapaAutorizado=false;document.body.classList.add('access-locked');el('regionSelect').classList.remove('open');el('accessGate').hidden=false;el('accessError').textContent=message||'GPS necessário.';el('accessError').hidden=false;el('accessRetryGPS').disabled=false;el('accessGpsHelp').hidden=false;if(gpsWatch!==null){navigator.geolocation.clearWatch(gpsWatch);gpsWatch=null;}gpsPos=null;};
+window.addEventListener('mapa-acesso-autorizado',()=>{if(!loaded){loaded=true;init();}setTimeout(()=>map.invalidateSize(),100);gps();if(cfg.regionalized){showRegions();}else if(!selectedRegion){selectRegion(null);}});
+</script>
+<script type="module" id="firebaseAccessModule">
+// SDK modular pela CDN: nenhum npm, Firebase Hosting ou servidor Python necessários.
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
+import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getFirestore, collection, doc, writeBatch, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+
+// Configuração Web PÚBLICA do projeto CONTROLE-ACESSOS-SP, fornecida no console.
+// Não contém credenciais administrativas. Proteção depende das Security Rules.
+const firebaseConfig = {
+  apiKey: 'AIzaSyDUJRIGeTC_rDxuQfPZAnUNOjRDcJbG8ZI',
+  authDomain: 'controle-acessos-sp.firebaseapp.com',
+  projectId: 'controle-acessos-sp',
+  storageBucket: 'controle-acessos-sp.firebasestorage.app',
+  messagingSenderId: '517106233386',
+  appId: '1:517106233386:web:8eae4f3e11759cad1a1353'
+};
+const PROJETO=window.SP_MAP_CONFIG.firebaseProject;
+const MAPA=window.SP_MAP_CONFIG.region;
+const KEY=PROJETO+'_'+MAPA;
+const COLECAO=PROJETO==='ASSESSORIA'?'acessos_assessoria':'acessos_oxigena';
+const PRAZO=36*60*60*1000;
+const gate=document.getElementById('accessGate');
+const nameInput=document.getElementById('accessName');
+const nameBox=document.getElementById('accessNameBox');
+const submit=document.getElementById('accessSubmit');
+const retryGPS=document.getElementById('accessRetryGPS');
+const gpsHelp=document.getElementById('accessGpsHelp');
+const status=document.getElementById('accessStatus');
+const errorEl=document.getElementById('accessError');
+const intro=document.getElementById('accessIntro');
+nameInput.value=localStorage.getItem('controle_acessos_sp_nome')||'';
+let auth,db,sessaoKey,active=false;
+function notice(message){status.textContent=message;}
+function error(message){errorEl.textContent=message;errorEl.hidden=false;}
+function clearError(){errorEl.hidden=true;errorEl.textContent='';}
+// O botão de nova tentativa não limpa nem reinicia a sessão Firebase.
+retryGPS.addEventListener('click',()=>{if(!active&&!submit.disabled)submit.click();});
+function localSession(){
+  try { const s=JSON.parse(localStorage.getItem(sessaoKey)||'null');
+    if(s && typeof s.gravadoEm==='number' && Date.now()>=s.gravadoEm && Date.now()<s.gravadoEm+PRAZO)return s;
+  }catch(e){}
+  return null;
+}
+function updateUI(){
+  const exists=!!localSession();
+  nameBox.hidden=exists;
+  intro.textContent=exists
+    ?'Sessão de 36 horas válida neste navegador. Para abrir, é obrigatório obter uma nova localização GPS.'
+    :'Confirme nome e sobrenome e autorize a localização GPS. A primeira entrada será registrada antes de liberar o mapa.';
+  submit.textContent=exists?'Abrir mapa com GPS':'Registrar entrada e abrir mapa';
+  submit.disabled=false;
+  retryGPS.disabled=false;
+  notice('Pronto para solicitar localização.');
+}
+async function setup(){
+  try {
+    const app=initializeApp(firebaseConfig);
+    auth=getAuth(app);
+    db=getFirestore(app);
+    await auth.authStateReady();
+    if(!auth.currentUser) await signInAnonymously(auth);
+    sessaoKey='acesso_sp_36h_'+auth.currentUser.uid+'_'+KEY;
+    updateUI();
+  }catch(e){
+    submit.disabled=true;
+    retryGPS.disabled=true;
+    error('Não foi possível iniciar a identificação Firebase. Verifique internet, Auth anônimo e configuração Web. '+(e?.code||e?.message||''));
+    notice('Acesso bloqueado até a conexão funcionar.');
+  }
+}
+function getFix(){
+  return new Promise((resolve,reject)=>{
+    if(!navigator.geolocation){reject(new Error('GPS não disponível neste navegador.'));return;}
+    navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:true,maximumAge:0,timeout:20000});
+  });
+}
+submit.addEventListener('click',async()=>{
+  if(active||!auth?.currentUser)return;
+  active=true;submit.disabled=true;retryGPS.disabled=true;clearError();gpsHelp.hidden=true;
+  try {
+    const s=localSession();
+    const nome=String(nameInput.value||'').trim().replace(/\s+/g,' ');
+    if(!s && (nome.length<3||nome.length>120||nome.split(' ').length<2)){
+      throw new Error('Informe seu nome e sobrenome.');
+    }
+    notice('Solicitando localização GPS atual...');
+    const pos=await getFix();
+    const lat=pos.coords.latitude,lon=pos.coords.longitude;
+    if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180||(lat===0&&lon===0)){
+      throw new Error('O dispositivo não forneceu coordenadas GPS válidas.');
+    }
+    // Com sessão local vigente, não consulta nem grava Firestore.
+    if(!s){
+      notice('Registrando entrada com horário do servidor...');
+      const uid=auth.currentUser.uid;
+      const historico=doc(collection(db,COLECAO));
+      const controle=doc(db,'controle_sessoes',uid,'mapas',KEY);
+      const lote=writeBatch(db);
+      lote.set(historico,{uid,nome,projeto:PROJETO,mapa:MAPA,mapa_key:KEY,data_hora:serverTimestamp(),latitude:lat,longitude:lon});
+      lote.set(controle,{uid,projeto:PROJETO,mapa:MAPA,mapa_key:KEY,ultimo_em:serverTimestamp(),ultimo_registro:historico.id});
+      await lote.commit(); // Regras permitem somente após vencimento de 36h para mesmo UID + mapa.
+      localStorage.setItem('controle_acessos_sp_nome',nome);
+      localStorage.setItem(sessaoKey,JSON.stringify({gravadoEm:Date.now()}));
+    }
+    window.mapaAutorizado=true;
+    gate.hidden=true;document.body.classList.remove('access-locked');
+    window.dispatchEvent(new CustomEvent('mapa-acesso-autorizado'));
+    notice('Entrada autorizada.');
+  }catch(e){
+    window.mapaAutorizado=false;
+    document.body.classList.add('access-locked');gate.hidden=false;
+    const msg=e?.code===1?'Permissão GPS negada. O mapa exige localização.':
+      e?.code===2?'GPS indisponível neste momento.':
+      e?.code===3?'Tempo esgotado ao obter localização.':
+      e?.code==='permission-denied'?'Gravação recusada pelo Firestore para '+PROJETO+' / '+MAPA+' (coleção '+COLECAO+'). As causas possíveis incluem bloqueio pelas regras de segurança ou registro ainda vigente de 36h. Não é um erro de GPS. Verifique as regras e o último registro deste mapa.':
+      (e?.message||'Falha ao validar entrada.');
+    error(msg);
+    gpsHelp.hidden=!(typeof e?.code==='number' && e.code===1);
+    notice('Acesso não liberado. Você pode tentar o GPS novamente.');
+    if(!localSession())nameBox.hidden=false;
+  }finally{
+    active=false;submit.disabled=false;retryGPS.disabled=false;
+  }
+});
+// Depois de 36h, o acesso exige novo registro, sem burlar regras do Firestore.
+setInterval(()=>{if(window.mapaAutorizado&&!localSession()){window.exigirAcessoGPS?.('A sessão de 36 horas terminou. Identifique-se e confirme sua localização para entrar novamente.');updateUI();}},60000);
+setup();
+</script>
+</body></html>
