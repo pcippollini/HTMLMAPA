@@ -77,6 +77,9 @@ body.access-locked #map,body.access-locked .summary,body.access-locked .side{vis
 .access-card input{width:100%;padding:13px;border-radius:9px;border:1px solid #6e829d;color:#071525;background:#fff;font-size:16px}
 .access-card button{display:block;width:100%;padding:13px 9px;background:#facc15;color:#071525;border:0;border-radius:9px;font-size:15px;font-weight:800;margin-top:13px;cursor:pointer}
 .access-card button:disabled{opacity:.5;cursor:wait}
+.access-card .access-retry{background:#29445f;color:#fff;border:1px solid #8aa4c0;margin-top:9px}
+.access-gps-help{font-size:12px!important;color:#fef3c7!important;background:#263b54;border:1px solid #627994;border-radius:9px;padding:10px;line-height:1.45}
+.access-gps-help[hidden]{display:none!important}
 .access-error{color:#fecaca!important;background:#4a1620;border:1px solid #dc4b57;padding:10px;border-radius:9px;white-space:pre-wrap}
 .access-status{color:#bae6fd!important}
 .access-privacy{border-top:1px solid #3b526e;margin-top:15px;padding-top:9px}
@@ -90,6 +93,8 @@ body.access-locked #map,body.access-locked .summary,body.access-locked .side{vis
     <p id="accessIntro">Identificação e localização são obrigatórias para acessar o mapa.</p>
     <div id="accessNameBox"><label for="accessName">Nome e sobrenome</label><input id="accessName" type="text" autocomplete="name" maxlength="120" placeholder="Seu nome e sobrenome" /></div>
     <button type="button" id="accessSubmit" disabled>Preparando acesso...</button>
+    <button type="button" id="accessRetryGPS" class="access-retry" disabled>Tentar GPS novamente</button>
+    <p id="accessGpsHelp" class="access-gps-help" hidden>Se a localização estiver bloqueada pelo Chrome, toque no ícone de controles ao lado do endereço do site → <b>Permissões</b> → <b>Localização</b> → <b>Permitir</b>. Ative também a localização do aparelho e tente novamente. O site não pode mudar essa permissão automaticamente.</p>
     <p id="accessStatus" class="access-status" aria-live="polite">Carregando módulo de identificação...</p>
     <p id="accessError" class="access-error" aria-live="assertive" hidden></p>
     <p class="access-privacy"><small>Ao iniciar, este mapa solicita localização atual. Uma nova entrada após 36 horas registra no Firebase: nome, projeto, mapa, data/hora e coordenadas. O GPS acompanha sua posição somente no aparelho; não enviamos o trajeto ao Firebase. O nome fica salvo neste navegador. Se o GPS for negado ou indisponível, o mapa não abre.</small></p>
@@ -343,6 +348,8 @@ window.exigirAcessoGPS=(motivo)=>{
   document.getElementById('accessError').hidden=false;
   document.getElementById('accessError').textContent=motivo;
   document.getElementById('accessStatus').textContent='Acesso suspenso: obtenha uma posição GPS válida.';
+  document.getElementById('accessRetryGPS').disabled=false;
+  document.getElementById('accessGpsHelp').hidden=!/negad|revogad|bloquead|permiss[aã]o/i.test(String(motivo||''));
   ultimoFixGPS=0;lastLatLng=null;
   if(watchId!==null){navigator.geolocation.clearWatch(watchId);watchId=null;}
 };
@@ -476,6 +483,8 @@ const gate=document.getElementById('accessGate');
 const nameInput=document.getElementById('accessName');
 const nameBox=document.getElementById('accessNameBox');
 const submit=document.getElementById('accessSubmit');
+const retryGPS=document.getElementById('accessRetryGPS');
+const gpsHelp=document.getElementById('accessGpsHelp');
 const status=document.getElementById('accessStatus');
 const errorEl=document.getElementById('accessError');
 const intro=document.getElementById('accessIntro');
@@ -484,6 +493,8 @@ let auth,db,sessaoKey,active=false;
 function notice(message){status.textContent=message;}
 function error(message){errorEl.textContent=message;errorEl.hidden=false;}
 function clearError(){errorEl.hidden=true;errorEl.textContent='';}
+// O botão de nova tentativa não limpa nem reinicia a sessão Firebase.
+retryGPS.addEventListener('click',()=>{if(!active&&!submit.disabled)submit.click();});
 function localSession(){
   try { const s=JSON.parse(localStorage.getItem(sessaoKey)||'null');
     if(s && typeof s.gravadoEm==='number' && Date.now()>=s.gravadoEm && Date.now()<s.gravadoEm+PRAZO)return s;
@@ -498,6 +509,7 @@ function updateUI(){
     :'Confirme nome e sobrenome e autorize a localização GPS. A primeira entrada será registrada antes de liberar o mapa.';
   submit.textContent=exists?'Abrir mapa com GPS':'Registrar entrada e abrir mapa';
   submit.disabled=false;
+  retryGPS.disabled=false;
   notice('Pronto para solicitar localização.');
 }
 async function setup(){
@@ -511,6 +523,7 @@ async function setup(){
     updateUI();
   }catch(e){
     submit.disabled=true;
+    retryGPS.disabled=true;
     error('Não foi possível iniciar a identificação Firebase. Verifique internet, Auth anônimo e configuração Web. '+(e?.code||e?.message||''));
     notice('Acesso bloqueado até a conexão funcionar.');
   }
@@ -523,7 +536,7 @@ function getFix(){
 }
 submit.addEventListener('click',async()=>{
   if(active||!auth?.currentUser)return;
-  active=true;submit.disabled=true;clearError();
+  active=true;submit.disabled=true;retryGPS.disabled=true;clearError();gpsHelp.hidden=true;
   try {
     const s=localSession();
     const nome=String(nameInput.value||'').trim().replace(/\s+/g,' ');
@@ -562,10 +575,11 @@ submit.addEventListener('click',async()=>{
       e?.code==='permission-denied'?'Registro recusado pelas regras do Firestore. Confirme se as regras foram publicadas e se a sessão de 36h já venceu.':
       (e?.message||'Falha ao validar entrada.');
     error(msg);
-    notice('Acesso não liberado.');
+    gpsHelp.hidden=!(e?.code===1||/permiss[aã]o|negad|bloquead/i.test(msg));
+    notice('Acesso não liberado. Você pode tentar o GPS novamente.');
     if(!localSession())nameBox.hidden=false;
   }finally{
-    active=false;submit.disabled=false;
+    active=false;submit.disabled=false;retryGPS.disabled=false;
   }
 });
 // Se o GPS for desligado durante a navegação, a camada original bloqueia e a sessão
