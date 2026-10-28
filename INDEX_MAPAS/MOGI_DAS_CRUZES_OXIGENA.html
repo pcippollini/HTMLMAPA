@@ -63,9 +63,38 @@ body{font-family:Arial,sans-serif;overflow:hidden;background:#ddd}
 .tutorial ul{padding-left:18px;margin:8px 0}
 .tutorial li{margin:6px 0}
 @media(max-width:600px){.summary{top:6px;left:6px;width:230px}.side{right:6px;top:6px}}
+
+/* Bloqueio visual de entrada: nenhuma camada de dados aparece antes do registro. */
+body.access-locked #map,body.access-locked .summary,body.access-locked .side{visibility:hidden!important}
+.access-gate{position:fixed;inset:0;background:linear-gradient(155deg,#071c31,#112c48 52%,#0b1324);color:#F8FAFC;z-index:5000;display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto}
+.access-gate[hidden]{display:none!important}
+.access-card{width:min(440px,100%);background:#111e31;border:1px solid #436080;border-radius:18px;padding:24px;box-shadow:0 24px 75px #0008;font-family:Arial,sans-serif}
+.access-top{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.access-o2{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#123D68;border:3px solid white;font-size:24px;font-weight:900}
+.access-card h2{margin:0;font-size:19px}.access-card small{color:#b4c7dd}
+.access-card p{font-size:13px;line-height:1.55;color:#d1deec}
+.access-card label{display:block;font-size:12px;margin-bottom:6px;font-weight:700}
+.access-card input{width:100%;padding:13px;border-radius:9px;border:1px solid #6e829d;color:#071525;background:#fff;font-size:16px}
+.access-card button{display:block;width:100%;padding:13px 9px;background:#facc15;color:#071525;border:0;border-radius:9px;font-size:15px;font-weight:800;margin-top:13px;cursor:pointer}
+.access-card button:disabled{opacity:.5;cursor:wait}
+.access-error{color:#fecaca!important;background:#4a1620;border:1px solid #dc4b57;padding:10px;border-radius:9px;white-space:pre-wrap}
+.access-status{color:#bae6fd!important}
+.access-privacy{border-top:1px solid #3b526e;margin-top:15px;padding-top:9px}
 </style>
 </head>
-<body>
+<body class="access-locked">
+
+<section id="accessGate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="accessTitle">
+  <div class="access-card">
+    <div class="access-top"><div class="access-o2">O₂</div><div><h2 id="accessTitle">PROJETO OXIGENA</h2><small>MOGI DAS CRUZES</small></div></div>
+    <p id="accessIntro">Identificação e localização são obrigatórias para acessar o mapa.</p>
+    <div id="accessNameBox"><label for="accessName">Nome e sobrenome</label><input id="accessName" type="text" autocomplete="name" maxlength="120" placeholder="Seu nome e sobrenome" /></div>
+    <button type="button" id="accessSubmit" disabled>Preparando acesso...</button>
+    <p id="accessStatus" class="access-status" aria-live="polite">Carregando módulo de identificação...</p>
+    <p id="accessError" class="access-error" aria-live="assertive" hidden></p>
+    <p class="access-privacy"><small>Ao iniciar, este mapa solicita localização atual. Uma nova entrada após 36 horas registra no Firebase: nome, projeto, mapa, data/hora e coordenadas. O GPS acompanha sua posição somente no aparelho; não enviamos o trajeto ao Firebase. O nome fica salvo neste navegador. Se o GPS for negado ou indisponível, o mapa não abre.</small></p>
+  </div>
+</section>
 <div id="map"></div>
 <section class="summary">
   <h1>PROJETO OXIGENA</h1>
@@ -91,6 +120,13 @@ body{font-family:Arial,sans-serif;overflow:hidden;background:#ddd}
   <div class="head"><h3 id="dialogTitle"></h3><button id="closeButton">Fechar</button></div>
   <div id="dialogBody"></div>
 </section>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E59KMQFDEK"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments)}
+gtag('js',new Date());
+gtag('config','G-E59KMQFDEK');
+</script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
@@ -179,6 +215,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,att
 const groupArea=L.featureGroup().addTo(map);
 const markers=L.markerClusterGroup({chunkedLoading:true,maxClusterRadius:45,disableClusteringAtZoom:17,iconCreateFunction:clusterIcon}).addTo(map);
 let gpsMarker=null,gpsCircle=null,gpsTrail=null,watchId=null,lastLatLng=null,boundsInicial=null,orientacaoAtiva=false,lastHeading=null;
+let acompanharGPS=true,ultimoFixGPS=0;
+map.on('dragstart',()=>{acompanharGPS=false;});
 const pontosIndex=[];
 const contadores={TOTAL:0,'JORNADA':0,'CARTEIRA - OXIGENA':0,'OUTROS':0};
 
@@ -221,7 +259,7 @@ L.geoJSON(GEOJSON_PONTOS,{
   }
 });
 
-if(groupArea.getBounds().isValid()){boundsInicial=groupArea.getBounds();map.fitBounds(boundsInicial,{padding:[20,20]});} else {map.setView([-23.52,-46.18],11);}
+if(groupArea.getBounds().isValid()){boundsInicial=groupArea.getBounds();if(lastLatLng && acompanharGPS)map.setView(lastLatLng,16);else map.fitBounds(boundsInicial,{padding:[20,20]});} else {map.setView(lastLatLng||[-23.52,-46.18],lastLatLng?16:11);}
 
 document.getElementById('totalPontos').textContent=contadores.TOTAL;
 document.getElementById('totalJornada').textContent=contadores['JORNADA'];
@@ -254,22 +292,61 @@ function closeDialog(){overlay.classList.remove('open');dialog.classList.remove(
 overlay.addEventListener('click',closeDialog);document.getElementById('closeButton').addEventListener('click',closeDialog);
 
 function startGPS(){
-  if(!navigator.geolocation){document.getElementById('statusGPS').textContent='GPS não suportado.';return;}
-  if(watchId!==null){if(lastLatLng)map.setView(lastLatLng,17);return;}
+  if(!window.mapaAutorizado) return;
+  if(!navigator.geolocation){window.exigirAcessoGPS?.('GPS indisponível neste navegador.');return;}
+  acompanharGPS=true;
+  if(watchId!==null){if(lastLatLng)map.setView(lastLatLng,17,{animate:true});return;}
   watchId=navigator.geolocation.watchPosition(pos=>{
+    if(!window.mapaAutorizado)return;
     const lat=pos.coords.latitude,lng=pos.coords.longitude,acc=Math.round(pos.coords.accuracy||0);
+    if(!Number.isFinite(lat)||!Number.isFinite(lng)||Math.abs(lat)>90||Math.abs(lng)>180||(lat===0&&lng===0)){
+      window.exigirAcessoGPS?.('A localização retornou coordenadas inválidas.');return;
+    }
+    ultimoFixGPS=Date.now();
     lastLatLng=L.latLng(lat,lng);
     if(!gpsTrail) gpsTrail=L.polyline([],{color:'#2563EB',weight:3,opacity:.75}).addTo(map);
-    if(acc<=100 && (gpsTrail.getLatLngs().length===0 || gpsTrail.getLatLngs()[gpsTrail.getLatLngs().length-1].distanceTo(lastLatLng)>5)){
-      gpsTrail.addLatLng(lastLatLng);
-    }
+    if(acc<=100 && (gpsTrail.getLatLngs().length===0 || gpsTrail.getLatLngs()[gpsTrail.getLatLngs().length-1].distanceTo(lastLatLng)>5))gpsTrail.addLatLng(lastLatLng);
     if(!gpsMarker){
       gpsMarker=L.marker(lastLatLng,{icon:L.divIcon({className:'',html:'<div class="gps-marker"></div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(map);
       gpsCircle=L.circle(lastLatLng,{radius:acc,color:'#2563EB',weight:1,fillOpacity:.08}).addTo(map);
     } else {gpsMarker.setLatLng(lastLatLng);gpsCircle.setLatLng(lastLatLng).setRadius(acc);}
+    if(acompanharGPS){map.panTo(lastLatLng,{animate:true,duration:.45});if(map.getZoom()<16)map.setZoom(16);}
     document.getElementById('statusGPS').textContent=(withinArea(lat,lng)?'🟢 Dentro da área':'🔴 Fora da área')+' · '+acc+' m';
-  },()=>document.getElementById('statusGPS').textContent='GPS não autorizado ou indisponível.',{enableHighAccuracy:true,maximumAge:3000,timeout:15000});
+  },err=>{
+    if(window.mapaAutorizado){
+      const msg=err?.code===1?'Permissão de localização negada ou revogada.':
+        err?.code===3?'GPS não respondeu dentro do prazo.':'GPS indisponível no momento.';
+      window.exigirAcessoGPS?.(msg);
+    }
+  },{enableHighAccuracy:true,maximumAge:0,timeout:20000});
 }
+// Verificações locais de frescor não enviam dados ao Firebase.
+setInterval(()=>{
+  if(window.mapaAutorizado && ultimoFixGPS && Date.now()-ultimoFixGPS>120000){
+    window.exigirAcessoGPS?.('Localização não atualizada há mais de 2 minutos.');
+  }
+},30000);
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden && window.mapaAutorizado && ultimoFixGPS && Date.now()-ultimoFixGPS>120000){
+    window.exigirAcessoGPS?.('GPS precisa ser atualizado para continuar.');
+  }
+});
+window.addEventListener('mapa-acesso-autorizado',()=>{
+  map.invalidateSize();
+  if(!window.mapaDadosIniciados){window.mapaDadosIniciados=true;iniciarCarregamento();}
+  startGPS();
+});
+window.exigirAcessoGPS=(motivo)=>{
+  window.mapaAutorizado=false;
+  document.body.classList.add('access-locked');
+  const gate=document.getElementById('accessGate');gate.hidden=false;
+  document.getElementById('accessError').hidden=false;
+  document.getElementById('accessError').textContent=motivo;
+  document.getElementById('accessStatus').textContent='Acesso suspenso: obtenha uma posição GPS válida.';
+  ultimoFixGPS=0;lastLatLng=null;
+  if(watchId!==null){navigator.geolocation.clearWatch(watchId);watchId=null;}
+};
+
 function renderLegend(){
   openDialog('Legenda',
     '<div class="list">'+
@@ -372,7 +449,128 @@ document.getElementById('searchButton').addEventListener('click',searchDialog);
 document.getElementById('nextButton').addEventListener('click',openNextDialog);
 document.getElementById('helpButton').addEventListener('click',openTutorial);
 document.getElementById('orientButton').addEventListener('click',toggleOrientation);
-iniciarCarregamento();
+// Carregamento dos GeoJSON somente após identificação + GPS + sessão válida.
+</script>
+
+<script type="module" id="firebaseAccessModule">
+// SDK modular pela CDN: nenhum npm, Firebase Hosting ou servidor Python necessários.
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
+import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getFirestore, collection, doc, writeBatch, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+
+// Configuração Web PÚBLICA do projeto CONTROLE-ACESSOS-SP, fornecida no console.
+// Não contém credenciais administrativas. Proteção depende das Security Rules.
+const firebaseConfig = {
+  apiKey: 'AIzaSyDUJRIGeTC_rDxuQfPZAnUNOjRDcJbG8ZI',
+  authDomain: 'controle-acessos-sp.firebaseapp.com',
+  projectId: 'controle-acessos-sp',
+  storageBucket: 'controle-acessos-sp.firebasestorage.app',
+  messagingSenderId: '517106233386',
+  appId: '1:517106233386:web:8eae4f3e11759cad1a1353'
+};
+const PROJETO='OXIGENA';
+const MAPA='MOGI_DAS_CRUZES';
+const KEY=PROJETO+'_'+MAPA;
+const PRAZO=36*60*60*1000;
+const gate=document.getElementById('accessGate');
+const nameInput=document.getElementById('accessName');
+const nameBox=document.getElementById('accessNameBox');
+const submit=document.getElementById('accessSubmit');
+const status=document.getElementById('accessStatus');
+const errorEl=document.getElementById('accessError');
+const intro=document.getElementById('accessIntro');
+nameInput.value=localStorage.getItem('controle_acessos_sp_nome')||'';
+let auth,db,sessaoKey,active=false;
+function notice(message){status.textContent=message;}
+function error(message){errorEl.textContent=message;errorEl.hidden=false;}
+function clearError(){errorEl.hidden=true;errorEl.textContent='';}
+function localSession(){
+  try { const s=JSON.parse(localStorage.getItem(sessaoKey)||'null');
+    if(s && typeof s.gravadoEm==='number' && Date.now()>=s.gravadoEm && Date.now()<s.gravadoEm+PRAZO)return s;
+  }catch(e){}
+  return null;
+}
+function updateUI(){
+  const exists=!!localSession();
+  nameBox.hidden=exists;
+  intro.textContent=exists
+    ?'Sessão de 36 horas válida neste navegador. Para abrir, é obrigatório obter uma nova localização GPS.'
+    :'Confirme nome e sobrenome e autorize a localização GPS. A primeira entrada será registrada antes de liberar o mapa.';
+  submit.textContent=exists?'Abrir mapa com GPS':'Registrar entrada e abrir mapa';
+  submit.disabled=false;
+  notice('Pronto para solicitar localização.');
+}
+async function setup(){
+  try {
+    const app=initializeApp(firebaseConfig);
+    auth=getAuth(app);
+    db=getFirestore(app);
+    await auth.authStateReady();
+    if(!auth.currentUser) await signInAnonymously(auth);
+    sessaoKey='acesso_sp_36h_'+auth.currentUser.uid+'_'+KEY;
+    updateUI();
+  }catch(e){
+    submit.disabled=true;
+    error('Não foi possível iniciar a identificação Firebase. Verifique internet, Auth anônimo e configuração Web. '+(e?.code||e?.message||''));
+    notice('Acesso bloqueado até a conexão funcionar.');
+  }
+}
+function getFix(){
+  return new Promise((resolve,reject)=>{
+    if(!navigator.geolocation){reject(new Error('GPS não disponível neste navegador.'));return;}
+    navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:true,maximumAge:0,timeout:20000});
+  });
+}
+submit.addEventListener('click',async()=>{
+  if(active||!auth?.currentUser)return;
+  active=true;submit.disabled=true;clearError();
+  try {
+    const s=localSession();
+    const nome=String(nameInput.value||'').trim().replace(/\s+/g,' ');
+    if(!s && (nome.length<3||nome.length>120||nome.split(' ').length<2)){
+      throw new Error('Informe seu nome e sobrenome.');
+    }
+    notice('Solicitando localização GPS atual...');
+    const pos=await getFix();
+    const lat=pos.coords.latitude,lon=pos.coords.longitude;
+    if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180||(lat===0&&lon===0)){
+      throw new Error('O dispositivo não forneceu coordenadas GPS válidas.');
+    }
+    // Com sessão local vigente, não consulta nem grava Firestore.
+    if(!s){
+      notice('Registrando entrada com horário do servidor...');
+      const uid=auth.currentUser.uid;
+      const historico=doc(collection(db,'acessos_oxigena'));
+      const controle=doc(db,'controle_sessoes',uid,'mapas',KEY);
+      const lote=writeBatch(db);
+      lote.set(historico,{uid,nome,projeto:PROJETO,mapa:MAPA,mapa_key:KEY,data_hora:serverTimestamp(),latitude:lat,longitude:lon});
+      lote.set(controle,{uid,projeto:PROJETO,mapa:MAPA,mapa_key:KEY,ultimo_em:serverTimestamp(),ultimo_registro:historico.id});
+      await lote.commit(); // Regras permitem somente após vencimento de 36h para mesmo UID + mapa.
+      localStorage.setItem('controle_acessos_sp_nome',nome);
+      localStorage.setItem(sessaoKey,JSON.stringify({gravadoEm:Date.now()}));
+    }
+    window.mapaAutorizado=true;
+    gate.hidden=true;document.body.classList.remove('access-locked');
+    window.dispatchEvent(new CustomEvent('mapa-acesso-autorizado'));
+    notice('Entrada autorizada.');
+  }catch(e){
+    window.mapaAutorizado=false;
+    document.body.classList.add('access-locked');gate.hidden=false;
+    const msg=e?.code===1?'Permissão GPS negada. O mapa exige localização.':
+      e?.code===2?'GPS indisponível neste momento.':
+      e?.code===3?'Tempo esgotado ao obter localização.':
+      e?.code==='permission-denied'?'Registro recusado pelas regras do Firestore. Confirme se as regras foram publicadas e se a sessão de 36h já venceu.':
+      (e?.message||'Falha ao validar entrada.');
+    error(msg);
+    notice('Acesso não liberado.');
+    if(!localSession())nameBox.hidden=false;
+  }finally{
+    active=false;submit.disabled=false;
+  }
+});
+// Se o GPS for desligado durante a navegação, a camada original bloqueia e a sessão
+// permanece válida apenas para permitir reentrada com nova posição, sem nova escrita.
+setup();
 </script>
 </body>
 </html>
