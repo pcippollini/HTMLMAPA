@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css">
 <style>
 *{box-sizing:border-box}html,body,#map{margin:0;width:100%;height:100%;font-family:Arial,sans-serif}body{overflow:hidden}#map{background:#dbe4ea}
 /* Layout de campo SP aprovado: resumo no alto, faixa inferior, menu pela esquerda. */
@@ -84,21 +83,15 @@ body.access-locked #map,body.access-locked .summary,body.access-locked .side{vis
  <button class="menu-item" id="tutorialBtn" type="button"><span class="mi">?</span><span>Tutorial / ajuda</span></button>
  <div class="menu-label">Fundo do mapa</div>
  <div id="basemapChoices" class="menu-basemaps" aria-label="Escolher fundo cartográfico">
-  <button class="basemap-choice" type="button" data-basemap="modern"><span class="basemap-dot" style="background:#60a5fa"></span>Ruas coloridas (padrão)</button>
-  <button class="basemap-choice" type="button" data-basemap="liberty"><span class="basemap-dot" style="background:#e8b96b"></span>Ruas detalhadas</button>
-  <button class="basemap-choice" type="button" data-basemap="light"><span class="basemap-dot" style="background:#e2e8f0"></span>Claro / minimalista</button>
-  <button class="basemap-choice" type="button" data-basemap="dark"><span class="basemap-dot" style="background:#283747"></span>Escuro</button>
-  <button class="basemap-choice" type="button" data-basemap="osm"><span class="basemap-dot" style="background:#79b970"></span>OpenStreetMap tradicional</button>
+   <button class="basemap-choice active" type="button" data-basemap="osm" aria-pressed="true"><span class="basemap-dot" style="background:#79b970"></span>OpenStreetMap tradicional (padrão)</button>
  </div>
- <p class="menu-note" id="basemapInfo">A troca de fundo não altera pontos, regiões, rotas ou GPS.</p>
+ <p class="menu-note" id="basemapInfo">Fundo OpenStreetMap original. Os pontos, regiões, rotas e GPS permanecem inalterados.</p>
 </aside>
 <div class="overlay" id="overlay"></div><section class="dialog" id="dialog"><div class="head"><h3 id="dialogTitle"></h3><button id="dialogClose">Fechar</button></div><div id="dialogContent"></div></section>
 <div id="regionSelect"><div class="region-card"><h2>Escolha sua região</h2><p id="regionInstructions">Selecione a região para carregar apenas os pontos necessários.</p><div id="regionOptions"></div></div></div>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E59KMQFDEK"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-E59KMQFDEK');</script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.1.4/leaflet-maplibre-gl.js"></script>
-<script>window.SP_MAP_CONFIG={"project":"PROJETO ASSESSORIA","region":"VINHEDO","regionLabel":"VINHEDO","firebaseProject":"ASSESSORIA","regionalized":false,"iconKey":"EVOLUÇÃO","titleKey":"CNPJ","fields":["CNPJ","IDCIDADE","NOMEFANTASIA","RAZAOSOCIAL","ENDEE","EVOLUÇÃO","O QUE FAZER"],"styles":{"LIBERADO PARA ATENDIMENTO":{"icon":"⭐","color":"#64643f","label":"LIBERADO PARA ATENDIMENTO"}},"clusterKey":"EVOLUÇÃO","clusterValues":["LIBERADO PARA ATENDIMENTO"],"clusterIcon":"◎","clusterColor":"#386694","pointZoom":16,"basemapDefault":"modern","areaPath":"../DADOS/AREAS_POLIGONOS/AREA VINHEDO.geojson","pointsPath":"../DADOS/PONTOS_AREA/VINHEDO.geojson","regions":[]};</script>
+<script>window.SP_MAP_CONFIG={"project":"PROJETO ASSESSORIA","region":"VINHEDO","regionLabel":"VINHEDO","firebaseProject":"ASSESSORIA","regionalized":false,"iconKey":"EVOLUÇÃO","titleKey":"CNPJ","fields":["CNPJ","IDCIDADE","NOMEFANTASIA","RAZAOSOCIAL","ENDEE","EVOLUÇÃO","O QUE FAZER"],"styles":{"LIBERADO PARA ATENDIMENTO":{"icon":"⭐","color":"#64643f","label":"LIBERADO PARA ATENDIMENTO"}},"clusterKey":"EVOLUÇÃO","clusterValues":["LIBERADO PARA ATENDIMENTO"],"clusterIcon":"◎","clusterColor":"#386694","pointZoom":16,"basemapDefault":"osm","areaPath":"../DADOS/AREAS_POLIGONOS/AREA VINHEDO.geojson","pointsPath":"../DADOS/PONTOS_AREA/VINHEDO.geojson","regions":[]};</script>
 <script>
 'use strict';
 const cfg=window.SP_MAP_CONFIG;
@@ -186,46 +179,32 @@ function showRoutes(item){
    window.open(link,'_blank','noopener');
  };
 }
-function tutorial(){openDialog('Tutorial · '+cfg.project,'<ol class="help"><li><b>Regiões:</b> se o mapa for regionalizado, escolha a área desejada; somente seus pontos serão carregados.</li><li><b>Legenda:</b> mostra categorias, ícones e quantidades da região.</li><li><b>Pesquisa:</b> busca CNPJ, nome e endereço entre os pontos carregados.</li><li><b>Rotas:</b> use Google Maps/Waze para um ponto ou monte uma rota com até 9 destinos, escolhendo categoria e transporte.</li><li><b>Próximo ponto:</b> calcula a distância em linha reta ao ponto mais próximo usando GPS.</li><li><b>Zoom:</b> os pontos individuais aparecem somente no nível '+cfg.pointZoom+' ou superior. Em zoom menor, aparecem clusters e agrupamentos de um ponto.</li><li><b>GPS:</b> permite tentar novamente se houver falha; caso a permissão esteja bloqueada, libere no navegador.</li><li><b>Fundo do mapa:</b> no menu esquerdo, escolha ruas coloridas, ruas detalhadas, claro, escuro ou OpenStreetMap. A troca não altera pontos nem GPS.</li><li><b>Dados:</b> o mapa lê GeoJSON publicados no GitHub, sem atualizar os arquivos originais.</li></ol>');}
+function tutorial(){openDialog('Tutorial · '+cfg.project,'<ol class="help"><li><b>Regiões:</b> se o mapa for regionalizado, escolha a área desejada; somente seus pontos serão carregados.</li><li><b>Legenda:</b> mostra categorias, ícones e quantidades da região.</li><li><b>Pesquisa:</b> busca CNPJ, nome e endereço entre os pontos carregados.</li><li><b>Rotas:</b> use Google Maps/Waze para um ponto ou monte uma rota com até 9 destinos, escolhendo categoria e transporte.</li><li><b>Próximo ponto:</b> calcula a distância em linha reta ao ponto mais próximo usando GPS.</li><li><b>Zoom:</b> os pontos individuais aparecem somente no nível '+cfg.pointZoom+' ou superior. Em zoom menor, aparecem clusters e agrupamentos de um ponto.</li><li><b>GPS:</b> permite tentar novamente se houver falha; caso a permissão esteja bloqueada, libere no navegador.</li><li><b>Fundo do mapa:</b> OpenStreetMap tradicional, como nos mapas anteriores de São Paulo. Não altera pontos nem GPS.</li><li><b>Dados:</b> o mapa lê GeoJSON publicados no GitHub, sem atualizar os arquivos originais.</li></ol>');}
 function gps(){if(!window.mapaAutorizado)return;if(!navigator.geolocation){window.exigirAcessoGPS?.('GPS indisponível.');return;}follow=true;if(gpsWatch!==null){navigator.geolocation.clearWatch(gpsWatch);gpsWatch=null;}
  el('gpsStatus').textContent='Obtendo localização...';gpsWatch=navigator.geolocation.watchPosition(pos=>{if(!window.mapaAutorizado)return;const ll=L.latLng(pos.coords.latitude,pos.coords.longitude);if(!isValidCoord(ll))return;gpsPos=ll;const acc=pos.coords.accuracy||0;if(!gpsMarker){gpsMarker=L.marker(ll,{icon:L.divIcon({className:'',html:'<div class="gps-marker"></div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(map);gpsCircle=L.circle(ll,{radius:acc,color:'#2563eb',weight:1,fillOpacity:.06}).addTo(map);}else{gpsMarker.setLatLng(ll);gpsCircle.setLatLng(ll).setRadius(acc);}if(follow)map.panTo(ll);el('gpsStatus').textContent='GPS ativo · precisão: '+Math.round(acc)+' m';},err=>{if(gpsWatch!==null){navigator.geolocation.clearWatch(gpsWatch);gpsWatch=null;}window.exigirAcessoGPS?.(err.code===1?'Permissão de localização negada ou revogada.':'GPS indisponível ou sem resposta.');},{enableHighAccuracy:true,maximumAge:0,timeout:20000});}
 // Fundos cartográficos independentes das camadas GeoJSON, dos clusters e do Firebase.
-const MAPA_BASE={modern:'bright',liberty:'liberty',light:'positron',dark:'dark'};
-let activeBasemap=null,activeBasemapKey='',basemapSequence=0;
-const attributionOSM='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors';
-const attributionOFM=attributionOSM+' &middot; <a href="https://openfreemap.org/" target="_blank">OpenFreeMap</a>';
-function setBasemap(key){
- if(!map)return;
- const valid=['modern','liberty','light','dark','osm'];
- if(!valid.includes(key))key='modern';
- const previous=activeBasemap,seq=++basemapSequence;
- try{
-   let layer;
-   if(key==='osm')layer=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:attributionOSM});
-   else if(typeof L.maplibreGL==='function' && typeof window.maplibregl!=='undefined')
-     layer=L.maplibreGL({style:'https://tiles.openfreemap.org/styles/'+MAPA_BASE[key],attribution:attributionOFM});
-   else throw new Error('Renderizador vetorial indisponível');
-   layer.addTo(map);
-   if(previous&&map.hasLayer(previous))map.removeLayer(previous);
-   activeBasemap=layer;activeBasemapKey=key;
-   el('basemapInfo').textContent='Fundo alterado. Pontos e dados mantidos.';
-   document.querySelectorAll('[data-basemap]').forEach(b=>{const on=b.dataset.basemap===key;b.classList.toggle('active',on);b.setAttribute('aria-pressed',on?'true':'false');});
-   // Detecta falha durante o carregamento do estilo e volta ao OSM sem travar o mapa.
-   if(key!=='osm'&&typeof layer.getMaplibreMap==='function'){
-      const gl=layer.getMaplibreMap();
-      if(gl&&gl.on)gl.on('error',e=>{
-        if(seq!==basemapSequence)return;
-        const msg=String(e?.error?.message||'');
-        if(/style|Failed to fetch|network|WebGL/i.test(msg)){
-          el('basemapInfo').textContent='Fundo moderno indisponível. Abrindo OpenStreetMap tradicional.';
-          setBasemap('osm');
-        }
-      });
-   }
- }catch(err){
-   if(key!=='osm'){el('basemapInfo').textContent='Fundo moderno indisponível: usando OpenStreetMap.';setBasemap('osm');}
-   else el('basemapInfo').textContent='Falha ao carregar fundo: '+err.message;
- }
+// FUNDO ORIGINAL DOS MAPAS SP: OpenStreetMap raster clássico. Não depende de WebGL.
+let activeBasemap=null,activeBasemapKey='osm';
+const attributionOSM='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors';
+function setBasemap(_key){
+  if(!map)return;
+  if(!activeBasemap){
+    activeBasemap=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      maxZoom:19,
+      attribution:attributionOSM,
+      crossOrigin:true
+    });
+    activeBasemap.on('tileerror',()=>{
+      el('basemapInfo').textContent='Não foi possível baixar alguns blocos do OpenStreetMap. Verifique a conexão.';
+    });
+    activeBasemap.addTo(map);
+  }
+  activeBasemapKey='osm';
+  document.querySelectorAll('[data-basemap]').forEach(b=>{
+    b.classList.toggle('active',b.dataset.basemap==='osm');
+    b.setAttribute('aria-pressed',b.dataset.basemap==='osm'?'true':'false');
+  });
+  el('basemapInfo').textContent='OpenStreetMap tradicional ativo. Pontos e GPS preservados.';
 }
 function openMenu(){el('drawerScrim').classList.add('open');el('sideDrawer').classList.add('open');el('sideDrawer').setAttribute('aria-hidden','false');el('menuLegend').innerHTML=renderLegend();}
 function closeMenu(){el('drawerScrim').classList.remove('open');el('sideDrawer').classList.remove('open');el('sideDrawer').setAttribute('aria-hidden','true');}
@@ -234,7 +213,7 @@ function init(){
  el('mapName').textContent=cfg.project;el('drawerProject').textContent=cfg.project;el('mapRegion').textContent=cfg.regionLabel;
  el('regionsBtn').hidden=!cfg.regionalized;
  map=L.map('map',{preferCanvas:true,minZoom:1,zoomControl:false}).setView([-23.55,-46.63],10);
- const preferred=cfg.basemapDefault||'modern';
+ const preferred=cfg.basemapDefault||'osm';
  setBasemap(preferred);
  clusters=L.markerClusterGroup({chunkedLoading:true,chunkInterval:100,maxClusterRadius:55,spiderfyOnMaxZoom:false,showCoverageOnHover:false,disableClusteringAtZoom:cfg.pointZoom,iconCreateFunction:c=>clusterGlyph(counted(c.getAllChildMarkers()))}).addTo(map);
  map.on('zoomend',applyZoomIcons);map.on('dragstart',()=>{follow=false;});
