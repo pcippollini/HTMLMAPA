@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "AREA _ÁGUAS DE SÃO PEDRO",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 8, "NM_REGIAO": "Sudeste", "NM_MUN": "Águas de São Pedro", "CD_SUBDIST": "35006000500", "IDCIDADE": "ÁGUAS DE SÃO PEDRO", "BAIRRO": null, "ER": "PIRACICABA", "CID_BAIR_ER": "AGUAS DE SAO PEDRO_PIRACICABA", "AREA ": "ÁGUAS DE SÃO PEDRO" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -47.872172, -22.60685049999995 ], [ -47.88146, -22.60173 ], [ -47.887654, -22.603731 ], [ -47.887682, -22.594832 ], [ -47.886293, -22.589031 ], [ -47.882779, -22.587901 ], [ -47.877946, -22.589557 ], [ -47.873171, -22.592576 ], [ -47.861103, -22.602799 ], [ -47.865019, -22.606141 ], [ -47.864445, -22.607819 ], [ -47.863639, -22.607797 ], [ -47.862548, -22.609316 ], [ -47.862935599999958, -22.610235799999941 ], [ -47.872172, -22.60685049999995 ] ] ] ] } }
+]
+}
