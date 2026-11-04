@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "BAIRRO_CONSOLAÇÃO",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{ "type": "Feature", "properties": { "fid": 860, "NM_REGIAO": "Sudeste", "NM_MUN": "São Paulo", "CD_SUBDIST": "35503082600", "IDCIDADE": "SÃO PAULO", "BAIRRO": "CONSOLAÇÃO", "ER": "CAPITAL CENTRO", "CID_BAIR_ER": "SAO PAULO_CONSOLACAO_CAPITAL CENTRO", "AREA ": "SÃO PAULO" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.654458, -23.541568 ], [ -46.64767, -23.541750099999945 ], [ -46.64783, -23.547516 ], [ -46.64631, -23.550836 ], [ -46.655652, -23.555051 ], [ -46.658908, -23.559223 ], [ -46.66291, -23.555697 ], [ -46.665314, -23.556469 ], [ -46.67581, -23.552015 ], [ -46.674041, -23.548357 ], [ -46.666162, -23.544827 ], [ -46.663427, -23.537046 ], [ -46.658358, -23.540662 ], [ -46.654458, -23.541568 ] ] ] ] } }
+]
+}
