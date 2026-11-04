@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "ER_REGIAO_Poá_Cidade Kemel",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4674" } },
-"xy_coordinate_resolution": 1e-15,
-"features": [
-{ "type": "Feature", "properties": { "fid": 666, "NM_REGIAO": "Sudeste", "NM_UF": "São Paulo", "NM_MUN": "Poá", "NM_DIST": "Cidade Kemel", "CD_SUBDIST": "35398061000", "ER_REGIAO": "Poá_Cidade Kemel", "ER_REGIAO_CIDADE": "Poá_Cidade Kemel_Alto Tietê" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -46.3603193, -23.5183907 ], [ -46.3647954, -23.5154312 ], [ -46.3668854, -23.5168482 ], [ -46.366798, -23.5137 ], [ -46.3663957, -23.5121558 ], [ -46.3629596, -23.5103026 ], [ -46.3604929, -23.5136156 ], [ -46.357119, -23.5132343 ], [ -46.3603193, -23.5183907 ] ] ] ] } }
-]
-}

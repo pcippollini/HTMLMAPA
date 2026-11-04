@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "ER_REGIAO_CIDADE_min_Cesário Lange_Fazenda Velha_Botucatu",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"xy_coordinate_resolution": 1e-15,
-"features": [
-{ "type": "Feature", "properties": { "CNPJ": 22647133000197, "IDCIDADE": "CESARIO LANGE", "NOMEFANTASIA": null, "RAZAOSOCIAL": "E.P.S._GOBBI_MADEIREIRA", "ENDEE": "RODOVIA OTAVIO PILON, 30, TORNINOS II, 18285-000, CESARIO LANGE, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Cesário Lange_Fazenda Velha_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -47.854086, -23.2087649 ] } }
-]
-}

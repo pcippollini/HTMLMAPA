@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "ER_REGIAO_CIDADE_min_Piracicaba_Ibitiruna_Botucatu",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"xy_coordinate_resolution": 1e-15,
-"features": [
-{ "type": "Feature", "properties": { "CNPJ": 7776785000138, "IDCIDADE": "PIRACICABA", "NOMEFANTASIA": null, "RAZAOSOCIAL": "TRATAMENTO_DE_MADEIRAS_CASARIN_LTDA", "ENDEE": "RUA RICIERI GOZZO, 171, ANHUMAS, 13404-803, PIRACICABA, SP, BRASIL", "O_QUE_FAZER": "CARTEIRA - FAMPE", "ER_REGIAO_CIDADE_min": "Piracicaba_Ibitiruna_Botucatu" }, "geometry": { "type": "Point", "coordinates": [ -47.9274563, -22.8353089 ] } }
-]
-}
