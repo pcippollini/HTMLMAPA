@@ -91,6 +91,18 @@ body.access-locked #map,body.access-locked .summary,body.access-locked .side{vis
 .access-error{color:#fecaca!important;background:#4a1620;border:1px solid #dc4b57;padding:10px;border-radius:9px;white-space:pre-wrap}
 .access-status{color:#bae6fd!important}
 .access-privacy{border-top:1px solid #3b526e;margin-top:15px;padding-top:9px}
+
+/* Pulse is restricted to visible, individual priority markers; no extra cluster load. */
+.pm.pulse{position:relative;isolation:isolate}
+.pm.pulse{animation:spIconGrowShrink 1.9s ease-in-out infinite;transform-origin:center center}
+.pm.pin-drop.pulse{animation:spPinGrowShrink 1.9s ease-in-out infinite}
+@keyframes spPinGrowShrink{0%,100%{transform:rotate(-45deg) scale(1)}50%{transform:rotate(-45deg) scale(1.28)}}
+.pm.x-mark{border:0;background:transparent;color:var(--mc);font-size:calc(var(--ps,24px) * 1.12);box-shadow:none;text-shadow:0 1px 3px #0008}
+@keyframes spIconGrowShrink{0%,100%{transform:scale(1)}50%{transform:scale(1.28)}}
+.pm.pulse::after{content:"";pointer-events:none;position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--mc);animation:priorityPulseSP 1.9s ease-out infinite;opacity:.7}
+.pm.pulse.fampe::after,.pm.pulse.star-outline::after{inset:-1px}
+@keyframes priorityPulseSP{0%{transform:scale(.85);opacity:.85}75%{transform:scale(1.65);opacity:0}100%{transform:scale(1.65);opacity:0}}
+@media(prefers-reduced-motion:reduce){.pm.pulse{animation:none}.pm.pulse::after{animation:none;opacity:.35}}
 </style></head><body class="access-locked">
 <section id="accessGate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="accessTitle">
   <div class="access-card">
@@ -140,7 +152,7 @@ body.access-locked #map,body.access-locked .summary,body.access-locked .side{vis
 <div id="regionSelect"><div class="region-card"><h2>Escolha sua região</h2><p id="regionInstructions">Selecione a região para carregar apenas os pontos necessários.</p><div id="regionOptions"></div></div></div>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E59KMQFDEK"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-E59KMQFDEK');</script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<script>window.SP_MAP_CONFIG={"project":"PROJETO OXIGENA","region":"LOUVEIRA","regionLabel":"LOUVEIRA","firebaseProject":"OXIGENA","regionalized":false,"iconKey":"EVOLUÇÃO","titleKey":"CNPJ","fields":["CNPJ","IDCIDADE","NOMEFANTASIA","RAZAOSOCIAL","ENDEE","EVOLUÇÃO","O QUE FAZER","IDCIDADE_min"],"styles":{"CLIENTE LIBERADO PARA ATENDIMENTO":{"icon":"●","color":"#123D68","label":"CLIENTE LIBERADO PARA ATENDIMENTO"},"CLIENTE PRIORITÁRIO":{"icon":"★","color":"#efd44d","label":"CLIENTE PRIORITÁRIO"}},"clusterKey":"","clusterValues":[],"clusterIcon":"◎","clusterColor":"#123d68","pointZoom":16,"pointSize":24,"initialNotice":{"enabled":true,"text":"OS ÍCONES ESTÃO AGRUPADOS. AUMENTE O ZOOM PARA MELHOR VISUALIZAÇÃO DOS PONTOS.","fontSize":20,"position":"center","width":440,"backgroundColor":"#102840","textColor":"#ffffff","duration":12},"basemapDefault":"osm","areaPath":"../DADOS/AREAS_POLIGONOS/AREA LOUVEIRA.geojson","pointsPath":"../DADOS/PONTOS_AREA/LOUVEIRA.geojson","regions":[]};</script>
+<script>window.SP_MAP_CONFIG={"project":"PROJETO OXIGENA","region":"LOUVEIRA","regionLabel":"LOUVEIRA","mapType":"OXIGENA","useFirebase":true,"firebaseProject":"OXIGENA","regionalized":false,"iconKey":"EVOLUCAO","titleKey":"CNPJ","fields":["CNPJ","IDCIDADE","NOMEFANTASIA","RAZAOSOCIAL","ENDEE","EVOLUCAO","O QUE FAZER"],"styles":{"CLIENTE LIBERADO":{"icon":"●","color":"#323dd2","label":"CLIENTE LIBERADO","size":0},"CLIENTE PRIORITÁRIO":{"icon":"★","color":"#623668","label":"CLIENTE PRIORITÁRIO","size":44},"FINALIZADO":{"icon":"✕","color":"#fb2a13","label":"FINALIZADO","size":32},"JORNADA":{"icon":"O₂","color":"#14B8A6","label":"JORNADA","size":0}},"clusterKey":"","clusterValues":[],"clusterIcon":"●","clusterColor":"#123d68","pointZoom":16,"pointSize":24,"visibleValues":["CLIENTE LIBERADO","CLIENTE PRIORITÁRIO","FINALIZADO","JORNADA"],"pulseValues":["CLIENTE PRIORITÁRIO"],"routeMode":"DISCREET","tools":{"next":true,"search":true,"legend":true,"tutorial":true},"initialNotice":{"enabled":true,"text":"OS ÍCONES ESTÃO AGRUPADOS. AUMENTE O ZOOM PARA MELHOR VISUALIZAÇÃO DOS PONTOS.","fontSize":20,"position":"center","width":440,"backgroundColor":"#102840","textColor":"#ffffff","duration":12},"basemapDefault":"osm","areaPath":"../DADOS/AREAS_POLIGONOS/AREA _LOUVEIRA.geojson","pointsPath":"../DADOS/PONTOS_AREA/LOUVEIRA.geojson","regions":[]};</script>
 <script>
 'use strict';
 const cfg=window.SP_MAP_CONFIG;
@@ -151,14 +163,15 @@ function val(f,key){return String(f?.properties?.[key]??'(vazio)');}
 function defaultName(p){return String(p?.NOMEFANTASIA||p?.RAZAOSOCIAL||p?.NOME_FANTASIA||p?.RAZAO_SOCIAL||p?.CNPJ||'Empresa');}
 function locationOf(feature){const co=feature?.geometry?.coordinates;if(feature?.geometry?.type==='Point'&&Array.isArray(co)&&Number.isFinite(+co[0])&&Number.isFinite(+co[1]))return L.latLng(+co[1],+co[0]);return null;}
 function isValidCoord(ll){return ll&&Math.abs(ll.lat)<=90&&Math.abs(ll.lng)<=180&&!(ll.lat===0&&ll.lng===0);}
-function getIcon(sym,color,forSingle=false){
- const size=Math.max(16,Math.min(48,Number(cfg.pointSize)||24));
- let cls='pm',symbol=sym;
+function getIcon(sym,color,forSingle=false,kind=''){
+ const chosen=Number(cfg.styles?.[kind]?.size)||Number(cfg.pointSize)||24;const size=Math.max(16,Math.min(48,chosen));
+ let cls='pm',symbol=sym;const pulse=Array.isArray(cfg.pulseValues)&&cfg.pulseValues.includes(kind);if(pulse)cls+=' pulse';
  if(sym==='◎'||sym==='🎯')cls+=' mira';
  else if(sym==='★'||sym==='⭐')cls+=' fampe';
  else if(sym==='☆')cls+=' star-outline';
  else if(sym==='📍'){cls+=' pin-drop';symbol='';}
  else if(sym==='📌')cls+=' pushpin';
+ else if(sym==='✕')cls+=' x-mark';
  if(sym==='⭐')symbol='★';if(sym==='🎯')symbol='';
  const html='<div class="'+cls+'" style="--mc:'+safe(color)+';--ps:'+size+'px">'+safe(symbol)+'</div>';
  return L.divIcon({className:'',html,iconSize:[size,size],iconAnchor:[size/2,size/2],popupAnchor:[0,-size/2]});
@@ -213,14 +226,14 @@ function makeMarkers(data){const entries=[];for(const f of data.features||[]){if
  const b=clusters.getBounds();if(b.isValid())map.fitBounds(b.pad(.10),{maxZoom:Math.min(cfg.pointZoom-2,14)});
  else if(areaLayer?.getBounds()?.isValid())map.fitBounds(areaLayer.getBounds());}
 function applyZoomIcons(){if(!map||!clusters)return;const show=map.getZoom()>=cfg.pointZoom;
- for(const x of index){const icon=show?getIcon(x.style.icon,x.style.color):clusterGlyph((!cfg.clusterKey||cfg.clusterValues.includes(val(x.f,cfg.clusterKey)))?1:0,true);x.marker.setIcon(icon);}
+ for(const x of index){const icon=show?getIcon(x.style.icon,x.style.color,false,x.v):clusterGlyph((!cfg.clusterKey||cfg.clusterValues.includes(val(x.f,cfg.clusterKey)))?1:0,true);x.marker.setIcon(icon);}
  clusters.refreshClusters();}
 async function readJSON(path){const resp=await fetch(encodeURI(path),{cache:'no-store'});if(!resp.ok)throw Error('Não foi possível carregar '+path+' (HTTP '+resp.status+').');const obj=await resp.json();if(obj.type!=='FeatureCollection'||!Array.isArray(obj.features))throw Error('GeoJSON inválido: '+path);return obj;}
 async function selectRegion(region){if(!window.mapaAutorizado)return;selectedRegion=region;el('regionSelect').classList.remove('open');const request=++activeRequest;clusters.clearLayers();index=[];el('menuLegend').textContent='Carregando categorias...';el('total').textContent='0';el('regionName').textContent=region?region.label:'TODAS';el('gpsStatus').textContent='Carregando pontos da região selecionada...';
  try{let json;
  if(cfg.regionalized){if(!region)throw Error('Região não selecionada.');json=await readJSON(region.path);}else json=await readJSON(cfg.pointsPath);
  if(request!==activeRequest)return;
- makeMarkers(json);mostrarAvisoZoom();
+ makeMarkers(json);mostrarAvisoZoom();if((cfg.routeMode==='AUTO_OPEN'||cfg.mapType==='ROUTES')&&!routeAutoOpened){routeAutoOpened=true;setTimeout(()=>showRoutes(),500);} 
  }catch(e){if(request!==activeRequest)return;el('gpsStatus').textContent='Erro ao carregar região.';openDialog('Erro de carregamento','<p>'+safe(e.message)+'</p><p>Confira o caminho e os arquivos publicados no GitHub.</p>');}}
 function showRegions(){if(!window.mapaAutorizado)return;if(!cfg.regionalized){openDialog('Regiões','Este mapa foi gerado sem regionalização.');return;}closeDialog();
  const holder=el('regionOptions');holder.replaceChildren();for(const r of cfg.regions){const b=document.createElement('button');b.className='region-opt';const n=document.createElement('span');n.textContent=r.label;const q=document.createElement('b');q.textContent=r.count.toLocaleString('pt-BR')+' pontos';b.append(n,q);b.onclick=()=>selectRegion(r);holder.appendChild(b);}el('regionSelect').classList.add('open');}
@@ -448,8 +461,21 @@ function init(){
  document.querySelectorAll('[data-basemap]').forEach(b=>b.onclick=()=>{setBasemap(b.dataset.basemap);});
  readJSON(cfg.areaPath).then(data=>{areaLayer=L.geoJSON(data,{style:{color:'#123D68',weight:3,fillOpacity:.07}}).addTo(map);if(!cfg.regionalized&&areaLayer.getBounds().isValid())map.fitBounds(areaLayer.getBounds(),{maxZoom:12});}).catch(err=>{el('gpsStatus').textContent='Alerta: área não carregada: '+err.message;});
 }
-window.exigirAcessoGPS=(message)=>{window.mapaAutorizado=false;document.body.classList.add('access-locked');el('regionSelect').classList.remove('open');el('accessGate').hidden=false;el('accessError').textContent=message||'GPS necessário.';el('accessError').hidden=false;el('accessRetryGPS').disabled=false;el('accessGpsHelp').hidden=false;if(gpsWatch!==null){navigator.geolocation.clearWatch(gpsWatch);gpsWatch=null;}gpsPos=null;};
-window.addEventListener('mapa-acesso-autorizado',()=>{if(!loaded){loaded=true;init();}setTimeout(()=>map.invalidateSize(),100);gps();if(cfg.regionalized){showRegions();}else{mostrarAvisoZoom();if(!selectedRegion)selectRegion(null);}});
+window.exigirAcessoGPS=(message)=>{if(!cfg.useFirebase){el('gpsStatus').textContent=message||'GPS indisponível. Ative a localização e use Minha localização.';return;}window.mapaAutorizado=false;document.body.classList.add('access-locked');el('regionSelect').classList.remove('open');el('accessGate').hidden=false;el('accessError').textContent=message||'GPS necessário.';el('accessError').hidden=false;el('accessRetryGPS').disabled=false;el('accessGpsHelp').hidden=false;if(gpsWatch!==null){navigator.geolocation.clearWatch(gpsWatch);gpsWatch=null;}gpsPos=null;};
+let routeAutoOpened=false;
+function applyRouteModeUI(){
+ const hide=id=>{const node=el(id);if(node){node.hidden=true;node.style.display='none';}};
+ if(cfg.routeMode==='OFF'){hide('routesBtn');hide('routesMenuBtn');}
+ else if(cfg.routeMode==='DISCREET')hide('routesBtn');
+ const tools=cfg.tools||{};
+ if(tools.next===false)hide('nextBtn');
+ if(tools.search===false){hide('searchBtn');hide('quickSearchBtn');}
+ if(tools.legend===false){hide('legendBtn');hide('quickLegendBtn');hide('menuLegend');}
+ if(tools.tutorial===false)hide('tutorialBtn');
+ if(!cfg.regionalized)hide('regionsBtn');
+ const buttons=[...document.querySelectorAll('.toolbar button')].filter(b=>b.style.display!=='none');
+ const bar=document.querySelector('.toolbar');if(bar)bar.style.gridTemplateColumns='repeat('+Math.max(1,buttons.length)+',minmax(0,1fr))';
+}window.addEventListener('mapa-acesso-autorizado',()=>{if(!loaded){loaded=true;init();applyRouteModeUI();}setTimeout(()=>map.invalidateSize(),100);gps();if(cfg.regionalized){showRegions();}else{mostrarAvisoZoom();if(!selectedRegion)selectRegion(null);}});
 el('closeZoomNotice').onclick=()=>{clearTimeout(zoomNoticeTimer);el('zoomNotice').hidden=true;};
 </script>
 <script type="module" id="firebaseAccessModule">
