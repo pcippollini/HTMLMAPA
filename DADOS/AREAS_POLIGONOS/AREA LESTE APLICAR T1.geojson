@@ -1,8 +1,8 @@
 {
 "type": "FeatureCollection",
 "name": "AREA LESTE APLICAR T1",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31983" } },
 "features": [
-{ "type": "Feature", "properties": { "cenario": "ZERO_JORNADA_HISTORICO_REDUZIDO", "area_km2": 5.0, "aplicar_t1": 261, "jornadas_total": 0, "jornadas_urgentes": 0, "finalizados": 35, "outros": 0, "total": 296, "t1_por_km2": 52.2, "finalizados_por_100_t1": 13.41, "jornadas_faixa_externa_200m": 6, "finalizados_faixa_externa_200m": 28, "bairros_t1": "JOSÉ BONIFÁCIO / ITAQUERA / LAJEADO / GUAIANASES / VILA CURUÇÁ", "forma": "quadrado", "rotacao_graus": 30, "centro_x": 354745.0, "centro_y": 7396580.0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -46.427099377325554, -23.548334959073703 ], [ -46.408024168253355, -23.53841191264592 ], [ -46.418786821182245, -23.520825796416659 ], [ -46.437860150460835, -23.530747628662109 ], [ -46.427099377325554, -23.548334959073703 ] ] ] } }
+{ "type": "Feature", "properties": { "cenario": "ZERO_JORNADA_HISTORICO_REDUZIDO", "area_km2": 5.0, "aplicar_t1": 261, "jornadas_total": 0, "jornadas_urgentes": 0, "finalizados": 35, "outros": 0, "total": 296, "t1_por_km2": 52.2, "finalizados_por_100_t1": 13.41, "jornadas_faixa_externa_200m": 6, "finalizados_faixa_externa_200m": 28, "bairros_t1": "JOSÉ BONIFÁCIO / ITAQUERA / LAJEADO / GUAIANASES / VILA CURUÇÁ", "forma": "quadrado", "rotacao_graus": 30, "centro_x": 354745.0, "centro_y": 7396580.0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 354335.771157822920941, 7395052.737169072963297 ], [ 356272.26283092610538, 7396170.771157823503017 ], [ 355154.228842177079059, 7398107.262830927036703 ], [ 353217.737169073428959, 7396989.228842176496983 ], [ 354335.771157822920941, 7395052.737169072963297 ] ] ] } }
 ]
 }
