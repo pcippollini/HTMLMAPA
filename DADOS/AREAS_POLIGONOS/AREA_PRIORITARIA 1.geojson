@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "AREA_PRIORITARIA 1",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31983" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "GRUPO": 1, "URGENTES": 55, "AREA_KM2": 1.0, "CELULAS": 1, "DENS_URG_KM2": 55.0, "TIPO": "ALTA_PRIORIDADE_ISOLADA", "IDS_GRADE": "490" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 325260.693900000012945, 7398432.9183 ], [ 326260.693900000012945, 7398432.9183 ], [ 326260.693900000012945, 7397432.9183 ], [ 325260.693900000012945, 7397432.9183 ], [ 325260.693900000012945, 7398432.9183 ] ] ] } }
+]
+}
