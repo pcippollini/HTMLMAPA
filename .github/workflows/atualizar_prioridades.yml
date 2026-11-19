@@ -1,0 +1,30 @@
+name: Atualizar rota das Prioridades (teste)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'DADOS/PONTOS_AREA/PRIORIDADE_CPRIURG1.geojson'
+      - 'SCRIPTS/atualizar_rota_prioridades.py'
+      - '.github/workflows/atualizar_prioridades.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  route:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recalcular ordem geográfica (teste)
+        run: python SCRIPTS/atualizar_rota_prioridades.py DADOS/PONTOS_AREA/PRIORIDADE_CPRIURG1.geojson DADOS/ROTAS/PRIORIDADE_CPRIURG1_ROTA.json
+      - name: Publicar somente se houve mudança na rota
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add DADOS/ROTAS/PRIORIDADE_CPRIURG1_ROTA.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Atualizar rota geográfica Prioridades"
+            git push
+          fi

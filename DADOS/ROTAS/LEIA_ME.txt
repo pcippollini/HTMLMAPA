@@ -1,0 +1,3 @@
+DADOS/ROTAS — rotas publicadas.
+PRIORIDADE_CPRIURG1_ROTA.json é atualizado pelo GitHub Actions após publicação do GeoJSON de pontos.
+A ordem nesta fase é geográfica, não viária.

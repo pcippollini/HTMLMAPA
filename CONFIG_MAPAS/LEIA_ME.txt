@@ -1,0 +1,2 @@
+CONFIG_MAPAS — modelos e perfis do Gerador SP V2.
+Neste teste, os modelos oficiais existentes NÃO foram alterados.
