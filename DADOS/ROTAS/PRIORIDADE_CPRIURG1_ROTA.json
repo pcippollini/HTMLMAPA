@@ -2,8 +2,8 @@
   "route_version": "PRIORIDADES_V2_TESTE",
   "method": "geographic_nearest_neighbor_2opt_NOT_ROAD_NETWORK",
   "source_geojson": "PRIORIDADE_CPRIURG1.geojson",
-  "source_sha256": "d9ae7d2e9a3ed07f99b993307cb643398a4a09422c58695a696257a381d0d75e",
-  "source_version": "d9ae7d2e9a3ed07f",
+  "source_sha256": "a2091ea45ec9796858f77349fdf4ea55c5d1bd5bb09362d388156c8f20bfdcca",
+  "source_version": "a2091ea45ec97968",
   "keys": [
     "10863003000102",
     "44783812000126",
