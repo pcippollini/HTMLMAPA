@@ -2,8 +2,8 @@
   "route_version": "PRIORIDADES_V2_TESTE",
   "method": "geographic_nearest_neighbor_2opt_NOT_ROAD_NETWORK",
   "source_geojson": "PRIORIDADE_CPRIURG1.geojson",
-  "source_sha256": "a2091ea45ec9796858f77349fdf4ea55c5d1bd5bb09362d388156c8f20bfdcca",
-  "source_version": "a2091ea45ec97968",
+  "source_sha256": "39b293cc96026b5a87e1d768bb259affbce038e1e24ed336e6bcf247164eac80",
+  "source_version": "39b293cc96026b5a",
   "keys": [
     "10863003000102",
     "44783812000126",
@@ -21,9 +21,10 @@
     "51797026000143",
     "51486076000100",
     "24836346000192",
-    "54171852000170",
-    "22317659000109",
     "21747144000186",
+    "54171852000170",
+    "99999999999999",
+    "22317659000109",
     "19679401000148",
     "57311821000166",
     "05301776000165",
@@ -85,6 +86,6 @@
     "61913939000131",
     "53992741000162"
   ],
-  "km_direct": 4.88,
+  "km_direct": 4.93,
   "invalid_or_duplicate": []
 }
